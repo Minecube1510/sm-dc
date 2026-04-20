@@ -28,19 +28,19 @@ title="AT-SECTION-CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
 title="Click for more information."
 alt="BTC.GFB - Kafuu Chino">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/e05_HuPaWi.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/e05_HuPaWi.png"
 title="Click for more information."
 alt="BTC.HuPaWi - Jinja Natsume">][On-Type]
 </td><td>
 
 <img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
 title="SECTION_LOGO_CATEGORY-NO_LINK"
 alt="BTC.CloTriEld - Fuiba Fuyu">
 </td></tr></table></div>
@@ -54,13 +54,13 @@ alt="BTC.CloTriEld - Fuiba Fuyu">
 Menanti...
 
 ---
-
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**[1_5__5]**][Link-Prev] | ***<span title="[f-1_5!6-f]">[f-1_5!6-f]</span>*** | [**[f-1_5!6-f]**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -70,6 +70,11 @@ Menanti...
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/15-A_E-EXT.info.md
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-CATEGORY-SECTION
+
+<!-- Reffs : Anchor Hint -->
+[?]: .
+[Endfoot]: #endfoot-linker
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/155-Winchester/155-A_E_E-EXT.info.md "Prev: [1_5__5] - (Gaster Paperbag'ed Equip.Winchester)"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/f16-Trickster///.info.md "Next: [F-1!6!1] - (Gaster Trickster-Side Blaster)"

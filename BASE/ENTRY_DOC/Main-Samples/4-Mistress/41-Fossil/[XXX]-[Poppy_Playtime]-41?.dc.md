@@ -1,5 +1,19 @@
+<!--
+---
+
+Doc_Article: Entry_Doc
+Status: Wip
+#
+District: Appx-311
 
 ---
+-->
+---
+<div align="center">
+
+### Entry Doc Page
+
+</div>
 
 # Poppy Playtime
 
@@ -85,7 +99,7 @@ GAMBAR ILUSTRASI SAMPEL
 
 # General Explanations
 
-**MENULISLAH!**
+TBA
 
 ---
 

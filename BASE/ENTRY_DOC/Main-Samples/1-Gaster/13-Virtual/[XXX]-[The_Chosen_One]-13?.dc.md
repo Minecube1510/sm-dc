@@ -1,6 +1,16 @@
-
+<!--
 ---
 
+Doc_Article: Entry_Doc
+
+---
+-->
+---
+<div align="center">
+
+### Entry Doc Page
+
+</div>
 # TCO (TheChosenOne), []
 
 > **Topic**: Sample
@@ -75,8 +85,8 @@ GAMBAR ILUSTRASI SAMPEL
 
 - **ID:** ***XXXX***  
 - **Sample Default Name:** *Nama Sampel*  
-- **Bunch:** $${\textbf{\textcolor{#FFFFFF}{Bunch}}}$$  
-- **Type:** $${\textbf{\textcolor{#FFFFFF}{Type}}}$$  
+- **Bunch:** $${\textbf{\textcolor{#00BEFF}{Gaster}}}$$  
+- **Type:** $${\textbf{\textcolor{#FF1B39}{Virtual}}}$$  
 - **Category:** $${\textbf{\textcolor{#FFFFFF}{Category}}}$$  
 - **Segment:** *?*  
 - **List:** [ ***?*** ]

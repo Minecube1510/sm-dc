@@ -30,22 +30,27 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/d04_MiRaKa.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/d04_MiRaKa.png"
 title="Click for more information."
 alt="BTC.MiRaKa - Jinja Eru">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
+
+<!-- Reffs : BTC Linking -->
+[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress/4-Mistress-EXT.info.md
+[On-Type]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress///.info.md
+[On-Category]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress///.info.md
 
 ---
 
@@ -59,7 +64,7 @@ alt="BTC-ALT">][On-Category]
 -->
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png">
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png">
 <br><br><b>
 
 GAMBAR ILUSTRASI SAMPEL
@@ -67,6 +72,10 @@ GAMBAR ILUSTRASI SAMPEL
 
 [[**Webnya darimana dapetnya?**][From-Web]]:
 "[*Sang Publisher atau Creator*][Publisher-Creator]"
+<!-- Reffs : Linking Assets Online -->
+[From-Web]: image.png "Descript Web-Image"
+[Publisher-Creator]: link.com "Publisher/Creator name"
+
 </div>
 
 ---
@@ -94,32 +103,25 @@ GAMBAR ILUSTRASI SAMPEL
 - [Referensi 1][Reff-1]
 - [Referensi 2][Reff-2]
 - [Referensi 3][Reff-3]
+<!-- Reffs : Linking Record Online -->
+[Reff-1]: github.com "Descript-Note 1"
+[Reff-2]: github.com "Descript-Note 2"
+[Reff-3]: github.com "Descript-Note 3"
 
 ---
-
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**XXXX**][Link-Prev] | ***<span title="XXXX">XXXX</span>*** | [**XXXX**][Link-Next] |
 | **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+<!-- Reffs : Navigate -->
+[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
+[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
 
 </div>
 
 ---
 
-<!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress/4-Mistress-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress///.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress///.info.md
-<!-- Reffs : Linking Online -->
-[From-Web]: image.png "Descript Web-Image"
-[Publisher-Creator]: link.com "Publisher/Creator name"
-<!-- Reffs : Linking Online -->
-[Reff-1]: github.com "Descript-Note 1"
-[Reff-2]: github.com "Descript-Note 2"
-[Reff-3]: github.com "Descript-Note 3"
-<!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
 <!-- Reffs-End -->

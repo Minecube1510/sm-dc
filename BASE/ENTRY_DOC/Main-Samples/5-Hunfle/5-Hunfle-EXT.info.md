@@ -143,7 +143,7 @@ Menunggu: xxx
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**{{{--D_4_D--}}}**][Link-Prev] | ***<span title="{{{--E_5_E--}}}">{{{--E_5_E--}}}</span>*** | [**{{{---FUUF-6-FUUF---}}}**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -153,8 +153,11 @@ Menunggu: xxx
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+
 <!-- Reffs : BTC Linking -->
 [Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle
+[?]: .
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress/4-Mistress-EXT.info.md "Prev: {{{--D_4_D--}}} - (Elite*Mistress)"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F6-Clovin-EXT.info.md "Next: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"

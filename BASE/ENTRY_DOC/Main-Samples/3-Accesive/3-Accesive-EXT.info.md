@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Explanation
+
+---
+-->
 ---
 
 # Kamen Rider Accesive's Collection
@@ -17,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#FF1B39}{Accesive}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="/BASE/ASSETS/Assets-Main/BTC-Sign/c3c_AVD.png"
+  src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/c3c_AVD.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.AVD - Natsu Megumi">
 </td></tr></table></div>
@@ -137,13 +143,13 @@ Menunggu: xxx
 2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
 
 ---
-
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**{{{-b'2'B-}}}**][Link-Prev] | ***<span title="{{{-c'3'C-}}}">{{{-c'3'C-}}}</span>*** | [**{{{--D_4_D--}}}**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -153,8 +159,11 @@ Menunggu: xxx
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+
 <!-- Reffs : BTC Linking -->
 [Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive
+[?]: .
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/2-Spamor-EXT.info.md "Prev: {{{-b'2'B-}}} - (Spamor)"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress/4-Mistress-EXT.info.md "Next: {{{--D_4_D--}}} - (Elite*Mistress)"

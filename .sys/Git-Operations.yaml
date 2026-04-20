@@ -1,0 +1,117 @@
+# File Name:
+# Git-Operations.yaml
+#
+# Description:
+# Panduan Operasional ngatur-atur per-commit-an
+
+# Alur Branches
+#
+# -~=~-
+#
+# [-] Pastikan setiap setelah langkah per-langkah nya, dimohon
+# untuk setiap branch, agar di-"rebase root" terlebih dulu.
+# [-] Itu dilakukan sekian berulang kali, sampai tidak ada lagi
+# Conflict apapun, dalam nge-rebase hanya pick/edit aja ntar.
+# |
+# [-] Itu juga termasuk dengan struktur file-nya. Harus sama.
+# [-] Dikarenakan [Dev] yang memulai perubahan ini dan itu (ya
+# mengingat [Dev] adalah branch perubahan), maka indikasi-nya
+# semua branch harus sama persis seperti [Dev].
+# |
+# [-] Salah satu trik yang bisa dipake adalah:
+# Commit yang terbaru, di-kosongin semua baru di-isi oleh [Dev].
+#
+# -~=~-
+#
+# {{1}.{0}}
+# (-) [Dev] kopas semua ke [Scrapper]
+# (-) Scrapper jangan langsung hapus, ntar-ntaran aja dulu
+#
+# {{2}.{0}}
+# (-) Sementara itu, [Dev] sendiri ngaturin per-commit-an.
+# (-) Pembaharuan berdasarkan dari terakhir kali [History], alias
+# yang terbaru darinya.
+#
+# {{3}.{0}}
+# (-) Pastikan cek di [History], semuanya gak ada yang dobel-an.
+# (-) Selama proses pengecekan di [History], SANGAT DILARANG
+# ngotak-atik per-commit-an di [Dev]-nya.
+# 
+# {{4}.{0}}
+# (-) Selesai proses pengecekan, baru [Dev] bisa sedikit di-sesuaikan.
+#
+# {{5}.{0}}
+# (-) Kemudian, setelah penyesuaian, baru di-kopas-kan ke [Main].
+# -~=~-
+
+
+### Langkah-Langkah beserta Command ###
+
+# Rebase Root
+-rebase-root:
+  - git rebase -i --root
+
+# Langkah: [1]
+langkah-1:
+  - git fetch --all
+  - git checkout scrapper
+  - git reset --hard origin/dev
+  #
+  - git push --force
+  - git push --force-with-lease
+#
+# Langkah: [2]
+langkah-2:
+  - git checkout dev
+  - git ?
+  #
+  - git push --force
+  - git push --force-with-lease
+#
+# Langkah: [3]
+langkah-3:
+  - git checkout history
+  - git ?
+  #
+  - git push --force
+  - git push --force-with-lease
+#
+# Langkah: [4]
+langkah-4:
+  - git checkout dev
+  - git ?
+  #
+  - git push --force
+  - git push --force-with-lease
+#
+# Langkah: [5]
+langkah-5:
+  - git checkout main
+  - git ?
+  #
+  - git push --force
+  - git push --force-with-lease
+
+
+### Panduan dasar operasional Git Bash ###
+hitung-commit:
+  - git rev-list --count NAMA_BRANCH
+#
+kopas-all_file-no_commit:
+  - git rm -r .
+  - git checkout NAMA_BRANCH -- .
+#
+lanjut-dan-bersihkan:
+  - git rebase --continue
+  - clear
+#
+reset-otak-atik-commit:
+  - git reset --hard origin/dev
+  - clear
+#
+akan-mendatang-1:
+  - git ?
+akan-mendatang-2:
+  - git ?
+akan-mendatang-3:
+  - git ?

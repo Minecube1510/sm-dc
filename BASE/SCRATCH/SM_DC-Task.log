@@ -5,13 +5,12 @@
 
 `NOW`
 - Terus meng-update sempurna setiap file Entry Doc.
-- Edit tiap per-aset-an buat Entry Doc.
-+ Karena itu semua wajib memiliki:
-    > "AuthorName"
-    > "AuthorLink"
-    |
-    > "ImageFrom"
-    > "ImageLink"
+- Standarisasi tiap Metadata sebuah MD (ada pada "Usage-exif-TEXTING.md").
+- Kompres tiap-tiap berikut:
+    [#] "PNG" = "WEBP"
+    [#] "GIF" = "WEBM"
+    [#] "MP4" = "WEBM"
+    [#] "WAV" = "OPUS"
 
 `LATER`
 - .

@@ -1,14 +1,28 @@
+<!--
+---
+
+Doc_Article: Entry_Doc
 
 ---
+-->
+---
+<div align="center">
+
+### Entry Doc Page
+
+</div>
 
 # BTC Sample Name
 
 > **Topic**: Sample
+> **Title**: CLOVIN-IS-HERE: Trickster Empl_oti_onal, ?  
+> **Segment**: Segmen
 >
 > **Syndicate**:  
 > (Perdataan apapun lah dalam Sampel)
-
-**CLOVIN-IS-HERE: Trickster Empl_oti_onal, ?**
+>
+> - [Sample Information][Sample-Info]
+> - [Page Navigation][Endfoot]
 
 ## Simbolic Indicator
 
@@ -30,19 +44,19 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
 title="Click for more information."
 alt="BTC.CloTriEld - Fuiba Fuyu">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
 title="Click for more information."
 alt="BTC.CloTriEld - Fuiba Fuyu">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
@@ -59,7 +73,7 @@ alt="BTC-ALT">][On-Category]
 -->
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png">
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png">
 <br><br><b>
 
 GAMBAR ILUSTRASI SAMPEL
@@ -67,6 +81,9 @@ GAMBAR ILUSTRASI SAMPEL
 
 [[**Webnya darimana dapetnya?**][From-Web]]:
 "[*Sang Publisher atau Creator*][Publisher-Creator]"
+<!-- Reffs : Linking Assets Online -->
+[From-Web]: image.png "Descript Web-Image"
+[Publisher-Creator]: link.com "Publisher/Creator name"
 </div>
 
 ---
@@ -94,15 +111,19 @@ GAMBAR ILUSTRASI SAMPEL
 - [Referensi 1][Reff-1]
 - [Referensi 2][Reff-2]
 - [Referensi 3][Reff-3]
+<!-- Reffs : Linking Record Online -->
+[Reff-1]: github.com "Descript-Note 1"
+[Reff-2]: github.com "Descript-Note 2"
+[Reff-3]: github.com "Descript-Note 3"
 
 ---
-
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**XXXX**][Link-Prev] | ***<span title="XXXX">XXXX</span>*** | [**XXXX**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -112,13 +133,12 @@ GAMBAR ILUSTRASI SAMPEL
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F6-Clovin-EXT.info.md
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/Ff66-Trickster///.info.md
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/Ff66-Trickster///.info.md
-<!-- Reffs : Linking Online -->
-[From-Web]: image.png "Descript Web-Image"
-[Publisher-Creator]: link.com "Publisher/Creator name"
-<!-- Reffs : Linking Online -->
-[Reff-1]: github.com "Descript-Note 1"
-[Reff-2]: github.com "Descript-Note 2"
-[Reff-3]: github.com "Descript-Note 3"
+
+<!-- Reffs : Anchor Hint -->
+[EDP]: #entry-doc-page
+[Sample-Info]: #general-explanations
+[Endfoot]: #endfoot-linker
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"

@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Explanation
+
+---
+-->
 ---
 
 # Kamen Rider Gaster's Collection
@@ -17,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#00BEFF}{Gaster}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
+  src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.GFB - Kafuu Chino">
 </td></tr></table></div>
@@ -243,13 +249,13 @@ XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/)
 936. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/)
 
 ---
-
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**{{{---FUUF-6-FUUF---}}}**][Link-Prev] | ***<span title="{{{-a'1'A-}}}">{{{-a'1'A-}}}</span>*** | [**{{{-b'2'B-}}}**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -259,8 +265,11 @@ XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/)
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+
 <!-- Reffs : BTC Linking -->
 [Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster
+[?]: .
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F6-Clovin-EXT.info.md "Prev: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/2-Spamor-EXT.info.md "Next: {{{-b'2'B-}}} - (Spamor)"

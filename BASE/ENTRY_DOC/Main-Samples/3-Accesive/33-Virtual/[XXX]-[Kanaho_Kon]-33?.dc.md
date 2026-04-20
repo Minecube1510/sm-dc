@@ -85,7 +85,7 @@ GAMBAR ILUSTRASI SAMPEL
 
 # General Explanations
 
-**MENULISLAH!**
+TBA
 
 ---
 

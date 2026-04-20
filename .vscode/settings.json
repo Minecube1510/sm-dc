@@ -1,0 +1,48 @@
+{
+    /* Ignored Config */
+    "liveServer.settings.port": 5502,
+
+
+        //
+    /* TOP: Markdowns */
+    "json.schemaDownload.enable": true,
+    //
+    //"markdown.preview.fileRoot": "/",
+    "markdownlint.configFile": ".vscode/stg/.markdownlint.json",
+
+
+        //
+    /* Performance boost */
+    "files.watcherExclude": {
+        "**/.git/**": true,
+        //
+        "**/.storage/.images/**": true,
+        "**/ASSETS/**": true,
+            //
+        "**/*.png": true,
+        "**/*.jpg": true,
+        "**/*.jpeg": true,
+        "**/*.webp": true,
+        "**/*.gif": true
+    },
+    //
+    "extensions.ignoreRecommendations": true,
+    //
+    "search.exclude": {
+        "**/.storage/.images/**": true,
+        "**/ASSETS/**": true,
+            //
+        "**/*.png": true,
+        "**/*.jpg": true,
+        "**/*.jpeg": true,
+        "**/*.webp": true,
+        "**/*.gif": true
+    },
+
+
+        //
+    /* 🔧 MCP fix */
+    "files.associations": {
+        "mcp.json": "jsonc"
+    }
+}

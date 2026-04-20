@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Explanation
+
+---
+-->
 ---
 
 # Kamen Rider Spamor's Collection
@@ -17,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#FFC32B}{Spamor}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="/BASE/ASSETS/Assets-Main/BTC-Sign/b2b_SJL.png"
+  src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/b2b_SJL.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.SJL - Jouga Maya">
 </td></tr></table></div>
@@ -138,13 +144,13 @@ Menunggu: xxx
 1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
 
 ---
-
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**{{{-a'1'A-}}}**][Link-Prev] | ***<span title="{{{-b'2'B-}}}">{{{-b'2'B-}}}</span>*** | [**{{{-c'3'C-}}}**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -154,8 +160,11 @@ Menunggu: xxx
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+
 <!-- Reffs : BTC Linking -->
 [Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor
+[?]: .
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md "Prev: {{{-a'1'A-}}} - (Gaster)"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive/3-Accesive-EXT.info.md "Next: {{{-c'3'C-}}} - (Accesive)"

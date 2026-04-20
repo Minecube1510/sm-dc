@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Explanation
+
+---
+-->
 ---
 
 # Gaster: Virtual Specs
@@ -22,14 +28,14 @@ title="AT-SECTION-TYPE">
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
 title="Click for more information."
 alt="BTC.GFB - Kafuu Chino">][On-Bunch]
 </td><td>
 
 <img draggable="false" width="100"
 title="SECTION_LOGO_TYPE-NO_LINK"
-src="/BASE/ASSETS/Assets-Main/BTC-Sign/c3c_AVD.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/c3c_AVD.png"
 alt="BTC.AVD - Natsu Megumi">
 </td></tr></table></div>
 
@@ -151,12 +157,13 @@ alt="BTC.AVD - Natsu Megumi">
 
 ---
 
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**[12]**][Link-Prev] | ***<span title="[13]">[13]</span>*** | [**[1_4]**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
 
 </div>
 
@@ -166,6 +173,11 @@ alt="BTC.AVD - Natsu Megumi">
 [On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
 [On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/13-Virtual/13-AC-EXT.info.md
 [On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-CATEGORY-SECTION
+
+<!-- Reffs : Anchor Hint -->
+[?]: .
+[Endfoot]: #endfoot-linker
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/12-Jarl///?.info.md "Prev: [12] - (Gaster Jarl)"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/14-Raincoat///?.info.md "Next: [1_4] - (Gaster Raincoat'ed)"
