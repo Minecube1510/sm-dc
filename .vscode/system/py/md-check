@@ -1,0 +1,206 @@
+#!/usr/bin/env python3
+# .sys/py/md-check #
+#
+# python .sys/py/md-check
+
+# ~ ~ ~ ~ ~ #
+
+# IMPORTS #
+import os
+import re
+import sys
+import yaml
+# IMPORTS #
+
+
+# VARS - DATA #
+BASE_DIR = "BASE"
+VALID_TYPES = [
+    "Assets",
+    "Entry_Doc","Generic",
+    "Record",
+    #
+    "Explanation",
+    #
+    "UNDEFINED",
+]
+#=
+VALID_SORT = ["type", "path", "deff"]
+VALID_ORDER = ["asc", "desc"]
+# VARS - DATA #
+###
+# VARS - BASIC #
+DEF_SEARCH = "Doc_Article"
+FILTER_TYPE = None
+#
+docs = []
+# VARS - BASIC #
+###
+# VARS - SYNC #
+PY_VT = VALID_TYPES
+DEF_TYPE = PY_VT[1]
+UNDEF_TYPE = PY_VT[-1]
+# VARS - SYNC #
+###
+# VARS - COMP #
+C_DESC = "descend"
+#=
+C_SORT = "sort="
+C_SRCH = "search="
+# VARS - COMP #
+
+
+# SYSTEM - CODED-CORE #
+def validate_args(args):
+    for a in args:
+        if (
+            not a.startswith(C_SORT)
+            and not a.startswith(C_SRCH)
+            and a != C_DESC
+        ):
+            print(f"Unknown Command: {a}")
+            sys.exit(1)
+#
+for root, dirs, files in os.walk(BASE_DIR):
+    for f in files:
+        if not f.endswith(".md"):
+            continue
+        #
+        path = os.path.join(root, f)
+        #
+        try:
+            with open(path, "r", encoding="utf-8") as file:
+                text = file.read()
+        except Exception as e:
+            print(f"FILE ERROR: {path} -> {e}")
+            continue
+        #
+        meta = {}
+        block = re.search(r'<!--(.*?)-->', text, re.S)
+        #
+        if block:
+            content = block.group(1).strip()
+            if content.startswith("---"):
+                yaml_text = content.strip().strip("-")
+                try:
+                    parsed = yaml.safe_load(yaml_text)
+                    if isinstance(parsed, dict):
+                        # VALIDASI (poin 2)
+                        if DEF_SEARCH not in parsed:
+                            print(f"MISSING KEY [{DEF_SEARCH}]: {path}")
+                        else:
+                            meta = parsed
+                except yaml.YAMLError as e:
+                    print(f"YAML ERROR: {path} -> {e}")
+        #
+        docs.append((meta, path))
+# SYSTEM - CODED-CORE #
+
+
+# SYSTEM - SORTING #
+G_VS = VALID_SORT
+G_VO = VALID_ORDER
+#
+def parse_sort_args(args):
+    mode, order = VALID_SORT[-1], VALID_ORDER[0]
+    for a in args:
+        if a.startswith(C_SORT):
+            v = a.split("=", 1)[1].lower()
+            parts = v.split(":", 1)
+            mode = parts[0]
+            if len(parts) > 1:
+                order = parts[1]
+    #
+    if mode == C_DESC:
+        mode, order = G_VS[-1], G_VO[-1]
+    #
+    return (
+        mode if mode in VALID_SORT else VALID_SORT[-1],
+        order if order in VALID_ORDER else VALID_ORDER[0],
+    )
+#
+SORT_MODE, SORT_ORDER = parse_sort_args(sys.argv[1:])
+#
+reverse = SORT_ORDER == G_VO[1]
+#
+def_order = {t: i for i, t in enumerate(sorted(VALID_TYPES))}
+type_order = {t: i for i, t in enumerate(VALID_TYPES)}
+#
+if SORT_MODE == G_VS[0]:
+    docs.sort(key=lambda x: type_order.get(x[0]
+    .get(DEF_SEARCH, ""), 999), reverse=reverse,
+    )
+elif SORT_MODE == G_VS[1]:
+    docs.sort(key=lambda x: x[1].lower(), reverse=reverse)
+elif SORT_MODE == G_VS[2]:
+    docs.sort(key=lambda x: x[1].lower())
+    docs.sort(key=lambda x: def_order.get(x[0]
+    .get(DEF_SEARCH, ""), 999), reverse=reverse,
+    )
+else:
+    docs.sort(key=lambda x: x[1].lower(), reverse=reverse)
+# SYSTEM - SORTING #
+###
+# SORTING USAGE #
+#=
+# python [file]
+#   sort=type
+#   sort=type:desc
+#   sort=path
+#   sort=path:desc
+#   sort=descend <=> sort=deff:desc
+#=
+# SORTING USAGE #
+
+
+# PRINTING - SETUP #
+found = 0
+args = sys.argv[1:]
+validate_args(args)
+#
+def parse_filter_args(args):
+    for a in args:
+        if a.startswith(C_SRCH):
+            return a.split("=", 1)[1]
+    return None
+#
+FILTER_TYPE = parse_filter_args(sys.argv[1:])
+if FILTER_TYPE:
+    FILTER_TYPE = FILTER_TYPE.strip()
+    # samain format (case-insensitive)
+    FILTER_TYPE = next(
+        (t for t in VALID_TYPES if t.lower() == FILTER_TYPE.lower()),
+        None
+    )
+# PRINTING - SETUP #
+
+
+# PRINTING - DISPLAY #
+print("\n===== HASIL =====")
+for meta, path in docs:
+    filename = (os.path.basename(path))
+    folder = os.path.dirname(path)
+    #
+    md_status = meta.get(DEF_SEARCH, UNDEF_TYPE)
+    if md_status not in VALID_TYPES:
+        md_status = UNDEF_TYPE
+    #
+    cek_stat = md_status.replace("_", " ")
+    #
+    # filter CMD
+    if FILTER_TYPE and md_status != FILTER_TYPE:
+        continue
+    #
+    print(f"[{cek_stat}] - {filename} -> {folder}")
+    found += 1
+#
+if FILTER_TYPE and found == 0:
+    print("Not-Found as Filtered, sorry...")
+#
+print("===== AKHIR =====\n")
+# PRINTING - DISPLAY #
+
+# ~ ~ ~ ~ ~ #
+
+
+#
