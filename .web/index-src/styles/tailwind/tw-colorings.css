@@ -1,0 +1,36 @@
+/* index-src/styles/tw-colorings.css */
+
+/* Imports */
+@import url("tw-vars.css");
+
+
+/* Root */
+:root {
+    --x-1: 1px;
+}
+
+
+/*
+    Classings
+*//*
+*/
+    /* Draw: Background */
+.bg-white { background-color: var(--tw-peak-white); }
+.bg-black { background-color: var(--tw-peak-black); }
+
+    /* Draw: Text */
+
+    /* Draw: Border */
+.border-black { border-color: var(--tw-peak-black); }
+.border-white { border-color: var(--tw-peak-white); }
+/**~
+~**/
+.border-slate-50 { border-color: var(--tw-slate-50); }
+/**/
+.border-neutral-600 { border-color: var(--tw-neutral-600); }
+/**/
+.border-olive-950 { border-color: var(--tw-olive-950); }
+
+
+/*
+*/

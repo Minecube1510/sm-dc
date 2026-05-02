@@ -304,6 +304,9 @@ find . -path "./.git" -prune -o -type d ! -perm 0755
 find . -path "./.git" -prune -o -perm 0666 -ls
 |
 find . \( -type f -perm 0666 -ls -o -type f ! -perm 0644 -o -type d -perm 0666 -ls -o -type d ! -perm 0755 \)
+#|#|#
+  [#] Eksekusi: Ngecek secara satu file
+ls -l FILE_NAME.png
 
   [#] Eksekusi: Mengubah semuanya
 find . -path "./.git" -prune -o -exec chmod u=rwX,go=rX {} +
@@ -311,18 +314,23 @@ find . -path "./.git" -prune -o -exec chmod u=rwX,go=rX {} +
 find . -path "./.git" -prune -o
 #|#|#
   [#] Eksekusi: Mengubah khususan
-find . -type d -exec chmod 755 {} \;
-find . -path "./.git" -type d -exec chmod 755 {} \;
+find . -type d -exec chmod 755 {} +
+find . -path "./.git" -type d -exec chmod 755 {} +
+find . -path "./.git" -prune -o -type f -exec chmod 644 {} +
 |
-find . -type f -name "*.md" -exec chmod 644 {} \;
-find . -type f -name "*.png" -exec chmod 644 {} \;
+find . -type f -iname "*.txt" -exec chmod 644 {} +
+find . -type f -iname "*.md" -exec chmod 644 {} +
+find . -type f -iname "*.png" -exec chmod 644 {} +
+find . -type f -iname "*.jpg" -exec chmod 644 {} +
+find . -type f -iname "*.gif" -exec chmod 644 {} +
 |
-find . -type f -name "*.py" -exec chmod 755 {} \;
-find . -type f -name "*.js" -exec chmod 755 {} \;
+find . -type f -iname "*.py" -exec chmod 755 {} +
+find . -type f -iname "*.js" -exec chmod 755 {} +
+find . -type f -iname "*.php" -exec chmod 755 {} +
 |
-find . -type f -name "*.html" -exec chmod 644 {} \;
-find . -type f -name "*.php" -exec chmod 644 {} \;
-find . -type f -name "*.css" -exec chmod 644 {} \;
+find . -type f -iname "*.html" -exec chmod 644 {} +
+find . -type f -iname "*.css" -exec chmod 644 {} +
+find . -type f -iname "*.json" -exec chmod 644 {} +
 #|#|#
   [#] Eksekusi: Mengubah manual
 chmod 644 file.png

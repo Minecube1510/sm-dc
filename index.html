@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Markdown Content Pages</title>
+
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet"
+    href=".web/index-src/style.css">
+    <!-- LIMIT _ CSS -->
+    <link rel="stylesheet"
+    href=".web/index-src/styles/github-markdown.min.css">
+
+    <script type="module"
+    src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
+    </script>
+    <script defer
+    src=".web/latex-mathjax/tex-mml-chtml.js">
+    </script>
+    <!-- LIMIT _ JS -->
+    <script type="module" defer
+    src=".web/index-src/script.js">
+    </script>
+  </head>
+
+
+  <body class="">
+    <!-- Input: Cari file MD di Project -->
+    <main id="mdc-inputter"
+    class="mdc-inputter lg:mdc-inputter">
+      <h1 class="text-center">
+        Please put the Markdown Address
+      </h1>
+      <div class="mdc-input-sect">
+        <input type="text" id="mdc-to-search"
+          placeholder="Input MD Address Here..."
+          class="">
+        <button id="mdc-to-check" class="mdc-button">
+          Check Markdown
+        </button>
+      </div><div id="mdc-ceklink" class="text-center font-bold">
+        Check Link
+      </div>
+    </main>
+
+    <!-- Content Cek Isi MD -->
+    <div id="mdc-content"
+    class="markdown-body mdc-content lg:mdc-content">
+      <article id="check-md"
+      class="mx-auto"><p class="mdc-label">
+          Markdown Content Here...
+      </p></article>
+    </div>
+  </body>
+</html>

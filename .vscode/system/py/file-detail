@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+# .sys/py/file-detail #
+#
+# python .sys/py/file-detail
+
+# ~ ~ ~ ~ ~ #
+
+# IMPORTS #
+import sys
+import subprocess
+#
+from pathlib import Path
+from collections import defaultdict
+# IMPORTS #
+
+
+# VARS - COMP #
+#
+# VARS - COMP #
+
+
+# SYSTEM - FUNCS #
+def find_duplicate_names (root=".", exts=None):
+    if exts is None:
+        exts = {
+            ".png", ".jpg",
+            ".webp",
+            ".gif",
+        }
+    files = defaultdict(list)
+    #
+    for path in Path(root).rglob("*"):
+        if path.is_file() and path.suffix.lower() in exts:
+            files[path.name].append(str(path))
+    #
+    return {
+        name: paths
+        for name, paths in files.items()
+        if len(paths) > 1
+    }
+#
+# SYSTEM - FUNCS #
+
+
+# SYSTEM - COMMANDS #
+def find_dupe_files ():
+        # Find: Dupe (Duplicate) Files
+        #
+    duplicates = find_duplicate_names()
+    #
+    print ()
+    for name, paths in duplicates.items():
+        print (f"=== {name} ===")
+        #
+        for path in paths:
+            print (path)
+        #
+        print ()
+#
+def exif_author_scanning (
+    file_path = "."
+):
+        # Checking EXIF's
+        #
+    c_fp = 0
+    exts = {
+        ".png",
+        ".webp",
+    }
+    #
+    for path in Path(file_path).rglob("*"):
+        if (
+            path.is_file()
+            and path.suffix.lower() in exts
+        ):
+            c_fp += 1
+    #
+    cmd = [ "exiftool", "-r",
+        "-ext", "png",
+        "-ext", "webp",
+        #
+        "-i", ".git",
+        #
+        "-if", "$XMP-Sec_Res:AuthorName",
+        #
+        "-p", "$FilePath",
+        file_path,
+    ]
+    #
+    print (("Checking the EXIF:")
+        + (" \n|"))
+    print ((file_path))
+    print ((f"  [{c_fp}] files in the path")
+        + (" \n|"))
+    #
+    subprocess.run(cmd)
+#
+# SYSTEM - COMMANDS #
+
+
+# PRINTING - DISPLAY #
+#
+def main ():
+    commands = {
+        "fdf": find_dupe_files,
+        "exas": exif_author_scanning,
+    }
+    #
+    if len(sys.argv) < 2:
+        print("Use Commands:")
+        for cmd in commands:
+            print(f" [-] {cmd}")
+        return
+    #
+    py_comm = sys.argv[1]
+    py_args = sys.argv[2:]
+        #
+    exc_func = commands.get(py_comm)
+    #
+    if exc_func is None:
+        print(f"Unknown Command: {py_comm}")
+        return
+    #
+    if py_comm == "exas":
+        file_path = "."
+        #
+        for arg in py_args:
+            if arg.startswith("path:"):
+                file_path = arg.removeprefix("path:")
+        #
+        exc_func(file_path)
+    else:
+        exc_func()
+#
+if __name__ == "__main__":
+    main ()
+# PRINTING - DISPLAY #
+
+# ~ ~ ~ ~ ~ #
+
+
+#

@@ -1,0 +1,118 @@
+/* index-src/styles/tailwind.css */
+
+/* Imports */
+@import url("tailwind/tw-vars.css");
+
+
+/* Root */
+:root {
+    --tw-container: var(--tw-4);
+}
+
+
+/* Classings */
+    /* Classing: Select */
+.select-none { user-select: none; }
+.select-text { user-select: text; }
+.select-all { user-select: all; }
+.select-auto { user-select: auto; }
+
+    /* Classing: Container */
+.container { width: 100%;
+    padding-left: var(--tw-container);
+    padding-right: var(--tw-container);
+}
+
+    /* Classing: Background */
+/* ? */
+
+    /* Classing: Border */
+.border-solid { border-style: solid; }
+.border-dashed { border-style: dashed; }
+.border-dotted { border-style: dotted; }
+.border-double { border-style: double; }
+.border-hidden { border-style: hidden; }
+.border-none { border-style: none; }
+/**/
+.border-0 { border-width: 0; }
+.border { border-width: 1px; }
+.border-2 { border-width: 2px; }
+.border-4 { border-width: 4px; }
+.border-8 { border-width: 8px; }
+    /* Classing: Rounded */
+.rounded-xs { border-radius: 0.125rem; }
+.rounded-sm { border-radius: 0.25rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem;}
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+.rounded-4xl { border-radius: 2rem; }
+.rounded-none { border-radius: 0; }
+/* .rounded-full { border-radius: 9999px; } */
+
+    /* Classing: Shadow */
+.shadow-md {
+  box-shadow:
+    0 4px 6px -1px rgba(0,0,0,0.1),
+    0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+    /* Classing: Max-Width */
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-3xl { max-width: 48rem; }
+.max-w-4xl { max-width: 56rem; }
+.max-w-5xl { max-width: 64rem; }
+.max-w-6xl { max-width: 72rem; }
+.max-w-7xl { max-width: 80rem; }
+
+    /* Classing: Text Align */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify  { text-align: justify; }
+.text-start {text-align: start;}
+.text-end { text-align: end; }
+
+    /* Classing: Font Stylish */
+.italic { font-style: italic; }
+.not-italic { font-style: normal; }
+/**/
+.font-thin { font-weight: var(--tw-hundred-1); }
+.font-extralight { font-weight: var(--tw-hundred-2); }
+.font-light { font-weight: var(--tw-hundred-3); }
+.font-normal { font-weight: var(--tw-hundred-4); }
+.font-medium { font-weight: var(--tw-hundred-5); }
+.font-semibold { font-weight: var(--tw-hundred-6); }
+.font-bold { font-weight: var(--tw-hundred-7); }
+.font-extrabold { font-weight: var(--tw-hundred-8); }
+.font-black { font-weight: var(--tw-hundred-9); }
+/**/
+.underline { text-decoration-line: underline; }
+.overline { text-decoration-line: overline; }
+.line-through { text-decoration-line: line-through; }
+.no-underline { text-decoration-line: none; }
+
+    /* Classing: ? */
+.cursor-auto { cursor: auto; }
+.cursor-default { cursor: default; }
+.cursor-pointer { cursor: pointer; }
+
+    /* Classing: ? */
+/* ? */
+
+
+/* ! Classing ! */
+/**
+ **/
+    /* Classing: ? */
+/*
+*/
+
+
+/*
+*/
