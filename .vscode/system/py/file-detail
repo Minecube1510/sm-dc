@@ -58,7 +58,7 @@ def find_dupe_files ():
         print ()
 #
 def exif_author_scanning (
-    file_path = "."
+    file_path = "_assets"
 ):
         # Checking EXIF's
         #
@@ -81,7 +81,8 @@ def exif_author_scanning (
         #
         "-i", ".git",
         #
-        "-if", "$XMP-Sec_Res:AuthorName",
+        #"-if", "$XMP-Sec_Res:AuthorName",
+        "-if", "$FileName",
         #
         "-p", "$FilePath",
         file_path,
@@ -107,9 +108,11 @@ def main ():
     }
     #
     if len(sys.argv) < 2:
+        #
         print("Use Commands:")
         for cmd in commands:
             print(f" [-] {cmd}")
+        print("")
         return
     #
     py_comm = sys.argv[1]

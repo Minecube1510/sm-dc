@@ -1,5 +1,10 @@
 # Sampel Memori
 
+<!--
+Just use:
+  python system/py
+=-->
+
 <h3 align="center"><span>
   Pesan ini "<i>HANYA DIKHUSUSKAN</i>" kepada para beberapa "<i>USERMASTER</i>" yang terpilih saja
 </span></h3>
@@ -91,6 +96,12 @@ D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
 > - Hanya boleh berisi link-link. Dianjurkan linking dari Github Repo ini.
 > - Dan linking sampel-nya, gak boleh asal-asalan.
 > - Wajib mengikuti ID asli yang ditentukan-nya
+
+- Linking
+
+> [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
+
+[Link-SMDC]: https://minecube1510.github.io/s4mpl3_m3m0ry "SM-DC - Image Ateiler"
 
 - Menunggu...
 

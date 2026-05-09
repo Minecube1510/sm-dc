@@ -176,28 +176,37 @@ if FILTER_TYPE:
 
 
 # PRINTING - DISPLAY #
-print("\n===== HASIL =====")
-for meta, path in docs:
-    filename = (os.path.basename(path))
-    folder = os.path.dirname(path)
+def excheck ():
+    print("\n===== HASIL =====")
+    for meta, path in docs:
+        filename = (os.path.basename(path))
+        folder = os.path.dirname(path)
+        #
+        md_status = meta.get(DEF_SEARCH, UNDEF_TYPE)
+        if md_status not in VALID_TYPES:
+            md_status = UNDEF_TYPE
+        #
+        cek_stat = md_status.replace("_", " ")
+        #
+        # filter CMD
+        if FILTER_TYPE and md_status != FILTER_TYPE:
+            continue
+        #
+        print(f"[{cek_stat}] - {filename} -> {folder}")
+        found += 1
     #
-    md_status = meta.get(DEF_SEARCH, UNDEF_TYPE)
-    if md_status not in VALID_TYPES:
-        md_status = UNDEF_TYPE
+    if FILTER_TYPE and found == 0:
+        print("Not-Found as Filtered, sorry...")
     #
-    cek_stat = md_status.replace("_", " ")
-    #
-    # filter CMD
-    if FILTER_TYPE and md_status != FILTER_TYPE:
-        continue
-    #
-    print(f"[{cek_stat}] - {filename} -> {folder}")
-    found += 1
+    print("===== AKHIR =====\n")
 #
-if FILTER_TYPE and found == 0:
-    print("Not-Found as Filtered, sorry...")
+def main ():
+    print (("Under Construction...") + ("\n"))
+    #
+    #excheck()
 #
-print("===== AKHIR =====\n")
+if __name__ == "__main__":
+    main()
 # PRINTING - DISPLAY #
 
 # ~ ~ ~ ~ ~ #
