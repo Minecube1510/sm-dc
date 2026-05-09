@@ -5,12 +5,17 @@ Doc_Article: Assets
 
 ---
 -->
+{% raw %}
 
 ---
 
 # BTC Sign Templator
 
 Just use it!
+
+<!--
+?
+=-->
 
 ---
 
@@ -300,3 +305,6 @@ ff6_CloTriEld
 - [***Gochiusa Valentine 2022***](https://gochiusa.com/special/v2022.html)
 
 ---
+
+{% endraw %}
+<!-- END -->
