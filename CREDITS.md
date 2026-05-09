@@ -1,4 +1,25 @@
 
+<style>
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+.cr-badge {
+    display: flex;
+    flex-wrap: wrap;
+    /**/
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+    .cr-badge img {
+        display: block;
+        margin: auto;
+    }
+</style>
+
 ---
 
 <div align="center">
@@ -37,153 +58,99 @@ Each of the following plays an important role in building, maintaining, and impr
 ## Main Tools
 
 Here these are some of the main tools, that used to create, build, and develop the project.
-<!--
-=-->
+<!--=-->
 <table id="table-a1">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    <thead><tr><th colspan="2"><div align="center">
 Software Systems
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td class="cr-badge">
 
-![Badge-Github]
-</td><td>
+![Badge-Github]</td><td>
 Used as the main platform for version control, repository management, and collaboration.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td class="cr-badge">
 
-![Badge-VSCode]
-</td><td>
+![Badge-VSCode]</td><td>
 The primary code editor used for writing, editing, and managing the project files efficiently.
-        </td></tr>
-    </tbody>
+    </td></tr></tbody>
 </table>
-
-<!--
-=-->
+<!--=-->
 <table id="table-a2">
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    <thead><tr><th colspan="2"><div align="center">
 AI Assistance
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td class="cr-badge">
 
-![Badge-Copilot]
-</td><td>
+![Badge-Copilot]</td><td>
 Helps with code suggestions, auto-completion, and improving development speed.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td class="cr-badge">
 
-![Badge-ChatGPT]
-</td><td>
+![Badge-ChatGPT]</td><td>
 Assists in problem-solving, debugging, structuring ideas, and generating documentation.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td td class="cr-badge">
 
-![Badge-Grok]
-</td><td>
+![Badge-Grok]</td><td>
 Used as an additional AI reference for exploring alternative solutions and perspectives.
-        </td></tr>
-    </tbody>
+    </td></tr></tbody>
 </table>
 
 ## Project System - Core
 
 The app is built use with Markdown (MD) base language.
-<!--
-=-->
+<!--=-->
 <table id="table-b1">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    <thead><tr><th colspan="2"><div align="center">
 Major Basic
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td class="cr-badge">
 
-![Badge-MD]
-</td><td>
+![Badge-MD]</td><td>
 Serves as the main format for writing structured content and documentation within the app.
-        </td></tr>
-    </tbody>
+    </td></tr><tr><td class="cr-badge">
+
+![Badge-Imgur]</td><td>
+Serves image storages that needed for contains thousands images.
+    </td></tr></tbody>
 </table>
-
-<!--
-=-->
+<!--=-->
 <table id="table-b2">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    <thead><tr><th colspan="2"><div align="center">
 Secondary Methods
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td td class="cr-badge">
 
-![Badge-Latex]
-</td><td>
+![Badge-Latex]</td><td>
 Used for rendering mathematical expressions and more complex formatted content.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td td class="cr-badge">
 
-![Badge-JSON]
-</td><td>
+![Badge-JSON]</td><td>
 Utilized for data structuring, configuration, and handling any data-related tasks within the app.
-        </td></tr>
-    </tbody>
+    </td></tr></tbody>
 </table>
 
 ## Project System - Control
 
 These are several system applications for project development utilities.
-<!--
-=-->
+<!--=-->
 <table id="table-c1">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    <thead><tr><th colspan="2"><div align="center">
 Utilities Programming
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td td class="cr-badge">
 
-![Badge-PY]
-</td><td>
+![Badge-PY]</td><td>
 Used for scripting, automation, and handling backend or processing tasks.
-        </td></tr>
-    </tbody>
+    </td></tr></tbody>
 </table>
-
-<!--
-=-->
+<!--=-->
 <table id="table-c2">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    <thead><tr><th colspan="2"><div align="center">
 Terminal Usage
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td td class="cr-badge">
 
-![Badge-Bash]
-</td><td>
+![Badge-Bash]</td><td>
 Utilized for command-line operations, file management, and workflow automation.
-        </td></tr>
-    </tbody>
+    </td></tr></tbody>
 </table>
 
 ---
@@ -217,6 +184,8 @@ Just a history logs.
 [3.?] 00-00-2000 {XX:XX} : "?."
 [3.?] 00-00-2000 {XX:XX} : "?."
 ```
+
+![Imgur](https://img.shields.io/badge/Imgur-2E3035?style=for-the-badge&logo=imgur&logoColor=1BB76E)
 
 ---
 <!--
@@ -282,18 +251,28 @@ Just a history logs.
 [Badge-Linux-Ubuntu]: https://img.shields.io/badge/Linux_Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=FFFFFF "[Ubuntu - Linux]-[Formatted Badge]"
 
 <!--
+<!--
+    Costumized
+=--|
 =-->
 
 <!--
-🛠️ Defaulted System
-📄📁 Defaulted File/Project
+🗄️ Costum - Storages
+-->
+[Badge-Imgur]: https://img.shields.io/badge/Imgur-2E3035?style=for-the-badge&logo=imgur&logoColor=1BB76E "[Imgur]-[Formatted Badge]"
+
+<!--
+=-->
+
+<!--
+🛠️ [Z] Defaulted System
+📄📁 [Z] Defaulted File/Project
 -->
 [Badge-Null]: https://img.shields.io/badge/Unknown-FFFFFF?style=for-the-badge&logo=rss&logoColor=black "[Unknown Badged Whatever]-[Formatted Badge]"
 <!---->
 [Badge-NullFile]: https://img.shields.io/badge/Unknown_File-FFFFFF?style=for-the-badge&logo=files&logoColor=black "[Unknown File]-[Formatted Badge]"
 [Badge-NullSys]: https://img.shields.io/badge/Unknown_System-FFFFFF?style=for-the-badge&logo=malwarebytes&logoColor=black "[Unknown System]-[Formatted Badge]"
 
-<!---->
 <!--
     END: Reffs
 -->
@@ -305,4 +284,4 @@ Just a history logs.
 [Index-2]: #index-1 "Indexing - 2"
 [Index-3]: #index-2 "Indexing - 3"
 
-<!--=END=-->
+<!--=  END  =-->

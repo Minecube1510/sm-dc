@@ -8,7 +8,7 @@
     "json.schemaDownload.enable": true,
     //
     //"markdown.preview.fileRoot": "/",
-    "markdownlint.configFile": ".vscode/stg/.markdownlint.json",
+    "markdownlint.configFile": ".vscode/plugin/.markdownlint.json",
 
 
         //
