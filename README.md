@@ -1,5 +1,8 @@
 # Sampel Memori
 
+- Branch
+- "work-dev"
+
 <!--
 Just use:
   python system/py
@@ -96,6 +99,12 @@ D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
 > - Hanya boleh berisi link-link. Dianjurkan linking dari Github Repo ini.
 > - Dan linking sampel-nya, gak boleh asal-asalan.
 > - Wajib mengikuti ID asli yang ditentukan-nya
+
+- Linking
+
+> [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
+
+[Link-SMDC]: https://minecube1510.github.io/s4mpl3_m3m0ry "SM-DC - Image Ateiler"
 
 - Menunggu...
 
