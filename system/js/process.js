@@ -34,6 +34,7 @@ function view_Img (content) {
         atlr: bsc.js_CreateELm("div"),
         text: bsc.js_CreateELm("p"),
     };
+    (vImg).atlr.id = (`vimg-content`);
     //
     /* Classings */
     const vImg_Classes = {
@@ -93,7 +94,7 @@ async function get_Imgs () {
     /* Varings */
     const get_bd = bsc.js_Arr2Str([
         //(`guide`),
-        (`_assets`), (`BTC-Sign`),
+        (`img`), (`btc`),
     ], (bsc.jsV.slash));
     //
     /* Asyncs */
@@ -124,7 +125,13 @@ async function struct_Imgs() {
     const vBox = view_Img(phV_Box);
     //
     if ((imgs.length) === (0)) {
+        const vAteiler = (bsc.js_GetId(`vimg-content`));
         (vBox).atlr.appendChild(vBox.text);
+        //
+        (vAteiler).classList.remove(`justify-start`,
+            `grid-cols-3`);
+        (vAteiler).classList.add(`justify-center`);
+        //
         return (vBox);
     }
     //
