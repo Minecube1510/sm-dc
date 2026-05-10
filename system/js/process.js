@@ -7,8 +7,16 @@ import * as bsc from "./basis.js";
 
 
 /* Vars */
-//
+const repo = (`s4mpl3_m3m0ry`);
+const get_bd = ((bsc).js_Arr2Str([
+    (repo),
+    //
+    //(`guide`),
+    (`img`),
+], (bsc.jsV.slash)));
+const for_bd = (`/${get_bd}/`);
 /**/
+//(bsc).c_Log(get_bd);
 
 
 /* Funcs */
@@ -24,8 +32,8 @@ function ht_Classer (classes) {
 function draw_Title (title) {
     const ph_Title = (bsc.js_GetId(`title`).innerHTML);
     //
-    (bsc).js_GetId("title").innerHTML = bsc.js_Arr2Str([title,
-        ph_Title, ], (" | "));
+    (bsc).js_GetId("title").innerHTML = ((bsc)
+        .js_Arr2Str([ title, ph_Title, ], (" | ")));
 }
 function view_Img (content) {
     /* Varings */
@@ -87,49 +95,125 @@ function view_Img (content) {
     return (vImg);
 }
 //
+/**/
 
 
-/* Construct */
+/* Gets */
+async function get_Prefixes (path = `/${get_bd}/`) {
+    const results = [];
+    const req = await fetch(path);
+    if (!((req).ok)) {
+        console.warn("Failed:", path);
+        return [];
+    }
+    const html = await req.text();
+    //
+    const doc = (new DOMParser()
+        .parseFromString((html), ("text/html")));
+    const links = [ ...doc.querySelectorAll("a") ]
+        .map((a) => a.getAttribute("href"))
+        .filter(Boolean)
+            // skip parent dir
+        .filter((href) => href !== "../");
+    //
+    for (const href of links) {
+        const skipHrefs = [ (bsc.jsV.slash), (`./`), (`../`),
+            ];
+        if ((skipHrefs).includes(href)) { continue; }
+        //
+        const full = (new URL((href), ((window.location.origin)
+            + (path))).pathname);
+        //
+        // folder
+        if ((href).endsWith("/")) {
+            results.push({
+                type: "dir",
+                path: full,
+            });
+                // recursive
+            const sub = await get_Prefixes(full);
+            results.push(...sub);
+        } else {
+                // file
+            results.push({
+                type: "file",
+                path: full,
+            });
+        }
+    }
+    return (results);
+}
 async function get_Imgs () {
     /* Varings */
-    const get_bd = bsc.js_Arr2Str([
-        //(`guide`),
-        (`img`), (`btc`),
-    ], (bsc.jsV.slash));
-    //
-    /* Asyncs */
-    const req = await fetch(`/${get_bd}/`);
-    const html = await req.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(
-        html, `text/html`);
-    const links = [...doc.querySelectorAll("a")];
-    //
-    /* Results */
     const results = [];
-    const exts = ([
-        "png", "jpg","jpeg",
+    const exts = ([ "png",
+        "jpg", "jpeg",
         "webp",
         //
         "gif",
     ].map(ext => (`.${bsc.js_Lower(ext)}`)));
+        //
+    const pf_Res = await get_Prefixes(for_bd);
     //
-    return ((links)
-        .map(link => (link.getAttribute("href")))
-        .filter(href => ((exts).some(ext => (href.endsWith(ext))))
-    ));
+    /* Looping Asyncs */
+    for (const item of pf_Res) {
+        const pf_Item = item.path;
+            //
+        //console.log(pf_Item);
+        //
+        const req = await fetch(`${pf_Item}/`);
+        const parser = new DOMParser();
+            //
+        const html = await req.text();
+        const doc = parser.parseFromString((html),
+            ("text/html"));
+            //
+        const links = [...doc.querySelectorAll("a")];
+        const imgs = links
+            .map(link => link.getAttribute("href"))
+            .filter(href =>
+                exts.some(ext => href?.endsWith(ext))
+            );
+        results.push(...imgs);
+    }
+    return (results);
+    //
 }
-async function struct_Imgs() {
-    const imgs = await get_Imgs();
+//
+const all_Images = (await get_Imgs());
+/**/
+
+
+/* Construct */
+function check_Imgs () {
+    const slash = (bsc.jsV.slash);
+    //
+    (all_Images).forEach((fn) => {
+        const filepath = (fn);
+        const filename = ((fn)
+            .split(slash).at(-1));
+        //
+        (bsc).c_Log((bsc).js_Arr2Str([
+            `Name: "${filename}"`,
+            `At: "${filepath}"`
+        ], (`\n`)));
+    });
+}
+//
+async function struct_Imgs () {
+    const imgs = (all_Images);
     const phV_Box = (`Images Ateilers has been here`);
     const vBox = view_Img(phV_Box);
     //
+    //console.log(imgs);
+    //
     if ((imgs.length) === (0)) {
+        console.warn(`⚠️ Tidak ada gambar ditemukan!`);
+        //
         const vAteiler = (bsc.js_GetId(`vimg-content`));
-        (vBox).atlr.appendChild(vBox.text);
         //
         (vAteiler).classList.remove(`justify-start`,
-            `grid-cols-3`);
+            `grid-cols-3`, `lg:grid-cols-5`);
         (vAteiler).classList.add(`justify-center`);
         //
         return (vBox);
@@ -137,6 +221,8 @@ async function struct_Imgs() {
     //
     (vBox).atlr.innerHTML = (bsc.jsV.empty);
     (imgs).forEach((src) => {
+        //bsc.c_Log(src);
+        //
         const img = (bsc.js_CreateELm("img"));
         (img).src = (src);
         (img).draggable = (false);
@@ -148,6 +234,7 @@ async function struct_Imgs() {
     return (vBox);
 }
 //
+/**/
 
 
 /* Final */
@@ -158,13 +245,14 @@ export function test () {
     //?
     //
 }
-export function struct () {
+export async function struct () {
     /* Head */
     draw_Title (`Images Ateilers`);
     //
 
     /* Body */
-    struct_Imgs();
+    check_Imgs();
+    await struct_Imgs();
     //
 }
 //
@@ -172,6 +260,8 @@ export function struct () {
 
 
 /* Uji Coba */
+//?
+//
 //?
 /**/
 

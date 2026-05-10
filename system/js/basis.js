@@ -32,6 +32,12 @@ export function js_Lower (text) {
 export function c_Log (msg) {
     return ((console).log(msg));
 }
+export function c_Warn (msg) {
+    return ((console).warn(msg));
+}
+export function c_Error (msg) {
+    return ((console).error(msg));
+}
 //
 export function js_GetId (id) {
     return ((document).getElementById(id));
