@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="id">
-<head >
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta description="In-Branch: work-dev" in-branch="work-dev">
-    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!--=-->
     <title id="title">
-        Images Ateilers | SM-DC
+        SM-DC
     </title>
-    <!---->
-    <link rel="stylesheet" href="system/html/styles.css">
-    <style>
-        /* ? */
-    </style>
+    <link id="favicon" rel="icon" type="image/x-icon"
+    href="_assets/BTC-Sign/000b_Esoterian.png">
+    <!--=-->
+    <link rel="stylesheet" href="system/css/styles.css">
+    <!--=-->
 </head>
 <!--
 =-->
-<body >
-    <script src="system/html/script.js"
+<body draggable="false" id="body"
+class="min-h-screen flex flex-col container mx-auto p-3 select-none bg-gray-100">
+    <script type="module" src="system/js/script.js"
     defer></script>
-    <!---->
-    <header>
-        <h1>Ateiler that viewing Images</h1>
+    <!--=-->
+    <header class="">
+        <h1 class="text-2xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
+            Ateiler that viewing Images
+        </h1>
     </header>
-    <main>
-        <p>Under Construction...</p>
+    <main class="flex flex-1 shadow-lg">
+        <div id="view-images"></div>
     </main>
-    <footer>
-        <p>By: Minecube1510</p>
+    <footer class="text-center mt-4">
+        <p class="font-semibold">
+            By: Minecube1510
+        </p>
     </footer>
 </body>
 </html>

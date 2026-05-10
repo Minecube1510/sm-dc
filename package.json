@@ -1,0 +1,24 @@
+{
+  "name": "s4mpl3_m3m0ry",
+  "version": "1.0.0",
+  "description": "- Branch\r - \"work-dev\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Minecube1510/s4mpl3_m3m0ry.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Minecube1510/s4mpl3_m3m0ry/issues"
+  },
+  "homepage": "https://github.com/Minecube1510/s4mpl3_m3m0ry#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
