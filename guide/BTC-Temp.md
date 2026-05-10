@@ -5,10 +5,6 @@ Doc_Article: Assets
 
 ---
 -->
-<<<<<<< HEAD
-{% raw %}
-=======
->>>>>>> 74be217 ([Dev - Setting] Revolution (Recoverings, Deletes, and Refactors) - 1)
 
 ---
 
@@ -16,13 +12,6 @@ Doc_Article: Assets
 
 Just use it!
 
-<<<<<<< HEAD
-<!--
-?
-=-->
-
-=======
->>>>>>> 74be217 ([Dev - Setting] Revolution (Recoverings, Deletes, and Refactors) - 1)
 ---
 
 ## $${{\textcolor{#FFFFFF}{Unknown}}}$$
@@ -311,9 +300,3 @@ ff6_CloTriEld
 - [***Gochiusa Valentine 2022***](https://gochiusa.com/special/v2022.html)
 
 ---
-<<<<<<< HEAD
-
-{% endraw %}
-<!-- END -->
-=======
->>>>>>> 74be217 ([Dev - Setting] Revolution (Recoverings, Deletes, and Refactors) - 1)

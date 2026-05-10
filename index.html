@@ -1,48 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Check Markdown Content Pages</title>
-
-    <link rel="icon" href="data:,">
-
-    <link rel="stylesheet"
-    href=".web/index-src/style.css">
-    <!-- LIMIT _ CSS -->
-    <link rel="stylesheet"
-    href=".web/index-src/styles/github-markdown.min.css">
-
-    <script type="module"
-    src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
-    </script>
-    <script defer
-    src=".web/latex-mathjax/tex-mml-chtml.js">
-    </script>
-    <!-- LIMIT _ JS -->
-    <script type="module" defer
-    src=".web/index-src/script.js">
-    </script>
-  </head>
-
-
-  <body class="">
-    <!-- Input: Cari file MD di Project -->
-    <main id="mdc-inputter"
-    class="mdc-inputter lg:mdc-inputter">
-      <h1 class="text-center">
-        Please put the Markdown Address
-      </h1>
-      <div class="mdc-input-sect">
-        <input type="text" id="mdc-to-search"
-          placeholder="Input MD Address Here..."
-          class="">
-        <button id="mdc-to-check" class="mdc-button">
-          Check Markdown
-        </button>
-      </div><div id="mdc-ceklink" class="text-center font-bold">
-        Check Link
-      </div>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="In-Branch: work-dev" in-branch="work-dev">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!--=-->
+    <title id="title">
+        SM-DC
+    </title>
+    <link id="favicon" rel="icon" type="image/x-icon"
+    href="./img/favic/favicon.ico">
+    <!--=-->
+    <link rel="stylesheet" href="system/css/styles.css">
+    <!--=-->
+</head>
+<!--
+=-->
+<body draggable="false" id="body"
+class="min-h-screen flex flex-col container mx-auto p-3 select-none bg-gray-100">
+    <script type="module" src="system/js/script.js"
+    defer></script>
+    <!--=-->
+    <header class="">
+        <h1 class="text-2xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
+            Ateiler that viewing Images
+        </h1>
+    </header>
+    <main class="flex flex-1 shadow-lg">
+        <div id="view-images"></div>
     </main>
 
     <!-- Content Cek Isi MD -->

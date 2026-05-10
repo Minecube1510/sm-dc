@@ -1,0 +1,75 @@
+/* .system/css/styles.css */
+
+/* Root */
+:root {
+    --tw-rounded-2xl: 18px;
+    /**/
+    --vimg-fill: 12px;
+}
+/**/
+
+
+/* Base */
+//
+/**/
+
+
+/* Costumize */
+.vimg-base {
+    /**/
+}
+.vimg-base:hover {
+    background-image: linear-gradient(163deg, #ff00ff 0%, #3700ff 100%);
+    box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
+}
+    /**=**/
+.vimg-fill {
+    padding: var(--vimg-fill);
+}
+.vimg-fill:hover {
+    transform: scale(0.98);
+    border-radius: var(--tw-rounded-2xl);
+}
+/**/
+
+
+/* Comps */
+/*
+    -From Uiverse.io by Tiagoadag-
+    From Uiverse.io by LightAndy1
+*/ 
+.package {
+    width: 200px;
+    height: 254px;
+    background-image: linear-gradient(163deg, #ff00ff 0%, #3700ff 100%);
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+}
+.package:hover {
+    box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
+}
+    /**/
+.package2 {
+    width: 200px;
+    height: 254px;
+    background-color: #1d1724;
+    border-radius: 10px;
+    transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+    padding: 15px;
+    cursor: pointer;
+}
+.package2:hover {
+    transform: scale(0.98);
+    border-radius: 18px;
+}
+    /**/
+.text {
+    color: white;
+    font-size: 17px;
+}
+
+/**/
+
+
+/**/
