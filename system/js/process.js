@@ -6,24 +6,87 @@ import * as bsc from "./basis.js";
 /**/
 
 
-/* Vars */
-const repo = (`s4mpl3_m3m0ry`);
-const get_bd = ((bsc).js_Arr2Str([
-    (repo),
+/* Vars - Basic */
+const empty = (bsc.jsV.empty);
+const space = (bsc.jsV.space);
+const slash = (bsc.jsV.slash);
+const colon = (bsc.jsV.colon);
+//
+const now_link = (window.location.origin);
+const local = (location.hostname);
+//
+/**/
+
+
+/* Funcs - Customs */
+function ht_Classer (classes) {
+    return ((bsc).js_Arr2Str(classes, space));
+}
+//
+function ht_Linker (paths) {
+    return ((bsc).js_Arr2Str(paths, slash));
+}
+/**/
+
+
+/* Vars - Data */
+const github = {
+    user: (`Minecube1510`),
+    repo: (`s4mpl3_m3m0ry`),
+    branch: (`work-dev`),
+};
+const ghLink_Api = ((bsc)
+    .to_Https(`api.github.com`));
+const ghApi_Repo = (ht_Linker([
+    (ghLink_Api), (`repos`),
+]));
+//
+const ghApi_AutoLink = ht_Linker([
+    (ghApi_Repo), (github.user),
+    (github.repo), (`contents`),
+]);
+const fghL_Api = ((bsc).js_Arr2Str([
+    (ghApi_AutoLink),
+    (`?ref=${github.branch}`),
+], (empty)));
+/**/
+
+
+/* Funcs - Data */
+function ghApi_getLink (path) {
+    path = (((path).startsWith(slash))
+        ? ((path).slice(1)) : (path));
+    const getlink = ht_Linker([
+        (ghApi_AutoLink), (path),
+    ]);
+    return ((bsc).js_Arr2Str([(getlink),
+        (`?ref=${github.branch}`),
+], (empty)));
+}
+//
+const get_ApiLink = ghApi_getLink(`img`);
+const g_AL = (get_ApiLink);
+/**/
+
+
+/* Vars - Switch */
+const format_exts = ([ "png",
+    "jpg","jpeg", "webp",
     //
+    "gif",
+].map(ext => (`.${bsc.js_Lower(ext)}`)));
+//
+const get_bd = ((bsc).js_Arr2Str([
     //(`guide`),
     (`img`),
-], (bsc.jsV.slash)));
-const for_bd = (`/${get_bd}/`);
-/**/
-//(bsc).c_Log(get_bd);
-
-
-/* Funcs */
-function ht_Classer (classes) {
-    const space = (bsc.jsV.space);
-    return bsc.js_Arr2Str(classes, space);
-}
+], (slash)));
+const for_bd = (`${get_bd}/`);
+//
+const is_Local = (
+    ((local) === (`127.0.0.1`)) ||
+    ((local) === (`localhost`))
+);
+const is_GitPg = ((local).endsWith(`github.io`));
 //
 /**/
 
@@ -47,7 +110,7 @@ function view_Img (content) {
     /* Classings */
     const vImg_Classes = {
         fixed: [ `w-full`, `h-full`, ],
-        transition: [
+        transition: [``,
             `transition-all`, `duration-300`,
             `ease-[cubic-bezier(0,0,0,1)]`, ],
         //
@@ -71,8 +134,7 @@ function view_Img (content) {
             `md:gap-4`, `md:gap-y-6`,
             `lg:grid-cols-5`, `lg:gap-y-6`,
         ],
-        def_text: [``,
-            `font-semibold`,
+        def_text: [`font-semibold`,
             `text-white`, `text-3xl`,
             `py-8`,
         ],
@@ -98,106 +160,115 @@ function view_Img (content) {
 /**/
 
 
-/* Gets */
-async function get_Prefixes (path = `/${get_bd}/`) {
-    const results = [];
-    const req = await fetch(path);
-    if (!((req).ok)) {
-        console.warn("Failed:", path);
-        return [];
-    }
-    const html = await req.text();
-    //
+/* Gets - Localize */
+async function in_Fetching (path) {
+    const req = (await bsc.jsA_GetFetch(path));
+    if (!req.ok) { return []; }
+    const html = (await (req.text()));
     const doc = (new DOMParser()
-        .parseFromString((html), ("text/html")));
-    const links = [ ...doc.querySelectorAll("a") ]
-        .map((a) => a.getAttribute("href"))
-        .filter(Boolean)
-            // skip parent dir
-        .filter((href) => href !== "../");
-    //
-    for (const href of links) {
-        const skipHrefs = [ (bsc.jsV.slash), (`./`), (`../`),
-            ];
-        if ((skipHrefs).includes(href)) { continue; }
-        //
-        const full = (new URL((href), ((window.location.origin)
-            + (path))).pathname);
-        //
-        // folder
-        if ((href).endsWith("/")) {
-            results.push({
-                type: "dir",
-                path: full,
-            });
-                // recursive
-            const sub = await get_Prefixes(full);
-            results.push(...sub);
-        } else {
-                // file
-            results.push({
-                type: "file",
-                path: full,
-            });
-        }
-    }
-    return (results);
-}
-async function get_Imgs () {
-    /* Varings */
-    const results = [];
-    const exts = ([ "png",
-        "jpg", "jpeg",
-        "webp",
-        //
-        "gif",
-    ].map(ext => (`.${bsc.js_Lower(ext)}`)));
-        //
-    const pf_Res = await get_Prefixes(for_bd);
-    //
-    /* Looping Asyncs */
-    for (const item of pf_Res) {
-        const pf_Item = item.path;
-            //
-        //console.log(pf_Item);
-        //
-        const req = await fetch(`${pf_Item}/`);
-        const parser = new DOMParser();
-            //
-        const html = await req.text();
-        const doc = parser.parseFromString((html),
-            ("text/html"));
-            //
-        const links = [...doc.querySelectorAll("a")];
-        const imgs = links
-            .map(link => link.getAttribute("href"))
-            .filter(href =>
-                exts.some(ext => href?.endsWith(ext))
-            );
-        results.push(...imgs);
-    }
-    return (results);
-    //
+        .parseFromString(html, "text/html"));
+    return [ ...doc.querySelectorAll("a") ]
+        .map(a => a.getAttribute("href"))
+        .filter(Boolean);
 }
 //
-const all_Images = (await get_Imgs());
+async function fetch_Prefix (path) {
+    return (await in_Fetching(path))
+        .filter(href => ((href) !== ("../")));
+}
+async function fetch_Imgs (pf_Item, exts,
+    path = (`${pf_Item}/`),
+) {
+    return ((await in_Fetching(path)).filter((href) =>
+        exts.some((ext) => href?.endsWith(ext)),
+    ));
+}
+//
+async function get_Prefixes (path = (`./${for_bd}`)) {
+    /* Async Configs */
+    const results = [];
+    const links = await fetch_Prefix(path);
+    //
+    const pf_Link = ((is_Local) ?
+        (now_link) : (`${now_link}`));
+    const getLink = (new URL(path, pf_Link));
+    //
+    for (const href of links) {
+        if ([ (slash), (`./`), (`../`), ]
+            .includes(href)) { continue; }
+        const full = (new URL(href, getLink).pathname);
+        const isDir = ((href).endsWith(slash));
+        //
+        (results).push({
+            type: ((isDir) ? (`dir`) : (`file`)),
+            path: (full),
+        });
+        if (isDir) { (results).push(
+            ...(await get_Prefixes(full))); }
+    }
+    return (results);
+}
+async function get_Imgs (api = g_AL) {
+    /* Local */
+    if (is_Local) {
+        const pf_Res = (await get_Prefixes(for_bd));
+        return ((await Promise.all((pf_Res).map(
+            (item) => fetch_Imgs((item.path),
+                (format_exts))))).flat()
+            .filter((href) => (format_exts)
+                .some((ext) => href?.endsWith(ext)
+        )));
+    }
+    /* Github Pages */
+    if (!(is_GitPg)) { return []; }
+    /* In Process */
+    const req = (await fetch(api));
+        if (!(req.ok)) { return []; }
+    const data = (await req.json());
+    //
+    return (await Promise.all(data.map(
+        async (item) => {
+            /* Folder */
+            if ((item.type) === (`dir`)) { return (
+                await get_Imgs(item.url));
+            }
+            /* File */
+            const is_Img = ((item.type) === (`file`)) &&
+                (format_exts).some((ext) => ((bsc)
+                    .js_Lower(item.name)).endsWith(ext));
+            return ((is_Img) ? ({
+                name: (item.name),
+                path: (item.path),
+                src: (item.download_url),
+            }) : ([]));
+        })
+    )).flat();
+}
+//
+const all_Images = ((await get_Imgs()));
 /**/
 
 
 /* Construct */
+function first_Annouce () {
+    (bsc).c_Log((`Now in Linking:`)
+        + (`\n- `) + (now_link));
+}
 function check_Imgs () {
-    const slash = (bsc.jsV.slash);
-    //
-    (all_Images).forEach((fn) => {
-        const filepath = (fn);
-        const filename = ((fn)
-            .split(slash).at(-1));
-        //
-        (bsc).c_Log((bsc).js_Arr2Str([
-            `Name: "${filename}"`,
-            `At: "${filepath}"`
-        ], (`\n`)));
-    });
+    if (!(all_Images.length)) {return ((bsc).c_Warn
+        (`⚠️ There's no Images in here`));
+    }
+    (bsc).c_GrBgn((bsc).js_Arr2Str([(`Check Images`),
+        ((is_Local) ? (`Local`) : (`Github API`))
+    ], (` - `)));
+    (bsc).c_Log((`Get from`) + (`:\n`) + (g_AL));
+    (bsc).c_Table((all_Images).map((item) => ({
+        name: ((item.name) ?? ((item).split(slash)
+            .at(-1))),
+        path: ((item.path) ?? ((item).slice(1))),
+        src: ((item.src) ?? (ghApi_getLink(item))),
+    })));
+    (bsc).c_GrEnd();
 }
 //
 async function struct_Imgs () {
@@ -207,28 +278,23 @@ async function struct_Imgs () {
     //
     //console.log(imgs);
     //
-    if ((imgs.length) === (0)) {
-        console.warn(`⚠️ Tidak ada gambar ditemukan!`);
+    const vAteiler = ((bsc).js_GetId(`vimg-content`));
+    const is_ImgsEmpty = ((imgs.length) < (1));
+    if (is_ImgsEmpty) {
+        //(bsc).c_Warn(`⚠️ Tidak ada gambar ditemukan!`);
         //
-        const vAteiler = (bsc.js_GetId(`vimg-content`));
-        //
-        (vAteiler).classList.remove(`justify-start`,
-            `grid-cols-3`, `lg:grid-cols-5`);
+        (vAteiler).classList.remove((`justify-start`),
+            (`grid-cols-3`), (`lg:grid-cols-5`));
         (vAteiler).classList.add(`justify-center`);
-        //
         return (vBox);
     }
-    //
     (vBox).atlr.innerHTML = (bsc.jsV.empty);
-    (imgs).forEach((src) => {
-        //bsc.c_Log(src);
-        //
+    (imgs).forEach((item) => {
         const img = (bsc.js_CreateELm("img"));
-        (img).src = (src);
+        (img).src = ((item.src) ?? (item));
         (img).draggable = (false);
-        (img).className = ht_Classer([`rounded-xl`,
-            `w-[200px]`,
-        ]);
+        (img).className = ht_Classer([ (`rounded-xl`),
+            (`w-[200px]`), ]);
         (vBox).atlr.appendChild(img);
     });
     return (vBox);
@@ -250,8 +316,12 @@ export async function struct () {
     draw_Title (`Images Ateilers`);
     //
 
-    /* Body */
+    /* Logs */
+    first_Annouce();
     check_Imgs();
+    //
+
+    /* Body */
     await struct_Imgs();
     //
 }
