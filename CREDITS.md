@@ -39,7 +39,6 @@ table {
 
 - [**Lists**][Index-1]
 - [**Content**][Index-2]
-- [**Log**][Index-3]
 
 ---
 
@@ -59,7 +58,8 @@ Each of the following plays an important role in building, maintaining, and impr
 
 Here these are some of the main tools, that used to create, build, and develop the project.
 <!--=-->
-<table id="table-a1">
+<table><div
+id="table::a-1">
     <thead><tr><th colspan="2"><div align="center">
 Software Systems
     </div></th></tr></thead>
@@ -72,9 +72,8 @@ Used as the main platform for version control, repository management, and collab
 ![Badge-VSCode]</td><td>
 The primary code editor used for writing, editing, and managing the project files efficiently.
     </td></tr></tbody>
-</table>
-<!--=-->
-<table id="table-a2">
+</div><div
+id="table::a-2">
     <thead><tr><th colspan="2"><div align="center">
 AI Assistance
     </div></th></tr></thead>
@@ -91,13 +90,14 @@ Assists in problem-solving, debugging, structuring ideas, and generating documen
 ![Badge-Grok]</td><td>
 Used as an additional AI reference for exploring alternative solutions and perspectives.
     </td></tr></tbody>
-</table>
+</div></table>
 
 ## Project System - Core
 
 The app is built use with Markdown (MD) base language.
 <!--=-->
-<table id="table-b1">
+<table><div
+id="table::b-1">
     <thead><tr><th colspan="2"><div align="center">
 Major Basic
     </div></th></tr></thead>
@@ -110,9 +110,8 @@ Serves as the main format for writing structured content and documentation withi
 ![Badge-Imgur]</td><td>
 Serves image storages that needed for contains thousands images.
     </td></tr></tbody>
-</table>
-<!--=-->
-<table id="table-b2">
+</div><div
+id="table::b-2">
     <thead><tr><th colspan="2"><div align="center">
 Secondary Methods
     </div></th></tr></thead>
@@ -125,13 +124,14 @@ Used for rendering mathematical expressions and more complex formatted content.
 ![Badge-JSON]</td><td>
 Utilized for data structuring, configuration, and handling any data-related tasks within the app.
     </td></tr></tbody>
-</table>
+</div></table>
 
 ## Project System - Control
 
 These are several system applications for project development utilities.
 <!--=-->
-<table id="table-c1">
+<table><div
+id="table::c-1">
     <thead><tr><th colspan="2"><div align="center">
 Utilities Programming
     </div></th></tr></thead>
@@ -140,9 +140,8 @@ Utilities Programming
 ![Badge-PY]</td><td>
 Used for scripting, automation, and handling backend or processing tasks.
     </td></tr></tbody>
-</table>
-<!--=-->
-<table id="table-c2">
+</div><div
+id="table::c-2">
     <thead><tr><th colspan="2"><div align="center">
 Terminal Usage
     </div></th></tr></thead>
@@ -151,41 +150,17 @@ Terminal Usage
 ![Badge-Bash]</td><td>
 Utilized for command-line operations, file management, and workflow automation.
     </td></tr></tbody>
-</table>
+</div></table>
 
 ---
 
-# [History Log][Idx-0]
+<div align="center">
 
-<div id="index-2">
+# Thank You for Everything
 
-Just a history logs.
+These all really helping me much...
 
 </div>
-
-```json
-[0]
-[0.0] 17-06-2026 {XX:XX} : "?."
-[0.?] 00-00-2000 {XX:XX} : "?."
-[0.?] 00-00-2000 {XX:XX} : "?."
-
-[1]
-[1.?] 00-00-2000 {XX:XX} : "?."
-[1.?] 00-00-2000 {XX:XX} : "?."
-[1.?] 00-00-2000 {XX:XX} : "?."
-
-[2]
-[2.?] 00-00-2000 {XX:XX} : "?."
-[2.?] 00-00-2000 {XX:XX} : "?."
-[2.?] 00-00-2000 {XX:XX} : "?."
-
-[3]
-[3.?] 00-00-2000 {XX:XX} : "?."
-[3.?] 00-00-2000 {XX:XX} : "?."
-[3.?] 00-00-2000 {XX:XX} : "?."
-```
-
-![Imgur](https://img.shields.io/badge/Imgur-2E3035?style=for-the-badge&logo=imgur&logoColor=1BB76E)
 
 ---
 <!--
@@ -282,6 +257,5 @@ Just a history logs.
 <!---->
 [Index-1]: #index-0 "Indexing - 1"
 [Index-2]: #index-1 "Indexing - 2"
-[Index-3]: #index-2 "Indexing - 3"
 
 <!--=  END  =-->

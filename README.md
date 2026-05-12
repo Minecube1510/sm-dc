@@ -107,3 +107,5 @@ D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
 
 ---
 By: **Admin Gaster**
+
+<!-- END -->
