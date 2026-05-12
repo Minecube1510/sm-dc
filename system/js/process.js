@@ -16,7 +16,17 @@ export const htWeb = {
     lnk: (window.location.href),
     dom: (window.location.origin),
     lcl: (location.hostname),
+    //
+    path: (window.location.pathname),
 };
+//
+export const is_Local = (
+    ((htWeb.lcl) === (`127.0.0.1`)) ||
+    ((htWeb.lcl) === (`localhost`))
+);
+const is_GitPg = ((htWeb.lcl)
+    .endsWith(`github.io`));
+//
 //
 /**/
 
@@ -26,42 +36,68 @@ function ht_Linker (paths) {
     return ((bsc).js_Arr2Str(paths, slash));
 }
 //
+//
 /**/
 
-
 /* Vars - Data */
-// TODO: Mengubah metode bagian repo. Yang tulis manual, menjadi mengambil dari link web-nya.
-//
-const github = {
-    user: (`Minecube1510`),
-    repo: ((htWeb).lnk.split(slash)
-        .filter(Boolean)[0]),
-    branch: (`work-dev`), };
 const ghLink_Api = ((bsc).to_Https(`api.github.com`));
 const ghApi_Repo = (ht_Linker([ (ghLink_Api),
     (`repos`), ]));
 //
-const ghApi_AutoLink = ht_Linker([ (ghApi_Repo),
-    (github.user), (github.repo), (`contents`), ]);
+/**/
+
+
+/* Init - Github */
+const nameRepo = (`Repository`);
+export const github = {
+    user: (`Minecube1510`),
+    repo: (nameRepo),
+    branch: (`work-dev`),
+};
+//
+export async function init_Github () {
+    let repo = (nameRepo);
+    //
+    if (is_Local) {
+        const req = (await fetch("./package.json"));
+        const pkg = (await (req.json()));
+        //
+        repo = (pkg.name);
+    } else {
+        repo = ((htWeb.path).split(slash)
+            .filter(Boolean).at(0));
+    }
+    (github).repo = (repo);
+    return (github);
+}
+//
+function ghApi_AutoLink () {
+    return ht_Linker([ (ghApi_Repo),
+        (github.user), (github.repo),
+        (`contents`),
+    ]);
+}
 const fghL_Api = ((bsc).js_Arr2Str([ (ghApi_AutoLink),
-    (`?ref=${github.branch}`), ], (empty)));
+    (`?ref=${github.branch}`),], (empty)));
 /**/
 
 
 /* Funcs - Data */
 export function ghApi_getLink (path) {
+export function ghApi_getLink (path) {
     path = (((path).startsWith(slash))
         ? ((path).slice(1)) : (path));
     const getlink = ht_Linker([
-        (ghApi_AutoLink), (path),
+        (ghApi_AutoLink()), (path),
     ]);
     return ((bsc).js_Arr2Str([(getlink),
         (`?ref=${github.branch}`),
 ], (empty)));
 }
+export function get_ApiLink () {
+    return ghApi_getLink(`img`);
+}
 //
-const get_ApiLink = ghApi_getLink(`img`);
-export const g_AL = (get_ApiLink);
 /**/
 
 
@@ -80,22 +116,40 @@ const get_bd = ((bsc).js_Arr2Str([
 ], (slash)));
 const for_bd = (`${get_bd}/`);
 //
-export const is_Local = (
-    ((htWeb.lcl) === (`127.0.0.1`)) ||
-    ((htWeb.lcl) === (`localhost`))
-);
-const is_GitPg = ((htWeb.lcl)
-    .endsWith(`github.io`));
-//
 /**/
 
 
-/* Gets */
-async function get_Prefixes (path = `/${get_bd}/`) {
+/* Gets - Localize */
+async function in_Fetching (path) {
+    const req = (await bsc.jsA_GetFetch(path));
+    if (!req.ok) { return []; }
+    const html = (await (req.text()));
+    const doc = (new DOMParser()
+        .parseFromString(html, "text/html"));
+    return [ ...doc.querySelectorAll("a") ]
+        .map(a => a.getAttribute("href"))
+        .filter(Boolean);
+}
+//
+async function fetch_Prefix (path) {
+    return (await in_Fetching(path))
+        .filter(href => ((href) !== ("../")));
+}
+async function fetch_Imgs (pf_Item, exts,
+    path = (`${pf_Item}/`),
+) {
+    return ((await in_Fetching(path)).filter((href) =>
+        exts.some((ext) => href?.endsWith(ext)),
+    ));
+}
+//
+async function get_Prefixes (path = (`./${for_bd}`)) {
+    /* Async Configs */
     const results = [];
     const links = await fetch_Prefix(path);
     //
     const pf_Link = ((is_Local) ?
+        (htWeb.dom) : (`${htWeb.dom}`));
         (htWeb.dom) : (`${htWeb.dom}`));
     const getLink = (new URL(path, pf_Link));
     //
@@ -126,44 +180,47 @@ async function get_Prefixes (path = `/${get_bd}/`) {
     }
     return (results);
 }
-async function get_Imgs () {
-    /* Varings */
-    const results = [];
-    const exts = ([ "png",
-        "jpg", "jpeg",
-        "webp",
-        //
-        "gif",
-    ].map(ext => (`.${bsc.js_Lower(ext)}`)));
-        //
-    const pf_Res = await get_Prefixes(for_bd);
-    //
-    /* Looping Asyncs */
-    for (const item of pf_Res) {
-        const pf_Item = item.path;
-            //
-        //console.log(pf_Item);
-        //
-        const req = await fetch(`${pf_Item}/`);
-        const parser = new DOMParser();
-            //
-        const html = await req.text();
-        const doc = parser.parseFromString((html),
-            ("text/html"));
-            //
-        const links = [...doc.querySelectorAll("a")];
-        const imgs = links
-            .map(link => link.getAttribute("href"))
-            .filter(href =>
-                exts.some(ext => href?.endsWith(ext))
-            );
-        results.push(...imgs);
+async function get_Imgs (api = get_ApiLink()) {
+    /* Local */
+    if (is_Local) {
+        const pf_Res = (await get_Prefixes(for_bd));
+        return ((await Promise.all((pf_Res).map(
+            (item) => fetch_Imgs((item.path),
+                (format_exts))))).flat()
+            .filter((href) => (format_exts)
+                .some((ext) => href?.endsWith(ext)
+        )));
     }
-    return (results);
+    /* Github Pages */
+    if (!(is_GitPg)) { return []; }
+    /* In Process */
+    const req = (await fetch(api));
+        if (!(req.ok)) { return []; }
+    const data = (await req.json());
     //
+    return (await Promise.all(data.map(
+        async (item) => {
+            /* Folder */
+            if ((item.type) === (`dir`)) { return (
+                await get_Imgs(item.url));
+            }
+            /* File */
+            const is_Img = ((item.type) === (`file`)) &&
+                (format_exts).some((ext) => ((bsc)
+                    .js_Lower(item.name)).endsWith(ext));
+            return ((is_Img) ? ({
+                name: (item.name),
+                path: (item.path),
+                src: (item.download_url),
+            }) : ([]));
+        })
+    )).flat();
 }
 //
-export const all_Images = ((await get_Imgs()));
+export async function all_Images () {
+    await init_Github();
+    return await get_Imgs();
+}
 /**/
 
 

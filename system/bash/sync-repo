@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+#
+# bash system/bash/sync-repo
+# system/bash/sync-repo
+
+# Ambil URL asli setelah redirect GitHub
+#
+real_url=$(
+    curl -Ls -o /dev/null -w %{url_effective} \
+    "$(git remote get-url origin)"
+)
+#
+
+# Bersihin slash akhir
+real_url="${real_url%/}"
+#
+# Ambil nama repo terbaru
+repo_name="$(basename "$real_url")"
+#
+# Ambil nama repo saat ini di pekej-nya
+current_repo="$(
+    node -p "require('./package.json').name"
+)"
+#
+
+
+# Cek apakah sudah sama
+#
+if [ "$repo_name" = "$current_repo" ]; then
+    echo "Repo is already as name: {$repo_name}"
+    echo ""
+    exit 0
+fi
+#
+
+
+# Update remote git
+git remote set-url origin "${real_url}.git"
+#
+# Update pekej-nya
+#
+npm pkg set name="$repo_name"
+#
+npm pkg set repository.type="git"
+npm pkg set repository.url="git+${real_url}.git"
+#
+npm pkg set bugs.url="${real_url}/issues"
+#
+npm pkg set homepage="${real_url}#readme"
+#
+
+
+# End: Information
+#
+echo "Updated to: {$repo_name}"
+echo ""
+#
+
+#END#
+#

@@ -1,4 +1,12 @@
-# Sampel Memori
+<!--
+---
+
+Branch: work-dev
+
+---
+-->
+
+# Sampel Memori - Data Center
 
 <!--
 Just use:
@@ -34,58 +42,59 @@ Just use:
 
 ## Log
 
-- **First**
+### {-} **First**
 
-```py
-("Dari" : "0.0")
-# 07/03/2025 ("7 Maret 2025")
-# XX:XX ("Waktu Jam tidak diketahui")
+> #### {>} *Dari: 0.0"*
+>
+> - **Tanggal**: "07/03/2025" - "7 Maret 2025"
+> - **XX:XX**: "*[Initial commit] Added README*"
+> - **Commit Pertama**: "*675ec90*"
+> - **Commit Hash**: "**675ec9087c41827b578dd7e43a2adf7d77be12c7**"
 
-{"Baru bikin"} - ["0709ec7"]
-["0709ec7e84da5115a8571bbe1a691a912e079fd3"]
-```
+### {-} **Now** / **Last**
 
-- **Now /OR/ Last**
+> #### {>} *Terkini: "3.2"*
+>
+> - **Tanggal**: "09/05/2025" - "12 Mei 2026"
+> - **05:19**: "*[Dev - Ateiler] Web Fixing and Developing - 3.2*"
+> - **Commit Pesanan**: "*2a21a96*"
+> - **Commit Hash**: "**2a21a96795f4a62745e97c5582396afefa894dc7**"
 
-```py
-("Terkini" : "0.0")
-# XX/XX/2025 ("XX ? 2026")
-# XX:XX ("Waktu masih menanti...")
-|
-{"[Dev] Add data sheets - 0.8"} - [""]
-[""]
+<!--
 
-("Dikerjakan" : "0.0")
-# XX/XX/2025 ("XX ? 2026")
-# XX:XX ("Waktu masih menanti...")
-|
-{"[Dev] Fixing MD Structures - 5.5.1"} - [""]
-[""]
-```
+### {-} **Later**
 
-- **Later**
+> #### {>} ("Kemudian" : "0.0")
+>
+> - **Tanggal**: "XX/XX/2025" - "XX ? 2026"
+> - **XX:XX**: "*Waktu masih menanti...*"
+> - **Commit Pesanan**: "* ? *"
+> - **Commit Hash**: "** ? **"
 
-```py
-("Kemudian" : "0.0")
-# XX/XX/2025 ("XX ? 2026")
-# XX:XX ("Waktu masih menanti...")
-|
-{""} - [""]
-[""]
-```
+--->
 
 ---
 
 ## Indikasi
 
-Terbagi menjadi 4 bagian, meliputi berikut.
+Menggunakan 2 metode:
 
-```py
-A. `[ENTRY_DOC]` - "Data Center (Tingkat paling penting, Perdataan utama)"
-B. `[ASSETS]` - "Assets (Tempat aset-aset media-media berada)"
-C. `[RECORD]` - "Entri Informasi (Catatan, Panduan, dan lain semacamnya)"
-D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
-```
+- Gambar-Gambar
+
+  Menggunakan gambar-gambar, terbagi pada 2 sumber:
+  
+  - [Naro gambar lokalan.][SMD-Signs]
+  - [**Imgur**: Hosting Gambar untuk Sampel-Sampel.][SMDC-Imgur]
+
+[SMD-Signs]: img "Gambar-Gambar yg diperuntukkan sebagai persimbolan sistem BTC"
+[SMDC-Imgur]: https://imgur.com/user/Minecuds "Hosting gambar - Imgur"
+
+- Dokumen lembaran MD
+
+  Pengerjaan disini, akan difungsikan kepada branch [{**work-entry**}][SMDC-B-Entry], yang akan disambungkan kepada [{**main**}][SMDC-B-Main].
+
+[SMDC-B-Main]: https://github.com/Minecube1510/sm-dc ""
+[SMDC-B-Entry]: https://github.com/Minecube1510/sm-dc/tree/work-entry ""
 
 ---
 
@@ -101,9 +110,7 @@ D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
 
 > [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
 
-[Link-SMDC]: https://minecube1510.github.io/s4mpl3_m3m0ry "SM-DC - Image Ateiler"
-
-- Menunggu...
+[Link-SMDC]: https://minecube1510.github.io/sm-dc "SM-DC - Image Ateiler"
 
 ---
 By: **Admin Gaster**
