@@ -37,58 +37,42 @@ Just use:
 
 ## Log
 
-- **First**
+### {-} **First**
 
-```py
-("Dari" : "0.0")
-# 07/03/2025 ("7 Maret 2025")
-# XX:XX ("Waktu Jam tidak diketahui")
+> #### {>} *Dari: 0.0"*
+>
+> - **Tanggal**: "07/03/2025" - "7 Maret 2025"
+> - **XX:XX**: "*[Initial commit] Added README*"
+> - **Commit Pertama**: "*675ec90*"
+> - **Commit Hash**: "**675ec9087c41827b578dd7e43a2adf7d77be12c7**"
 
-{"Baru bikin"} - ["0709ec7"]
-["0709ec7e84da5115a8571bbe1a691a912e079fd3"]
-```
+### {-} **Now** / **Last**
 
-- **Now /OR/ Last**
+> #### {>} *Terkini: "0.0"*
+>
+> - **Tanggal**: "09/05/2025" - "9 Mei 2026"
+> - **XX:XX**: "*[Entry as Main] Revolution (Recoverings, Deletes, and Refactors) - 1*"
+> - **Commit Pesanan**: "*2a21a96*"
+> - **Commit Hash**: "**2a21a96795f4a62745e97c5582396afefa894dc7**"
 
-```py
-("Terkini" : "0.0")
-# XX/XX/2025 ("XX ? 2026")
-# XX:XX ("Waktu masih menanti...")
-|
-{"[Dev] Add data sheets - 0.8"} - [""]
-[""]
+<!--
 
-("Dikerjakan" : "0.0")
-# XX/XX/2025 ("XX ? 2026")
-# XX:XX ("Waktu masih menanti...")
-|
-{"[Dev] Fixing MD Structures - 5.5.1"} - [""]
-[""]
-```
+### {-} **Later**
 
-- **Later**
+> #### {>} ("Kemudian" : "0.0")
+>
+> - **Tanggal**: "XX/XX/2025" - "XX ? 2026"
+> - **XX:XX**: "*Waktu masih menanti...*"
+> - **Commit Pesanan**: "* ? *"
+> - **Commit Hash**: "** ? **"
 
-```py
-("Kemudian" : "0.0")
-# XX/XX/2025 ("XX ? 2026")
-# XX:XX ("Waktu masih menanti...")
-|
-{""} - [""]
-[""]
-```
+--->
 
 ---
 
 ## Indikasi
 
-Terbagi menjadi 4 bagian, meliputi berikut.
-
-```py
-A. `[ENTRY_DOC]` - "Data Center (Tingkat paling penting, Perdataan utama)"
-B. `[ASSETS]` - "Assets (Tempat aset-aset media-media berada)"
-C. `[RECORD]` - "Entri Informasi (Catatan, Panduan, dan lain semacamnya)"
-D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
-```
+Menanti...
 
 ---
 
@@ -102,11 +86,11 @@ D. `[SCRATCH]` - "Gudangan Sementara (Umum untuk corat-coretan bebas)"
 
 - Linking
 
-> [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
+  > [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
 
 [Link-SMDC]: https://minecube1510.github.io/s4mpl3_m3m0ry "SM-DC - Image Ateiler"
 
-- Menunggu...
-
 ---
 By: **Admin Gaster**
+
+<!-- END -->

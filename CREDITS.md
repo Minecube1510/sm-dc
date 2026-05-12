@@ -22,6 +22,27 @@ table {
 
 ---
 
+<style>
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+.cr-badge {
+    display: flex;
+    flex-wrap: wrap;
+    /**/
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+    .cr-badge img {
+        display: block;
+        margin: auto;
+    }
+</style>
+
 <div align="center">
 
 ### Credits
