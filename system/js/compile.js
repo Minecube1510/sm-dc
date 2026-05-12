@@ -17,9 +17,9 @@ const ht_Lnk = (pro.htWeb.lnk);
 const ht_Dom = (pro.htWeb.dom);
 const ht_Lcl = (pro.htWeb.lcl);
 //
-const allImgs = (pro.all_Images);
+const allImgs = (await (pro.all_Images()));
 const is_Lcl = (pro.is_Local);
-const g_AL = (pro.g_AL);
+const g_AL = (await (pro.get_ApiLink()));
 //
 /**/
 
@@ -203,7 +203,10 @@ async function struct_Imgs () {
     (vBox).atlr.innerHTML = (bsc.jsV.empty);
     (imgs).forEach((item) => {
         const img = (bsc.js_CreateELm("img"));
-        (img).src = ((item.src) ?? (item));
+        const linkImg = (item.path);
+            // (item.path) | (item.src)
+        //
+        (img).src = ((linkImg) ?? (item));
         (img).draggable = (false);
         (img).className = ht_Classer([ (`rounded-xl`),
             (`w-[200px]`), ]);

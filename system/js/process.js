@@ -16,7 +16,17 @@ export const htWeb = {
     lnk: (window.location.href),
     dom: (window.location.origin),
     lcl: (location.hostname),
+    //
+    path: (window.location.pathname),
 };
+//
+export const is_Local = (
+    ((htWeb.lcl) === (`127.0.0.1`)) ||
+    ((htWeb.lcl) === (`localhost`))
+);
+const is_GitPg = ((htWeb.lcl)
+    .endsWith(`github.io`));
+//
 //
 /**/
 
@@ -26,33 +36,48 @@ function ht_Linker (paths) {
     return ((bsc).js_Arr2Str(paths, slash));
 }
 //
-export async function get_GhData () {
-    const req = await fetch(`/package.json`);
-    const pkg = await req.json();
-    const repo = (pkg.name);
-    //
-    return {
-        user: (`Minecube1510`),
-        repo,
-        branch: (`work-dev`),
-    };
-}
-//
 /**/
 
-
 /* Vars - Data */
-export const github = await get_GhData();
 const ghLink_Api = ((bsc).to_Https(`api.github.com`));
 const ghApi_Repo = (ht_Linker([ (ghLink_Api),
     (`repos`), ]));
 //
-const ghApi_AutoLink = ht_Linker([ (ghApi_Repo),
-    (github.user), (github.repo), (`contents`), ]);
+/**/
+
+
+/* Init - Github */
+const nameRepo = (`Repository`);
+export const github = {
+    user: (`Minecube1510`),
+    repo: (nameRepo),
+    branch: (`work-dev`),
+};
+//
+export async function init_Github () {
+    let repo = (nameRepo);
+    //
+    if (is_Local) {
+        const req = (await fetch("./package.json"));
+        const pkg = (await (req.json()));
+        //
+        repo = (pkg.name);
+    } else {
+        repo = ((htWeb.path).split(slash)
+            .filter(Boolean).at(0));
+    }
+    (github).repo = (repo);
+    return (github);
+}
+//
+function ghApi_AutoLink () {
+    return ht_Linker([ (ghApi_Repo),
+        (github.user), (github.repo),
+        (`contents`),
+    ]);
+}
 const fghL_Api = ((bsc).js_Arr2Str([ (ghApi_AutoLink),
     (`?ref=${github.branch}`),], (empty)));
-//
-//console.log(github);
 /**/
 
 
@@ -61,15 +86,16 @@ export function ghApi_getLink (path) {
     path = (((path).startsWith(slash))
         ? ((path).slice(1)) : (path));
     const getlink = ht_Linker([
-        (ghApi_AutoLink), (path),
+        (ghApi_AutoLink()), (path),
     ]);
     return ((bsc).js_Arr2Str([(getlink),
         (`?ref=${github.branch}`),
 ], (empty)));
 }
+export function get_ApiLink () {
+    return ghApi_getLink(`img`);
+}
 //
-const get_ApiLink = ghApi_getLink(`img`);
-export const g_AL = (get_ApiLink);
 /**/
 
 
@@ -85,13 +111,6 @@ const get_bd = ((bsc).js_Arr2Str([
     (`img`),
 ], (slash)));
 const for_bd = (`${get_bd}/`);
-//
-export const is_Local = (
-    ((htWeb.lcl) === (`127.0.0.1`)) ||
-    ((htWeb.lcl) === (`localhost`))
-);
-const is_GitPg = ((htWeb.lcl)
-    .endsWith(`github.io`));
 //
 /**/
 
@@ -144,7 +163,7 @@ async function get_Prefixes (path = (`./${for_bd}`)) {
     }
     return (results);
 }
-async function get_Imgs (api = g_AL) {
+async function get_Imgs (api = get_ApiLink()) {
     /* Local */
     if (is_Local) {
         const pf_Res = (await get_Prefixes(for_bd));
@@ -181,7 +200,10 @@ async function get_Imgs (api = g_AL) {
     )).flat();
 }
 //
-export const all_Images = ((await get_Imgs()));
+export async function all_Images () {
+    await init_Github();
+    return await get_Imgs();
+}
 /**/
 
 
