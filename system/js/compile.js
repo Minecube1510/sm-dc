@@ -154,9 +154,17 @@ const comp_SLoading = show_Waiting();
 //
 //
 function first_Annouce () {
+    const fA_EntList = (`\n- `);
+    const fA_EntCode = (`\n> `);
+    const fix_EmpRepo = ((pro.github.repo)
+        || (`Repository`));
+    //
     (bsc).c_Log((bsc).js_Arr2Str([
-        (`Now in Linking:`), (`\n- `),
-        (ht_Dom), ], (empty)));
+        (`Now in Linking:`),
+        (fA_EntList), (ht_Dom),
+        (fA_EntList), (ht_Lnk),
+        (fA_EntCode), (fix_EmpRepo),
+    ], (empty)));
 }
 function check_Imgs () {
     if (!(allImgs.length)) {return ((bsc).c_Warn

@@ -5,7 +5,9 @@
 
 <!--
 Just use:
-  python system/py
+  - python system/py
+  |
+  - bash system/bash/sync-repo
 =-->
 
 <h3 align="center"><span>

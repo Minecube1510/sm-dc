@@ -26,17 +26,23 @@ function ht_Linker (paths) {
     return ((bsc).js_Arr2Str(paths, slash));
 }
 //
+export async function get_GhData () {
+    const req = await fetch(`/package.json`);
+    const pkg = await req.json();
+    const repo = (pkg.name);
+    //
+    return {
+        user: (`Minecube1510`),
+        repo,
+        branch: (`work-dev`),
+    };
+}
+//
 /**/
 
 
 /* Vars - Data */
-// TODO: Mengubah metode bagian repo. Yang tulis manual, menjadi mengambil dari link web-nya.
-//
-const github = {
-    user: (`Minecube1510`),
-    repo: ((htWeb).lnk.split(slash)
-        .filter(Boolean)[0]),
-    branch: (`work-dev`), };
+export const github = await get_GhData();
 const ghLink_Api = ((bsc).to_Https(`api.github.com`));
 const ghApi_Repo = (ht_Linker([ (ghLink_Api),
     (`repos`), ]));
@@ -44,7 +50,9 @@ const ghApi_Repo = (ht_Linker([ (ghLink_Api),
 const ghApi_AutoLink = ht_Linker([ (ghApi_Repo),
     (github.user), (github.repo), (`contents`), ]);
 const fghL_Api = ((bsc).js_Arr2Str([ (ghApi_AutoLink),
-    (`?ref=${github.branch}`), ], (empty)));
+    (`?ref=${github.branch}`),], (empty)));
+//
+//console.log(github);
 /**/
 
 

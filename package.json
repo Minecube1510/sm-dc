@@ -1,5 +1,5 @@
 {
-  "name": "s4mpl3_m3m0ry",
+  "name": "sm-dc",
   "version": "1.0.0",
   "description": "- Branch\r - \"work-dev\"",
   "main": "index.js",
@@ -9,16 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Minecube1510/s4mpl3_m3m0ry.git"
+    "url": "git+https://github.com/Minecube1510/sm-dc.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Minecube1510/s4mpl3_m3m0ry/issues"
+    "url": "https://github.com/Minecube1510/sm-dc/issues"
   },
-  "homepage": "https://github.com/Minecube1510/s4mpl3_m3m0ry#readme",
+  "homepage": "https://github.com/Minecube1510/sm-dc#readme",
   "dependencies": {
     "express": "^5.2.1"
   }
