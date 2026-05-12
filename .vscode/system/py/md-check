@@ -14,9 +14,7 @@ import yaml
 
 
 # VARS - DATA #
-BASE_DIR = "BASE"
-VALID_TYPES = [
-    "Assets",
+VALID_TYPES = [ "Assets",
     "Entry_Doc","Generic",
     "Record",
     #
@@ -48,6 +46,11 @@ C_DESC = "descend"
 C_SORT = "sort="
 C_SRCH = "search="
 # VARS - COMP #
+
+
+# VARS - SWITCH #
+BASE_DIR = "docent"
+# VARS - SWITCH #
 
 
 # SYSTEM - CODED-CORE #

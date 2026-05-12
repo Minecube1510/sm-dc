@@ -2,14 +2,22 @@
 /* .system/js/script.js */
 
 /* Imports */
-import * as pro from "./process.js";
+import * as comp from "./compile.js";
+/**/
+
+
+/* Automate */
+(window).addEventListener((`pageshow`), (event) => {
+    if (event.persisted) { (location).reload(); }
+});
+//
 /**/
 
 
 /* Compound */
 function main() {
-    pro.test();
-    pro.struct();
+    (comp).test();
+    (comp).struct();
 }
 /**/
 

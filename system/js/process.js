@@ -12,48 +12,44 @@ const space = (bsc.jsV.space);
 const slash = (bsc.jsV.slash);
 const colon = (bsc.jsV.colon);
 //
-const now_link = (window.location.origin);
-const local = (location.hostname);
+export const htWeb = {
+    lnk: (window.location.href),
+    dom: (window.location.origin),
+    lcl: (location.hostname),
+};
 //
 /**/
 
 
 /* Funcs - Customs */
-function ht_Classer (classes) {
-    return ((bsc).js_Arr2Str(classes, space));
-}
-//
 function ht_Linker (paths) {
     return ((bsc).js_Arr2Str(paths, slash));
 }
+//
 /**/
 
 
 /* Vars - Data */
+// TODO: Mengubah metode bagian repo. Yang tulis manual, menjadi mengambil dari link web-nya.
+//
 const github = {
     user: (`Minecube1510`),
-    repo: (`s4mpl3_m3m0ry`),
-    branch: (`work-dev`),
-};
-const ghLink_Api = ((bsc)
-    .to_Https(`api.github.com`));
-const ghApi_Repo = (ht_Linker([
-    (ghLink_Api), (`repos`),
-]));
+    repo: ((htWeb).lnk.split(slash)
+        .filter(Boolean)[0]),
+    branch: (`work-dev`), };
+const ghLink_Api = ((bsc).to_Https(`api.github.com`));
+const ghApi_Repo = (ht_Linker([ (ghLink_Api),
+    (`repos`), ]));
 //
-const ghApi_AutoLink = ht_Linker([
-    (ghApi_Repo), (github.user),
-    (github.repo), (`contents`),
-]);
-const fghL_Api = ((bsc).js_Arr2Str([
-    (ghApi_AutoLink),
-    (`?ref=${github.branch}`),
-], (empty)));
+const ghApi_AutoLink = ht_Linker([ (ghApi_Repo),
+    (github.user), (github.repo), (`contents`), ]);
+const fghL_Api = ((bsc).js_Arr2Str([ (ghApi_AutoLink),
+    (`?ref=${github.branch}`), ], (empty)));
 /**/
 
 
 /* Funcs - Data */
-function ghApi_getLink (path) {
+export function ghApi_getLink (path) {
     path = (((path).startsWith(slash))
         ? ((path).slice(1)) : (path));
     const getlink = ht_Linker([
@@ -65,7 +61,7 @@ function ghApi_getLink (path) {
 }
 //
 const get_ApiLink = ghApi_getLink(`img`);
-const g_AL = (get_ApiLink);
+export const g_AL = (get_ApiLink);
 /**/
 
 
@@ -82,80 +78,12 @@ const get_bd = ((bsc).js_Arr2Str([
 ], (slash)));
 const for_bd = (`${get_bd}/`);
 //
-const is_Local = (
-    ((local) === (`127.0.0.1`)) ||
-    ((local) === (`localhost`))
+export const is_Local = (
+    ((htWeb.lcl) === (`127.0.0.1`)) ||
+    ((htWeb.lcl) === (`localhost`))
 );
-const is_GitPg = ((local).endsWith(`github.io`));
-//
-/**/
-
-
-/* Structings */
-function draw_Title (title) {
-    const ph_Title = (bsc.js_GetId(`title`).innerHTML);
-    //
-    (bsc).js_GetId("title").innerHTML = ((bsc)
-        .js_Arr2Str([ title, ph_Title, ], (" | ")));
-}
-function view_Img (content) {
-    /* Varings */
-    const vImg = {
-        base: bsc.js_GetId("view-images"),
-        atlr: bsc.js_CreateELm("div"),
-        text: bsc.js_CreateELm("p"),
-    };
-    (vImg).atlr.id = (`vimg-content`);
-    //
-    /* Classings */
-    const vImg_Classes = {
-        fixed: [ `w-full`, `h-full`, ],
-        transition: [``,
-            `transition-all`, `duration-300`,
-            `ease-[cubic-bezier(0,0,0,1)]`, ],
-        //
-        box_base: [`vimg-base`,
-            `w-full`, `text-center`,
-            //
-            `rounded-3xl`,
-        ],
-        box_fill: [`vimg-fill`, `flex`, `grid`,
-            `flex-wrap`, `items-center`, `justify-start`,
-            `place-items-center`,
-            //
-            `gap-x-4`, `gap-y-2`,
-            //
-            `grid-cols-3`, `mx-auto`,
-            `rounded-xl`, `bg-neutral-900`,
-            `border-4`,`border-solid`,`border-stone-500`,
-            //
-            `hover:border-0`,
-            //
-            `md:gap-4`, `md:gap-y-6`,
-            `lg:grid-cols-5`, `lg:gap-y-6`,
-        ],
-        def_text: [`font-semibold`,
-            `text-white`, `text-3xl`,
-            `py-8`,
-        ],
-    };
-    (vImg.base).className = ht_Classer([
-        ...vImg_Classes.transition,
-        ...vImg_Classes.box_base, ]);
-    (vImg.atlr).className = ht_Classer([
-        ...vImg_Classes.fixed,
-        ...vImg_Classes.transition,
-        ...vImg_Classes.box_fill, ]);
-    (vImg.text).className = ht_Classer([
-        ...vImg_Classes.def_text,]);
-    //
-    /* Gabung */
-    (vImg).base.appendChild(vImg.atlr);
-    (vImg).atlr.appendChild(vImg.text);
-    (vImg).text.innerHTML = content;
-    //
-    return (vImg);
-}
+const is_GitPg = ((htWeb.lcl)
+    .endsWith(`github.io`));
 //
 /**/
 
@@ -190,7 +118,7 @@ async function get_Prefixes (path = (`./${for_bd}`)) {
     const links = await fetch_Prefix(path);
     //
     const pf_Link = ((is_Local) ?
-        (now_link) : (`${now_link}`));
+        (htWeb.dom) : (`${htWeb.dom}`));
     const getLink = (new URL(path, pf_Link));
     //
     for (const href of links) {
@@ -245,94 +173,13 @@ async function get_Imgs (api = g_AL) {
     )).flat();
 }
 //
-const all_Images = ((await get_Imgs()));
-/**/
-
-
-/* Construct */
-function first_Annouce () {
-    (bsc).c_Log((`Now in Linking:`)
-        + (`\n- `) + (now_link));
-}
-function check_Imgs () {
-    if (!(all_Images.length)) {return ((bsc).c_Warn
-        (`⚠️ There's no Images in here`));
-    }
-    (bsc).c_GrBgn((bsc).js_Arr2Str([(`Check Images`),
-        ((is_Local) ? (`Local`) : (`Github API`))
-    ], (` - `)));
-    (bsc).c_Log((`Get from`) + (`:\n`) + (g_AL));
-    (bsc).c_Table((all_Images).map((item) => ({
-        name: ((item.name) ?? ((item).split(slash)
-            .at(-1))),
-        path: ((item.path) ?? ((item).slice(1))),
-        src: ((item.src) ?? (ghApi_getLink(item))),
-    })));
-    (bsc).c_GrEnd();
-}
-//
-async function struct_Imgs () {
-    const imgs = (all_Images);
-    const phV_Box = (`Images Ateilers has been here`);
-    const vBox = view_Img(phV_Box);
-    //
-    //console.log(imgs);
-    //
-    const vAteiler = ((bsc).js_GetId(`vimg-content`));
-    const is_ImgsEmpty = ((imgs.length) < (1));
-    if (is_ImgsEmpty) {
-        //(bsc).c_Warn(`⚠️ Tidak ada gambar ditemukan!`);
-        //
-        (vAteiler).classList.remove((`justify-start`),
-            (`grid-cols-3`), (`lg:grid-cols-5`));
-        (vAteiler).classList.add(`justify-center`);
-        return (vBox);
-    }
-    (vBox).atlr.innerHTML = (bsc.jsV.empty);
-    (imgs).forEach((item) => {
-        const img = (bsc.js_CreateELm("img"));
-        (img).src = ((item.src) ?? (item));
-        (img).draggable = (false);
-        (img).className = ht_Classer([ (`rounded-xl`),
-            (`w-[200px]`), ]);
-        (vBox).atlr.appendChild(img);
-    });
-    return (vBox);
-}
-//
-/**/
-
-
-/* Final */
-//?
-//
-export function test () {
-    /* Test */
-    //?
-    //
-}
-export async function struct () {
-    /* Head */
-    draw_Title (`Images Ateilers`);
-    //
-
-    /* Logs */
-    first_Annouce();
-    check_Imgs();
-    //
-
-    /* Body */
-    await struct_Imgs();
-    //
-}
-//
+export const all_Images = ((await get_Imgs()));
 /**/
 
 
 /* Uji Coba */
 //?
 //
-//?
 /**/
 
 
