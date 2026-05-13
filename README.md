@@ -117,4 +117,4 @@ Menggunakan 2 metode:
 ---
 By: **Admin Gaster**
 
-<!-- END -->
+<!--= END =--!>

@@ -23,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#00BEFF}{Gaster}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
+  src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.GFB - Kafuu Chino">
 </td></tr></table></div>

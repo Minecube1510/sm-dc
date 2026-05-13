@@ -1,27 +1,6 @@
 
 ---
 
-<style>
-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
-}
-.cr-badge {
-    display: flex;
-    flex-wrap: wrap;
-    /**/
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    text-align: center;
-}
-    .cr-badge img {
-        display: block;
-        margin: auto;
-    }
-</style>
-
 <div align="center">
 
 ### Credits
@@ -47,6 +26,12 @@ table {
 
 - [**Outro**][Idx-End]
 
+    > - [**Table: Main Tools**][I2-1]
+    > - [**Table: Project System - Core**][I2-2]
+    > - [**Table: Project System - Control**][I2-3]
+
+- [**Outro**][Idx-End]
+
 ---
 
 # [Built Within][Idx-0]
@@ -54,6 +39,10 @@ table {
 <div id="index-1">
 
 Special thanks to all systems and tools that contributed to the development of this app.
+
+- [Table: **Main Tools**][I2-1]
+- [Table: **Project System - Core**][I2-2]
+- [Table: **Project System - Control**][I2-3]
 
 - [Table: **Main Tools**][I2-1]
 - [Table: **Project System - Core**][I2-2]
@@ -68,7 +57,11 @@ Each of the following plays an important role in building, maintaining, and impr
 ## [Main Tools][Index-2]
 
 <div id="i2-part-1">
+<div id="i2-part-1">
 Here these are some of the main tools, that used to create, build, and develop the project.
+</div>
+<table><div
+id="table::a-1">
 </div>
 <table><div
 id="table::a-1">
@@ -76,9 +69,11 @@ id="table::a-1">
 Software Systems
     </div></th></tr></thead>
     <tbody><tr><td align="center">
+    <tbody><tr><td align="center">
 
 ![Badge-Github]</td><td>
 Used as the main platform for version control, repository management, and collaboration.
+    </td></tr><tr><td align="center">
     </td></tr><tr><td align="center">
 
 ![Badge-VSCode]</td><td>
@@ -86,24 +81,37 @@ The primary code editor used for writing, editing, and managing the project file
     </td></tr></tbody>
 </div><div
 id="table::a-2">
+</div><div
+id="table::a-2">
     <thead><tr><th colspan="2"><div align="center">
 AI Assistance
     </div></th></tr></thead>
+    <tbody><tr><td align="center">
     <tbody><tr><td align="center">
 
 ![Badge-Copilot]</td><td>
 Helps with code suggestions, auto-completion, and improving development speed.
     </td></tr><tr><td align="center">
+    </td></tr><tr><td align="center">
 
 ![Badge-ChatGPT]</td><td>
 Assists in problem-solving, debugging, structuring ideas, and generating documentation.
+    </td></tr><tr><td align="center">
     </td></tr><tr><td align="center">
 
 ![Badge-Grok]</td><td>
 Used as an additional AI reference for exploring alternative solutions and perspectives.
     </td></tr></tbody>
 </div></table>
+</div></table>
 
+## [Project System - Core][Index-2]
+
+<div id="i2-part-2">
+The app is built by using Markdown (MD) base language.
+</div>
+<table><div
+id="table::b-1">
 ## [Project System - Core][Index-2]
 
 <div id="i2-part-2">
@@ -115,34 +123,47 @@ id="table::b-1">
 Major Basic
     </div></th></tr></thead>
     <tbody><tr><td align="center">
+    <tbody><tr><td align="center">
 
 ![Badge-MD]</td><td>
+The main format for writing structured content and documentation within the app.
+    </td></tr><tr><td align="center">
 The main format for writing structured content and documentation within the app.
     </td></tr><tr><td align="center">
 
 ![Badge-Imgur]</td><td>
 Serves as image storages that needed for contains thousands images.
+Serves as image storages that needed for contains thousands images.
     </td></tr></tbody>
+</div><div
+id="table::b-2">
 </div><div
 id="table::b-2">
     <thead><tr><th colspan="2"><div align="center">
 Secondary Methods
     </div></th></tr></thead>
     <tbody><tr><td align="center">
+    <tbody><tr><td align="center">
 
 ![Badge-Latex]</td><td>
 Used for rendering mathematical expressions and more complex formatted content.
+    </td></tr><tr><td align="center">
     </td></tr><tr><td align="center">
 
 ![Badge-JSON]</td><td>
 Utilized for data structuring, configuration, and handling any data-related tasks within the app.
     </td></tr></tbody>
 </div></table>
+</div></table>
 
 ## [Project System - Control][Index-2]
 
 <div id="i2-part-3">
+<div id="i2-part-3">
 These are several system applications for project development utilities.
+</div>
+<table><div
+id="table::c-1">
 </div>
 <table><div
 id="table::c-1">
@@ -150,24 +171,51 @@ id="table::c-1">
 Utilities Programming
     </div></th></tr></thead>
     <tbody><tr><td align="center">
+    <tbody><tr><td align="center">
 
 ![Badge-PY]</td><td>
 Used for scripting, automation, and handling backend or processing tasks.
     </td></tr></tbody>
 </div><div
 id="table::c-2">
+</div><div
+id="table::c-2">
     <thead><tr><th colspan="2"><div align="center">
 Terminal Usage
     </div></th></tr></thead>
+    <tbody><tr><td align="center">
     <tbody><tr><td align="center">
 
 ![Badge-Bash]</td><td>
 Utilized for command-line operations, file management, and workflow automation.
     </td></tr></tbody>
 </div></table>
+</div></table>
 
 ---
 
+<div align="center"
+id="index-end">
+
+# [Thank You for Everything][Idx-0]
+
+These all really helping me much...
+
+<!-- Lists: Reffs -->
+
+[Idx-0]: #index-core "Indexing - 0 (General Indexing Core)"
+[index-core]: #index-core "Indexing - 0 (General Indexing Core)"
+<!---->
+[Index-1]: #index-0 "Indexing - 1"
+<!--
+--->
+[Index-2]: #index-1 "Indexing - 2"
+<!---->
+[I2-1]: #i2-part-1 "Indexing - 2.1"
+[I2-2]: #i2-part-2 "Indexing - 2.2"
+[I2-3]: #i2-part-3 "Indexing - 2.3"
+<!---->
+[Idx-End]: #index-end "Indexing - The End"
 <div align="center"
 id="index-end">
 
@@ -202,11 +250,15 @@ These all really helping me much...
 <!--
     🤖 Artificial Intelligence
 --->
+    🤖 Artificial Intelligence
+--->
 [Badge-ChatGPT]: https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=codewars&logoColor=FFFFFF "[ChatGPT]-[Formatted Badge]"
 [Badge-Copilot]: https://img.shields.io/badge/Copilot-000000?style=for-the-badge&logo=githubcopilot&logoColor=FFFFFF "[GitHub Copilot]-[Formatted Badge]"
 [Badge-Grok]: https://img.shields.io/badge/Grok-000000?style=for-the-badge&logo=x&logoColor=FFFFFF "[Grok - Twitter/X AI]-[Formatted Badge]"
 
 <!--
+    🚀 Frameworks & Library
+--->
     🚀 Frameworks & Library
 --->
 [Badge-Markdown]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=FFFFFF "[Language - Markdown]-[Formatted Badge]"
@@ -221,9 +273,13 @@ These all really helping me much...
 <!--
     👩‍💻 IDE
 --->
+    👩‍💻 IDE
+--->
 [Badge-VSCode]: https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=vsco&logoColor=FFFFFF "[Visual Studio Code]-[Formatted Badge]"
 
 <!--
+    👩‍💻 Languages
+--->
     👩‍💻 Languages
 --->
 [Badge-CSS]: https://img.shields.io/badge/CSS-663399?style=for-the-badge&logo=css&logoColor=1572B6 "[CSS]-[Formatted Badge]"
@@ -244,9 +300,14 @@ These all really helping me much...
 <!--
     👨 Social
 --->
+    👨 Social
+--->
 [Badge-GitHub]: https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=24292F "[GitHub (Platform)]-[Formatted Badge]"
 
 <!--
+    💻 Terminal
+--->
+[Badge-Bash]: https://img.shields.io/badge/GNU_Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=FFFFFF "[GNU Bash]-[Formatted Badge]"
     💻 Terminal
 --->
 [Badge-Bash]: https://img.shields.io/badge/GNU_Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=FFFFFF "[GNU Bash]-[Formatted Badge]"
@@ -265,12 +326,17 @@ These all really helping me much...
 <!--
     🗄️ Costum - Storages
 --->
+    🗄️ Costum - Storages
+--->
 [Badge-Imgur]: https://img.shields.io/badge/Imgur-2E3035?style=for-the-badge&logo=imgur&logoColor=1BB76E "[Imgur]-[Formatted Badge]"
 
 <!--
 =-->
 
 <!--
+    🛠️ [Z] Defaulted System
+    📄📁 [Z] Defaulted File/Project
+--->
     🛠️ [Z] Defaulted System
     📄📁 [Z] Defaulted File/Project
 --->
@@ -283,4 +349,4 @@ These all really helping me much...
     END: Reffs
 -->
 
-<!--=  END  =-->
+<!--=  END  =--!>

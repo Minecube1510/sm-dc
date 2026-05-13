@@ -143,3 +143,40 @@ curl -L "https://link.com/gambar.png" -o BASE/ASSETS/Assets-Storages/[PNG].png
 ```
 
 ---
+
+<!--
+  [BEGIN]
+  Disemangatin tuh, SEMANGAT
+-->
+<div align="center">
+  <img draggable="false" title=""
+  src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
+  alt="BTC.HuPaWi - Jinja Natsume" width="100">
+  <img draggable="false" title=""
+  src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
+  alt="BTC.MiRaKa - Jinja Eru" width="100">
+</div><div align="center">
+  <img draggable="false" title=""
+  src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png "
+  alt="BTC.CloTriEld - Fuiba Fuyu" width="100">
+  <img draggable="false" title=""
+  src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
+  alt="BTC.GFB - Kafuu Chino" width="100">
+</div><div align="center">
+  <img draggable="false" title=""
+  src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
+  alt="BTC.SJL - Jouga Maya" width="100">
+  <img draggable="false" title=""
+  src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
+  alt="BTC.AVD - Natsu Megumi" width="100">
+</div>
+<!--
+  [END]
+  Disemangatin tuh, SEMANGAT
+-->
+
+---
+
+> *Ciaoo...*
+
+---
