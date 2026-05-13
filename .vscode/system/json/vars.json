@@ -1,0 +1,46 @@
+{
+    //
+        /* Blank & spacing */
+    "empty": "",
+    "space": " ",
+    "tab": "\t",
+    "enter": "\n",
+    //
+        /* Arithmetic & symbols */
+    "plus": "+",
+    "minus": "-",
+    "star": "*",
+    "slash": "/",
+    "bSlash": "\\",
+    "percent": "%",
+    //
+        /* Punctuation */
+    "point": ".",
+    "comma": ",",
+    "colon": ":",
+    "semi": ";",
+    "equal": "=",
+    "quest": "?",
+    "pipe": "|",
+    "tilde": "~",
+    //
+        /* Pathing & Uscore */
+    "uscor": "_",
+    "wRoot": "./",
+    "bcDir": "../",
+    //
+        /* Quotes */
+    "quote": "\"",
+    "apost": "'",
+    "grave": "`",
+    //
+        /* Brackets & Braces */
+    "parL": "(",
+    "parR": ")",
+    "braceL": "{",
+    "braceR": "}",
+    "brackL": "[",
+    "brackR": "]",
+    "angleL": "<",
+    "angleR": ">"
+}

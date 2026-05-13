@@ -27,29 +27,29 @@ Just use it!
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/def/0def.png"
 src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
-title=""
+title="Temp-Unknown"
 alt="Esoterian Key Logo - Basic">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/def/0def.png"
 src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
-title=""
+title="Temp-Unknown"
 alt="Esoterian Key Logo - White">
   -->
 
 <div align="center">
 
   <!-- ![Esoterian Key Logo - Basic][Unknown_B] -->
-  <img draggable="false" title="" width="250"
+  <img draggable="false" title="Temp-Unknown"
   src="https://minecube1510.github.io/sm-dc/img/def/0def.png"
-  alt="Esoterian Key Logo - Basic">
+  alt="Esoterian Key Logo - Basic" width="250">
 
 $${\textcolor{#FFFFFF}{Resized - 250}}$$
 
   <!-- ![Esoterian Key Logo - White][Unknown_W] -->
-  <img draggable="false" title="" width="250"
+  <img draggable="false" title="Temp-Unknown"
   src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
-  alt="Esoterian Key Logo - White">
+  alt="Esoterian Key Logo - White" width="250">
 
 $${\textcolor{#FFFFFF}{Resized - 250}}$$
 </div>
@@ -62,26 +62,24 @@ $${\textcolor{#FFFFFF}{Resized - 250}}$$
 
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
-title=""
-alt="BTC.GFB - Kafuu Chino">
+title="Temp-1-GFB" alt="BTC.GFB - Kafuu Chino">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
-title=""
-alt="BTC.GFB - Kafuu Chino">
+title="Temp-1-GFB" alt="BTC.GFB - Kafuu Chino">
   -->
 
 <div align="center">
 
   ![BTC.GFB - Kafuu Chino][Chino_GFB_1]
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-1-GFB"
   src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
   alt="BTC.GFB - Kafuu Chino">
 </div><p align="center">
 
   $${\textcolor{#00BEFF}{Original - 350}}$$
 </p><p align="center">
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-1-GFB"
   src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
   alt="BTC.GFB - Kafuu Chino" width="100">
 </p><p align="center">
@@ -97,26 +95,24 @@ alt="BTC.GFB - Kafuu Chino">
 
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
-title=""
-alt="BTC.SJL - Jouga Maya">
+title="Temp-2-SJL" alt="BTC.SJL - Jouga Maya">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
-title=""
-alt="BTC.SJL - Jouga Maya">
+title="Temp-2-SJL" alt="BTC.SJL - Jouga Maya">
   -->
 
 <div align="center">
 
   ![BTC.SJL - Jouga Maya][Maya_SJL_2]
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-2-SJL"
   src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
   alt="BTC.SJL - Jouga Maya">
 </div><p align="center">
 
   $${\textcolor{#FFC32B}{Original - 350}}$$
 </p><p align="center">
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-2-SJL"
   src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
   alt="BTC.SJL - Jouga Maya" width="100">
 </p><p align="center">
@@ -132,26 +128,24 @@ alt="BTC.SJL - Jouga Maya">
 
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
-title=""
-alt="BTC.AVD - Natsu Megumi">
+title="Temp-3-AVD" alt="BTC.AVD - Natsu Megumi">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
-title=""
-alt="BTC.AVD - Natsu Megumi">
+title="Temp-3-AVD" alt="BTC.AVD - Natsu Megumi">
   -->
 
 <div align="center">
 
   ![BTC.AVD - Natsu Megumi][Megu_AVD_3]
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-3-AVD"
   src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
   alt="BTC.AVD - Natsu Megumi">
 </div><p align="center">
 
   $${\textcolor{#FF1B39}{Original - 350}}$$
 </p><p align="center">
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-3-AVD"
   src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
   alt="BTC.AVD - Natsu Megumi" width="100">
 </p><p align="center">
@@ -167,26 +161,24 @@ alt="BTC.AVD - Natsu Megumi">
 
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
-title=""
-alt="BTC.MiRaKa - Jinja Eru">
+title="Temp-04-MiRaKa" alt="BTC.MiRaKa - Jinja Eru">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
-title=""
-alt="BTC.MiRaKa - Jinja Eru">
+title="Temp-04-MiRaKa" alt="BTC.MiRaKa - Jinja Eru">
   -->
 
 <div align="center">
 
   ![BTC.MiRaKa - Jinja Eru][Eru_MiRaKa_4]
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-04-MiRaKa"
   src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
   alt="BTC.MiRaKa - Jinja Eru">
 </div><p align="center">
 
   $${\textcolor{#FF78D3}{Original - 350}}$$
 </p><p align="center">
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-04-MiRaKa"
   src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
   alt="BTC.MiRaKa - Jinja Eru" width="100">
 </p><p align="center">
@@ -202,26 +194,24 @@ alt="BTC.MiRaKa - Jinja Eru">
 
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
-title=""
-alt="BTC.HuPaWi - Jinja Natsume">
+title="Temp-05-HuPaWi" alt="BTC.HuPaWi - Jinja Natsume">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
-title=""
-alt="BTC.HuPaWi - Jinja Natsume">
+title="Temp-05-HuPaWi" alt="BTC.HuPaWi - Jinja Natsume">
   -->
 
 <div align="center">
 
   ![BTC.HuPaWi - Jinja Natsume][Natsume_HuPaWi_5]
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-05-HuPaWi"
   src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
   alt="BTC.HuPaWi - Jinja Natsume">
 </div><p align="center">
 
   $${\textcolor{#B651FF}{Original - 350}}$$
 </p><p align="center">
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-05-HuPaWi"
   src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
   alt="BTC.HuPaWi - Jinja Natsume" width="100">
 </p><p align="center">
@@ -237,26 +227,26 @@ alt="BTC.HuPaWi - Jinja Natsume">
 
 <img draggable="false"
 src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
-title=""
+title="Temp-6F-CTE"
 alt="BTC.CloTriEld - Fuiba Fuyu">
 |
 <img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
-title=""
+title="Temp-6F-CTE"
 alt="BTC.CloTriEld - Fuiba Fuyu">
   -->
 
 <div align="center">
 
   ![BTC.CloTriEld - Fuiba Fuyu][Fuyu_CloTriEld_6]
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-6F-CTE"
   src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
   alt="BTC.CloTriEld - Fuiba Fuyu">
 </div><p align="center">
 
   $${\textcolor{#6A96FF}{Original - 350}}$$
 </p><p align="center">
-  <img draggable="false" title=""
+  <img draggable="false" title="Temp-6F-CTE"
   src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
   alt="BTC.CloTriEld - Fuiba Fuyu" width="100">
 </p><p align="center">

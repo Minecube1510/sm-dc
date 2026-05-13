@@ -1,16 +1,19 @@
 #!/usr/bin/env js
-/* .system/js/process.js */
+/* web/js/process.js */
 
 /* Imports */
+import jsV from "/.vscode/system/json/vars.json" assert { type: "json" };
+//
 import * as bsc from "./basis.js";
+//
 /**/
 
 
 /* Vars - Basic */
-const empty = (bsc.jsV.empty);
-const space = (bsc.jsV.space);
-const slash = (bsc.jsV.slash);
-const colon = (bsc.jsV.colon);
+const empty = (jsV.empty);
+const space = (jsV.space);
+const slash = (jsV.slash);
+const colon = (jsV.colon);
 //
 export const htWeb = {
     lnk: (window.location.href),

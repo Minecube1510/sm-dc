@@ -1,5 +1,5 @@
 #!/usr/bin/env js
-/* .system/js/script.js */
+/* web/js/script.js */
 
 /* Imports */
 import * as comp from "./compile.js";

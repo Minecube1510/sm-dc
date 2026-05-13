@@ -180,7 +180,10 @@ if FILTER_TYPE:
 
 # PRINTING - DISPLAY #
 def excheck ():
+    found = 0
+    #
     print("\n===== HASIL =====")
+    #
     for meta, path in docs:
         filename = (os.path.basename(path))
         folder = os.path.dirname(path)
@@ -191,7 +194,7 @@ def excheck ():
         #
         cek_stat = md_status.replace("_", " ")
         #
-        # filter CMD
+        # Mem-filter CMD
         if FILTER_TYPE and md_status != FILTER_TYPE:
             continue
         #
@@ -199,7 +202,7 @@ def excheck ():
         found += 1
     #
     if FILTER_TYPE and found == 0:
-        print("Not-Found as Filtered, sorry...")
+        print("{404}: Not-Found as Filtered, sorry...")
     #
     print("===== AKHIR =====\n")
 #

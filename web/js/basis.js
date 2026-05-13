@@ -1,24 +1,16 @@
 #!/usr/bin/env js
-/* .system/js/basis.js */
+/* web/js/basis.js */
+
+/* Imports */
+import jsV from "/.vscode/system/json/vars.json" assert { type: "json" };
+//
+//?
+//
+/**/
+
 
 /* Vars */
-export const jsV = {
-    empty: (``),
-    space: (` `),
-        //
-    minus: (`-`),
-    point: (`.`),
-    slash: (`/`),
-    uscor: (`_`),
-    colon: (`:`),
-    //
-    bSlash: (`\\`),
-    jsEnt: (`\n`),
-    jsTab: (`\t`),
-    //
-    wRoot: (`./`),
-    bcDir: (`../`),
-};
+//?
 //
 /**/
 

@@ -1,17 +1,20 @@
 #!/usr/bin/env js
-/* .system/js/compile.js */
+/* web/js/compile.js */
 
 /* Imports */
+import jsV from "/.vscode/system/json/vars.json" assert { type: "json" };
+//
 import * as bsc from "./basis.js";
 import * as pro from "./process.js";
+//
 /**/
 
 
 /* Vars */
-const empty = (bsc.jsV.empty);
-const space = (bsc.jsV.space);
-const slash = (bsc.jsV.slash);
-const colon = (bsc.jsV.colon);
+const empty = (jsV.empty);
+const space = (jsV.space);
+const slash = (jsV.slash);
+const colon = (jsV.colon);
 //
 const ht_Lnk = (pro.htWeb.lnk);
 const ht_Dom = (pro.htWeb.dom);
@@ -200,7 +203,7 @@ async function struct_Imgs () {
         (vAteiler).classList.add(`justify-center`);
         return (vBox);
     }
-    (vBox).atlr.innerHTML = (bsc.jsV.empty);
+    (vBox).atlr.innerHTML = (jsV.empty);
     (imgs).forEach((item) => {
         const img = (bsc.js_CreateELm("img"));
         const linkImg = (item.path);
