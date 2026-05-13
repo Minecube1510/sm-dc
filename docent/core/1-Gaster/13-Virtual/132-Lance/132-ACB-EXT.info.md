@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Generic
+
+---
+-->
 ---
 
 # Gaster: Virtual Spec, Lance
@@ -34,7 +40,7 @@ alt="BTC.GFB - Kafuu Chino">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
 title="Click for more information."
 alt="BTC.AVD - Natsu Megumi">][On-Type]
 </td><td>

@@ -66,11 +66,6 @@ alt="BTC-ALT">][On-Category]
 # Default Illustration
 
 <div align="center">
-<!--
-  Blok baris di bawah, Kopas, dan Hapus aja section komenan ini!
-  #
-  /BASE/ASSETS/Assets-Main/Sample-Illust/__QWERTY__.png
--->
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
 src="https://minecube1510.github.io/sm-dc/img/def/1alt.png">
@@ -202,7 +197,8 @@ Dust!Sans sendiri, sudah memiliki interpretasi dan varian, di antaranya seperti:
 
 ---
 
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |

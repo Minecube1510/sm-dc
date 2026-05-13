@@ -23,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#6A96FF}{Clovin}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
+  src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.CloTriEld - Fuiba Fuyu">
 </td></tr></table></div>

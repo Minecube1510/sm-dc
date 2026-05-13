@@ -26,7 +26,7 @@ Berikut linking untuk templet-an menyediakan per-informasi-an tentang **5.616** 
 - [***Informasi tentang Sam-Personal***][Sample-Info]
 - [***Informasi pertandingan Sampel***][Coming-Soon]
 
-[Sample-Info]: /BASE/ENTRY_DOC/Main-Samples/ZZZ-Center/Sample-DC-Temp.guide.md "Linking yang berisi info-info mengenai masing-masing Sampel per Sampel"
+[Sample-Info]: docent/rec/Sample-DC-Temp.guide.md "Linking yang berisi info-info mengenai masing-masing Sampel per Sampel"
 [Coming-Soon]: / "Masih menanti Info {Sampel-Jawara}"
 
 ---

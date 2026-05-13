@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Generic
+
+---
+-->
 ---
 
 # Gaster: Fossil Spec, Blaster

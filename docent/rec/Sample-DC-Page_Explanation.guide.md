@@ -77,12 +77,14 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 <!--
   Gambar ada pada:
-  BASE/ASSETS/Assets-Main/BTC-Sign
-    [16/03/2026 - 11:49]
+  https://minecube1510.github.io/sm-dc/img/
+    [16/03/2026 - 11:49] = https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main
+    [14/05/2026 - 03:59]:
   Mulai sekarang, WAJIB linking secara dari HTTPS. Ini demi keamanan:
-  https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main
+  https://minecube1510.github.io/sm-dc/img/def/
+  https://minecube1510.github.io/sm-dc/img/btc/
   |
-  Lalu ambillah salah satu dari 6 PNG, berdasarkan urutannya.
+  Untuk mengambil salah satu dari 6 PNG, berdasarkan urutannya.
   |
   |
   TEMP:
@@ -148,13 +150,19 @@ alt="BTC-ALT">][On-BTC]
 <div align="center">
 <!--
   Gambar ada pada:
-  BASE/ASSETS/Assets-Main/Sample-Illust/Default
-  |
+    REJECTED: BASE/ASSETS/Assets-Main/Sample-Illust/Default
+    NOW (Imgur):
+      https://imgur.com/user/Minecuds/gallery
+      |
+      https://imgur.com/
+      https://i.imgur.com/
+    //
+  //
   Cari File yang ngepas di turnamen-nya, lalu ambil gambarnya.
 -->
   <img draggable="false" width="200"
   alt="Ini hanya tempatan gambar"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/Sample-Illust/.png">
+src="https://i.imgur.com/">
 <br><br><b>
 
 GAMBAR ILUSTRASI SAMPEL

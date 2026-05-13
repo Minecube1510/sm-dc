@@ -35,7 +35,7 @@ alt="BTC.GFB - Kafuu Chino">][On-Bunch]
 
 <img draggable="false" width="100"
 title="SECTION_LOGO_TYPE-NO_LINK"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
 alt="BTC.AVD - Natsu Megumi">
 </td></tr></table></div>
 

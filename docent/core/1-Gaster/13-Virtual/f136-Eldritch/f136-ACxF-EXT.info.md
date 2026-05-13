@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Generic
+
+---
+-->
 ---
 
 # Gaster: Virtual Spec, Ultra Eldritch Fantastic
@@ -34,13 +40,13 @@ alt="BTC.GFB - Kafuu Chino">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
 title="Click for more information."
 alt="BTC.AVD - Natsu Megumi">][On-Type]
 </td><td>
 
 <img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
 title="SECTION_LOGO_CATEGORY-NO_LINK"
 alt="BTC.CloTriEld - Fuiba Fuyu">
 </td></tr></table></div>

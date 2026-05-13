@@ -44,13 +44,13 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/ff6_CloTriEld.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
 title="Click for more information."
 alt="BTC.CloTriEld - Fuiba Fuyu">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
 title="Click for more information."
 alt="BTC.GFB - Kafuu Chino">][On-Type]
 </td><td>
@@ -66,11 +66,6 @@ alt="BTC-ALT">][On-Category]
 # Default Illustration
 
 <div align="center">
-<!--
-  Blok baris di bawah, Kopas, dan Hapus aja section komenan ini!
-  #
-  /BASE/ASSETS/Assets-Main/Sample-Illust/__QWERTY__.png
--->
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
 src="https://minecube1510.github.io/sm-dc/img/def/1alt.png">

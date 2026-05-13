@@ -23,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#FF78D3}{Mistress}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/d04_MiRaKa.png"
+  src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.MiRaKa - Jinja Eru">
 </td></tr></table></div>

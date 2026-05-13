@@ -1,4 +1,10 @@
+<!--
+---
 
+Doc_Article: Explanation
+
+---
+-->
 ---
 
 # Kamen Rider Hunfle's Collection
@@ -17,7 +23,7 @@ title="AT-SECTION-BUNCH">
   $${\textcolor{#B651FF}{Hunfle}}$$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="/BASE/ASSETS/Assets-Main/BTC-Sign/e05_HuPaWi.png"
+  src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.HuPaWi - Jinja Natsume" >
 </td></tr></table></div>
