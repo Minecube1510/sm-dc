@@ -204,9 +204,9 @@ def excheck ():
     print("===== AKHIR =====\n")
 #
 def main ():
-    print (("Under Construction...") + ("\n"))
+    #print (("Under Construction...") + ("\n"))
     #
-    #excheck()
+    excheck()
 #
 if __name__ == "__main__":
     main()
