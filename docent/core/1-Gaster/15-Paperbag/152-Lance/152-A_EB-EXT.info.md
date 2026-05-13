@@ -40,7 +40,7 @@ alt="BTC.HuPaWi - Jinja Natsume">][On-Type]
 </td><td>
 
 <img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/b2b_SJL.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
 title="SECTION_LOGO_CATEGORY-NO_LINK"
 alt="BTC.SJL - Jouga Maya">
 </td></tr></table></div>

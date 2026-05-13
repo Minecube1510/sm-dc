@@ -40,7 +40,7 @@ alt="BTC.HuPaWi - Jinja Natsume">][On-Type]
 </td><td>
 
 <img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/c3c_AVD.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
 title="SECTION_LOGO_CATEGORY-NO_LINK"
 alt="BTC.AVD - Natsu Megumi">
 </td></tr></table></div>

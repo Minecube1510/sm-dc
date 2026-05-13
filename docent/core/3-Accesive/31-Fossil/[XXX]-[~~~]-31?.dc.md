@@ -45,19 +45,19 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/c3c_AVD.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
 title="Click for more information."
 alt="BTC.AVD - Natsu Megumi">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/a1a_GFB.png"
+src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/mainhttps://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
 title="Click for more information."
 alt="BTC.GFB - Kafuu Chino">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png"
+src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
@@ -79,7 +79,7 @@ alt="BTC-ALT">][On-Category]
 -->
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
-src="https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main/BASE/ASSETS/Assets-Main/BTC-Sign/000_Esoterian.png">
+src="https://minecube1510.github.io/sm-dc/img/def/1alt.png">
 <br><br><b>
 
 GAMBAR ILUSTRASI SAMPEL
