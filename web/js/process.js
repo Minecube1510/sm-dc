@@ -2,9 +2,18 @@
 /* web/js/process.js */
 
 /* Imports */
-import jsV from "/.vscode/system/json/vars.json" assert { type: "json" };
-//
 import * as bsc from "./basis.js";
+//
+/**/
+
+
+/* Fetchings */
+const jsV = await fetch(
+    "/.vscode/system/json/vars.json"
+).then(r => r.json());
+const gitD = await fetch(
+    "/.vscode/system/json/git-data.json"
+).then(r => r.json());
 //
 /**/
 
@@ -51,11 +60,7 @@ const ghApi_Repo = (ht_Linker([ (ghLink_Api),
 
 /* Init - Github */
 const nameRepo = (`Repository`);
-export const github = {
-    user: (`Minecube1510`),
-    repo: (nameRepo),
-    branch: (`work-dev`),
-};
+const reffAtBr = (`?ref=${gitD.branch}`);
 //
 export async function init_Github () {
     let repo = (nameRepo);
@@ -69,18 +74,16 @@ export async function init_Github () {
         repo = ((htWeb.path).split(slash)
             .filter(Boolean).at(0));
     }
-    (github).repo = (repo);
-    return (github);
+    (gitD).repo = (repo);
+    return (gitD);
 }
 //
 function ghApi_AutoLink () {
-    return ht_Linker([ (ghApi_Repo),
-        (github.user), (github.repo),
-        (`contents`),
-    ]);
+    return ht_Linker([ (ghApi_Repo), (gitD.name),
+        (gitD.repo), (`contents`), ]);
 }
 const fghL_Api = ((bsc).js_Arr2Str([ (ghApi_AutoLink),
-    (`?ref=${github.branch}`),], (empty)));
+    (reffAtBr),], (empty)));
 /**/
 
 
@@ -91,12 +94,9 @@ export function ghApi_getLink (path) {
     const getlink = ht_Linker([
         (ghApi_AutoLink()), (path),
     ]);
-    return ((bsc).js_Arr2Str([(getlink),
-        (`?ref=${github.branch}`),
+    return ((bsc).js_Arr2Str([
+        (getlink), (reffAtBr),
 ], (empty)));
-}
-export function get_ApiLink () {
-    return ghApi_getLink(`img`);
 }
 //
 /**/
@@ -166,7 +166,7 @@ async function get_Prefixes (path = (`./${for_bd}`)) {
     }
     return (results);
 }
-async function get_Imgs (api = get_ApiLink()) {
+async function get_Imgs (api = ghApi_getLink(`img`)) {
     /* Local */
     if (is_Local) {
         const pf_Res = (await get_Prefixes(for_bd));

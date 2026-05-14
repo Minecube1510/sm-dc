@@ -2,9 +2,18 @@
 /* web/js/basis.js */
 
 /* Imports */
-import jsV from "/.vscode/system/json/vars.json" assert { type: "json" };
-//
 //?
+//
+/**/
+
+
+/* Fetchings */
+const jsV = await fetch(
+    "/.vscode/system/json/vars.json"
+).then(r => r.json());
+const gitD = await fetch(
+    "/.vscode/system/json/git-data.json"
+).then(r => r.json());
 //
 /**/
 

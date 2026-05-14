@@ -2,10 +2,19 @@
 /* web/js/compile.js */
 
 /* Imports */
-import jsV from "/.vscode/system/json/vars.json" assert { type: "json" };
-//
 import * as bsc from "./basis.js";
 import * as pro from "./process.js";
+//
+/**/
+
+
+/* Fetchings */
+const jsV = await fetch(
+    "/.vscode/system/json/vars.json"
+).then(r => r.json());
+const gitD = await fetch(
+    "/.vscode/system/json/git-data.json"
+).then(r => r.json());
 //
 /**/
 
@@ -22,7 +31,7 @@ const ht_Lcl = (pro.htWeb.lcl);
 //
 const allImgs = (await (pro.all_Images()));
 const is_Lcl = (pro.is_Local);
-const g_AL = (await (pro.get_ApiLink()));
+const g_AL = (await (pro.ghApi_getLink(`img`)));
 //
 /**/
 
@@ -159,7 +168,7 @@ const comp_SLoading = show_Waiting();
 function first_Annouce () {
     const fA_EntList = (`\n- `);
     const fA_EntCode = (`\n> `);
-    const fix_EmpRepo = ((pro.github.repo)
+    const fix_EmpRepo = ((gitD.repo)
         || (`Repository`));
     //
     (bsc).c_Log((bsc).js_Arr2Str([
@@ -169,6 +178,13 @@ function first_Annouce () {
         (fA_EntCode), (fix_EmpRepo),
     ], (empty)));
 }
+function reBrand_UserGit (uname) {
+    const git_Uname = ((bsc).js_GetId(`github-username`));
+    if (git_Uname) {
+        (git_Uname).textContent = (uname);
+    }
+}
+//
 function check_Imgs () {
     if (!(allImgs.length)) {return ((bsc).c_Warn
         (`⚠️ There's no Images in here`));
@@ -224,7 +240,7 @@ async function struct_Imgs () {
 /* Final */
 export function test() {
     /* Wait */ //*
-    document.body.appendChild(comp_SLoading);
+    (document).body.appendChild(comp_SLoading);
     requestAnimationFrame(() => {
         (comp_SLoading).classList.remove(`opacity-0`,
             `pointer-events-none`);
@@ -234,7 +250,7 @@ export function test() {
     // */
     //
     /* Test */ //*
-    //
+    reBrand_UserGit(gitD.name);
     // */
     //
 }

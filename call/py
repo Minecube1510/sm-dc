@@ -5,62 +5,60 @@
 
 # ~ ~ ~ ~ ~ #
 
-# IMPORTS #
+# IMPORTS - IMPLY #
 import sys
 import json
-#
 import subprocess
-#
-import requests
-from pathlib import Path
 import tempfile
+import requests
 #
-# IMPORTS #
+from pathlib import Path
+#
+sys.dont_write_bytecode = True
+#
+# IMPORTS - IMPLY #
+###
+# IMPORT - PATHERS #
+ROOT_DIR = Path(__file__).resolve().parents[1]
+PYGET_FUNC = ROOT_DIR / ".vscode" / "system" / "py"
+#
+sys.path.insert(0, str(PYGET_FUNC.as_posix()))
+from configs import *
+#
+# IMPORT - PATHERS #
 
 
-# VARS #
-bd_vsc = ".vscode"
+# IMPORTS - FETCHINGS #
+pyV = load_json("vars.json")
+gitD = load_json("git-data.json")
 #
-class Var:
-    blank = ""
-    #
-    pipe = "|"
-    quest = "?"
-    slash = "/"
-    #
-    enter = "\n"
-#
-http = "http"
-ht_s = "s://"
-https = http + ht_s
-#|
-#|
-B_RAW_LINK = https + "raw.githubusercontent.com"
-B_API_LINK = https + "api.github.com/repos"
-BASE_DIR = Path(bd_vsc).joinpath(*[
-    "system", "py", ])
-#
+# IMPORTS - FETCHINGS #
+
+
+# VARS - CONFIGS #
 BD_EXISTS = BASE_DIR.exists()
 #
-GIT_USER = "Minecube1510"
-GU_REPO = "s4mpl3_m3m0ry"
-GUR_BRANCH = "work-dev"
+LAST_PARAM = f"ref={gitD["branch"]}"
 #
-LAST_PARAM = f"ref={GUR_BRANCH}"
+GIT_RAW_LINK = pyV["slash"].join([B_RAW_LINK,
+    gitD["name"], gitD["repo"], gitD["branch"], ])
+GIT_API_LINK = pyV["slash"].join([B_API_LINK,
+    gitD["name"], gitD["repo"], "contents" ])
+BD_RAW_LINK = pyV["slash"].join([GIT_RAW_LINK,
+    str(BASE_DIR.as_posix()), ])
+BD_API_LINK = pyV["slash"].join([ GIT_API_LINK,
+    str(BASE_DIR.as_posix()), ])
+BDF_API_LINK = pyV["quest"].join([ BD_API_LINK,
+    LAST_PARAM, ])
 #
-GIT_RAW_LINK = Var.slash.join([B_RAW_LINK,
-    GIT_USER, GU_REPO, GUR_BRANCH, ])
-GIT_API_LINK = Var.slash.join([B_API_LINK,
-    GIT_USER, GU_REPO, "contents" ])
-BD_RAW_LINK = Var.slash.join([GIT_RAW_LINK,
-    str(BASE_DIR), ])
-BD_API_LINK = Var.slash.join([
-    GIT_API_LINK, str(BASE_DIR), ])
-BDF_API_LINK = Var.quest.join([
-    BD_API_LINK, LAST_PARAM, ])
-#
-REDIC_LINK = BASE_DIR if BD_EXISTS else BD_RAW_LINK
-# VARS #
+#REDIC_LINK = BASE_DIR if BD_EXISTS else BD_RAW_LINK
+REDIC_LINK = PY_DIR if BD_EXISTS else BD_RAW_LINK
+# VARS - CONFIGS #
+
+
+# FUNCTINGS - DECORATE #
+
+# FUNCTINGS - DECORATE #
 
 
 # FUNCTINGS - SCAN COMM #
@@ -83,7 +81,8 @@ def is_py_script (file_path):
     except Exception:
         return False
 def normalize_comm (full_path, relative):
-    relative_str = str(relative).replace("\\", ":")
+    relative_str = str(relative).replace(
+        pyV["bSlash"], pyV["slash"])
     #
     if is_py_script(full_path):
         if relative.suffix == ".py":
@@ -100,7 +99,8 @@ def get_all_commands ():
     comm_files = []
     #
     if BD_EXISTS:
-        source = BASE_DIR.rglob("*")
+        #source = BASE_DIR.rglob("*")
+        source = PY_DIR.rglob("*")
         for item in source:
             if not item.is_file():
                 continue
@@ -119,23 +119,33 @@ def get_all_commands ():
     return comm_files
 #
 def print_comms (comm_files):
-    p_signter = (">+~=-  PY-SYS Commands  -=~+<")
+    #?
     #
-    print(p_signter)
+    print (separe_Sects("PY-SYS-COMMS"))
     for cmd in comm_files:
-        print(f"  [-] {cmd}")
-    print((p_signter) + (Var.enter))
+        lisTab = (pyV["space"] * 2)
+        getPath = ((cmd).replace(
+            pyV["bSlash"], pyV["slash"]))
+        doComm = (getPath.split(pyV["slash"]))
+        #
+        comCall = (pyV["quote"] +
+            doComm[-1] + pyV["quote"])
+        comPath = (pyV["braceL"] +
+            getPath + pyV["braceR"])
+        #
+        print((lisTab) + (f"[-] {comCall
+            } from {comPath}"))
+    print (separe_Sects("ENDED-SYSTEM"))
 #
 # FUNCTINGS - GET COMM #
 
 
 # FUNCTINGS - EXCING #
 def resolve_target (comm_file):
-    command_path = comm_file.replace(":", Var.slash)
-    target_maps = [
-        f"{command_path}.py",
-        command_path,
-    ]
+    command_path = comm_file.replace(
+        pyV["colon"], pyV["slash"])
+    target_maps = [ f"{command_path}.py",
+        command_path, ]
     for target in target_maps:
         #print ((REDIC_LINK) + "/" + (target))
         #
@@ -144,22 +154,18 @@ def resolve_target (comm_file):
             if target_f.exists():
                 return target_f
         else:
-            target_f = Var.slash.join([
-                BD_RAW_LINK,
-                target
-            ])
+            target_f = pyV["slash"].join([
+                BD_RAW_LINK, target, ])
             response = requests.get(target_f)
             if response.status_code == 200:
                 return target_f
-    #
     return None
 def execute_target(target_f, extra_args):
     # LOCAL #
     if BD_EXISTS:
-        subprocess.run(
-            [sys.executable, str(target_f), *extra_args],
-            check=True
-        )
+        subprocess.run([ sys.executable,
+            str(target_f), *extra_args,
+        ], check=True)
         return
     #
     # REMOTE #
@@ -169,25 +175,21 @@ def execute_target(target_f, extra_args):
         return
     #
     with tempfile.NamedTemporaryFile(
-        delete=False,
-        suffix=".py",
-        mode="w",
-        encoding="utf-8"
+        delete=False, suffix=".py",
+        mode="w", encoding="utf-8"
     ) as temp_file:
         temp_file.write(response.text)
         temp_path = temp_file.name
     #
-    subprocess.run(
-        [sys.executable, temp_path, *extra_args],
-        check=True
-    )
+    subprocess.run([
+        sys.executable, temp_path,
+        *extra_args ], check=True)
 #
 # FUNCTINGS - EXCING #
 
 
 # FUNCTINGS - FINAL #
 def sys_work ():
-    #
     comm_files = get_all_commands()
     #
     if len(sys.argv) < 2:
@@ -197,27 +199,28 @@ def sys_work ():
     comm_file = sys.argv[1]
     target_f = resolve_target(comm_file)
     if target_f is None:
-        msg_404 = f"Command `{comm_file}` is Not-Found..."
+        msg_404 = (f"Command `{comm_file}` is Not-Found...")
         print(msg_404)
         return
     #
     extra_args = sys.argv[2:]
     execute_target(target_f, extra_args)
 #
-def test ():
-    print ((Var.enter) + (f"Local: {BASE_DIR}"))
-    print ((f"Remote: {BD_API_LINK}")
-        #+ (Var.enter) + (Var.pipe)
-    )
-    print ((f"Redirect to: {REDIC_LINK}")
-        + (Var.enter) + (Var.pipe)
-        + (Var.enter) + (Var.pipe))
+FULL_API_LINK = ((pyV["slash"]).join([
+    GIT_API_LINK, str(PY_DIR.as_posix()),
+    ]) + (reffAtBr))
+def test_cek ():
     #
-    #?
+    print ((pyV["enter"]) + separe_Sects("INITIALIZE-PATH"))
+    print (f"Root-Local: {BASE_DIR.as_posix()}")
+    #print (f"Point-Local: {PY_DIR.as_posix()}")
     #
+    print ((f"In-Remoted: {FULL_API_LINK}"))
+    print ((f"Redirect-To: {REDIC_LINK.as_posix()}")
+        + (pyV["enter"]) + (pyV["pipe"]))
 #
 def main ():
-    test()
+    test_cek()
     #
     #?
     #

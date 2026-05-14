@@ -1,20 +1,17 @@
 {
-    //
-        /* Blank & spacing */
+        "text1": "Empties & spacings",
     "empty": "",
     "space": " ",
     "tab": "\t",
     "enter": "\n",
-    //
-        /* Arithmetic & symbols */
+        "text2": "Arithmetics & symbols",
     "plus": "+",
-    "minus": "-",
+    "dash": "-",
     "star": "*",
     "slash": "/",
     "bSlash": "\\",
     "percent": "%",
-    //
-        /* Punctuation */
+        "text3": "Punctuations",
     "point": ".",
     "comma": ",",
     "colon": ":",
@@ -23,18 +20,15 @@
     "quest": "?",
     "pipe": "|",
     "tilde": "~",
-    //
-        /* Pathing & Uscore */
+        "text4": "Pathings ft. Uscore",
     "uscor": "_",
     "wRoot": "./",
     "bcDir": "../",
-    //
-        /* Quotes */
+        "text5": "Quotes",
     "quote": "\"",
     "apost": "'",
     "grave": "`",
-    //
-        /* Brackets & Braces */
+        "text6": "Brackets & Braces",
     "parL": "(",
     "parR": ")",
     "braceL": "{",
