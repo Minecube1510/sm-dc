@@ -2,7 +2,9 @@
 
 <!--
 Just use:
-  python system/py
+  - python call/py
+  |
+  - bash call/bash/sync-repo
 =-->
 
 <h3 align="center"><span>

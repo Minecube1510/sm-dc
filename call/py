@@ -7,11 +7,13 @@
 
 # IMPORTS - IMPLY #
 import os
+import os
 import sys
 import json
 import subprocess
 import tempfile
 import requests
+import time
 import time
 #
 from pathlib import Path
@@ -22,12 +24,14 @@ sys.dont_write_bytecode = True
 ###
 # IMPORT - PATHERS #
 ROOT_DIR = Path(__file__).resolve().parents[1]
-    #
-PLUGIN_FUNC = ROOT_DIR / ".vscode" / "plugin"
 #
+PLUGIN_FUNC = ROOT_DIR / ".vscode" / "plugin"
+PY_DIR = ROOT_DIR / ".vscode" / "system" / "py"
+#
+sys.path.insert(0, str(PY_DIR.as_posix()))
 sys.path.insert(0, str(PLUGIN_FUNC.as_posix()))
+#
 from configs import *
-sys.path.insert(0, str(PY_DIR))
 #
 # IMPORT - PATHERS #
 
@@ -131,6 +135,20 @@ def get_all_commands ():
             print(f"Reset in {wait_sec} seconds")
             return []
         #
+        if response.status_code != 200:
+            reset_unix = int(response.headers["X-RateLimit-Reset"])
+            wait_sec = int((reset_unix) - (time.time()))
+            #
+            print(f"Request failed: {response.status_code}")
+            print(response.text)
+                #
+            print(("API at Limit: ") + (response.headers.get("X-RateLimit-Limit")))
+            print(("API remains: ") + (response.headers.get("X-RateLimit-Remaining")))
+                #
+            print(("Reset at: ") + (response.headers.get("X-RateLimit-Reset")))
+            print(f"Reset in {wait_sec} seconds")
+            return []
+        #
         data = response.json()
         for item in data:
             if item["type"] != "file":
@@ -207,9 +225,12 @@ def execute_target(target_f, extra_args):
     #
     env = os.environ.copy()
     env["ROOT_DIR"] = str(BASE_DIR.resolve())
+    env["PYTHONPATH"] = ((str(PLUGIN_FUNC))
+        + (os.pathsep) + (str(PY_DIR)))
     #
     subprocess.run([
         sys.executable, temp_path,
+    ], env=env, check=True, )
     ], env=env, check=True, )
 #
 # FUNCTINGS - EXCING #
@@ -220,8 +241,11 @@ def sys_work ():
     comm_files = get_all_commands()
     begin_py = ((pyV["pipe"]) + (pyV["enter"]) +
         (separe_Sects("PY-SYS-COMMS")))
+    begin_py = ((pyV["pipe"]) + (pyV["enter"]) +
+        (separe_Sects("PY-SYS-COMMS")))
     #
     if len(sys.argv) < 2:
+        print(begin_py)
         print(begin_py)
         print_comms(comm_files)
         return
@@ -233,6 +257,8 @@ def sys_work ():
     #
     if target_f is None:
         msg_404 = (f"Command `{comm_file}` is Not-Found...")
+        #
+        print(begin_py)
         #
         print(begin_py)
         #
