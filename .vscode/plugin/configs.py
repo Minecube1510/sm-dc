@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# .vscode/system/py/configs.py #
+# .vscode/plugin/configs.py #
 #
-# python .vscode/system/py/configs.py
+# python .vscode/plugin/configs.py
 
 # ~ ~ ~ ~ ~ #
 
@@ -17,10 +17,10 @@ sys.dont_write_bytecode = True
 
 
 # VARS - BASIC #
-BASE_DIR = Path(".vscode")
+BASE_DIR = Path(".vscode/system/py")
 #
 JSON_DIR = Path("call/json")
-PY_DIR = Path(BASE_DIR / "system/py")
+PY_DIR = BASE_DIR
 #
 http = "http"
 https = http + "s://"

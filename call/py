@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# system/py #
+# call/py #
 #
-# python system/py
+# python call/py
 
 # ~ ~ ~ ~ ~ #
 
@@ -20,10 +20,12 @@ sys.dont_write_bytecode = True
 ###
 # IMPORT - PATHERS #
 ROOT_DIR = Path(__file__).resolve().parents[1]
-PYGET_FUNC = ROOT_DIR / ".vscode" / "system" / "py"
+    #
+PLUGIN_FUNC = ROOT_DIR / ".vscode" / "plugin"
 #
-sys.path.insert(0, str(PYGET_FUNC.as_posix()))
+sys.path.insert(0, str(PLUGIN_FUNC.as_posix()))
 from configs import *
+sys.path.insert(0, str(PY_DIR))
 #
 # IMPORT - PATHERS #
 
@@ -37,6 +39,7 @@ gitD = load_json("git-data.json")
 
 # VARS - CONFIGS #
 BD_EXISTS = BASE_DIR.exists()
+PD_EXISTS = PY_DIR.exists()
 #
 LAST_PARAM = f"ref={gitD["branch"]}"
 #
@@ -51,8 +54,10 @@ BD_API_LINK = pyV["slash"].join([ GIT_API_LINK,
 BDF_API_LINK = pyV["quest"].join([ BD_API_LINK,
     LAST_PARAM, ])
 #
-#REDIC_LINK = BASE_DIR if BD_EXISTS else BD_RAW_LINK
-REDIC_LINK = PY_DIR if BD_EXISTS else BD_RAW_LINK
+FULL_API_LINK = ((pyV["slash"]).join([
+    GIT_API_LINK, str(PY_DIR.as_posix()),
+    ]) + (reffAtBr))
+REDIC_LINK = PY_DIR if PD_EXISTS else FULL_API_LINK
 # VARS - CONFIGS #
 
 
@@ -98,7 +103,7 @@ def normalize_comm (full_path, relative):
 def get_all_commands ():
     comm_files = []
     #
-    if BD_EXISTS:
+    if PY_DIR.exists():
         #source = BASE_DIR.rglob("*")
         source = PY_DIR.rglob("*")
         for item in source:
@@ -107,7 +112,7 @@ def get_all_commands ():
             #
             comm_files.append(str(item))
     else:
-        response = requests.get(BDF_API_LINK)
+        response = requests.get(FULL_API_LINK)
         data = response.json()
         #
         for item in data:
@@ -119,11 +124,18 @@ def get_all_commands ():
     return comm_files
 #
 def print_comms (comm_files):
-    #?
+    lisTab = (pyV["space"] * 2)
+    ended_pc = (separe_Sects
+        ("ENDED-SYSTEM") + pyV["enter"])
     #
     print (separe_Sects("PY-SYS-COMMS"))
+    #
+    if not comm_files:
+        print((lisTab) +
+            ("Empty-404: There's no command found..."))
+        print(ended_pc)
+        return
     for cmd in comm_files:
-        lisTab = (pyV["space"] * 2)
         getPath = ((cmd).replace(
             pyV["bSlash"], pyV["slash"]))
         doComm = (getPath.split(pyV["slash"]))
@@ -135,7 +147,7 @@ def print_comms (comm_files):
         #
         print((lisTab) + (f"[-] {comCall
             } from {comPath}"))
-    print (separe_Sects("ENDED-SYSTEM") + pyV["enter"])
+    print(ended_pc)
 #
 # FUNCTINGS - GET COMM #
 
@@ -206,9 +218,6 @@ def sys_work ():
     extra_args = sys.argv[2:]
     execute_target(target_f, extra_args)
 #
-FULL_API_LINK = ((pyV["slash"]).join([
-    GIT_API_LINK, str(PY_DIR.as_posix()),
-    ]) + (reffAtBr))
 def test_cek ():
     #
     print ((pyV["enter"]) + separe_Sects("INITIALIZE-PATH"))
@@ -216,7 +225,7 @@ def test_cek ():
     #print (f"Point-Local: {PY_DIR.as_posix()}")
     #
     print ((f"In-Remoted: {FULL_API_LINK}"))
-    print ((f"Redirect-To: {REDIC_LINK.as_posix()}")
+    print ((f"Redirect-To: {REDIC_LINK}")
         + (pyV["enter"]) + (pyV["pipe"]))
 #
 def main ():

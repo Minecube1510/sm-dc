@@ -46,6 +46,7 @@
         "mcp.json": "jsonc"
     },
     "python.analysis.extraPaths": [
-        "./.vscode/system/py"
+        "./.vscode/system/py",
+        "./.vscode/plugin",
     ]
 }
