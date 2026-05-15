@@ -6,6 +6,7 @@
 # ~ ~ ~ ~ ~ #
 
 # IMPORTS - IMPLY #
+import os
 import sys
 import json
 import subprocess
@@ -204,9 +205,12 @@ def execute_target(target_f, extra_args):
         temp_file.write(response.text)
         temp_path = temp_file.name
     #
+    env = os.environ.copy()
+    env["ROOT_DIR"] = str(BASE_DIR.resolve())
+    #
     subprocess.run([
         sys.executable, temp_path,
-        *extra_args ], check=True)
+    ], env=env, check=True, )
 #
 # FUNCTINGS - EXCING #
 

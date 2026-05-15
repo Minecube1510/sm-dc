@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # .vscode/system/py/md-check #
 #
-# python .vscode/system/py/md-check to=check
+# python .vscode/system/py/md-check
 
 # ~ ~ ~ ~ ~ #
 
@@ -29,7 +29,13 @@ def find_root(start: Path):
         current = current.parent
     raise RuntimeError("Project root not found")
 #
-ROOT_DIR = find_root(SCRIPT_DIR)
+root_env = os.environ.get("ROOT_DIR")
+#
+if root_env:
+    ROOT_DIR = Path(root_env)
+else:
+    ROOT_DIR = find_root(SCRIPT_DIR)
+#
 PLUGIN_DIR = ROOT_DIR / ".vscode" / "plugin"
 #
 sys.path.insert(0, str(PLUGIN_DIR))
