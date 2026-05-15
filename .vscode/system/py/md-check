@@ -235,7 +235,7 @@ LIST_TAB = (pyV["space"] * 4)
 IN_LIST = (pyV["dash"] + pyV["space"])
 #
 ENDED_TASKING = (separe_Sects
-    ("ENDED-SYSCHECK") + pyV["enter"])
+    ("END-CHECKERS") + pyV["enter"])
 #
 def render_guides():
     guides = {
@@ -298,7 +298,9 @@ def excheck(docs, filtype=None):
         return
     #
     msg_search_404 = "No matching Entry-Docs is found in here..."
+        #
     print((pyV["space"] * 2) + (msg_search_404))
+    print(ENDED_TASKING)
 #
 def opening_main():
     descript_funcfile = (
@@ -331,8 +333,8 @@ def sys_main():
     docs = sort_docs(docs, sort_config, build_sorters())
     #
     actions = {
-        "check": lambda: excheck(docs, filter_type),
-    }
+        "check": lambda: excheck(docs,
+            filter_type), }
     to = parse_arg(cli_args, "to")
     action = actions.get(to)
     #

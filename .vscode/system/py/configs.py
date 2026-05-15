@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# .sys/py/configs.py #
+# .vscode/system/py/configs.py #
 #
-# python .sys/py/configs.py
+# python .vscode/system/py/configs.py
 
 # ~ ~ ~ ~ ~ #
 
@@ -18,10 +18,9 @@ sys.dont_write_bytecode = True
 
 # VARS - BASIC #
 BASE_DIR = Path(".vscode")
-GET_SYS = "system"
 #
-JSON_DIR = BASE_DIR / GET_SYS / "json"
-PY_DIR = BASE_DIR / GET_SYS / "py"
+JSON_DIR = Path("call/json")
+PY_DIR = Path(BASE_DIR / "system/py")
 #
 http = "http"
 https = http + "s://"
@@ -40,6 +39,7 @@ pyV = load_json("vars.json")
 gitD = load_json("git-data.json")
 #
 reffAtBr = (f"?ref={gitD["branch"]}")
+#
 # IMPORTS - FETCHINGS #
 
 

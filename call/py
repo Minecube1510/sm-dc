@@ -135,7 +135,7 @@ def print_comms (comm_files):
         #
         print((lisTab) + (f"[-] {comCall
             } from {comPath}"))
-    print (separe_Sects("ENDED-SYSTEM"))
+    print (separe_Sects("ENDED-SYSTEM") + pyV["enter"])
 #
 # FUNCTINGS - GET COMM #
 

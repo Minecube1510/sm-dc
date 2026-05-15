@@ -2,19 +2,25 @@
 /* web/js/process.js */
 
 /* Imports */
+/*
+import jsV from "./call/json/vars.json" with { type: "json" };
+import gitD from "./call/json/git-data.json" with { type: "json" };
+// */
+//
 import * as bsc from "./basis.js";
 //
 /**/
 
 
 /* Fetchings */
+// /*
 const jsV = await fetch(
-    "/.vscode/system/json/vars.json"
+    "call/json/vars.json"
 ).then(r => r.json());
 const gitD = await fetch(
-    "/.vscode/system/json/git-data.json"
+    "call/json/git-data.json"
 ).then(r => r.json());
-//
+// */
 /**/
 
 
