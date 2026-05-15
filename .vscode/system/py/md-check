@@ -19,7 +19,17 @@ sys.dont_write_bytecode = True
 ###
 # IMPORT - PATHERS #
 SCRIPT_DIR = Path(__file__).resolve().parent
-ROOT_DIR = SCRIPT_DIR.parents[2]
+#
+def find_root(start: Path):
+    current = start
+    #
+    while current != current.parent:
+        if (current / ".vscode").exists():
+            return current
+        current = current.parent
+    raise RuntimeError("Project root not found")
+#
+ROOT_DIR = find_root(SCRIPT_DIR)
 PLUGIN_DIR = ROOT_DIR / ".vscode" / "plugin"
 #
 sys.path.insert(0, str(PLUGIN_DIR))

@@ -11,6 +11,7 @@ import json
 import subprocess
 import tempfile
 import requests
+import time
 #
 from pathlib import Path
 #
@@ -107,7 +108,6 @@ def get_all_commands ():
     comm_files = []
     #
     if PD_EXISTS:
-        #source = BASE_DIR.rglob("*")
         source = PY_DIR.rglob("*")
         for item in source:
             if not item.is_file():
@@ -116,8 +116,21 @@ def get_all_commands ():
             comm_files.append(str(item))
     else:
         response = requests.get(FULL_API_LINK)
-        data = response.json()
+        if response.status_code != 200:
+            reset_unix = int(response.headers["X-RateLimit-Reset"])
+            wait_sec = int((reset_unix) - (time.time()))
+            #
+            print(f"Request failed: {response.status_code}")
+            print(response.text)
+                #
+            print(("API at Limit: ") + (response.headers.get("X-RateLimit-Limit")))
+            print(("API remains: ") + (response.headers.get("X-RateLimit-Remaining")))
+                #
+            print(("Reset at: ") + (response.headers.get("X-RateLimit-Reset")))
+            print(f"Reset in {wait_sec} seconds")
+            return []
         #
+        data = response.json()
         for item in data:
             if item["type"] != "file":
                 continue
@@ -201,8 +214,11 @@ def execute_target(target_f, extra_args):
 # FUNCTINGS - FINAL #
 def sys_work ():
     comm_files = get_all_commands()
+    begin_py = ((pyV["pipe"]) + (pyV["enter"]) +
+        (separe_Sects("PY-SYS-COMMS")))
     #
     if len(sys.argv) < 2:
+        print(begin_py)
         print_comms(comm_files)
         return
     #
@@ -214,6 +230,8 @@ def sys_work ():
     if target_f is None:
         msg_404 = (f"Command `{comm_file}` is Not-Found...")
         #
+        print(begin_py)
+        #
         print(lisTab + msg_404)
         print(ended_fpy)
         return
@@ -222,8 +240,6 @@ def sys_work ():
     execute_target(target_f, extra_args)
 #
 def test_cek ():
-    #
-    print (separe_Sects("PY-SYS-COMMS"))
     print ((pyV["enter"]) + separe_Sects("INITIALIZE-PATH"))
     print (f"Root-Local: {BASE_DIR.as_posix()}")
     #print (f"Point-Local: {PY_DIR.as_posix()}")
