@@ -48,7 +48,8 @@ GIT_RAW_LINK = pyV["slash"].join([B_RAW_LINK,
 GIT_API_LINK = pyV["slash"].join([B_API_LINK,
     gitD["name"], gitD["repo"], "contents" ])
 BD_RAW_LINK = pyV["slash"].join([GIT_RAW_LINK,
-    str(BASE_DIR.as_posix()), ])
+    #str(BASE_DIR.as_posix()), ])
+    str(PY_DIR.as_posix()), ])
 BD_API_LINK = pyV["slash"].join([ GIT_API_LINK,
     str(BASE_DIR.as_posix()), ])
 BDF_API_LINK = pyV["quest"].join([ BD_API_LINK,
@@ -62,7 +63,9 @@ REDIC_LINK = PY_DIR if PD_EXISTS else FULL_API_LINK
 
 
 # FUNCTINGS - DECORATE #
-
+lisTab = (pyV["space"] * 2)
+#
+ended_fpy = (separe_Sects("ENDED-SYSTEM") + pyV["enter"])
 # FUNCTINGS - DECORATE #
 
 
@@ -103,7 +106,7 @@ def normalize_comm (full_path, relative):
 def get_all_commands ():
     comm_files = []
     #
-    if PY_DIR.exists():
+    if PD_EXISTS:
         #source = BASE_DIR.rglob("*")
         source = PY_DIR.rglob("*")
         for item in source:
@@ -124,16 +127,10 @@ def get_all_commands ():
     return comm_files
 #
 def print_comms (comm_files):
-    lisTab = (pyV["space"] * 2)
-    ended_pc = (separe_Sects
-        ("ENDED-SYSTEM") + pyV["enter"])
-    #
-    print (separe_Sects("PY-SYS-COMMS"))
-    #
     if not comm_files:
         print((lisTab) +
             ("Empty-404: There's no command found..."))
-        print(ended_pc)
+        print(ended_fpy)
         return
     for cmd in comm_files:
         getPath = ((cmd).replace(
@@ -147,7 +144,7 @@ def print_comms (comm_files):
         #
         print((lisTab) + (f"[-] {comCall
             } from {comPath}"))
-    print(ended_pc)
+    print(ended_fpy)
 #
 # FUNCTINGS - GET COMM #
 
@@ -158,10 +155,11 @@ def resolve_target (comm_file):
         pyV["colon"], pyV["slash"])
     target_maps = [ f"{command_path}.py",
         command_path, ]
+    #
     for target in target_maps:
         #print ((REDIC_LINK) + "/" + (target))
         #
-        if BD_EXISTS:
+        if PD_EXISTS:
             target_f = (REDIC_LINK / target)
             if target_f.exists():
                 return target_f
@@ -174,7 +172,7 @@ def resolve_target (comm_file):
     return None
 def execute_target(target_f, extra_args):
     # LOCAL #
-    if BD_EXISTS:
+    if PD_EXISTS:
         subprocess.run([ sys.executable,
             str(target_f), *extra_args,
         ], check=True)
@@ -210,9 +208,14 @@ def sys_work ():
     #
     comm_file = sys.argv[1]
     target_f = resolve_target(comm_file)
+    #
+    #print(BD_RAW_LINK)
+    #
     if target_f is None:
         msg_404 = (f"Command `{comm_file}` is Not-Found...")
-        print(msg_404)
+        #
+        print(lisTab + msg_404)
+        print(ended_fpy)
         return
     #
     extra_args = sys.argv[2:]
@@ -220,6 +223,7 @@ def sys_work ():
 #
 def test_cek ():
     #
+    print (separe_Sects("PY-SYS-COMMS"))
     print ((pyV["enter"]) + separe_Sects("INITIALIZE-PATH"))
     print (f"Root-Local: {BASE_DIR.as_posix()}")
     #print (f"Point-Local: {PY_DIR.as_posix()}")

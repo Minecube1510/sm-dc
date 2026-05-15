@@ -20,8 +20,9 @@ sys.dont_write_bytecode = True
 # IMPORT - PATHERS #
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parents[2]
+PLUGIN_DIR = ROOT_DIR / ".vscode" / "plugin"
 #
-sys.path.insert(0, str(SCRIPT_DIR))
+sys.path.insert(0, str(PLUGIN_DIR))
 from configs import *
 #
 # IMPORT - PATHERS #
