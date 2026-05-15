@@ -17,10 +17,10 @@ sys.dont_write_bytecode = True
 
 
 # VARS - BASIC #
-BASE_DIR = Path(".vscode/system/py")
+BASE_DIR = Path(".vscode")
 #
 JSON_DIR = Path("call/json")
-PY_DIR = BASE_DIR
+PY_DIR = Path(BASE_DIR / "system/py")
 #
 http = "http"
 https = http + "s://"
