@@ -1,0 +1,295 @@
+#!/usr/bin/env python3
+# call/py #
+#
+# python call/py
+
+# ~ ~ ~ ~ ~ #
+
+# IMPORTS - IMPLY #
+import os
+import sys
+import json
+import subprocess
+import tempfile
+import requests
+import time
+#
+from pathlib import Path
+#
+sys.dont_write_bytecode = True
+#
+# IMPORTS - IMPLY #
+###
+# IMPORT - PATHERS #
+SCRIPT_PATH = Path(__file__).resolve()
+RD_BASE = SCRIPT_PATH.parents[1]
+RD_REMOTE = SCRIPT_PATH.parents[2]
+#
+PLUGIN_FUNC = RD_BASE / ".vscode" / "plugin"
+PY_DIR = RD_BASE / ".vscode" / "system" / "py"
+#
+sys.path.insert(0, str(PY_DIR.as_posix()))
+sys.path.insert(0, str(PLUGIN_FUNC.as_posix()))
+#
+from configs import *
+#
+# IMPORT - PATHERS #
+
+
+# IMPORTS - FETCHINGS #
+pyV = load_json("vars.json")
+gitD = load_json("git-data.json")
+gLink = load_json("glink.json")
+#
+# IMPORTS - FETCHINGS #
+
+
+# VARS - CONFIGS #
+BD_EXISTS = ROOT_DIR.exists()
+PD_EXISTS = LCL_PY_DIR.exists()
+    #
+LAST_PARAM = (f"ref={gitD["branch"]}")
+#
+GIT_RAW_LINK = ((pyV["slash"]).join([B_RAW_LINK,
+    gitD["name"], gitD["repo"], gitD["branch"], ]))
+GIT_API_LINK = ((pyV["slash"]).join([B_API_LINK, ghRepo,
+    gitD["name"], gitD["repo"], "contents" ]))
+BD_RAW_LINK = ((pyV["slash"]).join([GIT_RAW_LINK,
+    #str(ROOT_DIR.as_posix()), ])
+    str(PY_DIR.as_posix()), ]))
+BD_API_LINK = ((pyV["slash"]).join([ GIT_API_LINK,
+    str(ROOT_DIR.as_posix()), ]))
+BDF_API_LINK = ((pyV["quest"]).join([ BD_API_LINK,
+    LAST_PARAM, ]))
+#
+FULL_API_LINK = ((pyV["slash"]).join([
+    GIT_API_LINK, str(REPO_PY_DIR.as_posix()),
+    ]) + (reffAtBr))
+REDIC_LINK = (LCL_PY_DIR
+    if PD_EXISTS else FULL_API_LINK)
+#
+# VARS - CONFIGS #
+
+
+# FUNCTINGS - DECORATE #
+lisTab = (pyV["space"] * 2)
+#
+ended_fpy = (separe_Sects("ENDED-SYSTEM") + pyV["enter"])
+# FUNCTINGS - DECORATE #
+
+
+# FUNCTINGS - SCAN COMM #
+def is_py_script (file_path):
+    req_py = ("#!/usr/bin/env python")
+    #
+    # Auto valid kalau .py
+    if not file_path.is_file():
+        return False
+    if file_path.suffix == ".py":
+        return True
+    #
+    # Cek shebang
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            first_line = f.readline().strip()
+        #
+        return first_line.startswith(req_py)
+    #
+    except Exception:
+        return False
+def normalize_comm (full_path, relative):
+    relative_str = str(relative).replace(
+        pyV["bSlash"], pyV["slash"])
+    #
+    if is_py_script(full_path):
+        if relative.suffix == ".py":
+            return relative_str[:-3]
+        #
+        return relative_str
+    return None
+#
+# FUNCTINGS - SCAN COMM #
+
+
+# FUNCTINGS - GET COMM #
+def get_all_commands ():
+    comm_files = []
+    #
+    if PD_EXISTS:
+        source = PY_DIR.rglob("*")
+        for item in source:
+            if not item.is_file():
+                continue
+            #
+            comm_files.append(str(item))
+    else:
+        response = requests.get(FULL_API_LINK)
+        if response.status_code != 200:
+            reset_unix = int(response.headers["X-RateLimit-Reset"])
+            wait_sec = int((reset_unix) - (time.time()))
+            #
+            print(f"Request failed: {response.status_code}")
+            print(response.text)
+                #
+            print(("API at Limit: ") + (response.headers.get("X-RateLimit-Limit")))
+            print(("API remains: ") + (response.headers.get("X-RateLimit-Remaining")))
+                #
+            print(("Reset at: ") + (response.headers.get("X-RateLimit-Reset")))
+            print(f"Reset in {wait_sec} seconds")
+            return []
+        #
+        data = response.json()
+        for item in data:
+            if item["type"] != "file":
+                continue
+            #
+            comm_files.append(item["name"])
+    #
+    return comm_files
+#
+def print_comms (comm_files):
+    if not comm_files:
+        print((lisTab) +
+            ("Empty-404: There's no command found..."))
+        print(ended_fpy)
+        return
+    for cmd in comm_files:
+        getPath = ((cmd).replace(
+            pyV["bSlash"], pyV["slash"]))
+        doComm = (getPath.split(pyV["slash"]))
+        #
+        comCall = (pyV["quote"] +
+            doComm[-1] + pyV["quote"])
+        comPath = (pyV["braceL"] +
+            getPath + pyV["braceR"])
+        #
+        print((lisTab) + (f"[-] {comCall
+            } from {comPath}"))
+    print(ended_fpy)
+#
+# FUNCTINGS - GET COMM #
+
+
+# FUNCTINGS - EXCING #
+def resolve_target (comm_file):
+    command_path = comm_file.replace(
+        pyV["colon"], pyV["slash"])
+    target_maps = [ f"{command_path}.py",
+        command_path, ]
+    #
+    for target in target_maps:
+        #print ((REDIC_LINK) + "/" + (target))
+        #
+        if PD_EXISTS:
+            target_f = (REDIC_LINK / target)
+            if target_f.exists():
+                return target_f
+        else:
+            api_target = pyV["slash"].join([GIT_API_LINK,
+                str(REPO_PY_DIR.as_posix()), target, ])
+            api_target = pyV["quest"].join([
+                api_target, LAST_PARAM, ])
+            response = requests.get(api_target)
+            #
+            if response.status_code == 200:
+                data = response.json()
+                #
+                return data["download_url"]
+    return None
+def execute_target(target_f, extra_args):
+    # LOCAL #
+    if PD_EXISTS:
+        subprocess.run([ sys.executable,
+            str(target_f), *extra_args,
+        ], check=True)
+        return
+    #
+    # REMOTE #
+    response = requests.get(target_f)
+    if response.status_code != 200:
+        print("Failed download target...")
+        return
+    #
+    with tempfile.NamedTemporaryFile(
+        delete=False, suffix=".py",
+        mode="w", encoding="utf-8"
+    ) as temp_file:
+        temp_file.write(response.text)
+        temp_path = temp_file.name
+    #
+    env = os.environ.copy()
+    env["ROOT_DIR"] = str(ROOT_DIR.resolve())
+    env["PYTHONPATH"] = ((str(PLUGIN_FUNC))
+        + (os.pathsep) + (str(PY_DIR)))
+    #
+    subprocess.run([ sys.executable,
+        temp_path, *extra_args,
+    ], env=env, check=True, )
+#
+# FUNCTINGS - EXCING #
+
+
+# FUNCTINGS - FINAL #
+def sys_work ():
+    comm_files = get_all_commands()
+    begin_py = ((pyV["pipe"]) + (pyV["enter"]) +
+        (separe_Sects("PY-SYS-COMMS")))
+    #
+    if len(sys.argv) < 2:
+        print(begin_py)
+        print_comms(comm_files)
+        return
+    #
+    comm_file = sys.argv[1]
+    target_f = resolve_target(comm_file)
+    #
+    #print(BD_RAW_LINK)
+    #
+    if target_f is None:
+        msg_404 = (f"Command `{comm_file}` is Not-Found...")
+        #
+        print(begin_py)
+        #
+        print(lisTab + msg_404)
+            #
+        print(lisTab + REDIC_LINK)
+        print(lisTab + str(target_f))
+        #
+        print(ended_fpy)
+        return
+    #
+    extra_args = sys.argv[2:]
+    execute_target(target_f, extra_args)
+#
+def test_cek ():
+    show_redic = ((REDIC_LINK.as_posix())
+        if isinstance(REDIC_LINK, Path)
+        else REDIC_LINK)
+    #
+    print ((pyV["enter"]) + separe_Sects("INITIALIZE-PATH"))
+    print (f"Root-Local: {ROOT_DIR.as_posix()}")
+    #print (f"Point-Local: {PY_DIR.as_posix()}")
+    #
+    print ((f"In-Remoted: {FULL_API_LINK}"))
+    print ((f"Redirect-To: {show_redic}")
+        + (pyV["enter"]) + (pyV["pipe"]))
+#
+def main ():
+    test_cek()
+    #
+    #?
+    #
+    sys_work()
+#
+# FUNCTINGS - FINAL #
+
+
+# DISPLAY #
+if __name__ == "__main__":
+    main()
+# DISPLAY #
+
+# ~ ~ ~ ~ ~ #
+
+
+#

@@ -10,7 +10,9 @@ Branch: work-dev
 
 <!--
 Just use:
-  python system/py
+  - python call/py
+  |
+  - bash call/bash/sync-repo
 =-->
 
 <h3 align="center"><span>
@@ -93,8 +95,8 @@ Menggunakan 2 metode:
 
   Pengerjaan disini, akan difungsikan kepada branch [{**work-entry**}][SMDC-B-Entry], yang akan disambungkan kepada [{**main**}][SMDC-B-Main].
 
-[SMDC-B-Main]: https://github.com/Minecube1510/sm-dc ""
-[SMDC-B-Entry]: https://github.com/Minecube1510/sm-dc/tree/work-entry ""
+[SMDC-B-Main]: https://github.com/Minecube1510/sm-dc "SM-DC di Branch: {Main}"
+[SMDC-B-Entry]: https://github.com/Minecube1510/sm-dc/tree/work-entry "SM-DC di grup Branch-Work: {Entry}"
 
 ---
 
@@ -108,11 +110,11 @@ Menggunakan 2 metode:
 
 - Linking
 
-> [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
+  > [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
 
 [Link-SMDC]: https://minecube1510.github.io/sm-dc "SM-DC - Image Ateiler"
 
 ---
 By: **Admin Gaster**
 
-<!-- END -->
+<!--= END =--!>

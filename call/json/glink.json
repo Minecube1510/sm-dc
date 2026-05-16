@@ -1,0 +1,19 @@
+{
+    "ltp": {
+        "bsc": "http",
+        "scr": "https"
+    },
+    "gh": {
+        "base": {
+            "raw": "raw.githubusercontent.com",
+            "api": "api.github.com"
+        },
+        "path": {
+            "repo": "repos",
+            "content": "contents",
+            "tree": "git/trees",
+            "blob": "git/blobs",
+            "commit": "commits"
+        }
+    }
+}
