@@ -17,8 +17,14 @@
 </div></div>
 
 - [**Lists**][Index-1]
+
 - [**Content**][Index-2]
-- [**Log**][Index-3]
+
+    > - [**Table: Main Tools**][I2-1]
+    > - [**Table: Project System - Core**][I2-2]
+    > - [**Table: Project System - Control**][I2-3]
+
+- [**Outro**][Idx-End]
 
 ---
 
@@ -28,195 +34,143 @@
 
 Special thanks to all systems and tools that contributed to the development of this app.
 
+- [Table: **Main Tools**][I2-1]
+- [Table: **Project System - Core**][I2-2]
+- [Table: **Project System - Control**][I2-3]
+
 Each of the following plays an important role in building, maintaining, and improving the project.
 
 </div>
 
 ---
 
-## Main Tools
+## [Main Tools][Index-2]
 
+<div id="i2-part-1">
 Here these are some of the main tools, that used to create, build, and develop the project.
-<!--
-=-->
-<table id="table-a1">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+</div>
+<table><div
+id="table::a-1">
+    <thead><tr><th colspan="2"><div align="center">
 Software Systems
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td align="center">
 
-![Badge-Github]
-</td><td>
+![Badge-Github]</td><td>
 Used as the main platform for version control, repository management, and collaboration.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td align="center">
 
-![Badge-VSCode]
-</td><td>
+![Badge-VSCode]</td><td>
 The primary code editor used for writing, editing, and managing the project files efficiently.
-        </td></tr>
-    </tbody>
-</table>
-
-<!--
-=-->
-<table id="table-a2">
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    </td></tr></tbody>
+</div><div
+id="table::a-2">
+    <thead><tr><th colspan="2"><div align="center">
 AI Assistance
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td align="center">
 
-![Badge-Copilot]
-</td><td>
+![Badge-Copilot]</td><td>
 Helps with code suggestions, auto-completion, and improving development speed.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td align="center">
 
-![Badge-ChatGPT]
-</td><td>
+![Badge-ChatGPT]</td><td>
 Assists in problem-solving, debugging, structuring ideas, and generating documentation.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td align="center">
 
-![Badge-Grok]
-</td><td>
+![Badge-Grok]</td><td>
 Used as an additional AI reference for exploring alternative solutions and perspectives.
-        </td></tr>
-    </tbody>
-</table>
+    </td></tr></tbody>
+</div></table>
 
-## Project System - Core
+## [Project System - Core][Index-2]
 
-The app is built use with Markdown (MD) base language.
-<!--
-=-->
-<table id="table-b1">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+<div id="i2-part-2">
+The app is built by using Markdown (MD) base language.
+</div>
+<table><div
+id="table::b-1">
+    <thead><tr><th colspan="2"><div align="center">
 Major Basic
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td align="center">
 
-![Badge-MD]
-</td><td>
-Serves as the main format for writing structured content and documentation within the app.
-        </td></tr>
-    </tbody>
-</table>
+![Badge-MD]</td><td>
+The main format for writing structured content and documentation within the app.
+    </td></tr><tr><td align="center">
 
-<!--
-=-->
-<table id="table-b2">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+![Badge-Imgur]</td><td>
+Serves as image storages that needed for contains thousands images.
+    </td></tr></tbody>
+</div><div
+id="table::b-2">
+    <thead><tr><th colspan="2"><div align="center">
 Secondary Methods
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td align="center">
 
-![Badge-Latex]
-</td><td>
+![Badge-Latex]</td><td>
 Used for rendering mathematical expressions and more complex formatted content.
-        </td></tr>
-        <tr><td><br>
+    </td></tr><tr><td align="center">
 
-![Badge-JSON]
-</td><td>
+![Badge-JSON]</td><td>
 Utilized for data structuring, configuration, and handling any data-related tasks within the app.
-        </td></tr>
-    </tbody>
-</table>
+    </td></tr></tbody>
+</div></table>
 
-## Project System - Control
+## [Project System - Control][Index-2]
 
+<div id="i2-part-3">
 These are several system applications for project development utilities.
-<!--
-=-->
-<table id="table-c1">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+</div>
+<table><div
+id="table::c-1">
+    <thead><tr><th colspan="2"><div align="center">
 Utilities Programming
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td align="center">
 
-![Badge-PY]
-</td><td>
+![Badge-PY]</td><td>
 Used for scripting, automation, and handling backend or processing tasks.
-        </td></tr>
-    </tbody>
-</table>
-
-<!--
-=-->
-<table id="table-c2">
-    <!---->
-    <thead>
-        <tr><th colspan="2">
-        <div align="center">
+    </td></tr></tbody>
+</div><div
+id="table::c-2">
+    <thead><tr><th colspan="2"><div align="center">
 Terminal Usage
-        </div></th></tr>
-    </thead>
-    <tbody>
-        <tr><td><br>
+    </div></th></tr></thead>
+    <tbody><tr><td align="center">
 
-![Badge-Bash]
-</td><td>
+![Badge-Bash]</td><td>
 Utilized for command-line operations, file management, and workflow automation.
-        </td></tr>
-    </tbody>
-</table>
+    </td></tr></tbody>
+</div></table>
 
 ---
 
-# [History Log][Idx-0]
+<div align="center"
+id="index-end">
 
-<div id="index-2">
+# [Thank You for Everything][Idx-0]
 
-Just a history logs.
+These all really helping me much...
+
+<!-- Lists: Reffs -->
+
+[Idx-0]: #index-core "Indexing - 0 (General Indexing Core)"
+[index-core]: #index-core "Indexing - 0 (General Indexing Core)"
+<!---->
+[Index-1]: #index-0 "Indexing - 1"
+<!--
+--->
+[Index-2]: #index-1 "Indexing - 2"
+<!---->
+[I2-1]: #i2-part-1 "Indexing - 2.1"
+[I2-2]: #i2-part-2 "Indexing - 2.2"
+[I2-3]: #i2-part-3 "Indexing - 2.3"
+<!---->
+[Idx-End]: #index-end "Indexing - The End"
 
 </div>
-
-```json
-[0]
-[0.0] 17-06-2026 {XX:XX} : "?."
-[0.?] 00-00-2000 {XX:XX} : "?."
-[0.?] 00-00-2000 {XX:XX} : "?."
-
-[1]
-[1.?] 00-00-2000 {XX:XX} : "?."
-[1.?] 00-00-2000 {XX:XX} : "?."
-[1.?] 00-00-2000 {XX:XX} : "?."
-
-[2]
-[2.?] 00-00-2000 {XX:XX} : "?."
-[2.?] 00-00-2000 {XX:XX} : "?."
-[2.?] 00-00-2000 {XX:XX} : "?."
-
-[3]
-[3.?] 00-00-2000 {XX:XX} : "?."
-[3.?] 00-00-2000 {XX:XX} : "?."
-[3.?] 00-00-2000 {XX:XX} : "?."
-```
 
 ---
 <!--
@@ -225,15 +179,15 @@ Just a history logs.
 <!---->
 
 <!--
-🤖 Artificial Intelligence
--->
+    🤖 Artificial Intelligence
+--->
 [Badge-ChatGPT]: https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=codewars&logoColor=FFFFFF "[ChatGPT]-[Formatted Badge]"
 [Badge-Copilot]: https://img.shields.io/badge/Copilot-000000?style=for-the-badge&logo=githubcopilot&logoColor=FFFFFF "[GitHub Copilot]-[Formatted Badge]"
 [Badge-Grok]: https://img.shields.io/badge/Grok-000000?style=for-the-badge&logo=x&logoColor=FFFFFF "[Grok - Twitter/X AI]-[Formatted Badge]"
 
 <!--
-🚀 Frameworks & Library
--->
+    🚀 Frameworks & Library
+--->
 [Badge-Markdown]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=FFFFFF "[Language - Markdown]-[Formatted Badge]"
 [Badge-MD]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=FFFFFF "[Language - Markdown]-[Formatted Badge]"
 <!---->
@@ -244,13 +198,13 @@ Just a history logs.
 [Badge-Shields-Io]: https://img.shields.io/badge/Shields-97CA00?style=for-the-badge&logo=shieldsdotio&logoColor=555555 "[Badger - Shields.io]-[Formatted Badge]"
 
 <!--
-👩‍💻 IDE
--->
+    👩‍💻 IDE
+--->
 [Badge-VSCode]: https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=vsco&logoColor=FFFFFF "[Visual Studio Code]-[Formatted Badge]"
 
 <!--
-👩‍💻 Languages
--->
+    👩‍💻 Languages
+--->
 [Badge-CSS]: https://img.shields.io/badge/CSS-663399?style=for-the-badge&logo=css&logoColor=1572B6 "[CSS]-[Formatted Badge]"
 [Badge-HTML]: https://img.shields.io/badge/HTML-E44D26?style=for-the-badge&logo=html5&logoColor=FFFFFF "[HTML]-[Formatted Badge]"
 <!---->
@@ -267,14 +221,14 @@ Just a history logs.
 <!---->
 
 <!--
-👨 Social
--->
+    👨 Social
+--->
 [Badge-GitHub]: https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=24292F "[GitHub (Platform)]-[Formatted Badge]"
 
 <!--
-💻 Terminal
--->
-[Badge-Bash]: https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=FFFFFF "[GNU Bash]-[Formatted Badge]"
+    💻 Terminal
+--->
+[Badge-Bash]: https://img.shields.io/badge/GNU_Bash-4EAA25?style=for-the-badge&logo=GNU%20Bash&logoColor=FFFFFF "[GNU Bash]-[Formatted Badge]"
 [Badge-CMD]: https://img.shields.io/badge/Windows_CMD-4D4D4D?style=for-the-badge&logo=gnometerminal&logoColor=FFFFFF "[Command Line]-[Formatted Badge]"
 <!--
     -->
@@ -282,27 +236,30 @@ Just a history logs.
 [Badge-Linux-Ubuntu]: https://img.shields.io/badge/Linux_Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=FFFFFF "[Ubuntu - Linux]-[Formatted Badge]"
 
 <!--
+<!--
+    Costumized
+=--|
 =-->
 
 <!--
-🛠️ Defaulted System
-📄📁 Defaulted File/Project
--->
+    🗄️ Costum - Storages
+--->
+[Badge-Imgur]: https://img.shields.io/badge/Imgur-2E3035?style=for-the-badge&logo=imgur&logoColor=1BB76E "[Imgur]-[Formatted Badge]"
+
+<!--
+=-->
+
+<!--
+    🛠️ [Z] Defaulted System
+    📄📁 [Z] Defaulted File/Project
+--->
 [Badge-Null]: https://img.shields.io/badge/Unknown-FFFFFF?style=for-the-badge&logo=rss&logoColor=black "[Unknown Badged Whatever]-[Formatted Badge]"
 <!---->
 [Badge-NullFile]: https://img.shields.io/badge/Unknown_File-FFFFFF?style=for-the-badge&logo=files&logoColor=black "[Unknown File]-[Formatted Badge]"
 [Badge-NullSys]: https://img.shields.io/badge/Unknown_System-FFFFFF?style=for-the-badge&logo=malwarebytes&logoColor=black "[Unknown System]-[Formatted Badge]"
 
-<!---->
 <!--
     END: Reffs
 -->
 
-[Idx-0]: #index-core "Indexing - 0 (General Indexing Core)"
-[index-core]: #index-core "Indexing - 0 (General Indexing Core)"
-<!---->
-[Index-1]: #index-0 "Indexing - 1"
-[Index-2]: #index-1 "Indexing - 2"
-[Index-3]: #index-2 "Indexing - 3"
-
-<!--=END=-->
+<!--=  END  =--!>
