@@ -16,7 +16,7 @@ sys.dont_write_bytecode = True
 # IMPORTS - IMPLY #
 
 
-# VARS - BASIC #
+# VARS - CONFIG #
 CONFIG_PATH = Path(__file__).resolve()
     #
 PLUGIN_DIR = CONFIG_PATH.parent
@@ -27,13 +27,7 @@ JSON_DIR = ROOT_DIR / "call" / "json"
 LCL_PY_DIR = ROOT_DIR / ".vscode" / "system" / "py"
 REPO_PY_DIR = LCL_PY_DIR.relative_to(ROOT_DIR)
 #
-http = "http"
-https = http + "s://"
-#
-B_RAW_LINK = https + "raw.githubusercontent.com"
-B_API_LINK = https + "api.github.com/repos"
-#
-# VARS - BASIC #
+# VARS - CONFIG #
 
 
 # IMPORTS - FETCHINGS #
@@ -43,8 +37,22 @@ def load_json(file):
 #
 pyV = load_json("vars.json")
 gitD = load_json("git-data.json")
-#
+gLink = load_json("glink.json")
+    #
+    #
 reffAtBr = (f"?ref={gitD["branch"]}")
+#
+link_limit = (pyV["linkLmt"])
+htBsc = (gLink["ltp"]["bsc"])
+htScr = (gLink["ltp"]["scr"])
+    #
+ghRaw = (gLink["gh"]["base"]["raw"])
+ghApi = (gLink["gh"]["base"]["api"])
+    #
+ghRepo = (gLink["gh"]["path"]["repo"])
+#
+B_RAW_LINK = (htScr + link_limit + ghRaw)
+B_API_LINK = (htScr + link_limit + ghApi)
 #
 # IMPORTS - FETCHINGS #
 

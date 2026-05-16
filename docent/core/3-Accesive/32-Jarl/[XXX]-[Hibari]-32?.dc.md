@@ -1,5 +1,17 @@
+<!--
+---
+
+Doc_Article: Entry_Doc
+Status: Wip
 
 ---
+-->
+---
+<div align="center">
+
+### Entry Doc Page
+
+</div>
 
 # Hibari, from 'Hanzō National Academy'
 

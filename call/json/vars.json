@@ -36,5 +36,7 @@
     "brackL": "[",
     "brackR": "]",
     "angleL": "<",
-    "angleR": ">"
+    "angleR": ">",
+        "text7": "Links & Protocols",
+    "linkLmt": "://"
 }

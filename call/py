@@ -7,11 +7,13 @@
 
 # IMPORTS - IMPLY #
 import os
+import os
 import sys
 import json
 import subprocess
 import tempfile
 import requests
+import time
 import time
 #
 from pathlib import Path
@@ -27,17 +29,9 @@ RD_REMOTE = SCRIPT_PATH.parents[2]
 #
 PLUGIN_FUNC = RD_BASE / ".vscode" / "plugin"
 PY_DIR = RD_BASE / ".vscode" / "system" / "py"
-SCRIPT_PATH = Path(__file__).resolve()
-RD_BASE = SCRIPT_PATH.parents[1]
-RD_REMOTE = SCRIPT_PATH.parents[2]
 #
-PLUGIN_FUNC = RD_BASE / ".vscode" / "plugin"
-PY_DIR = RD_BASE / ".vscode" / "system" / "py"
-#
-sys.path.insert(0, str(PY_DIR.as_posix()))
 sys.path.insert(0, str(PY_DIR.as_posix()))
 sys.path.insert(0, str(PLUGIN_FUNC.as_posix()))
-#
 #
 from configs import *
 #
@@ -47,44 +41,35 @@ from configs import *
 # IMPORTS - FETCHINGS #
 pyV = load_json("vars.json")
 gitD = load_json("git-data.json")
+gLink = load_json("glink.json")
 #
 # IMPORTS - FETCHINGS #
 
 
 # VARS - CONFIGS #
 BD_EXISTS = ROOT_DIR.exists()
-    #
 PD_EXISTS = LCL_PY_DIR.exists()
-#PD_EXISTS = PY_DIR.exists()
-BD_EXISTS = ROOT_DIR.exists()
     #
-PD_EXISTS = LCL_PY_DIR.exists()
-#PD_EXISTS = PY_DIR.exists()
+LAST_PARAM = (f"ref={gitD["branch"]}")
 #
-LAST_PARAM = f"ref={gitD["branch"]}"
-#
-GIT_RAW_LINK = pyV["slash"].join([B_RAW_LINK,
-    gitD["name"], gitD["repo"], gitD["branch"], ])
-GIT_API_LINK = pyV["slash"].join([B_API_LINK,
-    gitD["name"], gitD["repo"], "contents" ])
-BD_RAW_LINK = pyV["slash"].join([GIT_RAW_LINK,
+GIT_RAW_LINK = ((pyV["slash"]).join([B_RAW_LINK,
+    gitD["name"], gitD["repo"], gitD["branch"], ]))
+GIT_API_LINK = ((pyV["slash"]).join([B_API_LINK, ghRepo,
+    gitD["name"], gitD["repo"], "contents" ]))
+BD_RAW_LINK = ((pyV["slash"]).join([GIT_RAW_LINK,
     #str(ROOT_DIR.as_posix()), ])
-    #str(ROOT_DIR.as_posix()), ])
-    str(PY_DIR.as_posix()), ])
-BD_API_LINK = pyV["slash"].join([ GIT_API_LINK,
-    str(ROOT_DIR.as_posix()), ])
-    str(ROOT_DIR.as_posix()), ])
-BDF_API_LINK = pyV["quest"].join([ BD_API_LINK,
-    LAST_PARAM, ])
+    str(PY_DIR.as_posix()), ]))
+BD_API_LINK = ((pyV["slash"]).join([ GIT_API_LINK,
+    str(ROOT_DIR.as_posix()), ]))
+BDF_API_LINK = ((pyV["quest"]).join([ BD_API_LINK,
+    LAST_PARAM, ]))
 #
 FULL_API_LINK = ((pyV["slash"]).join([
-    GIT_API_LINK, str(REPO_PY_DIR.as_posix()),
     GIT_API_LINK, str(REPO_PY_DIR.as_posix()),
     ]) + (reffAtBr))
 REDIC_LINK = (LCL_PY_DIR
     if PD_EXISTS else FULL_API_LINK)
-REDIC_LINK = (LCL_PY_DIR
-    if PD_EXISTS else FULL_API_LINK)
+#
 # VARS - CONFIGS #
 
 
@@ -155,6 +140,20 @@ def get_all_commands ():
             print(f"Reset in {wait_sec} seconds")
             return []
         #
+        if response.status_code != 200:
+            reset_unix = int(response.headers["X-RateLimit-Reset"])
+            wait_sec = int((reset_unix) - (time.time()))
+            #
+            print(f"Request failed: {response.status_code}")
+            print(response.text)
+                #
+            print(("API at Limit: ") + (response.headers.get("X-RateLimit-Limit")))
+            print(("API remains: ") + (response.headers.get("X-RateLimit-Remaining")))
+                #
+            print(("Reset at: ") + (response.headers.get("X-RateLimit-Reset")))
+            print(f"Reset in {wait_sec} seconds")
+            return []
+        #
         data = response.json()
         for item in data:
             if item["type"] != "file":
@@ -208,16 +207,7 @@ def resolve_target (comm_file):
                 api_target, LAST_PARAM, ])
             response = requests.get(api_target)
             #
-            api_target = pyV["slash"].join([GIT_API_LINK,
-                str(REPO_PY_DIR.as_posix()), target, ])
-            api_target = pyV["quest"].join([
-                api_target, LAST_PARAM, ])
-            response = requests.get(api_target)
-            #
             if response.status_code == 200:
-                data = response.json()
-                #
-                return data["download_url"]
                 data = response.json()
                 #
                 return data["download_url"]
@@ -251,6 +241,14 @@ def execute_target(target_f, extra_args):
     subprocess.run([ sys.executable,
         temp_path, *extra_args,
     ], env=env, check=True, )
+    env = os.environ.copy()
+    env["ROOT_DIR"] = str(ROOT_DIR.resolve())
+    env["PYTHONPATH"] = ((str(PLUGIN_FUNC))
+        + (os.pathsep) + (str(PY_DIR)))
+    #
+    subprocess.run([ sys.executable,
+        temp_path, *extra_args,
+    ], env=env, check=True, )
 #
 # FUNCTINGS - EXCING #
 
@@ -260,8 +258,11 @@ def sys_work ():
     comm_files = get_all_commands()
     begin_py = ((pyV["pipe"]) + (pyV["enter"]) +
         (separe_Sects("PY-SYS-COMMS")))
+    begin_py = ((pyV["pipe"]) + (pyV["enter"]) +
+        (separe_Sects("PY-SYS-COMMS")))
     #
     if len(sys.argv) < 2:
+        print(begin_py)
         print(begin_py)
         print_comms(comm_files)
         return
@@ -276,11 +277,9 @@ def sys_work ():
         #
         print(begin_py)
         #
-        print(lisTab + msg_404)
-            #
-        print(lisTab + REDIC_LINK)
-        print(lisTab + str(target_f))
+        print(begin_py)
         #
+        print(lisTab + msg_404)
             #
         print(lisTab + REDIC_LINK)
         print(lisTab + str(target_f))
@@ -295,17 +294,12 @@ def test_cek ():
     show_redic = ((REDIC_LINK.as_posix())
         if isinstance(REDIC_LINK, Path)
         else REDIC_LINK)
-    show_redic = ((REDIC_LINK.as_posix())
-        if isinstance(REDIC_LINK, Path)
-        else REDIC_LINK)
     #
     print ((pyV["enter"]) + separe_Sects("INITIALIZE-PATH"))
-    print (f"Root-Local: {ROOT_DIR.as_posix()}")
     print (f"Root-Local: {ROOT_DIR.as_posix()}")
     #print (f"Point-Local: {PY_DIR.as_posix()}")
     #
     print ((f"In-Remoted: {FULL_API_LINK}"))
-    print ((f"Redirect-To: {show_redic}")
     print ((f"Redirect-To: {show_redic}")
         + (pyV["enter"]) + (pyV["pipe"]))
 #
