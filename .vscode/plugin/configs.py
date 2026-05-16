@@ -17,16 +17,22 @@ sys.dont_write_bytecode = True
 
 
 # VARS - BASIC #
-BASE_DIR = Path(".vscode")
-#
-JSON_DIR = Path("call/json")
-PY_DIR = Path(BASE_DIR / "system/py")
+CONFIG_PATH = Path(__file__).resolve()
+    #
+PLUGIN_DIR = CONFIG_PATH.parent
+VSCODE_DIR = PLUGIN_DIR.parent
+ROOT_DIR = VSCODE_DIR.parent
+    #
+JSON_DIR = ROOT_DIR / "call" / "json"
+LCL_PY_DIR = ROOT_DIR / ".vscode" / "system" / "py"
+REPO_PY_DIR = LCL_PY_DIR.relative_to(ROOT_DIR)
 #
 http = "http"
 https = http + "s://"
 #
 B_RAW_LINK = https + "raw.githubusercontent.com"
 B_API_LINK = https + "api.github.com/repos"
+#
 # VARS - BASIC #
 
 
