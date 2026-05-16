@@ -330,44 +330,44 @@ def opening_main():
     print((descript_funcfile)
         + (pyV["enter"]) + (pyV["pipe"]))
 def sys_main():
+    exit_code = 1
     cli_args = []
+    #
     for arg in sys.argv[1:]:
         cli_args.extend(arg.split())
-        #cli_args.extend(arg.replace(
-        #pyV["space"], pyV["space"]).split())
-    #
-    if not cli_args:
-        check_args()
-        return 0
     try:
+        if not cli_args:
+            check_args()
+            return 0
+        #
         validate_args(cli_args)
+        #
         sort_config = parse_sort_args(cli_args)
         filter_type = build_filter_type(cli_args)
         base_dir = resolve_base_dir(cli_args)
+        #
+        docs = sort_docs(scan_docs(base_dir),
+            sort_config, build_sorters())
+        to = parse_arg(cli_args, "to")
+        action = { "check": lambda: excheck(
+            docs, filter_type), }.get(to)
+        #
+        if to is None:
+            print("[ERROR] Missing 'to' argument")
+            check_args()
+        elif action is None:
+            print(f"[ERROR] Invalid target: {to}")
+            check_args()
+        else:
+            action()
+            exit_code = 0
     except ValueError as exc:
-        print(("[VALIDATION ERROR]"), (exc))
+        print("[VALIDATION ERROR]", exc)
         check_args()
-        return 1
     #
-    docs = sort_docs(scan_docs(base_dir),
-        sort_config, build_sorters())
+    print(ENDED_TASKING)
     #
-    to = parse_arg((cli_args), ("to"))
-    action = {
-        "check": lambda: excheck(
-            docs, filter_type),
-    }.get(to)
-    #
-    if to is None:
-        print("[ERROR] Missing 'to' argument")
-    elif action is None:
-        print(f"[ERROR] Invalid target: {to}")
-    else:
-        action()
-        return 0
-    #
-    check_args()
-    return 1
+    return exit_code
 #
 def main():
     #?
