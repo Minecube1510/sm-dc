@@ -7,7 +7,8 @@ Status: Wip
 ---
 -->
 ---
-<div align="center">
+<div align="center"
+id="edp">
 
 ### Entry Doc Page
 
@@ -28,15 +29,15 @@ Status: Wip
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
 
-  $${\textcolor{#FFC32B}{Spamor}}$$
+  ${\textcolor{#FFC32B}{Spamor}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
 
-  $${\textcolor{#FFFFFF}{Type}}$$
+  $\textcolor{#FFFFFF}{Type}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
 
-  $${\textcolor{#FFFFFF}{Category}}$$
+  $\textcolor{#FFFFFF}{Category}$
 </td>
 
 </tr><tr><td>
@@ -79,10 +80,10 @@ GAMBAR ILUSTRASI SAMPEL
 
 [[**Webnya darimana dapetnya?**][From-Web]]:
 "[*Sang Publisher atau Creator*][Publisher-Creator]"
+
 <!-- Reffs : Linking Assets Online -->
 [From-Web]: image.png "Descript Web-Image"
 [Publisher-Creator]: link.com "Publisher/Creator name"
-
 </div>
 
 ---
@@ -91,9 +92,9 @@ GAMBAR ILUSTRASI SAMPEL
 
 - **ID:** ***XXXX***  
 - **Sample Default Name:** *Nama Sampel*  
-- **Bunch:** $${\textbf{\textcolor{#FFFFFF}{Bunch}}}$$  
-- **Type:** $${\textbf{\textcolor{#FFFFFF}{Type}}}$$  
-- **Category:** $${\textbf{\textcolor{#FFFFFF}{Category}}}$$  
+- **Bunch:** $\textcolor{#FFFFFF}{\textbf{Bunch}}$  
+- **Type:** $\textcolor{#FFFFFF}{\textbf{Type}}$  
+- **Category:** $\textcolor{#FFFFFF}{\textbf{Category}}$  
 - **Segment:** *?*  
 - **List:** [ ***?*** ]
 
@@ -122,7 +123,8 @@ id="endfoot-linker">
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**XXXX**][Link-Prev] | ***<span title="XXXX">XXXX</span>*** | [**XXXX**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
@@ -132,7 +134,7 @@ id="endfoot-linker">
 
   <!-- BEGIN: Sample Reff -->
 <!-- Reffs : Anchor Hint -->
-[EDP]: #entry-doc-page
+[EDP]: #edp
 [Sample-Info]: #general-explanations
 [Endfoot]: #endfoot-linker
 <!-- ? -->

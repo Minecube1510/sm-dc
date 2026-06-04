@@ -6,7 +6,8 @@ Doc_Article: Entry_Doc
 ---
 -->
 ---
-<div align="center">
+<div align="center"
+id="edp">
 
 ### Entry Doc Page
 
@@ -27,15 +28,15 @@ Doc_Article: Entry_Doc
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
 
-  $${\textcolor{#00BEFF}{Fossil}}$$
+  ${\textcolor{#00BEFF}{Fossil}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
 
-  $${\textcolor{#FFFFFF}{Category}}$$
+  $\textcolor{#FFFFFF}{Category}$
 </td>
 
 </tr><tr><td>
@@ -58,6 +59,11 @@ title="Click for more information."
 alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
+<!-- Reffs : BTC Linking -->
+[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/11-AA-EXT.info.md
+[On-Category]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil///.info.md
+
 ---
 
 # Default Illustration
@@ -73,6 +79,10 @@ GAMBAR ILUSTRASI SAMPEL
 
 [[**Webnya darimana dapetnya?**][From-Web]]:
 "[*Sang Publisher atau Creator*][Publisher-Creator]"
+
+<!-- Reffs : Linking Assets Online -->
+[From-Web]: image.png "Descript Web-Image"
+[Publisher-Creator]: link.com "Publisher/Creator name"
 </div>
 
 ---
@@ -81,9 +91,9 @@ GAMBAR ILUSTRASI SAMPEL
 
 - **ID:** ***XXXX***  
 - **Sample Default Name:** *Nama Sampel*  
-- **Bunch:** $${\textbf{\textcolor{#00BEFF}{Gaster}}}$$  
-- **Type:** $${\textbf{\textcolor{#00BEFF}{Fossil}}}$$  
-- **Category:** $${\textbf{\textcolor{#FFFFFF}{Category}}}$$  
+- **Bunch:** $\textcolor{#00BEFF}{\textbf{Gaster}}$  
+- **Type:** $\textcolor{#00BEFF}{\textbf{Fossil}}$  
+- **Category:** $\textcolor{#FFFFFF}{\textbf{Category}}$  
 - **Segment:** *?*  
 - **List:** [ ***?*** ]
 
@@ -112,22 +122,19 @@ id="endfoot-linker">
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |
 | [**XXXX**][Link-Prev] | ***<span title="XXXX">XXXX</span>*** | [**XXXX**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
-
-</div>
-
----
-
-<!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/11-AA-EXT.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil///.info.md
-
-<!-- Reffs : Linking Assets Online -->
-[From-Web]: image.png "Descript Web-Image"
-[Publisher-Creator]: link.com "Publisher/Creator name"
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
 
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
-<!-- Reffs-End -->
+</div>
+
+---
+
+  <!-- BEGIN: Sample Reff -->
+<!-- Reffs : Anchor Hint -->
+[EDP]: #edp
+[Sample-Info]: #general-explanations
+[Endfoot]: #endfoot-linker
+<!-- ? -->
+  <!-- END: Sample Reff -->

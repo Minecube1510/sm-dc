@@ -20,7 +20,7 @@ Informasi koleksi bunch-nya Gaster
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
   src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
@@ -88,7 +88,7 @@ Menunggu: xxx
 >
 > [***GF*** Explanation](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/11-AA-EXT.info.md)
 
-### $${\textbf{\textcolor{#00BEFF}{Fossil}}}$$ $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Fossil}}$ $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 > [**Gaster** - **Fossil** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/111-Blaster)
 >
@@ -120,7 +120,7 @@ X. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/)
 >
 > [***Gaster Paperbag*** Explanation](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/15-A_E-EXT.info.md)
 
-### $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#B651FF}{\textbf{Paperbag}}$ $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 > [**Gaster** - **Paperbag** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/151-Blaster)
 >
@@ -153,7 +153,7 @@ X. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/)
 649. [Decepticon Megaempress](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/151-Blaster/)
 650. [Decepticon Lyzack](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/151-Blaster/0650-z-151.dc.md)
 
-### $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
+### $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
 > [**Gaster** - **Paperbag** - *Lance*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/152-Lance/)
 >
@@ -166,7 +166,7 @@ X. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/)
 655. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)
 656. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)
 
-### $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
+### $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
 > [**Gaster** - **Paperbag** - *Drill*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/153-Drill/)
 >
@@ -179,7 +179,7 @@ XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)
 XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)  
 XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)  
 
-### $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
+### $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
 
 > [**Gaster** - **Paperbag** - *Kama*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/154-Kama/)
 >
@@ -192,7 +192,7 @@ XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)
 XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)  
 XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)  
 
-### $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
+### $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
 > [**Gaster** - **Paperbag** - *Winchester*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/155-Winchester/)
 >
@@ -205,7 +205,7 @@ XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)
 XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)  
 XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)  
 
-### $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#FFFFFF}{with}}}$$ $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
+### $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#FFFFFF}{with}}}$$ $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
 
 > [**Gaster** - **Paperbag** - *Eldritch*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/f156-Eldritch/)
 >
@@ -226,7 +226,7 @@ XXX. [AddPlease](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/)
 >
 > [***G.Tri*** Explanation](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/)
 
-### $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$ $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Blaster}}$ $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 > [**Gaster** - **Trickster** - *?*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/)
 >

@@ -20,11 +20,11 @@ Doc_Article: Explanation
 <tr><td align="center"
 title="Gaster, sang Ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="AT-SECTION-TYPE">
 
-  $${\textcolor{#00BEFF}{Fossil}}$$
+  ${\textcolor{#00BEFF}{Fossil}}$
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
@@ -44,11 +44,11 @@ alt="BTC.GFB - Kafuu Chino">
 # $${\textbf{\textcolor{#00BEFF}{Coming}}}$$ $${\textbf{\textcolor{#00BEFF}{Soon}}}$$
 
 - **Bunch**: $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$
-- **Type**: $${\textbf{\textcolor{#00BEFF}{Fossil}}}$$
+- **Type**: $\textcolor{#00BEFF}{\textbf{Fossil}}$
 
 ---
 
-## $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+## $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 - [***Collection***: **Gaster** - **Fossil** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/111-Blaster)
 

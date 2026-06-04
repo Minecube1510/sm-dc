@@ -20,11 +20,11 @@ Laporan dari "Turnamen Jawara - X"
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Virtual, elemen utama Hacker">
 
-  $${\textcolor{#FF1B39}{Virtual}}$$
+  ${\textcolor{#FF1B39}{Virtual}}$
 </td><td align="center"
 title="AT-SECTION-CATEGORY">
 
@@ -53,7 +53,7 @@ alt="BTC.HuPaWi - Jinja Natsume">
 
 ---
 
-# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $${\textbf{\textcolor{#FF1B39}{Virtual}}}$$ $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#FF1B39}{\textbf{Virtual}}$ $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
 ## Pendahuluan
 

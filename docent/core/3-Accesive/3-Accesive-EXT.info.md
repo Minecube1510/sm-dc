@@ -20,7 +20,7 @@ Informasi koleksi bunch-nya Accesive
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
 
-  $${\textcolor{#FF1B39}{Accesive}}$$
+  ${\textcolor{#FF1B39}{Accesive}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
   src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
@@ -88,7 +88,7 @@ Menunggu: xxx
 
 > [**Accesive** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
 
-### $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)

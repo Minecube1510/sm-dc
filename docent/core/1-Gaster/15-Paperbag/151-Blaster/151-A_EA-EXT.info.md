@@ -20,15 +20,15 @@ Laporan dari "Turnamen Jawara - 1"
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Paperbag, kostum kasual Viking">
 
-  $${\textcolor{#B651FF}{Paperbag}}$$
+  ${\textcolor{#B651FF}{Paperbag}}$
 </td><td align="center"
 title="AT-SECTION-CATEGORY">
 
-  $${\textcolor{#00BEFF}{Blaster}}$$
+  ${\textcolor{#00BEFF}{Blaster}}$
 </td>
 
 </tr><tr><td>
@@ -53,7 +53,7 @@ alt="BTC.GFB - Kafuu Chino">
 
 ---
 
-# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#B651FF}{\textbf{Paperbag}}$ $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 ## Pendahuluan
 

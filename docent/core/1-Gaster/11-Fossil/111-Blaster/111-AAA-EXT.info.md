@@ -20,15 +20,15 @@ Laporan dari "Turnamen Jawara - ?"
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Fossil, elemen utama Admin">
 
-  $${\textcolor{#00BEFF}{Fossil}}$$
+  ${\textcolor{#00BEFF}{Fossil}}$
 </td><td align="center"
 title="AT-SECTION-CATEGORY">
 
-  $${\textcolor{#00BEFF}{Blaster}}$$
+  ${\textcolor{#00BEFF}{Blaster}}$
 </td>
 
 </tr><tr><td>
@@ -53,7 +53,7 @@ alt="BTC.GFB - Kafuu Chino">
 
 ---
 
-# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $${\textbf{\textcolor{#00BEFF}{Fossil}}}$$ $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#00BEFF}{\textbf{Fossil}}$ $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 ## Pendahuluan
 

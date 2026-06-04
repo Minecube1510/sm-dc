@@ -6,6 +6,12 @@ Doc_Article: Entry_Doc
 ---
 -->
 ---
+<div align="center"
+id="edp">
+
+### Entry Doc Page
+
+</div>
 
 # Iroha Tamaki
 
@@ -22,15 +28,15 @@ Doc_Article: Entry_Doc
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
 
-  $${\textcolor{#FFC32B}{Spamor}}$$
+  ${\textcolor{#FFC32B}{Spamor}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
 
-  $${\textcolor{#00BEFF}{Fossil}}$$
+  ${\textcolor{#00BEFF}{Fossil}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
 
-  $${\textcolor{#FFFFFF}{Category}}$$
+  $\textcolor{#FFFFFF}{Category}$
 </td>
 
 </tr><tr><td>
@@ -53,6 +59,11 @@ title="Click for more information."
 alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
+<!-- Reffs : BTC Linking -->
+[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/2-Spamor-EXT.info.md
+[On-Type]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/21-Fossil///.info.md
+[On-Category]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/21-Fossil///.info.md
+
 ---
 
 # Default Illustration
@@ -68,6 +79,10 @@ GAMBAR ILUSTRASI SAMPEL
 
 [[**Webnya darimana dapetnya?**][From-Web]]:
 "[*Sang Publisher atau Creator*][Publisher-Creator]"
+
+<!-- Reffs : Linking Online -->
+[From-Web]: image.png "Descript Web-Image"
+[Publisher-Creator]: link.com "Publisher/Creator name"
 </div>
 
 ---
@@ -76,9 +91,9 @@ GAMBAR ILUSTRASI SAMPEL
 
 - **ID:** ***XXXX***  
 - **Sample Default Name:** *Nama Sampel*  
-- **Bunch:** $${\textbf{\textcolor{#FFFFFF}{Bunch}}}$$  
-- **Type:** $${\textbf{\textcolor{#FFFFFF}{Type}}}$$  
-- **Category:** $${\textbf{\textcolor{#FFFFFF}{Category}}}$$  
+- **Bunch:** $\textcolor{#FFFFFF}{\textbf{Bunch}}$  
+- **Type:** $\textcolor{#FFFFFF}{\textbf{Type}}$  
+- **Category:** $\textcolor{#FFFFFF}{\textbf{Category}}$  
 - **Segment:** *?*  
 - **List:** [ ***?*** ]
 
@@ -96,31 +111,32 @@ TBA
 - [Referensi 2][Reff-2]
 - [Referensi 3][Reff-3]
 
----
-
-<div align="center">
-
-| ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
-| :-: | :-: | :-: |
-| [**XXXX**][Link-Prev] | ***<span title="XXXX">XXXX</span>*** | [**XXXX**][Link-Next] |
-| **<-<-<-<-<** Prev **<-<-<-<-<** | **#** *Here* **#** | **>->->->->** Next **>->->->->** |
-
-</div>
-
----
-
-<!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/2-Spamor-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/21-Fossil///.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/21-Fossil///.info.md
-<!-- Reffs : Linking Online -->
-[From-Web]: image.png "Descript Web-Image"
-[Publisher-Creator]: link.com "Publisher/Creator name"
 <!-- Reffs : Linking Online -->
 [Reff-1]: github.com "Descript-Note 1"
 [Reff-2]: github.com "Descript-Note 2"
 [Reff-3]: github.com "Descript-Note 3"
+
+---
+
+<div align="center"
+id="endfoot-linker">
+
+| ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
+| :-: | :-: | :-: |
+| [**XXXX**][Link-Prev] | ***<span title="XXXX">XXXX</span>*** | [**XXXX**][Link-Next] |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
+
 <!-- Reffs : Navigate -->
 [Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
 [Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
-<!-- Reffs-End -->
+</div>
+
+---
+
+  <!-- BEGIN: Sample Reff -->
+<!-- Reffs : Anchor Hint -->
+[EDP]: #edp
+[Sample-Info]: #general-explanations
+[Endfoot]: #endfoot-linker
+<!-- ? -->
+  <!-- END: Sample Reff -->

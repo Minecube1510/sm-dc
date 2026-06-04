@@ -20,11 +20,11 @@ Doc_Article: Explanation
 <tr><td align="center"
 title="Gaster, sang Ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="AT-SECTION-TYPE">
 
-  $${\textcolor{#B651FF}{Paperbag}}$$
+  ${\textcolor{#B651FF}{Paperbag}}$
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
@@ -44,11 +44,11 @@ alt="BTC.HuPaWi - Jinja Natsume">
 # $${\textbf{\textcolor{#00BEFF}{Cyber}}}$$ $${\textbf{\textcolor{#B651FF}{Robot}}}$$
 
 - **Bunch**: $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$
-- **Type**: $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$
+- **Type**: $\textcolor{#B651FF}{\textbf{Paperbag}}$
 
 ---
 
-## $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+## $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 > [***Collection***: **Gaster** - **Paperbag** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/151-Blaster)
 

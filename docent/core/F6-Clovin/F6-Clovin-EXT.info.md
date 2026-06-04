@@ -20,7 +20,7 @@ Informasi koleksi bunch-nya Clovin
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
 
-  $${\textcolor{#6A96FF}{Clovin}}$$
+  ${\textcolor{#6A96FF}{Clovin}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
   src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
@@ -88,7 +88,7 @@ Menunggu: xxx
 
 > [**Clovin** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
 
-### $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)

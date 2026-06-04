@@ -20,15 +20,15 @@ Laporan dari "Turnamen Jawara - 2"
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Paperbag, kostum kasual Viking">
 
-  $${\textcolor{#B651FF}{Paperbag}}$$
+  ${\textcolor{#B651FF}{Paperbag}}$
 </td><td align="center"
 title="AT-SECTION-CATEGORY">
 
-  $${\textcolor{#FFC32B}{Lance}}$$
+  ${\textcolor{#FFC32B}{Lance}}$
 </td>
 
 </tr><tr><td>
@@ -53,7 +53,7 @@ alt="BTC.SJL - Jouga Maya">
 
 ---
 
-# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
 ## Pendahuluan
 

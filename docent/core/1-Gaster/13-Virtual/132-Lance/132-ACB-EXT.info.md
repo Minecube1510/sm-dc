@@ -20,15 +20,15 @@ Laporan dari "Turnamen Jawara - X"
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Virtual, elemen utama Hacker">
 
-  $${\textcolor{#FF1B39}{Virtual}}$$
+  ${\textcolor{#FF1B39}{Virtual}}$
 </td><td align="center"
 title="AT-SECTION-CATEGORY">
 
-  $${\textcolor{#FFC32B}{Lance}}$$
+  ${\textcolor{#FFC32B}{Lance}}$
 </td>
 
 </tr><tr><td>
@@ -53,7 +53,7 @@ alt="BTC.SJL - Jouga Maya">
 
 ---
 
-# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $${\textbf{\textcolor{#FF1B39}{Virtual}}}$$ $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#FF1B39}{\textbf{Virtual}}$ $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
 ## Pendahuluan
 

@@ -20,15 +20,15 @@ Laporan dari "Turnamen Jawara - 3"
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Paperbag, kostum kasual Viking">
 
-  $${\textcolor{#B651FF}{Paperbag}}$$
+  ${\textcolor{#B651FF}{Paperbag}}$
 </td><td align="center"
 title="AT-SECTION-CATEGORY">
 
-  $${\textcolor{#FF1B39}{Drill}}$$
+  ${\textcolor{#FF1B39}{Drill}}$
 </td>
 
 </tr><tr><td>
@@ -53,7 +53,7 @@ alt="BTC.AVD - Natsu Megumi">
 
 ---
 
-# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $${\textbf{\textcolor{#B651FF}{Paperbag}}}$$ $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
 ## Pendahuluan
 

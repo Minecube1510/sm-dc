@@ -20,11 +20,11 @@ Doc_Article: Explanation
 <tr><td align="center"
 title="Gaster, sang Ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="AT-SECTION-TYPE">
 
-  $${\textcolor{#FF1B39}{Virtual}}$$
+  ${\textcolor{#FF1B39}{Virtual}}$
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
@@ -44,11 +44,11 @@ alt="BTC.AVD - Natsu Megumi">
 # $${\textbf{\textcolor{#00BEFF}{Coming}}}$$ $${\textbf{\textcolor{#00BEFF}{Soon}}}$$
 
 - **Bunch**: $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$
-- **Type**: $${\textbf{\textcolor{#FF1B39}{Virtual}}}$$
+- **Type**: $\textcolor{#FF1B39}{\textbf{Virtual}}$
 
 ---
 
-## $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+## $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 - [***Collection***: **Gaster** - **Virtual** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/13-Virtual/131-Blaster)
 

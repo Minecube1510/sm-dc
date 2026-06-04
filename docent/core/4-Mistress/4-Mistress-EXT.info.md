@@ -20,7 +20,7 @@ Informasi koleksi bunch-nya Mistress
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
 
-  $${\textcolor{#FF78D3}{Mistress}}$$
+  ${\textcolor{#FF78D3}{Mistress}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
   src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
@@ -88,7 +88,7 @@ Menunggu: xxx
 
 > [**Mistress** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
 
-### $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)

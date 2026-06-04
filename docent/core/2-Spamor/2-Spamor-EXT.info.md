@@ -20,7 +20,7 @@ Informasi koleksi bunch-nya Spamor
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
 
-  $${\textcolor{#FFC32B}{Spamor}}$$
+  ${\textcolor{#FFC32B}{Spamor}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
   src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
@@ -89,7 +89,7 @@ Menunggu: xxx
 
 > [**Spamor** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
 
-### $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)

@@ -20,7 +20,7 @@ Informasi koleksi bunch-nya Hunfle
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
 
-  $${\textcolor{#B651FF}{Hunfle}}$$
+  ${\textcolor{#B651FF}{Hunfle}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
   src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
@@ -88,7 +88,7 @@ Menunggu: xxx
 
 > [**Hunfle** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
 
-### $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
 000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
@@ -144,7 +144,8 @@ Menunggu: xxx
 
 ---
 
-<div align="center">
+<div align="center"
+id="endfoot-linker">
 
 | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
 | :-: | :-: | :-: |

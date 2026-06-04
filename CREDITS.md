@@ -169,7 +169,8 @@ These all really helping me much...
 [I2-3]: #i2-part-3 "Indexing - 2.3"
 <!---->
 [Idx-End]: #index-end "Indexing - The End"
-
+<!--
+!-->
 </div>
 
 ---

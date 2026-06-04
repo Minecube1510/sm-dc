@@ -6,7 +6,8 @@ Doc_Article: Generic
 ---
 -->
 ---
-<div align="center">
+<div align="center"
+id="esg">
 
 ### Sample Generic
 
@@ -25,11 +26,11 @@ Doc_Article: Generic
 <tr><td align="center"
 title="Gaster, sang Ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="AT-SECTION-TYPE">
 
-  $${\textcolor{#6A96FF}{Trickster}}$$
+  ${\textcolor{#6A96FF}{Trickster}}$
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
@@ -53,7 +54,7 @@ alt="BTC.CloTriEld - Fuiba Fuyu">
 
 ---
 
-## $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+## $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 - [***Collection***: **Gaster** - **Trickster** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/f16-Trickster/)
 

@@ -6,7 +6,8 @@ Doc_Article: Generic
 ---
 -->
 ---
-<div align="center">
+<div align="center"
+id="esg">
 
 ### Sample Generic
 
@@ -25,11 +26,11 @@ Doc_Article: Generic
 <tr><td align="center"
 title="Gaster, sang Ketua Admin">
 
-  $${\textcolor{#00BEFF}{Gaster}}$$
+  ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="AT-SECTION-TYPE">
 
-  $${\textcolor{#FF78D3}{Raincoat}}$$
+  ${\textcolor{#FF78D3}{Raincoat}}$
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
@@ -49,11 +50,11 @@ alt="BTC.MiRaKa - Jinja Eru">
 # $${\textbf{\textcolor{#00BEFF}{Coming}}}$$ $${\textbf{\textcolor{#00BEFF}{Soon}}}$$
 
 - **Bunch**: $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$
-- **Type**: $${\textbf{\textcolor{#FFC32B}{Jarl}}}$$
+- **Type**: $\textcolor{#FFC32B}{\textbf{Jarl}}$
 
 ---
 
-## $${\textbf{\textcolor{#00BEFF}{Blaster}}}$$
+## $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
 - [***Collection***: **Gaster** - **Jarl** - *Blaster*](/BASE/ENTRY_DOC/Main-Samples/1-Gaster/14-Raincoat/)
 
