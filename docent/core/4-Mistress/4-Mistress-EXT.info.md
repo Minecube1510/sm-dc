@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Explanation
+Status: Wip
+#
+District: Bunch
 
 ---
 -->
@@ -10,16 +13,15 @@ Doc_Article: Explanation
 # Kamen Rider Mistress's Collection
 
 > **Topic**: Generic
-
-**Description**:  
-Informasi koleksi bunch-nya Mistress
+>
+> **Description**:  
+> Informasi koleksi bunch-nya Mistress
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
-
   ${\textcolor{#FF78D3}{Mistress}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
@@ -86,61 +88,61 @@ Menunggu: xxx
 
 ### $${\textbf{\textcolor{#FF78D3}{CS}}}$$
 
-> [**Mistress** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+> [**Mistress** - *Fossil*](/docent/core/4-Mistress/)
 
 ### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+000. [Menunggu](/docent/core/4-Mistress/)
+000. [Menunggu](/docent/core/4-Mistress/)
+000. [Menunggu](/docent/core/4-Mistress/)
+000. [Menunggu](/docent/core/4-Mistress/)
+000. [Menunggu](/docent/core/4-Mistress/)
+000. [Menunggu](/docent/core/4-Mistress/)
 
 ### $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
 
 ### $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
 
 ### $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
 
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
 
 ### $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
 
 ### $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
 
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
-3000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
+3000. [Menunggu](/docent/core/4-Mistress/)
 
 ---
 <div align="center"
@@ -156,16 +158,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+[On-Bunch]: /docent/core/HERE-IS-BUNCH-SECTION
+[On-Type]: /docent/core/HERE-NOT-TYPE-SECTION
+[On-Category]: /docent/core/HERE-NOT-CATEGORY-SECTION
 
 <!-- Reffs : BTC Linking -->
-[Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress
+[Main-lnk]: /docent/core/4-Mistress
 [?]: .
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive/3-Accesive-EXT.info.md "Prev: {{{-c'3'C-}}} - (Accesive)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle/5-Hunfle-EXT.info.md "Next: {{{--E_5_E--}}} - (Elite*Hunfle)"
+[Link-Prev]: /docent/core/3-Accesive/3-Accesive-EXT.info.md "Prev: {{{-c'3'C-}}} - (Accesive)"
+[Link-Next]: /docent/core/5-Hunfle/5-Hunfle-EXT.info.md "Next: {{{--E_5_E--}}} - (Elite*Hunfle)"
 
 <!-- Reffs-End -->

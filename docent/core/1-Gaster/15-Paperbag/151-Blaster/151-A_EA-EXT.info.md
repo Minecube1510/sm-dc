@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Explanation
+Status: Wip
+#
+District: Category
 
 ---
 -->
@@ -10,16 +13,15 @@ Doc_Article: Explanation
 # Gaster: Paperbag Spec-Grade, Blaster
 
 > **Topic**: Report
-
-**Description**:  
-Laporan dari "Turnamen Jawara - 1"
+>
+> **Description**:  
+> Laporan dari "Turnamen Jawara - 1"
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
-
   ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Paperbag, kostum kasual Viking">
@@ -413,16 +415,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/15-A_E-EXT.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-CATEGORY-SECTION
+[On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /docent/core/1-Gaster/15-Paperbag/15-A_E-EXT.info.md
+[On-Category]: /docent/core/HERE-IS-CATEGORY-SECTION
 
 <!-- Reffs : Anchor Hint -->
 [?]: .
 [Endfoot]: #endfoot-linker
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/14-Raincoat///?.info.md "Prev: [f-1_4!6-f] - (Gaster Raincoat'ed !ELDRITCH!)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/152-Lance/152-A_EB-EXT.info.md "Next: [1_5_2] - (Gaster Paperbag'ed Lance)"
+[Link-Prev]: /docent/core/1-Gaster/14-Raincoat///?.info.md "Prev: [f-1_4!6-f] - (Gaster Raincoat'ed !ELDRITCH!)"
+[Link-Next]: /docent/core/1-Gaster/15-Paperbag/152-Lance/152-A_EB-EXT.info.md "Next: [1_5_2] - (Gaster Paperbag'ed Lance)"
 
 <!-- Reffs-End -->

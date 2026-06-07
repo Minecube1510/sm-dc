@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Entry_Doc
+Status: Wip
+#
+District: Appx-2f6?
 
 ---
 -->
@@ -16,26 +19,26 @@ id="edp">
 # Max Bomberman
 
 > **Topic**: Sample
+> **Title**: Spamor: Trickster Empl_oti_onal, ?  
+> **Segment**: Segmen
 >
 > **Syndicate**:  
 > (Perdataan apapun lah dalam Sampel)
-
-**Spamor: Trickster Empl_oti_onal, ?**
+>
+> - [Sample Information][Sample-Info]
+> - [Page Navigation][Endfoot]
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-
   ${\textcolor{#FFC32B}{Spamor}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-
   ${\textcolor{#6A96FF}{Trickster}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
-
   $\textcolor{#FFFFFF}{Category}$
 </td>
 
@@ -60,9 +63,9 @@ alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/2-Spamor-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/f26-Trickster///.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/f26-Trickster///.info.md
+[On-Bunch]: /docent/core/2-Spamor/2-Spamor-EXT.info.md
+[On-Type]: /docent/core/2-Spamor/f26-Trickster///.info.md
+[On-Category]: /docent/core/2-Spamor/f26-Trickster///.info.md
 
 ---
 
@@ -127,8 +130,8 @@ id="endfoot-linker">
 
 [Reff-3]: github.com "Descript-Note 3"
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
+[Link-Prev]: /docent/core///?.dc.md "Prev: XXXX"
+[Link-Next]: /docent/core///?.dc.md "Next: XXXX"
 </div>
 
 ---

@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Explanation
+Status: Wip
+#
+District: Bunch
 
 ---
 -->
@@ -10,16 +13,15 @@ Doc_Article: Explanation
 # Kamen Rider Spamor's Collection
 
 > **Topic**: Generic
-
-**Description**:  
-Informasi koleksi bunch-nya Spamor
+>
+> **Description**:  
+> Informasi koleksi bunch-nya Spamor
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
-
   ${\textcolor{#FFC32B}{Spamor}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
@@ -87,61 +89,61 @@ Menunggu: xxx
 
 ## $${\textbf{\textcolor{#FFC32B}{ComingSoon}}}$$
 
-> [**Spamor** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+> [**Spamor** - *Fossil*](/docent/core/2-Spamor/)
 
 ### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+000. [Menunggu](/docent/core/2-Spamor/)
+000. [Menunggu](/docent/core/2-Spamor/)
+000. [Menunggu](/docent/core/2-Spamor/)
+000. [Menunggu](/docent/core/2-Spamor/)
+000. [Menunggu](/docent/core/2-Spamor/)
+000. [Menunggu](/docent/core/2-Spamor/)
 
 ### $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
 
 ### $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
 
 ### $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
 
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
 
 ### $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
 
 ### $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
 
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
-1000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
+1000. [Menunggu](/docent/core/2-Spamor/)
 
 ---
 <div align="center"
@@ -157,16 +159,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+[On-Bunch]: /docent/core/HERE-IS-BUNCH-SECTION
+[On-Type]: /docent/core/HERE-NOT-TYPE-SECTION
+[On-Category]: /docent/core/HERE-NOT-CATEGORY-SECTION
 
 <!-- Reffs : BTC Linking -->
-[Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor
+[Main-lnk]: /docent/core/2-Spamor
 [?]: .
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md "Prev: {{{-a'1'A-}}} - (Gaster)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive/3-Accesive-EXT.info.md "Next: {{{-c'3'C-}}} - (Accesive)"
+[Link-Prev]: /docent/core/1-Gaster/1-Gaster-EXT.info.md "Prev: {{{-a'1'A-}}} - (Gaster)"
+[Link-Next]: /docent/core/3-Accesive/3-Accesive-EXT.info.md "Next: {{{-c'3'C-}}} - (Accesive)"
 
 <!-- Reffs-End -->

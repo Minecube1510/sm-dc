@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Entry_Doc
+Status: Wip
+#
+District: Appx-11?
 
 ---
 -->
@@ -30,15 +33,12 @@ id="edp">
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-
   ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-
   ${\textcolor{#00BEFF}{Fossil}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
-
   $\textcolor{#FFFFFF}{Category}$
 </td>
 
@@ -63,9 +63,9 @@ alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/11-AA-EXT.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil///.info.md
+[On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /docent/core/1-Gaster/11-Fossil/11-AA-EXT.info.md
+[On-Category]: /docent/core/1-Gaster/11-Fossil///.info.md
 
 ---
 
@@ -128,8 +128,8 @@ id="endfoot-linker">
 | **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
+[Link-Prev]: /docent/core///?.dc.md "Prev: XXXX"
+[Link-Next]: /docent/core///?.dc.md "Next: XXXX"
 </div>
 
 ---

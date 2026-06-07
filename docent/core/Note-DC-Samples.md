@@ -1,7 +1,7 @@
 <!--
 ---
 
-Doc_Article: Explanation
+Doc_Article: X
 Article_Path: Entry_Doc
 #
 Status: No-Status

@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Explanation
+Status: Wip
+#
+District: Bunch
 
 ---
 -->
@@ -10,9 +13,9 @@ Doc_Article: Explanation
 # Kamen Rider Hunfle's Collection
 
 > **Topic**: Generic
-
-**Description**:  
-Informasi koleksi bunch-nya Hunfle
+>
+> **Description**:  
+> Informasi koleksi bunch-nya Hunfle
 
 ## Simbolic Indicator
 
@@ -86,61 +89,61 @@ Menunggu: xxx
 
 ### $${\textbf{\textcolor{#B651FF}{CS}}}$$
 
-> [**Hunfle** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+> [**Hunfle** - *Fossil*](/docent/core/5-Hunfle/)
 
 ### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+000. [Menunggu](/docent/core/5-Hunfle/)
+000. [Menunggu](/docent/core/5-Hunfle/)
+000. [Menunggu](/docent/core/5-Hunfle/)
+000. [Menunggu](/docent/core/5-Hunfle/)
+000. [Menunggu](/docent/core/5-Hunfle/)
+000. [Menunggu](/docent/core/5-Hunfle/)
 
 ### $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
 
 ### $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
 
 ### $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
 
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
 
 ### $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
 
 ### $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
 
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
-4000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
+4000. [Menunggu](/docent/core/5-Hunfle/)
 
 ---
 
@@ -157,16 +160,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+[On-Bunch]: /docent/core/HERE-IS-BUNCH-SECTION
+[On-Type]: /docent/core/HERE-NOT-TYPE-SECTION
+[On-Category]: /docent/core/HERE-NOT-CATEGORY-SECTION
 
 <!-- Reffs : BTC Linking -->
-[Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle
+[Main-lnk]: /docent/core/5-Hunfle
 [?]: .
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress/4-Mistress-EXT.info.md "Prev: {{{--D_4_D--}}} - (Elite*Mistress)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F6-Clovin-EXT.info.md "Next: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
+[Link-Prev]: /docent/core/4-Mistress/4-Mistress-EXT.info.md "Prev: {{{--D_4_D--}}} - (Elite*Mistress)"
+[Link-Next]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md "Next: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
 
 <!-- Reffs-End -->

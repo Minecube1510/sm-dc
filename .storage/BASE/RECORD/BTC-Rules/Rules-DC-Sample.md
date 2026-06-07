@@ -61,7 +61,7 @@ Isi Aturan
 
 ## C. Format Isi dalam File
 
-- Keliatannya itu gak bisa dijelasin lebih di sini, cobalah untuk mengunjungi [**"Link lengkap yang ada di sini"**](/BASE/ENTRY_DOC/Main-Samples/ZZZ-Center).
+- Keliatannya itu gak bisa dijelasin lebih di sini, cobalah untuk mengunjungi [**"Link lengkap yang ada di sini"**](/docent/rec/).
 
 ## D. **QnA**
 

@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Entry_Doc
+Status: Wip
+#
+District: Appx-F63?
 
 ---
 -->
@@ -16,26 +19,26 @@ id="edp">
 # Tiara Victoria Lex Waleland
 
 > **Topic**: Sample
+> **Title**: CLOVIN-IS-HERE: Virtual Spec, ?  
+> **Segment**: Segmen
 >
 > **Syndicate**:  
 > (Perdataan apapun lah dalam Sampel)
-
-**CLOVIN-IS-HERE: Virtual Spec, ?**
+>
+> - [Sample Information][Sample-Info]
+> - [Page Navigation][Endfoot]
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-
   ${\textcolor{#6A96FF}{Clovin}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-
   ${\textcolor{#FF1B39}{Virtual}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
-
   $\textcolor{#FFFFFF}{Category}$
 </td>
 
@@ -60,9 +63,9 @@ alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F6-Clovin-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F63-Virtual///.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/F63-Virtual///.info.md
+[On-Bunch]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md
+[On-Type]: /docent/core/F6-Clovin/F63-Virtual///.info.md
+[On-Category]: /docent/core/F6-Clovin/F63-Virtual///.info.md
 
 ---
 
@@ -125,8 +128,8 @@ id="endfoot-linker">
 | **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
+[Link-Prev]: /docent/core///?.dc.md "Prev: XXXX"
+[Link-Next]: /docent/core///?.dc.md "Next: XXXX"
 </div>
 
 ---

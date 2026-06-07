@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Explanation
+Status: Wip
+#
+District: Bunch
 
 ---
 -->
@@ -10,16 +13,15 @@ Doc_Article: Explanation
 # Kamen Rider Accesive's Collection
 
 > **Topic**: Generic
-
-**Description**:  
-Informasi koleksi bunch-nya Accesive
+>
+> **Description**:  
+> Informasi koleksi bunch-nya Accesive
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
-
   ${\textcolor{#FF1B39}{Accesive}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
@@ -86,61 +88,61 @@ Menunggu: xxx
 
 ### $${\textbf{\textcolor{#FF1B39}{CS}}}$$
 
-> [**Accesive** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+> [**Accesive** - *Fossil*](/docent/core/3-Accesive/)
 
 ### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+000. [Menunggu](/docent/core/3-Accesive/)
+000. [Menunggu](/docent/core/3-Accesive/)
+000. [Menunggu](/docent/core/3-Accesive/)
+000. [Menunggu](/docent/core/3-Accesive/)
+000. [Menunggu](/docent/core/3-Accesive/)
+000. [Menunggu](/docent/core/3-Accesive/)
 
 ### $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
 
 ### $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
 
 ### $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
 
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
 
 ### $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
 
 ### $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
 
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
-2000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
+2000. [Menunggu](/docent/core/3-Accesive/)
 
 ---
 <div align="center"
@@ -156,16 +158,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+[On-Bunch]: /docent/core/HERE-IS-BUNCH-SECTION
+[On-Type]: /docent/core/HERE-NOT-TYPE-SECTION
+[On-Category]: /docent/core/HERE-NOT-CATEGORY-SECTION
 
 <!-- Reffs : BTC Linking -->
-[Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive
+[Main-lnk]: /docent/core/3-Accesive
 [?]: .
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/2-Spamor/2-Spamor-EXT.info.md "Prev: {{{-b'2'B-}}} - (Spamor)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/4-Mistress/4-Mistress-EXT.info.md "Next: {{{--D_4_D--}}} - (Elite*Mistress)"
+[Link-Prev]: /docent/core/2-Spamor/2-Spamor-EXT.info.md "Prev: {{{-b'2'B-}}} - (Spamor)"
+[Link-Next]: /docent/core/4-Mistress/4-Mistress-EXT.info.md "Next: {{{--D_4_D--}}} - (Elite*Mistress)"
 
 <!-- Reffs-End -->

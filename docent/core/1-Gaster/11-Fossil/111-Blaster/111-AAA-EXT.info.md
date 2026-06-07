@@ -19,7 +19,6 @@ Laporan dari "Turnamen Jawara - ?"
 <div align="center"><table>
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
-
   ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Fossil, elemen utama Admin">
@@ -73,16 +72,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil/11-AA-EXT.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-CATEGORY-SECTION
+[On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /docent/core/1-Gaster/11-Fossil/11-AA-EXT.info.md
+[On-Category]: /docent/core/HERE-IS-CATEGORY-SECTION
 
 <!-- Reffs : Anchor Hint -->
 [?]: .
 [Endfoot]: #endfoot-linker
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin/Ff66-Trickster///?.info.md "Prev: [F-@6/6!6] - (HERE'Clovin'HERE Trickster-Side !ELDRITCH!)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/11-Fossil///?.info.md "Next: [112] - (Gaster Paperbag'ed Lance)"
+[Link-Prev]: /docent/core/F6-Clovin/Ff66-Trickster///?.info.md "Prev: [F-@6/6!6] - (HERE'Clovin'HERE Trickster-Side !ELDRITCH!)"
+[Link-Next]: /docent/core/1-Gaster/11-Fossil///?.info.md "Next: [112] - (Gaster Paperbag'ed Lance)"
 
 <!-- Reffs-End -->

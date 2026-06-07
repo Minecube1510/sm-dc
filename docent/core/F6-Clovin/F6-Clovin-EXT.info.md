@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Explanation
+Status: Wip
+#
+District: Bunch
 
 ---
 -->
@@ -10,9 +13,9 @@ Doc_Article: Explanation
 # Kamen Rider Clovin's Collection
 
 > **Topic**: Generic
-
-**Description**:  
-Informasi koleksi bunch-nya Clovin
+>
+> **Description**:  
+> Informasi koleksi bunch-nya Clovin
 
 ## Simbolic Indicator
 
@@ -86,61 +89,61 @@ Menunggu: xxx
 
 ## $${\textbf{\textcolor{#6A96FF}{CS}}}$$
 
-> [**Clovin** - *Fossil*](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+> [**Clovin** - *Fossil*](/docent/core/F6-Clovin/)
 
 ### $\textcolor{#00BEFF}{\textbf{Blaster}}$
 
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+000. [Menunggu](/docent/core/F6-Clovin/)
+000. [Menunggu](/docent/core/F6-Clovin/)
+000. [Menunggu](/docent/core/F6-Clovin/)
+000. [Menunggu](/docent/core/F6-Clovin/)
+000. [Menunggu](/docent/core/F6-Clovin/)
+000. [Menunggu](/docent/core/F6-Clovin/)
 
 ### $${\textbf{\textcolor{#FFC32B}{Lance}}}$$
 
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
 
 ### $${\textbf{\textcolor{#FF1B39}{Drill}}}$$
 
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
 
 ### $${\textbf{\textcolor{#FF78D3}{Kama}}}$$
 
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
 
 ### $${\textbf{\textcolor{#B651FF}{Winchester}}}$$
 
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
 
 ### $${\textbf{\textcolor{#6A96FF}{ELDRTICH}}}$$
 
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
-5000. [Menunggu](/BASE/ENTRY_DOC/Main-Samples/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
+5000. [Menunggu](/docent/core/F6-Clovin/)
 
 ---
 <div align="center"
@@ -156,16 +159,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-BUNCH-SECTION
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-TYPE-SECTION
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-NOT-CATEGORY-SECTION
+[On-Bunch]: /docent/core/HERE-IS-BUNCH-SECTION
+[On-Type]: /docent/core/HERE-NOT-TYPE-SECTION
+[On-Category]: /docent/core/HERE-NOT-CATEGORY-SECTION
 
 <!-- Reffs : BTC Linking -->
-[Main-lnk]: /BASE/ENTRY_DOC/Main-Samples/F6-Clovin
+[Main-lnk]: /docent/core/F6-Clovin
 [?]: .
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle/5-Hunfle-EXT.info.md "Prev: {{{--E_5_E--}}} - (Elite*Hunfle)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md "Next: {{{-a'1'A-}}} - (Gaster)"
+[Link-Prev]: /docent/core/5-Hunfle/5-Hunfle-EXT.info.md "Prev: {{{--E_5_E--}}} - (Elite*Hunfle)"
+[Link-Next]: /docent/core/1-Gaster/1-Gaster-EXT.info.md "Next: {{{-a'1'A-}}} - (Gaster)"
 
 <!-- Reffs-End -->

@@ -3,6 +3,8 @@
 
 Doc_Article: Entry_Doc
 Status: Wip
+#
+District: Appx-311
 
 ---
 -->
@@ -28,15 +30,12 @@ id="edp">
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-
   ${\textcolor{#FF1B39}{Accesive}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-
   ${\textcolor{#00BEFF}{Fossil}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
-
   ${\textcolor{#00BEFF}{Blaster}}$
 </td>
 
@@ -61,9 +60,9 @@ alt="BTC.GFB - Kafuu Chino">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive/3-Accesive-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive/31-Fossil///.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/3-Accesive/31-Fossil/311-Blaster///.info.md
+[On-Bunch]: /docent/core/3-Accesive/3-Accesive-EXT.info.md
+[On-Type]: /docent/core/3-Accesive/31-Fossil///.info.md
+[On-Category]: /docent/core/3-Accesive/31-Fossil/311-Blaster///.info.md
 
 ---
 
@@ -126,8 +125,8 @@ id="endfoot-linker">
 | **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
+[Link-Prev]: /docent/core///?.dc.md "Prev: XXXX"
+[Link-Next]: /docent/core///?.dc.md "Next: XXXX"
 </div>
 
 ---

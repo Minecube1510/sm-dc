@@ -2,6 +2,9 @@
 ---
 
 Doc_Article: Entry_Doc
+Status: Wip
+#
+District: Appx-51?
 
 ---
 -->
@@ -16,26 +19,26 @@ id="edp">
 # Ghidorah
 
 > **Topic**: Sample
+> **Title**: Elite-Hunfle: Fosill Spec, ?  
+> **Segment**: Segmen
 >
 > **Syndicate**:  
 > (Perdataan apapun lah dalam Sampel)
-
-**Elite-Hunfle: Fosill Spec, ?**
+>
+> - [Sample Information][Sample-Info]
+> - [Page Navigation][Endfoot]
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-
   ${\textcolor{#B651FF}{Hunfle}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-
   ${\textcolor{#00BEFF}{Fossil}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
-
   $\textcolor{#FFFFFF}{Category}$
 </td>
 
@@ -60,9 +63,9 @@ alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle/5-Hunfle-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle/51-Fossil///.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/5-Hunfle/51-Fossil///.info.md
+[On-Bunch]: /docent/core/5-Hunfle/5-Hunfle-EXT.info.md
+[On-Type]: /docent/core/5-Hunfle/51-Fossil///.info.md
+[On-Category]: /docent/core/5-Hunfle/51-Fossil///.info.md
 
 ---
 
@@ -125,8 +128,8 @@ id="endfoot-linker">
 | **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][EDP] *#* | **>->->->->** Next **>->->->->** |
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Prev: XXXX"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples///?.dc.md "Next: XXXX"
+[Link-Prev]: /docent/core///?.dc.md "Prev: XXXX"
+[Link-Next]: /docent/core///?.dc.md "Next: XXXX"
 </div>
 
 ---

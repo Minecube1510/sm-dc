@@ -19,7 +19,6 @@ Laporan dari "Turnamen Jawara - 5"
 <div align="center"><table>
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
-
   ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Paperbag, kostum kasual Viking">
@@ -73,16 +72,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/15-A_E-EXT.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-CATEGORY-SECTION
+[On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /docent/core/1-Gaster/15-Paperbag/15-A_E-EXT.info.md
+[On-Category]: /docent/core/HERE-IS-CATEGORY-SECTION
 
 <!-- Reffs : Anchor Hint -->
 [?]: .
 [Endfoot]: #endfoot-linker
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/154-Kama/154-A_E_D-EXT.info.md "Prev: [1_5__4] - (Gaster Paperbag'ed Equip.Kama)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/15-Paperbag/f156-Eldritch/f156-A_ExF-EXT.info.md "Next: [f-1_5!6-f] - (Gaster Paperbag'ed !ELDRITCH!)"
+[Link-Prev]: /docent/core/1-Gaster/15-Paperbag/154-Kama/154-A_E_D-EXT.info.md "Prev: [1_5__4] - (Gaster Paperbag'ed Equip.Kama)"
+[Link-Next]: /docent/core/1-Gaster/15-Paperbag/f156-Eldritch/f156-A_ExF-EXT.info.md "Next: [f-1_5!6-f] - (Gaster Paperbag'ed !ELDRITCH!)"
 
 <!-- Reffs-End -->

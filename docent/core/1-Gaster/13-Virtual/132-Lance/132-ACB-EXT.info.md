@@ -19,7 +19,6 @@ Laporan dari "Turnamen Jawara - X"
 <div align="center"><table>
 <tr><td align="center"
 title="Gaster, sang ketua Admin">
-
   ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
 title="Virtual, elemen utama Hacker">
@@ -73,16 +72,16 @@ id="endfoot-linker">
 ---
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/1-Gaster-EXT.info.md
-[On-Type]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/13-Virtual/13-AC-EXT.info.md
-[On-Category]: /BASE/ENTRY_DOC/Main-Samples/HERE-IS-CATEGORY-SECTION
+[On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /docent/core/1-Gaster/13-Virtual/13-AC-EXT.info.md
+[On-Category]: /docent/core/HERE-IS-CATEGORY-SECTION
 
 <!-- Reffs : Anchor Hint -->
 [?]: .
 [Endfoot]: #endfoot-linker
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/13-Virtual/131-Blaster/131-ACA-EXT.info.md "Prev: [131] - (Gaster Virtual Blaster)"
-[Link-Next]: /BASE/ENTRY_DOC/Main-Samples/1-Gaster/13-Virtual/133-Drill/133-ACC-EXT.info.md "Next: [133] - (Gaster Virtual Drill)"
+[Link-Prev]: /docent/core/1-Gaster/13-Virtual/131-Blaster/131-ACA-EXT.info.md "Prev: [131] - (Gaster Virtual Blaster)"
+[Link-Next]: /docent/core/1-Gaster/13-Virtual/133-Drill/133-ACC-EXT.info.md "Next: [133] - (Gaster Virtual Drill)"
 
 <!-- Reffs-End -->
