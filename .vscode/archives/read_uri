@@ -20,7 +20,7 @@ def parse_arguments (argv):
         raise ValueError("Usage: python read_uri.py <data-uri>")
     return argv[1]
 #
-def parse_data_uri( data_uri):
+def parse_data_uri (data_uri):
     pattern = r'data:(image/\w+);base64,(.+)'
     match = re.match(pattern, data_uri)
     if not match:
@@ -35,7 +35,9 @@ def make_output_filename (ext):
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     return f"output_{timestamp}.{ext}"
 #
-def save_base64_image (base64_data, filename):
+def save_base64_image (
+    base64_data, filename
+):
     decoded = base64.b64decode(base64_data)
     with open(filename, "wb") as f:
         f.write(decoded)

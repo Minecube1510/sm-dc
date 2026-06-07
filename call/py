@@ -97,7 +97,9 @@ def is_py_script (file_path):
     #
     except Exception:
         return False
-def normalize_comm (full_path, relative):
+def normalize_comm (
+    full_path, relative
+):
     relative_str = str(relative).replace(
         pyV["bSlash"], pyV["slash"])
     #
@@ -196,7 +198,9 @@ def resolve_target (comm_file):
                 #
                 return data["download_url"]
     return None
-def execute_target(target_f, extra_args):
+def execute_target (
+    target_f, extra_args
+):
     # LOCAL #
     if PD_EXISTS:
         subprocess.run([ sys.executable,

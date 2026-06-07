@@ -20,7 +20,7 @@ sys.dont_write_bytecode = True
 # IMPORT - PATHERS #
 SCRIPT_DIR = Path(__file__).resolve().parent
 #
-def find_root(start: Path):
+def find_root (start: Path):
     current = start
     #
     while current != current.parent:
@@ -45,19 +45,41 @@ from configs import *
 ###
 
 
-# VARS - DATA #
-VALID_TYPES = [
-    "Entry_Doc",  # "Lembaran utama yang berisi segala data-data dan informasi dari sebuah sampel"
-    "Generic",  # "[16/05/2026] Lembaran-lembaran yang berisikan kumpulan-kumpulan akses per-sampel-an"
+# VARS - SELECT #
+TYPE_1 = [
+        # Lembaran utama yang berisi segala data dan informasi sebuah sampel
+    "Entry_Doc",
     #
-    "Record",  # "Berisi catatan informasi mengenai project, terutama untuk kepentingan perkembangan project"
-    "Explanation",  # "Berisi penjelasan untuk lembaran dalam bentuk panduan untuk sebuah lembaran yang lain"
+        # Kumpulan akses dan data per-sampel
+    "Generic",
+]
+TYPE_2 = [
+        # Catatan perkembangan project
+    "Record",
     #
-    "Assets",  # "[REJECTED] Berisi panduan mengenai aset-aset untuk lembaran-lembaran"
-        #
-    "UNDEFINED",  # "Lembaran yang terdeteksi sebagai tidak diketahui status tipe-nya"
+        # Panduan atau penjelasan untuk lembaran lain
+    "Explanation",
+]
+TYPE_3 = [
+        # [REJECTED] Panduan aset-aset untuk lembaran
+    "Assets",
+]
+TYPE_4 = [
+        # Status tipe tidak diketahui
+    "UNDEFINED",
 ]
 #
+VALID_TYPES = [
+    *TYPE_1,
+    *TYPE_2,
+    *TYPE_3,
+    *TYPE_4,
+]
+#
+# VARS - SELECT #
+
+
+# VARS - DATA #
 VALID_SORT = [ "type", "path", "deff", ]
 VALID_ORDER = [ "asc", "desc", ]
 # VARS - DATA #
@@ -76,28 +98,30 @@ BASE_DIR = (ROOT_DIR / INTO_DIR)
 
 
 # SYSTEM - CODED-CORE #
-CLI_KEYS = {"base",
+WORD_ADESC = "descend"
+#
+CLI_KEYS = { "base",
     "search","sort",
     "to", }
 CLI_FLAGS = {
-    "descend", }
+    WORD_ADESC, }
 CLI_TARGETS = {
     "check", }
 #
-def parse_arg(args, key):
+def parse_arg (args, key):
     prefix = f"{key}="
     for arg in args:
         if arg.startswith(prefix):
             return arg.split(pyV["equal"], 1)[1]
     return None
-def normalize_doc_type(value):
+def normalize_doc_type (value):
     if not value:
         return None
     value = value.strip()
     return next((doc_type for doc_type in VALID_TYPES
         if doc_type.lower() == value.lower()), None, )
 #
-def validate_args(args):
+def validate_args (args):
     validators = {"to": (CLI_TARGETS, "Unknown Target"),
         "sort": (None, None), "search": (None, None),
         "base": (None, None), }
@@ -119,13 +143,13 @@ def validate_args(args):
     if filter_type and normalize_doc_type(filter_type) is None:
         raise ValueError(f"Unknown Doc Type: {filter_type}")
 #
-def read_file(path):
+def read_file (path):
     try:
         return path.read_text(encoding="utf-8")
     except OSError as exc:
         print(f"FILE ERROR: {path} -> {exc}")
         return None
-def parse_meta(text, path):
+def parse_meta (text, path):
     block = re.search(r"<!--\s*---\s*(.*?)\s*---\s*-->", text, re.S)
     if not block:
         return {}
@@ -143,7 +167,7 @@ def parse_meta(text, path):
         return {}
     return parsed
 #
-def resolve_base_dir(args):
+def resolve_base_dir (args):
     base = parse_arg(args, "base")
     if not base:
         return BASE_DIR
@@ -152,12 +176,25 @@ def resolve_base_dir(args):
     if not base_path.is_absolute():
         base_path = ROOT_DIR / base_path
     return base_path
-def scan_docs(base_dir):
+def scan_docs (base_dir):
     tell_branch = ((pyV["braceL"])
         + (gitD["branch"]) + (pyV["braceR"]))
     docs = []
     #
-    if not base_dir.exists():
+    if base_dir.exists():
+        for path in sorted(base_dir.rglob("*.md")):
+            text = read_file(path)
+            if text is None:
+                continue
+            docs.append({
+                "meta": parse_meta(text, path),
+                "path": path,
+            })
+        return docs
+    else:
+        if docs:
+            return docs
+        #
         get_path = base_dir.as_posix()
         #
         print(f"Now Branch: {tell_branch}")
@@ -180,17 +217,17 @@ def scan_docs(base_dir):
 
 
 # SYSTERMINALS - SORTING #
-def parse_sort_args(args):
+def parse_sort_args (args):
     mode = VALID_SORT[0]
     order = VALID_ORDER[0]
     #
-    if "descend" in args:
+    if WORD_ADESC in args:
         mode = VALID_SORT[-1]
         order = VALID_ORDER[-1]
     #
     value = parse_arg(args, "sort")
     if not value:
-        return {"mode": mode, "order": order}
+        return { "mode": mode, "order": order, }
     #
     parts = value.lower().split(pyV["colon"], 1)
     mode = parts[0]
@@ -203,23 +240,23 @@ def parse_sort_args(args):
         raise ValueError(f"Unknown Sort Order: {order}")
     return { "mode": mode, "order": order, }
 #
-def enum_def_bs(items):
+def enum_def_bs (items):
     return {
         item: index
         for index, item in enumerate(items)
     }
-def build_sorters():
+def build_sorters ():
     return {
         "default": enum_def_bs(sorted(VALID_TYPES)),
         "types": enum_def_bs(VALID_TYPES),
     }
 #
-def get_doc_type(doc):
+def get_doc_type (doc):
     doc_type = doc["meta"].get(DEF_SEARCH, UNDEF_TYPE)
     if doc_type not in VALID_TYPES:
         return UNDEF_TYPE
     return doc_type
-def get_sort_key(mode, sorters):
+def get_sort_key (mode, sorters):
     if mode == "type":
         return lambda doc: (
             sorters["types"].get(get_doc_type(doc), 999),
@@ -232,7 +269,9 @@ def get_sort_key(mode, sorters):
             str(doc["path"]).lower(), )
     return lambda doc: str(doc["path"]).lower()
 #
-def sort_docs(docs, config, sorters):
+def sort_docs (
+    docs, config, sorters
+):
     return sorted(docs,
         key=get_sort_key(config["mode"], sorters),
         reverse=(config["order"] == "desc"), )
@@ -241,7 +280,7 @@ def sort_docs(docs, config, sorters):
 
 
 # SYSTERMINALS - FILTER #
-def build_filter_type(args):
+def build_filter_type (args):
     return normalize_doc_type(
         parse_arg(args, "search"))
 #
@@ -255,7 +294,7 @@ IN_LIST = (pyV["dash"] + pyV["space"])
 ENDED_TASKING = (separe_Sects
     ("END-CHECKERS") + pyV["enter"])
 #
-def render_guides():
+def render_guides ():
     guides = {
         "CHECKING": [
             "to=check",  # Langsung pake buat ngecek semua lembaran
@@ -280,16 +319,15 @@ def render_guides():
         for item in items:
             print(f"{LIST_TAB}{item}")
 #
-def check_args():
+def check_args ():
     print("Check out how to using:")
     render_guides()
-    print(ENDED_TASKING)
 #
 # GUIDE USAGE DISPLAYS #
 
 
 # PRINTING - DISPLAY #
-def render_doc(doc):
+def render_doc (doc):
     path = doc["path"]
     filename = path.name
     folder = os.path.relpath(path.parent, ROOT_DIR)
@@ -299,11 +337,13 @@ def render_doc(doc):
     #
     print(f"[{cek_stat}] - {filename} -> {folder}")
 #
-def excheck(docs, filtype=None):
+def excheck (docs,
+    filtype=None
+):
     found = 0
     #
     for doc in docs:
-        if filtype and get_doc_type(doc) != filtype:
+        if ((filtype and get_doc_type(doc)) != (filtype)):
             continue
         #
         render_doc(doc)
@@ -318,9 +358,8 @@ def excheck(docs, filtype=None):
     msg_search_404 = "No matching Entry-Docs is found in here..."
         #
     print((pyV["space"] * 2) + (msg_search_404))
-    #print(ENDED_TASKING)
 #
-def opening_main():
+def opening_main ():
     descript_funcfile = (
         ("Ini akan memproses pencaharian sekian banyaknya lembaran MD yang penting.")
             + (pyV["enter"]) +
@@ -330,7 +369,7 @@ def opening_main():
         #
     print((descript_funcfile)
         + (pyV["enter"]) + (pyV["pipe"]))
-def sys_main():
+def sys_main ():
     exit_code = 1
     cli_args = []
     #
@@ -370,7 +409,7 @@ def sys_main():
     #
     return exit_code
 #
-def main():
+def main ():
     #?
     #
     opening_main()

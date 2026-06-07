@@ -20,7 +20,9 @@ from collections import defaultdict
 
 
 # SYSTEM - FUNCS #
-def find_duplicate_names (root=".", exts=None):
+def find_duplicate_names (
+    root=".", exts=None
+):
     if exts is None:
         exts = {
             ".png", ".jpg",

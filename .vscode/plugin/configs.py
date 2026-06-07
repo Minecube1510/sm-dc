@@ -31,7 +31,7 @@ REPO_PY_DIR = LCL_PY_DIR.relative_to(ROOT_DIR)
 
 
 # IMPORTS - FETCHINGS #
-def load_json(file):
+def load_json (file):
     with open(JSON_DIR / file, encoding="utf-8") as f:
         return json.load(f)
 #
