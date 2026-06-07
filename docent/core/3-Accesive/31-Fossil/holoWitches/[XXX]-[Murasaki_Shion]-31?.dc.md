@@ -1,5 +1,6 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Entry_Doc
 Status: Wip

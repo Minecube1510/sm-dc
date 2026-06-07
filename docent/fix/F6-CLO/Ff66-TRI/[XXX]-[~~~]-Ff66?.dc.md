@@ -1,10 +1,11 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
-Doc_Article: Explanation
-Status: [Fin/Wip]
+Doc_Article: Entry_Doc
+Status: Wip
 #
-District: [Bunch/Type/Category]
+District: Appx-F6f6?
 
 ---
 -->
@@ -18,25 +19,25 @@ id="edp">
 
 # BTC Sample Name
 
-> **Topic**: Generic
+> **Topic**: Sample
+> **Title**: CLOVIN-IS-HERE: Trickster Empl_oti_onal, ?  
+> **Segment**: Segmen
 >
-> **Description**:  
-> Jelaskan Deskripsi-nya...
+> **Syndicate**:  
+> (Perdataan apapun lah dalam Sampel)
 >
 > - [Sample Information][Sample-Info]
 > - [Page Navigation][Endfoot]
-
-**This for little Descripting...**
 
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-  $\textcolor{#FFFFFF}{Bunch}$
+  ${\textcolor{#6A96FF}{Clovin}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-  $\textcolor{#FFFFFF}{Type}$
+  ${\textcolor{#6A96FF}{Trickster}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
   $\textcolor{#FFFFFF}{Category}$
@@ -45,15 +46,15 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
 title="Click for more information."
-alt="BTC-ALT">][On-Bunch]
+alt="BTC.CloTriEld - Fuiba Fuyu">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
 title="Click for more information."
-alt="BTC-ALT">][On-Type]
+alt="BTC.CloTriEld - Fuiba Fuyu">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
@@ -63,9 +64,9 @@ alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /docent/core///.note.md
-[On-Type]: /docent/core///.note.md
-[On-Category]: /docent/core///.note.md
+[On-Bunch]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md
+[On-Type]: /docent/core/F6-Clovin/Ff66-Trickster///.info.md
+[On-Category]: /docent/core/F6-Clovin/Ff66-Trickster///.info.md
 
 ---
 
@@ -113,7 +114,6 @@ GAMBAR ILUSTRASI SAMPEL
 - [Referensi 1][Reff-1]
 - [Referensi 2][Reff-2]
 - [Referensi 3][Reff-3]
-
 <!-- Reffs : Linking Record Online -->
 [Reff-1]: github.com "Descript-Note 1"
 [Reff-2]: github.com "Descript-Note 2"

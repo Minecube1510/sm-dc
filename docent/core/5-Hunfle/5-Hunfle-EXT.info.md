@@ -1,5 +1,6 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Explanation
 Status: Wip
@@ -170,6 +171,6 @@ id="endfoot-linker">
 
 <!-- Reffs : Navigate -->
 [Link-Prev]: /docent/core/4-Mistress/4-Mistress-EXT.info.md "Prev: {{{--D_4_D--}}} - (Elite*Mistress)"
-[Link-Next]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md "Next: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
+[Link-Next]: //docent/core/F6-Clovin/F6-Clovin-EXT.info.md "Next: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
 
 <!-- Reffs-End -->

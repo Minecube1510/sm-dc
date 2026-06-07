@@ -1,5 +1,6 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Explanation
 Status: Wip
@@ -19,7 +20,7 @@ District: Bunch
 
 ## Simbolic Indicator
 
-<div align="center"><table>
+<div align="center"><table align="center">
 <tr><td align="center"
 title="AT-SECTION-BUNCH">
   ${\textcolor{#00BEFF}{Gaster}}$
@@ -273,7 +274,7 @@ id="endfoot-linker">
 [?]: .
 
 <!-- Reffs : Navigate -->
-[Link-Prev]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md "Prev: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
+[Link-Prev]: //docent/core/F6-Clovin/F6-Clovin-EXT.info.md "Prev: {{{---FUUF-6-FUUF---}}} - (Clovin*the*Clown)"
 [Link-Next]: /docent/core/2-Spamor/2-Spamor-EXT.info.md "Next: {{{-b'2'B-}}} - (Spamor)"
 
 <!-- Reffs-End -->

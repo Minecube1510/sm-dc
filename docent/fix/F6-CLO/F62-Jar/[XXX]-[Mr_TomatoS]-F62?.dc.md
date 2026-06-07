@@ -1,10 +1,11 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Entry_Doc
 Status: Wip
 #
-District: Appx-F6f6?
+District: Appx-F62?
 
 ---
 -->
@@ -16,10 +17,10 @@ id="edp">
 
 </div>
 
-# BTC Sample Name
+# Mr TomatoS
 
 > **Topic**: Sample
-> **Title**: CLOVIN-IS-HERE: Trickster Empl_oti_onal, ?  
+> **Title**: CLOVIN-IS-HERE: Jarl Spec, ?  
 > **Segment**: Segmen
 >
 > **Syndicate**:  
@@ -36,7 +37,7 @@ title="JUDULAN HOLD - BUNCH">
   ${\textcolor{#6A96FF}{Clovin}}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-  ${\textcolor{#6A96FF}{Trickster}}$
+  ${\textcolor{#FFC32B}{Jarl}}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
   $\textcolor{#FFFFFF}{Category}$
@@ -51,9 +52,9 @@ alt="BTC.CloTriEld - Fuiba Fuyu">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
+src="https://minecube1510.github.io/sm-dc/img/btc/2SJL.png"
 title="Click for more information."
-alt="BTC.CloTriEld - Fuiba Fuyu">][On-Type]
+alt="BTC.SJL - Jouga Maya">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
@@ -64,8 +65,8 @@ alt="BTC-ALT">][On-Category]
 
 <!-- Reffs : BTC Linking -->
 [On-Bunch]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md
-[On-Type]: /docent/core/F6-Clovin/Ff66-Trickster///.info.md
-[On-Category]: /docent/core/F6-Clovin/Ff66-Trickster///.info.md
+[On-Type]: /docent/core/F6-Clovin/F62-Jarl///.info.md
+[On-Category]: /docent/core/F6-Clovin/F62-Jarl///.info.md
 
 ---
 

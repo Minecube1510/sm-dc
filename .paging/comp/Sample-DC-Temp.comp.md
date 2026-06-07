@@ -1,10 +1,11 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Entry_Doc
-Status: Wip
+Status: [Fin/Wip]
 #
-District: Appx-F63?
+District: [Appx-BTC]
 
 ---
 -->
@@ -16,10 +17,10 @@ id="edp">
 
 </div>
 
-# Tiara Victoria Lex Waleland
+# BTC Sample Name
 
-> **Topic**: Sample
-> **Title**: CLOVIN-IS-HERE: Virtual Spec, ?  
+> **Topic**: (Generic/Report/Sample)  
+> **Title**: This for little Descripting...  
 > **Segment**: Segmen
 >
 > **Syndicate**:  
@@ -28,15 +29,17 @@ id="edp">
 > - [Sample Information][Sample-Info]
 > - [Page Navigation][Endfoot]
 
+**This for little Descripting...**
+
 ## Simbolic Indicator
 
 <div align="center"><table>
 <tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
-  ${\textcolor{#6A96FF}{Clovin}}$
+  $\textcolor{#FFFFFF}{Bunch}$
 </td><td align="center"
 title="JUDULAN HOLD - TYPE">
-  ${\textcolor{#FF1B39}{Virtual}}$
+  $\textcolor{#FFFFFF}{Type}$
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
   $\textcolor{#FFFFFF}{Category}$
@@ -45,15 +48,15 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
+src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
 title="Click for more information."
-alt="BTC.CloTriEld - Fuiba Fuyu">][On-Bunch]
+alt="BTC-ALT">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
+src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
 title="Click for more information."
-alt="BTC.AVD - Natsu Megumi">][On-Type]
+alt="BTC-ALT">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
@@ -63,9 +66,9 @@ alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
 
 <!-- Reffs : BTC Linking -->
-[On-Bunch]: /docent/core/F6-Clovin/F6-Clovin-EXT.info.md
-[On-Type]: /docent/core/F6-Clovin/F63-Virtual///.info.md
-[On-Category]: /docent/core/F6-Clovin/F63-Virtual///.info.md
+[On-Bunch]: /docent/core///.note.md
+[On-Type]: /docent/core///.note.md
+[On-Category]: /docent/core///.note.md
 
 ---
 
@@ -113,6 +116,7 @@ GAMBAR ILUSTRASI SAMPEL
 - [Referensi 1][Reff-1]
 - [Referensi 2][Reff-2]
 - [Referensi 3][Reff-3]
+
 <!-- Reffs : Linking Record Online -->
 [Reff-1]: github.com "Descript-Note 1"
 [Reff-2]: github.com "Descript-Note 2"

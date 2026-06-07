@@ -1,5 +1,6 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Entry_Doc
 Status: Wip
@@ -16,7 +17,7 @@ id="edp">
 
 </div>
 
-# Error Sans
+# BTC Sample Name
 
 > **Topic**: Sample
 > **Title**: CLOVIN-IS-HERE: Fossil Spec, ?  

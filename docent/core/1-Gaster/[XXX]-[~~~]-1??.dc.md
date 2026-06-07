@@ -1,5 +1,6 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Entry_Doc
 Status: Wip
@@ -30,8 +31,7 @@ id="edp">
 
 ## Simbolic Indicator
 
-<div align="center"><table>
-<tr><td align="center"
+<table><tr><td align="center"
 title="JUDULAN HOLD - BUNCH">
   ${\textcolor{#00BEFF}{Gaster}}$
 </td><td align="center"
@@ -40,27 +40,24 @@ title="JUDULAN HOLD - TYPE">
 </td><td align="center"
 title="JUDULAN HOLD - CATEGORY">
   $\textcolor{#FFFFFF}{Category}$
-</td>
-
-</tr><tr><td>
+</td></tr>
+<tr><td>
 
 [<img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
 title="Click for more information."
-alt="BTC.GFB - Kafuu Chino">][On-Bunch]
-</td><td>
+alt="BTC.GFB - Kafuu Chino">][On-Bunch]</td><td>
 
 [<img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
 title="Click for more information."
-alt="BTC-ALT">][On-Type]
-</td><td>
+alt="BTC-ALT">][On-Type]</td><td>
 
 [<img draggable="false" width="100"
 src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
 title="Click for more information."
-alt="BTC-ALT">][On-Category]
-</td></tr></table></div>
+alt="BTC-ALT">][On-Category]</td>
+</tr></table>
 
 <!-- Reffs : BTC Linking -->
 [On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md

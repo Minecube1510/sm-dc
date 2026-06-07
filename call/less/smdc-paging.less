@@ -1,0 +1,100 @@
+/* call/less/smdc-paging.less */
+
+/*
+    Roots, Overrides, Statics
+    |
+    Roots: Root
+    Overrides: Ngatur secara paksa (Butuh penanganan ekstra, atau juga kebutuhan mengubah sistem)
+    Statics: Mengubah ke-statis-an
+*/
+    //
+/* Roots */
+:root {  // Vars
+    --text-center: center;
+    //
+    --select-none: none;
+}
+:root {  // Colors
+    --perfect-white: #FFFFFF;
+    --perfect-black: #000000;
+}
+    //-//
+/* Overrides */
+* {
+    color: var(--perfect-white);
+}
+//
+html body table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    //
+    display: table !important;
+    width: auto !important;
+}
+html body table td p {
+    margin: 0 !important;
+}
+html body table img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    //
+    display: table !important;
+}
+//
+    //-//
+/* Statics */
+body,
+p, span, div,
+h1, h2, h3, h4, h5, h6 {
+    // /*
+    -webkit-user-select: var(--select-none);
+    -moz-user-select: var(--select-none);
+    -ms-user-select: var(--select-none);
+    //
+    user-select: var(--select-none);
+    // */
+}
+h1 {
+    text-align: var(--text-center);
+}
+//
+blockquote,
+blockquote * {
+    background: transparent !important;
+    //
+    opacity: 0.6;
+    text-align: left;
+}
+table {
+    background: transparent;
+    //
+    margin-left: auto;
+    margin-right: auto;
+}
+//
+/* -- 
+ -- */
+
+
+/*
+    Struct
+    |
+    ?
+*/
+//
+/* -- 
+ -- */
+
+
+/*
+    Uji-Coba
+    |
+    ?
+*/
+//
+/* -- 
+ -- */
+
+
+/* END */
+/**/

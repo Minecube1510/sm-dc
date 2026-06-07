@@ -1,5 +1,6 @@
+<!-- @import "/call/less/smdc-paging.less" -->
 <!--
----
+---!
 
 Doc_Article: Entry_Doc
 Status: Wip
@@ -27,6 +28,7 @@ id="edp">
 >
 > - [Sample Information][Sample-Info]
 > - [Page Navigation][Endfoot]
+
 ## Simbolic Indicator
 
 <div align="center"><table>
