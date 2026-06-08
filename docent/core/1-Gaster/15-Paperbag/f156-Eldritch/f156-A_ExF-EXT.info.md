@@ -1,0 +1,88 @@
+<!-- @import "/call/less/smdc-paging.less" -->
+<!--
+---!
+
+Doc_Article: Generic
+
+---
+-->
+---
+
+# Gaster: Paperbag Spec-Grade, Ultra Eldritch Fantastic
+
+> **Topic**: Report
+>
+**Description**:  
+Laporan dari "Turnamen Jawara - 6"
+
+## Simbolic Indicator
+
+<div align="center"><table>
+<tr><td align="center"
+title="Gaster, sang ketua Admin">
+  ${\textcolor{#00BEFF}{Gaster}}$
+</td><td align="center"
+title="Paperbag, kostum kasual Viking">
+
+  ${\textcolor{#B651FF}{Paperbag}}$
+</td><td align="center"
+title="AT-SECTION-CATEGORY">
+
+  $${\textcolor{#6A96FF}{Eldritch}}$$
+</td>
+
+</tr><tr><td>
+
+[<img draggable="false" width="100"
+src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
+title="Click for more information."
+alt="BTC.GFB - Kafuu Chino">][On-Bunch]
+</td><td>
+
+[<img draggable="false" width="100"
+src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
+title="Click for more information."
+alt="BTC.HuPaWi - Jinja Natsume">][On-Type]
+</td><td>
+
+<img draggable="false" width="100"
+src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
+title="SECTION_LOGO_CATEGORY-NO_LINK"
+alt="BTC.CloTriEld - Fuiba Fuyu">
+</td></tr></table></div>
+
+---
+
+# $${\textbf{\textcolor{#00BEFF}{Gaster's}}}$$ $\textcolor{#B651FF}{\textbf{Paperbag}}$ $${\textbf{\textcolor{#6A96FF}{Eldritch}}}$$
+
+## Pendahuluan
+
+Menanti...
+
+---
+<div align="center"
+id="endfoot-linker">
+
+| ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== | ==-== ==-== ==-== ==-== |
+| :-: | :-: | :-: |
+| [**[1_5__5]**][Link-Prev] | ***<span title="[f-1_5!6-f]">[f-1_5!6-f]</span>*** | [**[f-1_5!6-f]**][Link-Next] |
+| **<-<-<-<-<** Prev **<-<-<-<-<** | *#* [**^^^**][?] *#* | **>->->->->** Next **>->->->->** |
+
+</div>
+
+---
+
+<!-- Reffs : BTC Linking -->
+[On-Bunch]: /docent/core/1-Gaster/1-Gaster-EXT.info.md
+[On-Type]: /docent/core/1-Gaster/15-Paperbag/15-A_E-EXT.info.md
+[On-Category]: /docent/core/HERE-IS-CATEGORY-SECTION
+
+<!-- Reffs : Anchor Hint -->
+[?]: .
+[Endfoot]: #endfoot-linker
+
+<!-- Reffs : Navigate -->
+[Link-Prev]: /docent/core/1-Gaster/15-Paperbag/155-Winchester/155-A_E_E-EXT.info.md "Prev: [1_5__5] - (Gaster Paperbag'ed Equip.Winchester)"
+[Link-Next]: /docent/core/1-Gaster/f16-Trickster///.info.md "Next: [F-1!6!1] - (Gaster Trickster-Side Blaster)"
+
+<!-- Reffs-End -->

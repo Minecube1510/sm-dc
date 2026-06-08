@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="In-Branch: work-dev" in-branch="work-dev">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!--=-->
+    <title id="title">
+        SM-DC
+    </title>
+    <link id="favicon" rel="icon" type="image/x-icon"
+    href="./img/favic/favicon.ico">
+    <!--=-->
+    <link rel="stylesheet" href="web/css/styles.css">
+    <!--=-->
+</head>
+<!--
+=-->
+<body draggable="false" id="body"
+class="min-h-screen flex flex-col container mx-auto p-3 select-none bg-gray-100">
+    <script type="module" src="web/js/script.js"
+    defer></script>
+    <!--=-->
+    <div id="loading-screen" class="fixed flex items-center justify-center transition-all inset-0 z-[9999] bg-neutral-950 duration-300 opacity-100"></div>
+    <!--=-->
+    <header class="">
+        <h1 class="text-2xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
+            Ateiler that viewing Images
+        </h1>
+    </header>
+    <main class="flex flex-1 shadow-lg">
+        <div id="view-images"></div>
+    </main>
+    <footer class="text-center mt-4">
+        <p class="font-semibold">
+            By:
+            <span id="github-username">
+                Git-Username
+            </span>
+        </p>
+    </footer>
+</body>
+</html>
