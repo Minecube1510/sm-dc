@@ -2,10 +2,12 @@
 <!--
 ---!
 
-Doc_Article: Explanation
+# "Entry Doc"
+
+Doc_Article: Comp
 Status: [Fin/Wip]
 #
-District: [Bunch/Type/Category]
+District: [Appx-BTC]
 
 ---
 -->
@@ -19,10 +21,12 @@ id="edp">
 
 # BTC Sample Name
 
-> **Topic**: Generic
+> **Topic**: (Generic/Report/Sample)  
+> **Title**: This for little Descripting...  
+> **Segment**: Segmen
 >
-> **Description**:  
-> Jelaskan Deskripsi-nya...
+> **Syndicate**:  
+> (Perdataan apapun lah dalam Sampel)
 >
 > - [Sample Information][Sample-Info]
 > - [Page Navigation][Endfoot]

@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: Generic
+Doc_Article: Thread
 
 ---
 -->
@@ -11,9 +11,9 @@ Doc_Article: Generic
 # Gaster: Virtual Spec, Ultra Eldritch Fantastic
 
 > **Topic**: Report
-
-**Description**:  
-Laporan dari "Turnamen Jawara - X"
+>
+> **Description**:  
+> Laporan dari "Turnamen Jawara - X"
 
 ## Simbolic Indicator
 

@@ -9,69 +9,67 @@
 
 /* Fetchings */
 // /*
-const jsV = await fetch(
-    "call/json/vars.json"
-).then(r => r.json());
-const gitD = await fetch(
-    "call/json/git-data.json"
-).then(r => r.json());
-const gLink = await fetch(
-    "call/json/glink.json"
-).then(r => r.json());
+const files = [(`vars`),
+    (`git-data`), (`glink`),
+];
+const data = await ((Promise)
+    .all(files.map(file => fetch
+        (`call/json/${file}.json`)
+        .then(r => r.json())
+)));
+export const [jsV,
+    gitD, gLink,
+] = (data);
 // */
 /**/
 
 
 /* Vars */
+const DOC = (document);
+const CNSL = (console);
+//
 //?
 //
 /**/
 
 
 /* Func: Basic */
-export function js_Arr2Str (arrs, spare) {
-    return ((arrs).join(spare));
-}
-export function js_Upper (text) {
-    return ((text).toUpperCase());
-}
-export function js_Lower (text) {
-    return ((text).toLowerCase());
-}
-//
+export const jsTx = {
+    arr2Str: (arr, sep) => ((arr).join(sep)),
+    upper: (txt) => (txt.toUpperCase()),
+    lower: (txt) => (txt.toLowerCase()),
+};
 /**/
 
 
 /* Func: Logs */
-export function c_Log (msg) {
-    return ((console).log(msg));
-}
-export function c_Warn (msg) {
-    return ((console).warn(msg));
-}
-export function c_Error (msg) {
-    return ((console).error(msg));
-}
+export const jsCs = {
+    log: ((CNSL).log),
+    warn: ((CNSL).warn),
+    error: ((CNSL).error),
+    //
+    grBgn: ((CNSL).group),
+    table: ((CNSL).table),
+    grEnd: ((CNSL).groupEnd),
+    //
+};
 //
-export function c_GrBgn (msg) {
-    return ((console).group(msg));
-}
-export function c_Table (msg) {
-    return ((console).table(msg));
-}
-export function c_GrEnd () {
-    return ((console).groupEnd());
-}
 /**/
 
 
-/* Func: Logs */
-export function js_GetId (id) {
-    return ((document).getElementById(id));
-}
-export function js_CreateELm (elm) {
-    return ((document).createElement(elm));
-}
+/* Func: Docs */
+export const jsDoc = {
+    getId: (id, doc = DOC) =>
+        ((doc).getElementById(id)),
+    createElm: (tag, doc = DOC) =>
+        ((doc).createElement(tag)),
+    //
+    appEnd_Ch: (el, doc = DOC) =>
+        ((doc).body.appendChild(el)),
+    prepEnd: (el, doc = DOC) =>
+        ((doc).body.prepend(el)),
+    //
+};
 //
 /**/
 
@@ -92,14 +90,23 @@ export function js_StRept (str, times) {
     return (result);
 }
 //
+export const jsHt = {
+    classer: (classes) => (
+        (jsTx).arr2Str((classes), (jsV.space))),
+    linker: (paths) => (
+        (jsTx).arr2Str((paths), (jsV.slash))),
+    //
+};
+//
 /**/
 
 
 /* Func: Linker */
 export function to_Ltp (tp, link) {
     const linkLmt = (jsV.linkLmt);
-    const linking = js_Lower(js_Arr2Str([
-        (tp), (link), ], (linkLmt)));
+    const linking = ((jsTx)
+        .lower((jsTx).arr2Str([
+        (tp), (link), ], (linkLmt))));
     return (linking);
 }
 //

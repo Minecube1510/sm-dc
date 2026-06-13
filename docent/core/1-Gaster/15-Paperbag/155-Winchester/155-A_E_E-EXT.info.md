@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: Generic
+Doc_Article: Thread
 
 ---
 -->
@@ -11,9 +11,9 @@ Doc_Article: Generic
 # Gaster: Paperbag Spec-Grade, Winchester-Weaponized
 
 > **Topic**: Report
-
-**Description**:  
-Laporan dari "Turnamen Jawara - 5"
+>
+> **Description**:  
+> Laporan dari "Turnamen Jawara - 5"
 
 ## Simbolic Indicator
 

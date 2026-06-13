@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: Generic
+Doc_Article: Thread
 
 ---
 -->

@@ -18,7 +18,9 @@ sys.dont_write_bytecode = True
 # IMPORTS - IMPLY #
 ###
 # IMPORT - PATHERS #
-SCRIPT_DIR = Path(__file__).resolve().parent
+INDIR_PATH = Path(__file__).resolve()
+SCRIPT_DIR = INDIR_PATH.parent
+RD_BASE = INDIR_PATH.parents[1]
 #
 def find_root (start: Path):
     current = start
@@ -37,12 +39,20 @@ else:
     ROOT_DIR = find_root(SCRIPT_DIR)
 #
 PLUGIN_DIR = ROOT_DIR / ".vscode" / "plugin"
+PY_DIR = RD_BASE / ".vscode" / "system" / "py"
 #
+sys.path.insert(0, str(PY_DIR.as_posix()))
 sys.path.insert(0, str(PLUGIN_DIR))
 from configs import *
 #
 # IMPORT - PATHERS #
 ###
+
+
+# IMPORTS - FETCHINGS #
+p_dS = load_json("dir-safe.json")
+#
+# IMPORTS - FETCHINGS #
 
 
 # VARS - SELECT #
@@ -51,22 +61,32 @@ TYPE_1 = [
     "Entry_Doc",
     #
         # Kumpulan akses dan data per-sampel
-    "Generic",
+    "Thread",
+    #
+        # Dokumen untuk komponen rendering halaman
+    "Comp",  # Komponen
+    "Raw",  # Mentahan
+    #
 ]
 TYPE_2 = [
+    
         # Catatan perkembangan project
-    "Record",
+    "Record", "Reg-Note",
     #
-        # Panduan atau penjelasan untuk lembaran lain
-    "Explanation",
+        # Suatu penandaan pada untuk folder yang punya sekian folder didalamnya
+    "Syndicate",
 ]
 TYPE_3 = [
         # [REJECTED] Panduan aset-aset untuk lembaran
     "Assets",
+    #
 ]
 TYPE_4 = [
         # Status tipe tidak diketahui
     "UNDEFINED",
+    #
+        # Status dalam bentuk kosong
+    # "BLANK",
 ]
 #
 VALID_TYPES = [
@@ -91,7 +111,7 @@ UNDEF_TYPE = VALID_TYPES[-1]
 # VARS - BASIC #
 ###
 # VARS - SWITCH #
-INTO_DIR = "docent"
+INTO_DIR = p_dS["filename"]
 BASE_DIR = (ROOT_DIR / INTO_DIR)
 #
 # VARS - SWITCH #

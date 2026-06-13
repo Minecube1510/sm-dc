@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: X
+Doc_Article: Reg-Note
 Article_Path: Entry_Doc
 #
 Status: Wip

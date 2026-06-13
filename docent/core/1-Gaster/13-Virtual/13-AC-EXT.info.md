@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: Explanation
+Doc_Article: Thread
 Status: Wip
 #
 District: Type

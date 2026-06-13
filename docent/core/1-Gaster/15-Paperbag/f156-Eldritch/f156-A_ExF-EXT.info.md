@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: Generic
+Doc_Article: Thread
 
 ---
 -->
@@ -12,8 +12,8 @@ Doc_Article: Generic
 
 > **Topic**: Report
 >
-**Description**:  
-Laporan dari "Turnamen Jawara - 6"
+> **Description**:  
+> Laporan dari "Turnamen Jawara - 6"
 
 ## Simbolic Indicator
 

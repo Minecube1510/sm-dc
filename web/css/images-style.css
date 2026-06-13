@@ -1,6 +1,12 @@
-/* web/css/styles.css */
+/* web/css/images-style.css */
 
 /* Root */
+/* * /
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* */
+/**/
 :root {
     --tw-rounded-2xl: 18px;
     /**/
@@ -15,26 +21,17 @@
 
 
 /* Costumize */
-.vimg-base {
-    /**/
-}
-.vimg-base:hover {
-    background-image: linear-gradient(163deg, #ff00ff 0%, #3700ff 100%);
-    box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
-}
+/**/
     /**=**/
 .vimg-fill {
     padding: var(--vimg-fill);
-}
-.vimg-fill:hover {
-    transform: scale(0.98);
-    border-radius: var(--tw-rounded-2xl);
 }
 /**/
 
 
 /* Comps */
 /*
+    [ARCHIVED]
     -From Uiverse.io by Tiagoadag-
     From Uiverse.io by LightAndy1
 */ 

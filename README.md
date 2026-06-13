@@ -110,7 +110,7 @@ Menggunakan 2 metode:
 
 - Linking
 
-  > [Sample Memory - Data Center (Image Ateiler only)][Link-SMDC]
+  > [Sample Memory - Data Center (Full Web in Development...)][Link-SMDC]
 
 [Link-SMDC]: https://minecube1510.github.io/sm-dc "SM-DC - Image Ateiler"
 

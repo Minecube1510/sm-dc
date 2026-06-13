@@ -1,34 +1,16 @@
 #!/usr/bin/env js
-/* web/js/process.js */
+/* web/js/images/img-process.js */
 
 /* Imports */
 //?
 //
-import * as bsc from "./basis.js";
+import * as bsc from "../basis.js";
 //
 /**/
 
 
-/* Fetchings */
-// /*
-const jsV = await fetch(
-    "call/json/vars.json"
-).then(r => r.json());
-const gitD = await fetch(
-    "call/json/git-data.json"
-).then(r => r.json());
-const gLink = await fetch(
-    "call/json/glink.json"
-).then(r => r.json());
-// */
-/**/
-
-
 /* Vars - Basic */
-const empty = (jsV.empty);
-const space = (jsV.space);
-const slash = (jsV.slash);
-const colon = (jsV.colon);
+//?
 //
 export const htWeb = {
     lnk: (window.location.href),
@@ -45,26 +27,24 @@ export const is_Local = (
 const is_GitPg = ((htWeb.lcl)
     .endsWith(`github.io`));
 //
-const htBsc = (gLink.ltp.bsc);
-const htScr = gLink.ltp.scr;
-const ghRaw = (gLink.gh.base.raw);
-const ghApi = (gLink.gh.base.api);
+const htBsc = (bsc.gLink.ltp.bsc);
+const htScr = (bsc.gLink.ltp.scr);
+const ghRaw = (bsc.gLink.gh.base.raw);
+const ghApi = (bsc.gLink.gh.base.api);
 //
 /**/
 
 
 /* Funcs - Customs */
-function ht_Linker (paths) {
-    return ((bsc).js_Arr2Str(paths, slash));
-}
+//?
 //
 /**/
 
 /* Vars - Data */
-const gRepo = (gLink.gh.path.repo);
+const gRepo = (bsc.gLink.gh.path.repo);
 //
-const ghLink_Api = bsc.to_Ltp(htScr, ghApi);
-const ghApi_Repo = (ht_Linker([
+const ghLink_Api = ((bsc).to_Ltp(htScr, ghApi));
+const ghApi_Repo = ((bsc).jsHt.linker([
     ghLink_Api, gRepo, ]));
 //
 /**/
@@ -72,7 +52,7 @@ const ghApi_Repo = (ht_Linker([
 
 /* Init - Github */
 const nameRepo = gRepo.slice(0, -1);
-const reffAtBr = (`?ref=${gitD.branch}`);
+const reffAtBr = (`?ref=${bsc.gitD.branch}`);
 //
 export async function init_Github () {
     let repo = (nameRepo);
@@ -83,32 +63,34 @@ export async function init_Github () {
         //
         repo = (pkg.name);
     } else {
-        repo = ((htWeb.path).split(slash)
+        repo = ((htWeb.path).split(bsc.jsV.slash)
             .filter(Boolean).at(0));
     }
-    (gitD).repo = (repo);
-    return (gitD);
+    bsc.gitD.repo = repo;
+    return (bsc.gitD);
 }
 //
 function ghApi_AutoLink () {
-    return ht_Linker([ (ghApi_Repo), (gitD.name),
-        (gitD.repo), (`contents`), ]);
+    return ((bsc).jsHt.linker([ (ghApi_Repo),
+        (bsc.gitD.name), (bsc.gitD.repo),
+        (`contents`), ]));
 }
-const fghL_Api = ((bsc).js_Arr2Str([ (ghApi_AutoLink),
-    (reffAtBr),], (empty)));
+const fghL_Api = ((bsc).jsTx.arr2Str([
+    (ghApi_AutoLink), (reffAtBr),
+], (bsc.jsV.empty)));
 /**/
 
 
 /* Funcs - Data */
 export function ghApi_getLink (path) {
-    path = (((path).startsWith(slash))
+    path = (((path).startsWith(bsc.jsV.slash))
         ? ((path).slice(1)) : (path));
-    const getlink = ht_Linker([
+    const getlink = ((bsc).jsHt.linker([
         (ghApi_AutoLink()), (path),
-    ]);
-    return ((bsc).js_Arr2Str([
+    ]));
+    return ((bsc).jsTx.arr2Str([
         (getlink), (reffAtBr),
-], (empty)));
+], (bsc.jsV.empty)));
 }
 //
 /**/
@@ -119,12 +101,12 @@ const format_exts = ([ "png",
     "jpg","jpeg", "webp",
     //
     "gif",
-].map(ext => (`.${bsc.js_Lower(ext)}`)));
+].map(ext => (`.${bsc.jsTx.lower(ext)}`)));
 //
-const get_bd = ((bsc).js_Arr2Str([
+const get_bd = ((bsc).jsTx.arr2Str([
     //(`guide`),
     (`img`),
-], (slash)));
+], (bsc.jsV.slash)));
 const for_bd = (`${get_bd}/`);
 //
 /**/
@@ -136,18 +118,22 @@ async function in_Fetching (path) {
     if (!req.ok) { return []; }
     const html = (await (req.text()));
     const doc = (new DOMParser()
-        .parseFromString(html, "text/html"));
-    return [ ...doc.querySelectorAll("a") ]
-        .map(a => a.getAttribute("href"))
+        .parseFromString(html, (`text/html`)));
+    const links = [ ...doc.querySelectorAll(`a`) ]
+        .map(a => ((a).getAttribute(`href`)))
         .filter(Boolean);
+    //
+    //(console).table({ path, links, });
+    return links;
 }
 //
 async function fetch_Prefix (path) {
     return (await in_Fetching(path))
-        .filter(href => ((href) !== ("../")));
+        .filter(href => (
+            (href) !== (bsc.jsV.linkBack)));
 }
 async function fetch_Imgs (pf_Item, exts,
-    path = (`${pf_Item}/`),
+    path = (`${pf_Item}`),
 ) {
     return ((await in_Fetching(path)).filter((href) =>
         exts.some((ext) => href?.endsWith(ext)),
@@ -164,15 +150,25 @@ async function get_Prefixes (path = (`./${for_bd}`)) {
     const getLink = (new URL(path, pf_Link));
     //
     for (const href of links) {
-        if ([ (slash), (`./`), (`../`), ]
-            .includes(href)) { continue; }
-        const full = (new URL(href, getLink).pathname);
-        const isDir = ((href).endsWith(slash));
+        if ([ (bsc.jsV.slash), (bsc.jsV.linkRoot),
+            (bsc.jsV.linkBack), ].includes(href)
+        ) { continue; }
         //
+        const full = (new URL(href, getLink).pathname);
+        /*/
+        const full = ((href)
+            .replace((/^\/\//), (bsc.jsV.slash))
+            .replace((/\/+$/), (bsc.jsV.slash)));
+        // */
+        if (((full) === (bsc.jsV.slash2s)) ||
+            ((full) === (bsc.jsV.slash)) ||
+            ((href).includes(bsc.jsV.dot2s))
+            ) { continue; }
+        const isDir = ((href).endsWith
+            (bsc.jsV.slash));
         (results).push({
             type: ((isDir) ? (`dir`) : (`file`)),
-            path: (full),
-        });
+            path: (full), });
         if (isDir) { (results).push(
             ...(await get_Prefixes(full))); }
     }
@@ -205,7 +201,7 @@ async function get_Imgs (api = ghApi_getLink(`img`)) {
             /* File */
             const is_Img = ((item.type) === (`file`)) &&
                 (format_exts).some((ext) => ((bsc)
-                    .js_Lower(item.name)).endsWith(ext));
+                    .jsTx.lower(item.name)).endsWith(ext));
             return ((is_Img) ? ({
                 name: (item.name),
                 path: (item.path),

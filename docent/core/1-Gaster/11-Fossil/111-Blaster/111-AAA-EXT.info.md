@@ -2,7 +2,7 @@
 <!--
 ---!
 
-Doc_Article: Generic
+Doc_Article: Thread
 
 ---
 -->
@@ -11,9 +11,9 @@ Doc_Article: Generic
 # Gaster: Fossil Spec, Blaster
 
 > **Topic**: Report
-
-**Description**:  
-Laporan dari "Turnamen Jawara - ?"
+> 
+> **Description**:  
+> Laporan dari "Turnamen Jawara - ?"
 
 ## Simbolic Indicator
 

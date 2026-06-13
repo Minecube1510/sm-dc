@@ -1,7 +1,7 @@
 <!--
 ---!
 
-Doc_Article: X
+Doc_Article: Syndicate
 Article_Path: Entry_Doc
 #
 Status: No-Status

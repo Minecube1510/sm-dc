@@ -38,5 +38,10 @@
     "angleL": "<",
     "angleR": ">",
         "text7": "Links & Protocols",
-    "linkLmt": "://"
+    "linkLmt": "://",
+    "linkRoot": "./",
+    "linkBack": "../",
+        "text8": "Doubles",
+    "slash2s": "//",
+    "dot2s": ".."
 }

@@ -2,7 +2,9 @@
 <!--
 ---!
 
-Doc_Article: Entry_Doc
+# "Entry Doc"
+
+Doc_Article: Raw
 Status: [Fin/Wip]
 #
 District: [Appx-BTC]

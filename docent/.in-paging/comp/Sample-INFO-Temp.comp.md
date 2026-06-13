@@ -2,7 +2,9 @@
 <!--
 ---!
 
-Doc_Article: Explanation
+# "Thread"
+
+Doc_Article: Comp
 Status: [Fin/Wip]
 #
 District: [Bunch/Type/Category]
@@ -19,7 +21,7 @@ id="edp">
 
 # BTC Sample Name
 
-> **Topic**: Generic
+> **Topic**: {Temp-Comp}
 >
 > **Description**:  
 > Jelaskan Deskripsi-nya...

@@ -1,15 +1,13 @@
 #!/usr/bin/env js
-/* web/js/script.js */
+/* web/js/index/scripting-index.js */
 
 /* Imports */
-import * as comp from "./compile.js";
+import * as comp from "./idx-compile.js";
 /**/
 
 
 /* Automate */
-(window).addEventListener((`pageshow`), (event) => {
-    if (event.persisted) { (location).reload(); }
-});
+//?
 //
 /**/
 

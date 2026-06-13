@@ -1,36 +1,73 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
+    <!--
+        Head: Metas -->
+    <meta charset="UTF-8" name-file="index.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta description="In-Branch: work-dev" in-branch="work-dev">
+    <!-- = -->
+    <meta http-equiv="Cache-Control"
+        content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!--
+        Head: Basic Styles & Script -->
+    <link rel="stylesheet" href="web/css/index-style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!--=-->
+    <!--
+        Head: Compings -->
     <title id="title">
         SM-DC
-    </title>
-    <link id="favicon" rel="icon" type="image/x-icon"
-    href="./img/favic/favicon.ico">
-    <!--=-->
-    <link rel="stylesheet" href="web/css/styles.css">
-    <!--=-->
+    </title><link rel="icon" type="image/x-icon"
+    id="favicon" href="./img/favic/favicon.ico">
+    <!--
+        Head: Early Styles & Scripts -->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <!--=-->
+    <script type="module" src="web/js/set-paging.js"></script>
+    <script type="module" src="web/js/index/scripting-index.js"
+    defer></script>
+    <!--
+        Others -->
 </head>
 <!--
-=-->
+|
+!-->
 <body draggable="false" id="body"
 class="min-h-screen flex flex-col container mx-auto p-3 select-none bg-gray-100">
-    <script type="module" src="web/js/script.js"
+    <!--
+        Loading Screening... -->
+    <div id="loading-screen"
+    class="center fixed flex items-center justify-center inset-0 z-[9999] bg-neutral-950"></div>
+    <script type="module" src="web/js/load-screen.js"
     defer></script>
-    <!--=-->
-    <div id="loading-screen" class="fixed flex items-center justify-center transition-all inset-0 z-[9999] bg-neutral-950 duration-300 opacity-100"></div>
-    <!--=-->
+    <!--
+        Body: Contents -->
     <header class="">
-        <h1 class="text-2xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
-            Ateiler that viewing Images
+        <h1 class="text-xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
+            MD Previewer<br>
+            (Under Construction)
         </h1>
     </header>
-    <main class="flex flex-1 shadow-lg">
-        <div id="view-images"></div>
+    <main id="main-idx" class="flex flex-col flex-1">
+        <div id="idx-search" class="relative my-4">
+            <input id="article-md-view" type="text" value="README"
+                class="w-full px-3 py-2 pr-10 border-4 rounded-lg"
+                placeholder="Type the MD document name at here">
+            <button type="button" id="article-md-search" aria-label="Search"
+                class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer">
+                <span class="bi bi-search"></span>
+            </button>
+        </div><hr class="rounded-2 border-2">
+        <div class="relative mt-4 border-4 rounded-md border-stone-500 flex flex-col flex-1"
+            id="idx-view"><article
+            class="markdown-body bg-transparent m-0 p-4 flex-1"
+            id="content">
+        </article></div>
     </main>
     <footer class="text-center mt-4">
         <p class="font-semibold">
