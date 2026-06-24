@@ -107,8 +107,11 @@ export const idxGT_Switch = {
     rawpath: (`gt-switch-l`),
     posfile: (`gt-switch-r`),
 };
-export const idxGt_Input = ((jsDoc)
-    .getId(`idx-gt-input-comp`));
+export const idxGt_Comps = (() => (
+    (jsMod).getEl_Map({
+    gtcSwitch: (`idx-gt-switch-comp`),
+    gtcInput: (`idx-gt-input-comp`),
+})));
 /*|
 |*/
 export const idxSearchMD_CompId = (

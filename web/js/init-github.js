@@ -44,7 +44,7 @@ export async function git_Config () {
     const get_repo = ((is_Local)
         ? ((await (await (fetch
             (`./package.json`))).json()).name)
-        : (ghCfg(`repo`).slice(0, -1))
+        : (ghCfg(`repo`).slice((0), (-1)))
     );
     (inGit).data.repo = ((is_Local)
         ? (get_repo) : (((htWeb.path).split(

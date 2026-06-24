@@ -112,7 +112,7 @@ async function getAll_Images (
         default:
             break;
     }
-    const req = (fetch(api));
+    const req = await (fetch(api));
         if (!(req.ok)) return [];
     const data = (await (req.json()));
     //

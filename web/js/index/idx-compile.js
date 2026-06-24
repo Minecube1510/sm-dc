@@ -2,7 +2,7 @@
 /* web/js/index/idx-compile.js */
 
 /* Imports */
-import { jsVar,
+import { jsVar, dirSafe,
     jsTx, jsCs, jsDoc, jsHt,
     } from "../basis.js";
     //
@@ -16,7 +16,7 @@ import * as idxStrg from './idx-storage.js';
         idxGT_CompId as iGt_cId,
             //
         idxGT_Switch as gtSwSide,
-        idxGt_Input as gtInput,
+        idxGt_Comps as iGtComp,
         //
         idxSearchMD_CompId as iScMd,
     } from "./idx-storage.js";
@@ -62,27 +62,95 @@ gtC_Select((Object)
 
 
 /* Connect, Config, Control */
-//Under building...
+/** Component: Geartool Input Configs
+ * @typedef {Object} GTInputConfig
+ * @property {{file0:string, suFix:string}} gtIn_Fix
+ * @property {(v:string)=>string} gtIn_Fmt
+ * @property {(v:string)=>string} gtIn_Slash
+ * @property {(v:string)=>string} gtIn_Paint
+ */
+/** ?
+ * ?
+ */
 //
+const gtInElm = (iScMd.ftSrch);
+//
+    /** GT-Switch Feature-Config Working
+     * @param {HTMLElement} gtSwtcMode
+     * @returns {GTInputConfig}
+     */
+const gtInDefPlh = (gtInElm.placeholder);
+function gtSwitch_Change (
+    gtSwtcMode,
+) {
+    const tellGtMode = ((v) => (
+        `Changing Writing-Mode: ${v}`
+    ));
+    //
+    switch (gtSwtcMode) {
+        case ((jsTx).lower(rcLn.switch.rp)):
+            (jsCs).log(tellGtMode(
+                rcLn.switch.rp));
+            (gtInElm).placeholder = (gtInDefPlh);
+            //
+            break;
+        case ((jsTx).lower(rcLn.switch.pf)):
+            (jsCs).log(tellGtMode(
+                rcLn.switch.pf));
+            (gtInElm).placeholder = (
+                dirSafe.filename);
+            //
+            (gtInElm).addEventListener(
+                (`beforeinput`), ((e) => {
+                    //
+                }));
+            (gtInElm).addEventListener(
+                (`paste`), ((e) => {
+                    //
+                }));
+            break;
+    }
+}
     /** GT-Switch Feature Working
-     * @param {?} ?
      * @param {HTMLElement} compGt
      * @returns {void}
      */
 function gtSwitch_Sys (
-    //
     compGt = (iGt_cId.gtSwitch),
 ) {
+    const gtcSwitch = ((iGtComp()).gtcSwitch);
+    let lastMode = (null);
+    let cSIsMode = (gtcSwitch.value);
     //
+    if ((cSIsMode) === ((jsTx)
+        .lower(rcLn.switch.rp))
+    ) {
+        (jsCs).log((`First Writing-Mode:`),
+            (rcLn.switch.rp));
+    } else {
+        (jsCs).log((`Unknown Get-Mode:`),
+            (cSIsMode));
+    }
     //
+    const syncSwitch = () => {
+        let sIsMode = ((jsTx).lower(
+            gtcSwitch.value));
+            //
+            if ((sIsMode) === (lastMode)) return;
+        lastMode = (sIsMode);
+        //
+        gtSwitch_Change(sIsMode);
+    };
+    (gtcSwitch).addEventListener(
+        (`change`), (syncSwitch));
 }
     //
     /** GT-Input Feature-Config Working
-     * @param {HTMLElement} compGt
-     * @returns {void}
+     * @param {HTMLElement} gtiCfg
+     * @returns {GTInputConfig}
      */
 function gtInput_Config (
-    compGt,
+    gtiCfg,
 ) {
     const gtIn_Fix = {
         file0: ((jsTx).upper(`README`)),
@@ -116,10 +184,10 @@ function gtInput_Config (
      * @returns {void}
      */
 function gtInput_Sys (
-    compGt = (iGt_cId.gtInput)
+    compGt = (iGt_cId.iGtComp)
 ) {
     const cfg = gtInput_Config(compGt);
-    const gtInElm = (iScMd.ftSrch);
+    const gtcInput = (iGtComp().gtcInput);
     const {
         gtIn_Fix, gtIn_Fmt,
         gtIn_Slash, gtIn_Paint,
@@ -130,12 +198,12 @@ function gtInput_Sys (
     let sync = (() => {
         let v = (gtInElm.value);
         (iMd).mdpath = (v);
-        (gtInput).value = (render(v));
+        (gtcInput).value = (render(v));
     });
     //
     (gtInElm).value = (gtIn_Fix.file0);
-    (gtInput).readOnly = (true);
-    (gtInput).value = render(gtIn_Fix.file0);
+    (gtcInput).readOnly = (true);
+    (gtcInput).value = render(gtIn_Fix.file0);
     (iMd).mdpath = (gtIn_Fix.file0);
     //
     (gtInElm).addEventListener((`input`), (sync));
@@ -152,12 +220,16 @@ function gtInput_Sys (
             s)}/${value.slice(e2)}`);
         (e).target.setSelectionRange(
             ((s) + (1)), ((s) + (1)));
+        (e.target).dispatchEvent(new Event(
+            (`input`), { bubbles: (true), }));
     }));
     (gtInElm).addEventListener(
         (`paste`), ((e) => {
         (e).preventDefault();
-        let text = (((e.clipboardData) || (window.clipboardData))
-            .getData(`text`).replace((/\\/g), (jsVar.slash)));
+        let text = (
+            ((e.clipboardData) || (window.clipboardData))
+            .getData(`text`).replace((/\\/g),
+            (jsVar.slash)));
         let {
             selectionStart: s,
             selectionEnd: e2, value,

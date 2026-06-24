@@ -51,7 +51,7 @@ function comp_ViewImages (
 
 
 /* Formalize - Building */
-const getAll_Images = (await (
+const reSource_Images = (await (
     (imgPro).gather_AlImages()));
 //
     /** Componentor for Images Viewing - Log Consoles
@@ -67,7 +67,7 @@ function comp_LoggerImages () {
             (inGit.link.gh.path.repo)),
     ], (jsVar.empty)));
         /* Middle-12 - Warn */
-    if (!(getAll_Images.length)) {
+    if (!(reSource_Images.length)) {
         (jsCs).warn(
             `⚠️ There's no Images in here`);
         return;
@@ -81,7 +81,7 @@ function comp_LoggerImages () {
             (`Get from`), (`:\n`), ((iGit)
                 .ghApi_getLink(`img`)),
         ], (jsVar.empty)));
-        (jsCs).table((getAll_Images).map((item) => ({
+        (jsCs).table((reSource_Images).map((item) => ({
             name: ((item.name) ?? ((item)
                 .split(jsVar.slash).at(-1))),
             path: ((item.path) ?? ((item).slice(1))),
@@ -101,7 +101,7 @@ async function buildStruct_Images () {
         case ((!(vAteiler))
         || (!(vBox.atlr))):
             return (vBox);
-        case ((getAll_Images.length) < (1)):
+        case ((reSource_Images.length) < (1)):
             //(jsCs).warn(`⚠️ Tidak ada gambar ditemukan!`);
             //
             (vAteiler).classList.remove(...imgStrg
@@ -112,7 +112,7 @@ async function buildStruct_Images () {
             return (vBox);
     }
     (vBox).atlr.innerHTML = (jsVar.empty);
-    (getAll_Images).forEach((item) => {
+    (reSource_Images).forEach((item) => {
         let imgComp = ((jsDoc).createElm(`img`));
         //
         (imgComp).src = ((item.path) ?? (item));
