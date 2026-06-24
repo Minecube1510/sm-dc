@@ -2,107 +2,272 @@
 /* web/js/index/idx-compile.js */
 
 /* Imports */
-import * as bsc from "../basis.js";
-import * as drpg from "../set-paging.js";
+import { jsVar,
+    jsTx, jsCs, jsDoc, jsHt,
+    } from "../basis.js";
+    //
+import * as idxStrg from './idx-storage.js';
+    import {
+        md_Data as iMd,
+        //
+        idx_RemoCon as gtRc,
+        idx_RcLang as rcLn,
+        //
+        idxGT_CompId as iGt_cId,
+            //
+        idxGT_Switch as gtSwSide,
+        idxGt_Input as gtInput,
+        //
+        idxSearchMD_CompId as iScMd,
+    } from "./idx-storage.js";
+/*|
+|*/
+import * as idxBP1 from './idx-blueprint-1.js';
+    //
+import * as idxBP2 from './idx-blueprint-2.js';
+    import {
+        idxGtComp_Switch as gtC_Switch,
+        idxGtComp_Select as gtC_Select,
+    } from "./idx-blueprint-2.js";
+/*|
+|*/
+import { setPage_Comping
+} from "../set-paging.js";
+/*|
+|*/
+import { mdVi_Clear,
+    mdVi_Searching as mdSrc,
+} from "./idx-process.js";
 //
-import * as idxP from "./idx-process.js";
-//
-import { marked
-    } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 /**/
 
 
-/* Vars */
-const mdV_PhText = ((
-    `Preview-ing the Markdown-Document-File`).trim());
+/* Render */
+gtC_Switch({
+    id: (`idx-gt-switch-comp`),
+    //
+    left: (rcLn.switch.rp),
+    lid: (gtSwSide.rawpath),
+    //
+    right: (rcLn.switch.pf),
+    rid: (gtSwSide.posfile),
+});
+    //
+//
+    //
+gtC_Select((Object)
+    .values(rcLn.select));
 //
 /**/
 
 
-/* Struct - Comping */
-function mdView_PlHd_Ing (texting) {
-    const plHold = ((bsc).jsDoc.createElm(`div`));
+/* Connect, Config, Control */
+//Under building...
+//
+    /** GT-Switch Feature Working
+     * @param {?} ?
+     * @param {HTMLElement} compGt
+     * @returns {void}
+     */
+function gtSwitch_Sys (
     //
-    (plHold).className = ((bsc).jsHt.classer([`flex`,
-        `absolute`, `items-center`,`justify-center`,
-        `text-center`,`font-semibold`,
-        `inset-0`, `text-stone-500`, ]));
-    (plHold).textContent = (texting);
+    compGt = (iGt_cId.gtSwitch),
+) {
     //
-    (idxP.fMD.content).replaceChildren(plHold);
+    //
+}
+    //
+    /** GT-Input Feature-Config Working
+     * @param {HTMLElement} compGt
+     * @returns {void}
+     */
+function gtInput_Config (
+    compGt,
+) {
+    const gtIn_Fix = {
+        file0: ((jsTx).upper(`README`)),
+        suFix: ((iMd).fpMado),
+    };
+    const gtIn_Fmt = ((v) => {
+        v = ((jsTx).trm(v));
+        //
+        switch (true) {
+            case (!(v)):
+                return (jsVar.empty);
+            case ((v).endsWith(gtIn_Fix.suFix)):
+                return (v);
+            default:
+                return (`${v}${gtIn_Fix.suFix}`);
+        }
+    });
+    //
+    let gtIn_Slash = (v) => ((v).replace(
+        (/\\/g), (jsVar.slash)));
+    let gtIn_Paint = (v) => ((v)? (`${jsVar
+        .slash}${v}`) : (jsVar.empty));
+    //
+    return {
+        gtIn_Fix, gtIn_Fmt,
+        gtIn_Slash, gtIn_Paint,
+    };
+}
+    /** GT-Input Feature-System Working
+     * @param {HTMLElement} compGt
+     * @returns {void}
+     */
+function gtInput_Sys (
+    compGt = (iGt_cId.gtInput)
+) {
+    const cfg = gtInput_Config(compGt);
+    const gtInElm = (iScMd.ftSrch);
+    const {
+        gtIn_Fix, gtIn_Fmt,
+        gtIn_Slash, gtIn_Paint,
+    } = (cfg);
+    const render = ((v) => (gtIn_Paint(
+        gtIn_Slash(gtIn_Fmt(v)))));
+    //
+    let sync = (() => {
+        let v = (gtInElm.value);
+        (iMd).mdpath = (v);
+        (gtInput).value = (render(v));
+    });
+    //
+    (gtInElm).value = (gtIn_Fix.file0);
+    (gtInput).readOnly = (true);
+    (gtInput).value = render(gtIn_Fix.file0);
+    (iMd).mdpath = (gtIn_Fix.file0);
+    //
+    (gtInElm).addEventListener((`input`), (sync));
+    (gtInElm).addEventListener(
+        (`beforeinput`), ((e) => {
+            if ((e.data) !== (jsVar.bSlash)) return;
+        e.preventDefault();
+        let {
+            selectionStart: s,
+            selectionEnd: e2, value,
+        } = (e.target);
+        //
+        (e).target.value = (`${value.slice(0,
+            s)}/${value.slice(e2)}`);
+        (e).target.setSelectionRange(
+            ((s) + (1)), ((s) + (1)));
+    }));
+    (gtInElm).addEventListener(
+        (`paste`), ((e) => {
+        (e).preventDefault();
+        let text = (((e.clipboardData) || (window.clipboardData))
+            .getData(`text`).replace((/\\/g), (jsVar.slash)));
+        let {
+            selectionStart: s,
+            selectionEnd: e2, value,
+        } = (e.target);
+        //
+        (e).target.value = (`${value.slice((0),
+            (s))}${text}${value.slice(e2)}`);
+        (e).target.setSelectionRange(
+            ((s) + (text.length)), ((s) + (text.length)));
+    }));
+}
+    //
+    /** GT-Select Feature Working
+     * @param {?} ?
+     * @param {HTMLElement} compGt
+     * @returns {void}
+     */
+function gtSelect_Sys (
+    //
+    compGt = (iGt_cId.gtSelect),
+) {
+    //
     //
 }
 //
-function mdView_404 (ph) {
-    mdView_PlHd_Ing(ph.trim());
+function gtMd_Config () {
+    gtSwitch_Sys();
+    gtInput_Sys();
+    gtSelect_Sys();
 }
-const mdErr_404 = (`404 - Markdown Not Found`);
+//
+//(jsCs).log(gtRc);
+gtMd_Config();
 //
 /**/
 
 
 /* Activate */
-function mdView_Activation () {
-    (idxP.fMD.view).addEventListener(
+    /** MD-Viewer Activating Settings
+     * @returns {void}
+     */
+function mdVi_ActivatiOn () {
+    (iScMd.ftSrch).addEventListener(
         (`keydown`), async (event) => {
-        if ((event.key) !== (`Enter`)) { return; }
-        if (event.repeat) { return; }
-        //
-        (event).preventDefault();
-        //
-        const result = await (idxP.md_Searching());
-        if (!(result?.ok)) { mdView_404(mdErr_404); }
+            switch (true) {
+                case ((event.key) !== (`Enter`)):
+                case (event.repeat):
+                    return;
+            }
+            (event).preventDefault();
+            await ((idxBP1).mdView_Search());
     });
-    (idxP.fMD.search).addEventListener(
+    (iScMd.srcBtn).addEventListener(
         (`click`), async () => {
-        const result = await (idxP.md_Searching());
-        if (!(result?.ok)) { mdView_404(mdErr_404); }
+            await ((idxBP1).mdView_Search());
     });
     //
-    (idxP.fMD.view).addEventListener(
+    (iScMd.ftSrch).addEventListener(
         (`input`), () => {
-        if (idxP.fMD.view.value.trim()) {
-            return; }
-        (idxP).md_Clear();
-        mdView_PlHd_Ing(mdV_PhText);
+            (idxBP1).mdSt((`lST`), (jsVar.empty));
+            (idxBP1).mdSt((`lLR`), (jsVar.empty));
+                if ((jsTx).trm(iScMd.ftSrch.value)) return;
+            mdVi_Clear();
+            (idxBP1).mdVi_PlaceHolder((idxBP1)
+                .idx_CompText(`md_Plh`));
     });
 }
-//
-//?
+    /** MD-Viewer Finalize Activating
+     * @returns {void}
+     */
+function mdVi_FinActivate () {
+    (idxBP1).mdVi_PlaceHolder(
+        (idxBP1).idx_CompText(`md_Plh`));
+    //
+    mdVi_ActivatiOn();
+}
 //
 /**/
 
 
 /* Final */
+    /** Presenting as "Test" | Index Page
+     * @returns {void}
+     */
 export function test () {
     /*
         Test */ //*
-    //?
+    // Testing for waiting...
     // */
     //
 }
+    /** [Async] Presenting as "Struct" | | Index Page
+     * @returns {Promise<void>}
+     */
 export async function struct () {
     /*
         Head */
-    (drpg).draw_Title(`Index (Under Construction)`);
-    (drpg).reBrand_UserGit(bsc.gitD.name);
-    //
-    /*
-        Logs */
-    //
+    setPage_Comping(
+        `Index Page (Under Development)`);
     //
     /*
         Body */
-    //
-    mdView_PlHd_Ing(mdV_PhText);
-    mdView_Activation();
+    mdVi_FinActivate();
 }
 //
 /**/
 
 
 /* Uji Coba */
-//?
+//Later...
 //
 /**/
 

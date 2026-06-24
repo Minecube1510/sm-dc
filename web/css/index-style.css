@@ -6,13 +6,16 @@
 @tailwind components;
 @tailwind utilities;
 /* */
-/**/
+    /*|
+    |*/
 :root {
-    --tw-rounded-2xl: 18px;
+    --switch-spooth: .2s;
+        /* ? */
     /**/
-    --vimg-fill: 12px;
 }
 /**/
+/*
+    */
 
 
 /* Base */
@@ -20,27 +23,62 @@ article.markdown-body#content {
     /* ? */
     /**/
 }
-/**/
+    /*|
+    |*/
 article.markdown-body#content ul {
     list-style-type: disc !important;
 }
 article.markdown-body#content ol {
     list-style-type: decimal !important;
 }
+    /*|
+    |*/
+html[data-theme="dark"] .markdown-body,
+html[data-theme="light"] .markdown-body {
+    border-color: inherit !important;
+}
+html[data-theme] .markdown-body *,
+html[data-theme] .markdown-body *::before,
+html[data-theme] .markdown-body *::after {
+    background-color: transparent !important;
+    border-color: inherit !important;
+    transition: none !important;
+}
 /**/
-
-/**/
-//
-/**/
+/*
+    */
 
 
 /* Costumize */
+.switch-left, .switch-right {
+    transition:
+        opacity var(--switch-spooth) ease,
+        transform var(--switch-spooth) ease;
+}
 /**/
+.switch-left {
+    opacity: 1;
+}
+.peer:checked + label .switch-left {
+    opacity: .5;
+}
 /**/
+.switch-right {
+    opacity: .5;
+}
+.peer:checked + label .switch-right {
+    opacity: 1;
+}
+/**/
+/*
+    */
 
 
 /* Comps */
 /**/
+/*
+    */
 
 
 /**/
+/* END */

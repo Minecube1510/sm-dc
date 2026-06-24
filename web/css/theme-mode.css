@@ -1,0 +1,50 @@
+/* web/css/theme-mode.css */
+
+/* Root */
+/* * /
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* */
+    /*|
+    |*/
+:root {
+    --theme-speed: 500ms;
+    --theme-opting: ease-in-out;
+    /**/
+}
+/*
+    */
+
+
+/* Base */
+html, body {
+    transition:
+        background-color var(--theme-speed) var(--theme-opting),
+        color var(--theme-speed) var(--theme-opting),
+        border-color var(--theme-speed) var(--theme-opting);
+}
+
+html[data-theme] .markdown-body,
+html[data-theme] .markdown-body * {
+    transition: none !important;
+}
+/**/
+/*
+    */
+
+
+/* Costumize */
+/**/
+/*
+    */
+
+
+/* Comps */
+/**/
+/*
+    */
+
+
+/**/
+/* END */

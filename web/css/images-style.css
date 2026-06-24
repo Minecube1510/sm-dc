@@ -6,27 +6,37 @@
 @tailwind components;
 @tailwind utilities;
 /* */
-/**/
+    /*|
+    |*/
 :root {
     --tw-rounded-2xl: 18px;
-    /**/
+        /*
+        */
     --vimg-fill: 12px;
+    /**/
 }
 /**/
+/*
+    */
 
 
 /* Base */
-//
+    /* ? */
 /**/
+/*
+    */
 
 
 /* Costumize */
 /**/
-    /**=**/
+    /*|
+    |*/
 .vimg-fill {
     padding: var(--vimg-fill);
 }
 /**/
+/*
+    */
 
 
 /* Comps */
@@ -46,7 +56,8 @@
 .package:hover {
     box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
 }
-    /**/
+    /*|
+    |*/
 .package2 {
     width: 200px;
     height: 254px;
@@ -60,13 +71,16 @@
     transform: scale(0.98);
     border-radius: 18px;
 }
-    /**/
+    /*|
+    |*/
 .text {
     color: white;
     font-size: 17px;
 }
+/**/
+/*
+    */
+
 
 /**/
-
-
-/**/
+/* END */

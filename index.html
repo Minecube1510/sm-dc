@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class=""
+data-theme="">
 <head>
     <!--
         Head: Metas -->
@@ -13,6 +14,7 @@
     <meta http-equiv="Expires" content="0">
     <!--
         Head: Basic Styles & Script -->
+    <link rel="stylesheet" href="web/css/theme-mode.css">
     <link rel="stylesheet" href="web/css/index-style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!--
@@ -38,7 +40,7 @@
 |
 !-->
 <body draggable="false" id="body"
-class="min-h-screen flex flex-col container mx-auto p-3 select-none bg-gray-100">
+class="min-h-screen flex flex-col container mx-auto p-3 select-none">
     <!--
         Loading Screening... -->
     <div id="loading-screen"
@@ -50,28 +52,41 @@ class="min-h-screen flex flex-col container mx-auto p-3 select-none bg-gray-100"
     <header class="">
         <h1 class="text-xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
             MD Previewer<br>
-            (Under Construction)
-        </h1>
+            (Under Development)
+        </h1><hr class="rounded-2 border-2">
     </header>
     <main id="main-idx" class="flex flex-col flex-1">
-        <div id="idx-search" class="relative my-4">
-            <input id="article-md-view" type="text" value="README"
-                class="w-full px-3 py-2 pr-10 border-4 rounded-lg"
-                placeholder="Type the MD document name at here">
-            <button type="button" id="article-md-search" aria-label="Search"
-                class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer">
-                <span class="bi bi-search"></span>
-            </button>
+        <div id="idx-remocon" class="grid gap-y-4 my-4">
+            <div class="flex justify-center items-center gap-4 text-sm"
+                id="idx-geartool">
+                <div id="idx-gt-switch"
+                class="inline-block text-center"></div>
+                <div id="idx-gt-input" class="flex-1">
+                    <input placeholder="Path/Folder/File.formatted"
+                        class="w-full px-3 py-2 text-start focus:outline-none"
+                        type="text" id="idx-gt-input-comp" value="">
+                </div>
+                <div id="idx-gt-select">
+                </div>
+            </div><div id="idx-search"
+                class="relative flex overflow-hidden">
+                <span class="inline-flex items-center px-3 font-semibold"
+                    id="article-md-root" data-path-root="/">/</span>
+                <input class="flex-1 px-3 py-2 pr-10"
+                    type="text" id="article-md-search" aria-label="View" value=""
+                    placeholder="Type the MD document name at here">
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                    type="button" id="article-md-src-logo" aria-label="Search"
+                    value=""><span class="bi bi-search"></span></button>
+            </div>
         </div><hr class="rounded-2 border-2">
-        <div class="relative mt-4 border-4 rounded-md border-stone-500 flex flex-col flex-1"
-            id="idx-view"><article
-            class="markdown-body bg-transparent m-0 p-4 flex-1"
+        <div class="" id="idx-view"><article
+            class="markdown-body bg-transparent m-0 p-4 flex-1 rounded-inherit"
             id="content">
         </article></div>
     </main>
     <footer class="text-center mt-4">
-        <p class="font-semibold">
-            By:
+        <p class="font-semibold">By:
             <span id="github-username">
                 Git-Username
             </span>

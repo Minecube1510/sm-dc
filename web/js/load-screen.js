@@ -2,88 +2,103 @@
 /* web/js/images/load-screen.js */
 
 /* Imports */
-//?
+//Importing...
 //
-import * as bsc from "./basis.js";
-//
-/**/
-
-
-/* Vars */
-//?
+import {
+    jsTx, jsCs, jsDoc, jsHt,
+    } from "./basis.js";
 //
 /**/
 
 
-/* Funcs - Customs */
-//?
+/* Initialize */
+const ls_CompId = ((jsDoc).getId(`loading-screen`));
 //
 /**/
 
 
 /* Struct - Loading */
-const img_LoadScreen_Id = (`loading-screen`);
-//
+    /** Showing Loading-Screen
+     * @returns {HTMLElement|null}
+     */
 function show_Waiting () {
-    let inLoading = ((bsc).jsDoc.getId(img_LoadScreen_Id));
-        if (!(inLoading)) { return null; }
+        if (!(ls_CompId)) return (null);
+    const inLoad = (() => {
+        let mkElm = ((jsDoc).createElm);
+        return {
+            wrap: mkElm(`div`),
+            spin: mkElm(`div`),
+            text: mkElm(`p`),
+        };
+    })();
     //
-    const inLoad_Spin = ((bsc).jsDoc.createElm(`div`));
-    const inLoad_Wrap = ((bsc).jsDoc.createElm(`div`));
-    const inLoad_Text = ((bsc).jsDoc.createElm(`p`));
+    /* Instruct */
+    (inLoad).text.textContent = (
+        `Loading Images...`);
     //
-    inLoading.id = img_LoadScreen_Id;
-    (inLoad_Text).textContent = (`Loading Images...`);
-    //
-    (inLoad_Wrap).className = ((bsc).jsHt.classer([
+    (inLoad).wrap.className = ((jsHt).classer([
         `flex`,`flex-col`, `items-center`,
         //
         `text-center`, `gap-4`, ]));
-    (inLoad_Spin).className = ((bsc).jsHt.classer([
+    (inLoad).spin.className = ((jsHt).classer([
         `rounded-full`, `animate-spin`,
         `w-16`, `h-16`,
         //
         `border-4`, `border-neutral-700`,
         `border-t-white`, ]));
-    (inLoad_Text).className = ((bsc).jsHt.classer([
+    (inLoad).text.className = ((jsHt).classer([
         `text-xl`, `text-white`,
         `font-semibold`, ]));
-    /* Construct */
-    (inLoad_Wrap).appendChild(inLoad_Spin);
-    (inLoad_Wrap).appendChild(inLoad_Text);
-    (inLoading).appendChild(inLoad_Wrap);
     //
-    return (inLoading);
+    /* Structing Waiting-Load */
+    (inLoad).wrap.appendChild(inLoad.spin);
+    (inLoad).wrap.appendChild(inLoad.text);
+    (ls_CompId).appendChild(inLoad.wrap);
+    //
+    return (ls_CompId);
 }
-function hide_Loading () {
-    const loading = ((bsc).jsDoc.getId(img_LoadScreen_Id));
-        if (!(loading)) { return; }
-    (loading).classList.remove(
+    /** Hiding Loading-Screen
+     * @returns {void}
+     */
+function hide_Waiting () {
+        if (!(ls_CompId)) return;
+    (ls_CompId).classList.remove(
         `opacity-100`, `scale-100`);
-    (loading).classList.add(`opacity-0`,
+    (ls_CompId).classList.add(`opacity-0`,
         `scale-105`, `pointer-events-none`);
     //
-    setTimeout(() => { (loading)
-        .remove(); }, (500));
+    setTimeout(() => {
+        (ls_CompId).remove();
+    }, (500));
 }
-//
-const comp_SLoading = show_Waiting();
 /**/
 
 
 /* Final */
-function loaded_LoadScreen () {
-    (bsc).jsDoc.appEnd_Ch(comp_SLoading);
-    requestAnimationFrame(() => {
-        (comp_SLoading).classList.remove((`opacity-0`),
-            (`pointer-events-none`));
-        (comp_SLoading).classList.add(`opacity-100`);
-    });
+    /** Finalize Loading-Screen
+     * @returns {void}
+     */
+function final_LoadScreen () {
+    let ls_Wait = show_Waiting();
     //
+    (jsDoc).appEnd_Ch(ls_Wait);
+    //
+    requestAnimationFrame(() => {
+        (ls_Wait).classList.remove(`opacity-0`,
+            `pointer-events-none`);
+        (ls_Wait).classList.add(`opacity-100`);
+    });
 }
 //
-loaded_LoadScreen();
-hide_Loading();
+    /** Activating Loading Screen-Workflows
+     * @returns {void}
+     */
+function on_LoadScreen () {
+    final_LoadScreen();
+    hide_Waiting();
+}
+//
+on_LoadScreen();
 /**/
 
 

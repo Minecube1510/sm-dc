@@ -2,224 +2,152 @@
 /* web/js/images/img-process.js */
 
 /* Imports */
-//?
+import { jsVar,
+    jsTx, jsCs, jsDoc, jsHt,
+    } from "../basis.js";
 //
-import * as bsc from "../basis.js";
-//
-/**/
-
-
-/* Vars - Basic */
-//?
-//
-export const htWeb = {
-    lnk: (window.location.href),
-    dom: (window.location.origin),
-    lcl: (location.hostname),
-    //
-    path: (window.location.pathname),
-};
-//
-export const is_Local = (
-    ((htWeb.lcl) === (`127.0.0.1`)) ||
-    ((htWeb.lcl) === (`localhost`))
-);
-const is_GitPg = ((htWeb.lcl)
-    .endsWith(`github.io`));
-//
-const htBsc = (bsc.gLink.ltp.bsc);
-const htScr = (bsc.gLink.ltp.scr);
-const ghRaw = (bsc.gLink.gh.base.raw);
-const ghApi = (bsc.gLink.gh.base.api);
-//
-/**/
-
-
-/* Funcs - Customs */
-//?
-//
-/**/
-
-/* Vars - Data */
-const gRepo = (bsc.gLink.gh.path.repo);
-//
-const ghLink_Api = ((bsc).to_Ltp(htScr, ghApi));
-const ghApi_Repo = ((bsc).jsHt.linker([
-    ghLink_Api, gRepo, ]));
-//
-/**/
-
-
-/* Init - Github */
-const nameRepo = gRepo.slice(0, -1);
-const reffAtBr = (`?ref=${bsc.gitD.branch}`);
-//
-export async function init_Github () {
-    let repo = (nameRepo);
-    //
-    if (is_Local) {
-        const req = (await fetch("./package.json"));
-        const pkg = (await (req.json()));
-        //
-        repo = (pkg.name);
-    } else {
-        repo = ((htWeb.path).split(bsc.jsV.slash)
-            .filter(Boolean).at(0));
-    }
-    bsc.gitD.repo = repo;
-    return (bsc.gitD);
-}
-//
-function ghApi_AutoLink () {
-    return ((bsc).jsHt.linker([ (ghApi_Repo),
-        (bsc.gitD.name), (bsc.gitD.repo),
-        (`contents`), ]));
-}
-const fghL_Api = ((bsc).jsTx.arr2Str([
-    (ghApi_AutoLink), (reffAtBr),
-], (bsc.jsV.empty)));
-/**/
-
-
-/* Funcs - Data */
-export function ghApi_getLink (path) {
-    path = (((path).startsWith(bsc.jsV.slash))
-        ? ((path).slice(1)) : (path));
-    const getlink = ((bsc).jsHt.linker([
-        (ghApi_AutoLink()), (path),
-    ]));
-    return ((bsc).jsTx.arr2Str([
-        (getlink), (reffAtBr),
-], (bsc.jsV.empty)));
-}
+import * as iGit from '../init-github.js';
 //
 /**/
 
 
 /* Vars - Switch */
-const format_exts = ([ "png",
-    "jpg","jpeg", "webp",
+const format_exts = ([
+    `png`, `jpg`,`jpeg`, `webp`,
     //
-    "gif",
-].map(ext => (`.${bsc.jsTx.lower(ext)}`)));
+    `gif`,
+].map(ext => (`.${(jsTx).lower(ext)}`)));
 //
-const get_bd = ((bsc).jsTx.arr2Str([
-    //(`guide`),
-    (`img`),
-], (bsc.jsV.slash)));
-const for_bd = (`${get_bd}/`);
+const for_bd = (() => { return (
+    `${(jsTx).arr2Str([
+        //(`guide`),
+        (`img`),
+], (jsVar.slash))}/`);
+})();
 //
 /**/
 
 
 /* Gets - Localize */
-async function in_Fetching (path) {
-    const req = (await bsc.jsA_GetFetch(path));
-    if (!req.ok) { return []; }
-    const html = (await (req.text()));
-    const doc = (new DOMParser()
-        .parseFromString(html, (`text/html`)));
-    const links = [ ...doc.querySelectorAll(`a`) ]
-        .map(a => ((a).getAttribute(`href`)))
-        .filter(Boolean);
-    //
-    //(console).table({ path, links, });
-    return links;
-}
-//
-async function fetch_Prefix (path) {
-    return (await in_Fetching(path))
-        .filter(href => (
-            (href) !== (bsc.jsV.linkBack)));
-}
-async function fetch_Imgs (pf_Item, exts,
-    path = (`${pf_Item}`),
+    /** [Async] Fetching all Images method
+     * @param {string} pathFetch
+     * @returns {Promise<string[]>}
+     */
+async function images_Fetchings (
+    pathFetch,
 ) {
-    return ((await in_Fetching(path)).filter((href) =>
-        exts.some((ext) => href?.endsWith(ext)),
-    ));
+    const fetch_req = await (fetch(pathFetch));
+        if (!(fetch_req.ok)) return [];
+    return [ ...(new DOMParser().parseFromString(
+        await ((fetch_req).text()), (`text/html`)
+      ).querySelectorAll(`a`)), ].map(a => ((a)
+        .getAttribute(`href`))).filter(Boolean);
 }
-//
-async function get_Prefixes (path = (`./${for_bd}`)) {
-    /* Async Configs */
-    const results = [];
-    const links = await fetch_Prefix(path);
+    /** [Async] Get Images Path-Prefix
+     * @typedef {Object} ImgPrefix
+     * @property {"dir"|"file"} type
+     * @property {string} path
+     */
+async function getImg_Prefixes (
+    pathGet = (`./${for_bd}`),
+) {
+    let links = ((await images_Fetchings(pathGet)).filter(
+        href => ((href) !== (jsVar.linkBack))));
+    let getDom = (new URL((pathGet), (iGit.htWeb.dom)));
     //
-    const pf_Link = ((is_Local) ?
-        (htWeb.dom) : (`${htWeb.dom}`));
-    const getLink = (new URL(path, pf_Link));
-    //
-    for (const href of links) {
-        if ([ (bsc.jsV.slash), (bsc.jsV.linkRoot),
-            (bsc.jsV.linkBack), ].includes(href)
-        ) { continue; }
+    let items = [];
+    for (let href of links) {
+        let full = (new URL(href, getDom).pathname);
+        switch (true) {
+            case ([(jsVar.slash), (jsVar.linkRoot),
+                (jsVar.linkBack), ].includes(href)
+            ):
+                continue;
+            case (((full) === (jsVar.slash2s)) ||
+                ((full) === (jsVar.slash)) ||
+                ((href).includes(jsVar.dot2s))
+            ):
+                continue;
+        }
+        let isDir = ((href).endsWith(jsVar.slash));
         //
-        const full = (new URL(href, getLink).pathname);
-        /*/
-        const full = ((href)
-            .replace((/^\/\//), (bsc.jsV.slash))
-            .replace((/\/+$/), (bsc.jsV.slash)));
-        // */
-        if (((full) === (bsc.jsV.slash2s)) ||
-            ((full) === (bsc.jsV.slash)) ||
-            ((href).includes(bsc.jsV.dot2s))
-            ) { continue; }
-        const isDir = ((href).endsWith
-            (bsc.jsV.slash));
-        (results).push({
+        (items).push({
             type: ((isDir) ? (`dir`) : (`file`)),
-            path: (full), });
-        if (isDir) { (results).push(
-            ...(await get_Prefixes(full))); }
+            path: (full),
+        });
+        if (isDir) {
+            let sub = (await (getImg_Prefixes(full)));
+            items = ((items).concat(sub));
+        }
     }
-    return (results);
+    return (items);
 }
-async function get_Imgs (api = ghApi_getLink(`img`)) {
-    /* Local */
-    if (is_Local) {
-        const pf_Res = (await get_Prefixes(for_bd));
-        return ((await Promise.all((pf_Res).map(
-            (item) => fetch_Imgs((item.path),
-                (format_exts))))).flat()
-            .filter((href) => (format_exts)
-                .some((ext) => href?.endsWith(ext)
-        )));
-    }
-    /* Github Pages */
-    if (!(is_GitPg)) { return []; }
-    /* In Process */
-    const req = (await fetch(api));
-        if (!(req.ok)) { return []; }
-    const data = (await req.json());
+    /** [Async] Final getting all Images
+     * @param {string} [api=iGit.ghApi_getLink("img")]
+     * @returns {Promise<string[]>}
+     */
+async function getAll_Images (
+    api = ((iGit).ghApi_getLink(`img`)),
+) {
+    const seen = (new Set());
+    const addImage = ((img) => ((seen).add(img)));
     //
-    return (await Promise.all(data.map(
-        async (item) => {
-            /* Folder */
-            if ((item.type) === (`dir`)) { return (
-                await get_Imgs(item.url));
+    switch (true) {
+        case (iGit.is_Local): {
+            let prefixes = (await (getImg_Prefixes(for_bd)));
+            for (const item of prefixes) {
+                let links = (await (images_Fetchings(item.path)));
+                for (const href of links) {
+                    if ((format_exts).some(ext => (
+                        (href)?.endsWith(ext)
+                    ))) {
+                        addImage(href);
+                    }
+                }
             }
-            /* File */
-            const is_Img = ((item.type) === (`file`)) &&
-                (format_exts).some((ext) => ((bsc)
-                    .jsTx.lower(item.name)).endsWith(ext));
-            return ((is_Img) ? ({
-                name: (item.name),
-                path: (item.path),
-                src: (item.download_url),
-            }) : ([]));
-        })
-    )).flat();
+            return [...seen];
+        }
+        case (!((iGit).htWeb.lcl.endsWith(`github.io`))):
+            return [];
+        default:
+            break;
+    }
+    const req = (fetch(api));
+        if (!(req.ok)) return [];
+    const data = (await (req.json()));
+    //
+    for (const item of data) {
+        switch (item.type) {
+            case (`dir`):
+                let sub = (await (getAll_Images(item.url)));
+                (sub).forEach(addImage);
+                break;
+            case (`file`):
+                if ((format_exts).some(ext => ((jsTx)
+                    .lower(item.name).endsWith(ext)))
+                ) {
+                    addImage(item.download_url);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return [...seen];
+}
+    /** [Async] Gathering that all Images
+     * @returns {void}
+     */
+export async function gather_AlImages () {
+    await ((iGit).git_Config());
+    return (await (getAll_Images()));
 }
 //
-export async function all_Images () {
-    await init_Github();
-    return await get_Imgs();
-}
 /**/
 
 
 /* Uji Coba */
-//?
+//Later...
 //
 /**/
 

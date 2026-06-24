@@ -2,25 +2,25 @@
 /* web/js/images/scripting-images.js */
 
 /* Imports */
-import * as comp from "./img-compile.js";
+import * as imgCompile from './img-compile.js';
 /**/
 
 
 /* Automate */
-//?
+//Later...
 //
 /**/
 
 
-/* Compound */
-function main() {
-    (comp).test();
-    (comp).struct();
+/* Compound and Display */
+    /** Main of Page (Images Ateiler)
+     * @returns {void}
+     */
+function main () {
+    (imgCompile).test();
+    (imgCompile).struct();
 }
-/**/
-
-
-/* Display */
+//
 main();
 /**/
 

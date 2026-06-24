@@ -2,55 +2,59 @@
 /* web/js/basis.js */
 
 /* Imports */
-//?
+//Importing...
 //
 /**/
 
 
-/* Fetchings */
-// /*
-const files = [(`vars`),
-    (`git-data`), (`glink`),
-];
-const data = await ((Promise)
-    .all(files.map(file => fetch
-        (`call/json/${file}.json`)
-        .then(r => r.json())
-)));
-export const [jsV,
-    gitD, gLink,
-] = (data);
-// */
-/**/
-
-
-/* Vars */
-const DOC = (document);
-const CNSL = (console);
-//
-//?
+/* Func: Asyncs */
+//Later...
 //
 /**/
 
 
 /* Func: Basic */
 export const jsTx = {
-    arr2Str: (arr, sep) => ((arr).join(sep)),
-    upper: (txt) => (txt.toUpperCase()),
-    lower: (txt) => (txt.toLowerCase()),
+    upper: ((txt) => ((txt).toUpperCase())),
+    lower: ((txt) => ((txt).toLowerCase())),
+    //
+    trm: ((text) => ((text).trim())),
+    //
+    arr2Str: ((arr, sep) => ((arr).join(sep))),
 };
+/**/
+
+
+/* Fetchings */
+let data = ((Object).fromEntries(
+    await ((Promise).all([ `vars`,
+        `git-data`, `git-link`,
+    ].map(async (file) => {
+        let json = (await (fetch(jsTx
+            .lower(`call/json/${file}.json`
+        ))));
+        return [ (file), (await (
+            json.json())), ];
+    })))
+));
+//
+export const jsVar = (data[`vars`]);
+export const inGit = {
+    data: (data[`git-data`]),
+    link: (data[`git-link`]),
+}
 /**/
 
 
 /* Func: Logs */
 export const jsCs = {
-    log: ((CNSL).log),
-    warn: ((CNSL).warn),
-    error: ((CNSL).error),
+    log: ((console).log),
+    warn: ((console).warn),
+    error: ((console).error),
     //
-    grBgn: ((CNSL).group),
-    table: ((CNSL).table),
-    grEnd: ((CNSL).groupEnd),
+    grBgn: ((console).group),
+    table: ((console).table),
+    grEnd: ((console).groupEnd),
     //
 };
 //
@@ -59,14 +63,16 @@ export const jsCs = {
 
 /* Func: Docs */
 export const jsDoc = {
-    getId: (id, doc = DOC) =>
+    getId: (id, doc = document) =>
         ((doc).getElementById(id)),
-    createElm: (tag, doc = DOC) =>
+    createElm: (tag, doc = document) =>
         ((doc).createElement(tag)),
+    qSelectAll: (tag, doc = document) =>
+        ((doc).querySelectorAll(tag)),
     //
-    appEnd_Ch: (el, doc = DOC) =>
+    appEnd_Ch: (el, doc = document) =>
         ((doc).body.appendChild(el)),
-    prepEnd: (el, doc = DOC) =>
+    prepEnd: (el, doc = document) =>
         ((doc).body.prepend(el)),
     //
 };
@@ -74,27 +80,38 @@ export const jsDoc = {
 /**/
 
 
-/* Func: Asyncs */
-export async function jsA_GetFetch (pathlink) {
-    return await fetch(pathlink);
-}
-//
-/**/
-
-
 /* Func: Customs */
-export function js_StRept (str, times) {
-    let result = (jsV.empty);
-    for (let i = 0; i < times; i++) {
-        result += str; }
+    /** Repeat the "String"
+     * @param {string} strToRept
+     * @param {number} repTimes
+     * @returns {string}
+     */
+export function js_StRept (
+    strToRept, repTimes,
+) {
+    let result = (jsVar.empty);
+    for (let i = 0; i < repTimes; i++) {
+        result += strToRept; }
     return (result);
 }
 //
+let mapEl = ((mapping, fn) => ((Object)
+    .fromEntries((Object).entries(mapping)
+        .map(([key, id]) => [ (key), (fn(id)),
+]))));
+export let jsMod = {
+    createEl_Map: ((mapping) =>
+        mapEl((mapping), ((jsDoc).createElm))),
+    getEl_Map: ((mapping) =>
+        mapEl((mapping), ((jsDoc).getId))),
+    //
+};
+//
 export const jsHt = {
-    classer: (classes) => (
-        (jsTx).arr2Str((classes), (jsV.space))),
-    linker: (paths) => (
-        (jsTx).arr2Str((paths), (jsV.slash))),
+    classer: ((classes) => (
+        (jsTx).arr2Str((classes), (jsVar.space)))),
+    linker: ((paths) => (
+        (jsTx).arr2Str((paths), (jsVar.slash)))),
     //
 };
 //
@@ -102,12 +119,17 @@ export const jsHt = {
 
 
 /* Func: Linker */
-export function to_Ltp (tp, link) {
-    const linkLmt = (jsV.linkLmt);
-    const linking = ((jsTx)
-        .lower((jsTx).arr2Str([
-        (tp), (link), ], (linkLmt))));
-    return (linking);
+    /** Linking for "HTTP/HTTPS"
+     * @param {string} text_Protocol
+     * @param {string} link_txtPro
+     * @returns {string}
+     */
+export function toLink_txtPro (
+    text_Protocol, link_txtPro,
+) {
+    return ((jsTx).lower((jsTx).arr2Str([
+        (text_Protocol), (link_txtPro),
+    ], (jsVar.linkLmt))));
 }
 //
 /**/

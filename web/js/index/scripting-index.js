@@ -2,25 +2,25 @@
 /* web/js/index/scripting-index.js */
 
 /* Imports */
-import * as comp from "./idx-compile.js";
+import * as idxCompile from './idx-compile.js';
 /**/
 
 
 /* Automate */
-//?
+//Later...
 //
 /**/
 
 
-/* Compound */
-function main() {
-    (comp).test();
-    (comp).struct();
+/* Compound and Display */
+    /** Main of Page (Index)
+     * @returns {void}
+     */
+function main () {
+    (idxCompile).test();
+    (idxCompile).struct();
 }
-/**/
-
-
-/* Display */
+//
 main();
 /**/
 

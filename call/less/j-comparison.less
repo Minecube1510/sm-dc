@@ -1,0 +1,103 @@
+/* call/less/j-comparison.less */
+
+/*
+    Roots, Overrides, Statics
+    |
+    Roots: Root
+    Overrides: Ngatur secara paksa (Butuh penanganan ekstra, atau juga kebutuhan mengubah sistem)
+    Statics: Mengubah ke-statis-an
+*/
+    //
+/* Roots */
+:root {
+    --in-empty: "";
+    --select-none: none;
+    //
+    --scale-figure-icon: 200px;
+}
+//
+:root {
+    --figure-01: url("/img/btc/1GFB.png");
+    --figure-02: url("/img/btc/2SJL.png");
+    --figure-03: url("/img/btc/3AVD.png");
+    --figure-04: url("/img/btc/4MRK.png");
+    --figure-05: url("/img/btc/5HPW.png");
+    --figure-06: url("/img/btc/6CTE.png");
+        //
+    --figure-07: url("/img/secon/Ba1CH-Phnx-PkPn.png");
+    --figure-08: url("/img/secon/Bb1SK-LbTn-DDLC.png");
+    --figure-09: url("/img/secon/Bb2CU-RpTl-MtKb.png");
+    --figure-10: url("/img/secon/C10RT-TWTk-SlTb.png");
+    /*|
+    |*/
+    --plant-01: url("/img/unknown/Night-5-James.png");
+    --plant-02: url("/img/unknown/Fog-2-Lampu-Cahya.png");
+    --plant-03: url("/img/unknown/Day-3-Ceri.png");
+    --plant-04: url("/img/unknown/Night-3-Ojan.png");
+    --zombe-05: url("/img/unknown/zombie-item-jitb.png");
+    --plant-06: url("/img/unknown/Fog-7-Magnet.png");
+        //
+    --plant-07: url("/img/unknown/Pool-5-Cabe.png");
+    --plant-08: url("/img/unknown/Roof-3-Jagung.png");
+    --plant-09: url("/img/unknown/Roof-5-Fajar.png");
+    --plant-10: url("/img/unknown/Night-6-Jaklir-Ishap.png");
+}
+//
+    //-//
+/* Overrides */
+img {
+    /*/
+    @supports (-webkit-user-drag: none) {
+        -webkit-user-drag: var(--select-none);
+    }
+    -webkit-user-select: var(--select-none);
+    -moz-user-select: var(--select-none);
+    -ms-user-select: var(--select-none);
+    user-select: var(--select-none);
+    // */
+    opacity: 100%;
+}
+//
+    //-//
+/* Statics */
+tr.j-comp img,
+td.j-comp img {
+    width: var(--scale-figure-icon) !important;
+    height: auto !important;
+    //
+    @supports (-webkit-user-drag: none) {
+        -webkit-user-drag: var(--select-none);
+    }
+    //
+    -webkit-user-select: var(--select-none);
+    -moz-user-select: var(--select-none);
+    -ms-user-select: var(--select-none);
+    user-select: var(--select-none);
+}
+//
+/* -- 
+ -- */
+
+
+/*
+    Struct
+    |
+    ?
+*/
+//
+/* -- 
+ -- */
+
+
+/*
+    Uji-Coba
+    |
+    ?
+*/
+//
+/* -- 
+ -- */
+
+
+/* END */
+/**/

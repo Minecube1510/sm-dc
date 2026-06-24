@@ -2,100 +2,158 @@
 /* web/js/index/idx-process.js */
 
 /* Imports */
-import * as bsc from "../basis.js";
-import * as drpg from "../set-paging.js";
+import { jsVar,
+    jsTx, jsCs, jsDoc, jsHt,
+    } from "../basis.js";
+    //
+import * as idxStrg from './idx-storage.js';
+    import { reaState,
+        md_Data as iMd,
+        idxSearchMD_CompId as iScMd,
+    } from "./idx-storage.js";
 //
-import { marked
+import { marked,
     } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 /**/
 
 
-/* Vars */
-//?
-//
-/**/
-
-
 /* Struct - Comping */
-export const fMD = {
-    content: ((bsc).jsDoc.getId('content')),
-    view: ((bsc).jsDoc.getId('article-md-view')),
-    search: ((bsc).jsDoc.getId('article-md-search')),
+const mdProc_State = {
+    cache: new Map(),
+    failed: new Set(),
+    time_pend: new Set(),
 };
 //
-const mdState = {
-    cache: new Map(),
-    pending: new Set()
-};
+    /** Set:Images as Non-Draggable
+     * @returns {void}
+     */
+export function imgN_Draggable () {
+    (jsDoc).qSelectAll(`img`)
+        .forEach((img) => {
+            (img).draggable = (false);
+    });
+}
 //
 /**/
 
 
 /* Struct - Functing */
-export async function loadMD (
-    path, placeholder = null) {
-    const cache = (mdState.cache.get(path));
+    /** Render Markdown into Viewered
+     * @param {string} file_MarkDown
+     * @returns {string}
+     */
+function mdVi_Renderer (
+    file_MarkDown,
+) {
+    (iScMd).content
+        .innerHTML = marked(file_MarkDown);
+    imgN_Draggable();
     //
-    if ((cache) === (false)) {
-        (fMD).content.innerHTML = (placeholder);
-        return { ok: false, reason: "cached_not_found" }; }
-    if (cache) {
-        (fMD).content.innerHTML = marked(cache);
-        return { ok: true, md: cache }; }
-    if (mdState.pending.has(path)) {
-        return { ok: false, reason: "pending" }; }
-    (mdState).pending.add(path);
+    return (file_MarkDown);
+}
+    /** [Async] Loaded Markdown Files
+     * @param {string} path_Loader
+     * @returns {Promise<Object>}
+     */
+async function mdVi_Loader (
+    path_Loader,
+) {
+    const md_Cache = (mdProc_State
+        .cache.get(path_Loader));
     //
+    switch (true) {
+        case ((md_Cache) === (false)):
+            return {
+                ok: false,
+                reason: (reaState.chc_n_fnd),
+            };
+        case ((md_Cache) !== (undefined)):
+            return {
+                ok: true,
+                f_markdown: mdVi_Renderer(md_Cache),
+            };
+        case (mdProc_State.time_pend.has(path_Loader)):
+            return {
+                ok: false,
+                reason: reaState.pndg,
+            };
+    }
+    (mdProc_State).time_pend.add(path_Loader);
     try {
-        const res = await fetch(path);
+        let f_Md = (await (fetch(path_Loader)));
         //
-        if (!(res.ok)) {
-            (mdState).cache.set(path, false);
-            (fMD).content.innerHTML = (placeholder);
-            return { ok: false, reason: "not_found" };
+        if (!(f_Md.ok)) {
+            (mdProc_State).cache.set(path_Loader, false);
+            return {
+                ok: false,
+                reason: (reaState.md_n_fnd),
+            };
         }
-        const md = await (res.text());
+        f_Md = (await ((f_Md).text()));
+        (mdProc_State).cache.set(path_Loader, f_Md);
         //
-        (mdState).cache.set(path, md);
-        (fMD).content.innerHTML = marked(md);
-        //
-        return { ok: true, md };
+        return { ok: true, f_markdown: mdVi_Renderer(f_Md), };
     } catch {
-        (mdState).cache.set(path, false);
-        (fMD).content.innerHTML = (placeholder);
+        (mdProc_State).cache.set(path_Loader, false);
         //
-        return { ok: false, reason: "error" };
+        return {
+            ok: false,
+            reason: (reaState.error),
+        };
     } finally {
-        (mdState).pending.delete(path);
+        (mdProc_State).time_pend.delete(path_Loader);
     }
 }
-export async function md_Searching (placeholder) {
-    const path = (fMD.view.value.trim());
-    const emdi = (`${bsc.jsV.point}md`);
+    /** [Async] Search Markdown File
+     * @param {?string} src_Ph
+     * @returns {Promise<Object>}
+     */
+export async function mdVi_Searching (
+    src_Ph,
+) {
+    const toMd = {
+        mdpath: (iMd.mdpath),
+        fpMado: (iMd.fpMado),
+    };
+    let md_PathSrc = ((jsTx).arr2Str(Object
+        .values((toMd)), (jsVar.empty))
+    );
+    let md_StSrc = ((!(toMd.mdpath))
+        ? (`empty`) : (
+            ((toMd.mdpath).endsWith(jsVar.point)) ||
+            ((toMd.mdpath).endsWith(toMd.fpMado))
+        ) ? (`invalid`) : (`valid`)
+    );
     //
-    if (!(path)) {
-        return { ok: false, reason: "empty" };
+    switch (md_StSrc) {
+        case (`empty`):
+            return {
+                ok: false,
+                reason: (reaState.empty),
+            };
+        case (`invalid`):
+            alert((`Didn't need to be formatted usual`)
+                + (`:\n`) + (md_PathSrc));
+            return {
+                ok: false,
+                reason: (reaState.iv_fm),
+            };
+        case (`valid`):
+            return (await (mdVi_Loader(
+                (md_PathSrc))));
     }
-    if (((path).endsWith(bsc.jsV.point)) ||
-        ((path).endsWith(emdi))
-    ) {
-        alert(`Didn't need to be formatted usual`);
-        return { ok: false, reason: "invalid_format" };
-    }
-    const f_MD = ((bsc).jsTx.arr2Str([
-        path, emdi, ], (bsc.jsV.empty)));
-    return await loadMD(f_MD, placeholder);
 }
-//
-export function md_Clear () {
-    (fMD).content.innerHTML = (bsc.jsV.empty);
+    /** Clearing Wipe-out MD that viewed
+     * @returns {void}
+     */
+export function mdVi_Clear () {
+    (iScMd).content.innerHTML = (jsVar.empty);
 }
-//
 /**/
 
 
 /* Uji Coba */
-//?
+//Later...
 //
 /**/
 

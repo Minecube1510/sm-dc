@@ -44,6 +44,10 @@ Just use:
 
 ## Log
 
+- Akan diusahakan:
+
+> Update dalam berkala "per bulan"-an.
+
 ### {-} **First**
 
 > #### {>} *Dari: 0.0"*
