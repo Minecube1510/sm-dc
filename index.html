@@ -42,9 +42,9 @@ data-theme="">
 <body draggable="false" id="body"
 class="min-h-screen flex flex-col container mx-auto p-3 select-none">
     <!--
-        Loading Screening... -->
-    <div id="loading-screen"
-    class="center fixed flex items-center justify-center inset-0 z-[9999] bg-neutral-950"></div>
+        Loading Screening, then just Script... -->
+    <div class="center fixed flex items-center justify-center inset-0 z-[9999] bg-neutral-950"
+        id="loading-screen"></div>
     <script type="module" src="web/js/load-screen.js"
     defer></script>
     <!--
@@ -62,9 +62,9 @@ class="min-h-screen flex flex-col container mx-auto p-3 select-none">
                 <div id="idx-gt-switch"
                 class="inline-block text-center"></div>
                 <div id="idx-gt-input" class="flex-1">
-                    <input placeholder="Path/Folder/File.formatted"
+                    <input placeholder="Path/Folder/File.formatted" type="text"
                         class="w-full px-3 py-2 text-start focus:outline-none"
-                        type="text" id="idx-gt-input-comp" value="">
+                        id="idx-gt-input-comp" value="" data-value="">
                 </div>
                 <div id="idx-gt-select">
                 </div>
@@ -72,12 +72,16 @@ class="min-h-screen flex flex-col container mx-auto p-3 select-none">
                 class="relative flex overflow-hidden">
                 <span class="inline-flex items-center px-3 font-semibold"
                     id="article-md-root" data-path-root="/">/</span>
-                <input class="flex-1 px-3 py-2 pr-10"
-                    type="text" id="article-md-search" aria-label="View" value=""
+                <div class="left-12 top-1/2 -translate-y-1/2 gap-1 z-20"
+                    id="src-md-chips"></div>
+                <input class="flex-1 px-3 py-2 pr-10" autocomplete="off"
+                    type="text" id="article-md-search" aria-label="View"
+                    spellcheck="false" value="" data-value=""
                     placeholder="Type the MD document name at here">
                 <button class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                     type="button" id="article-md-src-logo" aria-label="Search"
                     value=""><span class="bi bi-search"></span></button>
+                <div class="" id="src-md-res"></div>
             </div>
         </div><hr class="rounded-2 border-2">
         <div class="" id="idx-view"><article

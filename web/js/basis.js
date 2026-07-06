@@ -7,12 +7,6 @@
 /**/
 
 
-/* Func: Asyncs */
-//Later...
-//
-/**/
-
-
 /* Func: Basic */
 export const jsTx = {
     upper: ((txt) => ((txt).toUpperCase())),
@@ -44,7 +38,8 @@ export const inGit = {
     data: (data[`git-data`]),
     link: (data[`git-link`]),
 }
-export const dirSafe = (data[`dir-safe`]);
+export const dirSafe = ((data
+    [`dir-safe`]));
 /**/
 
 
@@ -58,6 +53,8 @@ export const jsCs = {
     table: ((console).table),
     grEnd: ((console).groupEnd),
     //
+    time: ((console).time),
+    tmEnd: ((console).timeEnd),
 };
 //
 /**/

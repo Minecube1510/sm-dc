@@ -11,8 +11,16 @@ import {
 /**/
 
 
-/* Initialize */
-const ls_CompId = ((jsDoc).getId(`loading-screen`));
+/* Loading Init */
+const ls_CompId = ((jsDoc)
+    .getId(`loading-screen`)),
+    transing = (750);
+//
+if (ls_CompId) {
+    (ls_CompId).classList.add(
+        `transition-opacity`, `duration-500`,
+        `ease-out`, `opacity-100`);
+}
 //
 /**/
 
@@ -22,38 +30,35 @@ const ls_CompId = ((jsDoc).getId(`loading-screen`));
      * @returns {HTMLElement|null}
      */
 function show_Waiting () {
-        if (!(ls_CompId)) return (null);
-    const inLoad = (() => {
-        let mkElm = ((jsDoc).createElm);
-        return {
-            wrap: mkElm(`div`),
-            spin: mkElm(`div`),
-            text: mkElm(`p`),
-        };
-    })();
+    if (!(ls_CompId)) return (null);
     //
-    /* Instruct */
-    (inLoad).text.textContent = (
-        `Loading Images...`);
+    (ls_CompId).textContent = (``);
+    (ls_CompId).className = ((jsHt).classer([
+        `fixed`, `inset-0`, `z-[9999]`, `flex`,
+        `flex-col`, `items-center`, `justify-center`,
+        `bg-neutral-950`, `text-white`,
+        `transition-all`, `duration-${transing}`,
+        `ease-out`, `opacity-100`, `scale-100`,
+    ]));
     //
-    (inLoad).wrap.className = ((jsHt).classer([
-        `flex`,`flex-col`, `items-center`,
-        //
-        `text-center`, `gap-4`, ]));
-    (inLoad).spin.className = ((jsHt).classer([
+    const spinElm = ((jsDoc).createElm(`div`)),
+        textElm = ((jsDoc).createElm(`p`));
+    //
+    (spinElm).className = ((jsHt).classer([
         `rounded-full`, `animate-spin`,
-        `w-16`, `h-16`,
-        //
+        `w-16`, `h-16`, `mb-4`,
         `border-4`, `border-neutral-700`,
-        `border-t-white`, ]));
-    (inLoad).text.className = ((jsHt).classer([
-        `text-xl`, `text-white`,
-        `font-semibold`, ]));
+        `border-t-white`,
+    ]));
+    (textElm).className = ((jsHt).classer([
+        `text-xl`, `font-semibold`,
+        `transition-opacity`, `duration-${transing}`,
+        `ease-out`, `opacity-100`,
+    ]));
+    (textElm).textContent = (`Loading the Page...`);
     //
-    /* Structing Waiting-Load */
-    (inLoad).wrap.appendChild(inLoad.spin);
-    (inLoad).wrap.appendChild(inLoad.text);
-    (ls_CompId).appendChild(inLoad.wrap);
+    (ls_CompId).appendChild(spinElm);
+    (ls_CompId).appendChild(textElm);
     //
     return (ls_CompId);
 }
@@ -61,16 +66,27 @@ function show_Waiting () {
      * @returns {void}
      */
 function hide_Waiting () {
-        if (!(ls_CompId)) return;
+    if (!(ls_CompId)) return;
+    //
     (ls_CompId).classList.remove(
         `opacity-100`, `scale-100`);
-    (ls_CompId).classList.add(`opacity-0`,
-        `scale-105`, `pointer-events-none`);
+    (ls_CompId).classList.add(`pointer-events-none`,
+        `opacity-0`, `scale-105`);
+    //
+    const textElm = ((ls_CompId).querySelector(`p`));
+    if (textElm) {
+        (textElm).classList
+            .remove(`opacity-100`);
+        (textElm).classList
+            .add(`opacity-0`);
+    }
     //
     setTimeout(() => {
         (ls_CompId).remove();
-    }, (500));
+    }, (transing));
+    //
 }
+//
 /**/
 
 
@@ -79,26 +95,35 @@ function hide_Waiting () {
      * @returns {void}
      */
 function final_LoadScreen () {
-    let ls_Wait = show_Waiting();
-    //
-    (jsDoc).appEnd_Ch(ls_Wait);
+    let ls_Wait = (show_Waiting());
     //
     requestAnimationFrame(() => {
-        (ls_Wait).classList.remove(`opacity-0`,
-            `pointer-events-none`);
-        (ls_Wait).classList.add(`opacity-100`);
+        if (!(ls_Wait)) return;
+        (ls_Wait).classList.remove(`opacity-0`, `pointer-events-none`);
+        (ls_Wait).classList.add(`opacity-100`, `scale-100`);
+        let textElm = ((ls_Wait).querySelector(`p`));
+        if (textElm) {
+            (textElm).classList.remove(`opacity-0`);
+            (textElm).classList.add(`opacity-100`);
+        }
     });
 }
 //
-    /** Activating Loading Screen-Workflows
+    /** [Async] Activating Loading Screen-Workflows
      * @returns {void}
      */
-function on_LoadScreen () {
+async function on_LoadScreen () {
     final_LoadScreen();
+    //
+    await new Promise((r) => {
+        setTimeout((r), (1250));
+    });
+    //
     hide_Waiting();
 }
 //
-on_LoadScreen();
+await on_LoadScreen();
+//
 /**/
 
 

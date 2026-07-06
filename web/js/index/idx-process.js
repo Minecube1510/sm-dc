@@ -24,14 +24,14 @@ const mdProc_State = {
     time_pend: new Set(),
 };
 //
-    /** Set:Images as Non-Draggable
+    /** Loading Screen Preview Maker
+     * @param {Boolean} stLoad
      * @returns {void}
      */
-export function imgN_Draggable () {
-    (jsDoc).qSelectAll(`img`)
-        .forEach((img) => {
-            (img).draggable = (false);
-    });
+export function loadScreen_MaDo (
+    stLoad = (true),
+) {
+    //
 }
 //
 /**/
@@ -45,9 +45,12 @@ export function imgN_Draggable () {
 function mdVi_Renderer (
     file_MarkDown,
 ) {
-    (iScMd).content
-        .innerHTML = marked(file_MarkDown);
-    imgN_Draggable();
+    (iScMd.content).innerHTML = marked(file_MarkDown);
+    //
+    (jsDoc).qSelectAll(`img`).forEach(
+        (img) => { (img)
+            .draggable = (false);
+    });
     //
     return (file_MarkDown);
 }
@@ -72,13 +75,17 @@ async function mdVi_Loader (
                 ok: true,
                 f_markdown: mdVi_Renderer(md_Cache),
             };
-        case (mdProc_State.time_pend.has(path_Loader)):
+        case (mdProc_State.time_pend
+            .has(path_Loader)):
             return {
                 ok: false,
                 reason: reaState.pndg,
             };
     }
-    (mdProc_State).time_pend.add(path_Loader);
+    //
+    (mdProc_State).time_pend
+        .add(path_Loader);
+    //
     try {
         let f_Md = (await (fetch(path_Loader)));
         //
@@ -90,9 +97,12 @@ async function mdVi_Loader (
             };
         }
         f_Md = (await ((f_Md).text()));
-        (mdProc_State).cache.set(path_Loader, f_Md);
+        (mdProc_State).cache
+            .set(path_Loader, f_Md);
         //
-        return { ok: true, f_markdown: mdVi_Renderer(f_Md), };
+        return { ok: true,
+            f_markdown: mdVi_Renderer(f_Md),
+        };
     } catch {
         (mdProc_State).cache.set(path_Loader, false);
         //
@@ -104,6 +114,7 @@ async function mdVi_Loader (
         (mdProc_State).time_pend.delete(path_Loader);
     }
 }
+//
     /** [Async] Search Markdown File
      * @param {?string} src_Ph
      * @returns {Promise<Object>}
@@ -112,16 +123,16 @@ export async function mdVi_Searching (
     src_Ph,
 ) {
     const toMd = {
-        mdpath: (iMd.mdpath),
+        mdPath: (iMd.srcPath),
         fpMado: (iMd.fpMado),
     };
     let md_PathSrc = ((jsTx).arr2Str(Object
         .values((toMd)), (jsVar.empty))
     );
-    let md_StSrc = ((!(toMd.mdpath))
+    let md_StSrc = ((!(toMd.mdPath))
         ? (`empty`) : (
-            ((toMd.mdpath).endsWith(jsVar.point)) ||
-            ((toMd.mdpath).endsWith(toMd.fpMado))
+            ((toMd.mdPath).endsWith(jsVar.point)) ||
+            ((toMd.mdPath).endsWith(toMd.fpMado))
         ) ? (`invalid`) : (`valid`)
     );
     //
@@ -139,8 +150,21 @@ export async function mdVi_Searching (
                 reason: (reaState.iv_fm),
             };
         case (`valid`):
-            return (await (mdVi_Loader(
-                (md_PathSrc))));
+            const hasCache = ((mdProc_State)
+                .cache.has(md_PathSrc));
+            //
+            if (!(hasCache)) {
+                loadScreen_MaDo(true);
+            }
+            //
+            try {
+                return (await mdVi_Loader(
+                    md_PathSrc));
+            } finally {
+                if (!(hasCache)) {
+                    loadScreen_MaDo(false);
+                }
+            }
     }
 }
     /** Clearing Wipe-out MD that viewed
@@ -149,6 +173,7 @@ export async function mdVi_Searching (
 export function mdVi_Clear () {
     (iScMd).content.innerHTML = (jsVar.empty);
 }
+//
 /**/
 
 

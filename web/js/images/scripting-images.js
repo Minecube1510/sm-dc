@@ -7,7 +7,7 @@ import * as imgCompile from './img-compile.js';
 
 
 /* Automate */
-//Later...
+//TODO: Later
 //
 /**/
 

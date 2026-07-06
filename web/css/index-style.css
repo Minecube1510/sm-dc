@@ -69,7 +69,25 @@ html[data-theme] .markdown-body *::after {
 .peer:checked + label .switch-right {
     opacity: 1;
 }
+/**
+**/
+.pf-mode::selection {
+    background: transparent;
+    color: inherit;
+}
+.pf-mode::-moz-selection {
+    background: transparent;
+    color: inherit;
+}
 /**/
+#article-md-search {
+    /**/
+}
+#article-md-search::selection {
+    /* background: rgba(0,0,0,0); */
+}
+/**
+**/
 /*
     */
 

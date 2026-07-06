@@ -51,6 +51,15 @@ export const gt_SelectCarrow_Cls = [
     `bi`,`bi-caret-down-fill`, `right-3`,
 ];
 //
+export const gt_Rooter_Cls = [
+    `cursor-pointer`, `active:cursor-default`,
+];
+export const gt_SrcRes_Cls = [
+    `absolute`, `top-full`, `w-full`,
+    `left-0`, `z-50`, `shadow`,
+    `border-2`, `rounded-b-md`,
+];
+//
 /**/
 
 
@@ -61,6 +70,10 @@ export const mdv_Ph_Cls = [
     `text-center`,`font-semibold`,
     `inset-0`,
     `text-stone-500`,
+];
+export const mdv_Ls_Cls = [
+    ``, ``,
+    ``, ``,
 ];
 //
 export const mdVi_InputPls_Cls = [ `rounded-lg`,
@@ -76,6 +89,41 @@ export const mdVi_InputDef_Cls = [
     `focus:ring-1`,
     //
     `border`, `border-l`, `rounded-r-lg`,
+];
+//
+export const mdCosL_Comp_Cls = [
+    `bg-gray-50`, `text-zinc-800`,
+    `border-zinc-800`,
+];
+export const mdCosD_Comp_Cls = [
+    `bg-zinc-900`, `text-zinc-100`,
+    `border-zinc-100`,
+];
+//
+export const mdSrch_AutoCm_Cls = [
+    `cursor-pointer`,
+    `py-1`,`px-2`,
+    `hover:bg-blue-300`, `active:bg-blue-400`,
+];
+export const mdSrch_Sacker_Cls = [
+    `absolute`, `items-center`,
+    `flex`,
+];
+//
+export const mdSrch_AddChips_Cls = [
+    `inline-flex`, `items-center`,
+    "gap-1", `px-2`,`py-1`,
+    `text-sm`,`font-medium`, `border`,
+    `rounded-md`, `select-none`,
+    `bg-blue-100`,`text-blue-800`,`border-blue-300`,
+    `hover:bg-blue-200`,
+];
+export const mdSrch_PfChipy_Cls = [
+    `text-transparent`, `caret-current`,
+];
+export const mdSrch_CrackChip_Cls = [ `bi`,
+    `bi-x-circle`, `relative`, `top-px`,
+    `cursor-pointer`,
 ];
 //
 /**/
@@ -107,13 +155,14 @@ export const idxGT_Switch = {
     rawpath: (`gt-switch-l`),
     posfile: (`gt-switch-r`),
 };
-export const idxGt_Comps = (() => (
+export const idxGtWait_Comps = (() => (
     (jsMod).getEl_Map({
     gtcSwitch: (`idx-gt-switch-comp`),
     gtcInput: (`idx-gt-input-comp`),
 })));
 /*|
 |*/
+//export const idxSResLi = (`src-res-lister`);
 export const idxSearchMD_CompId = (
     (jsMod).getEl_Map({
     idxView: (`idx-view`),
@@ -124,15 +173,23 @@ export const idxSearchMD_CompId = (
     inRoot: (`article-md-root`),
     ftSrch: (`article-md-search`),
     srcBtn: (`article-md-src-logo`),
+        //
+    srcRes: (`src-md-res`),
+    srChip: (`src-md-chips`),
 }));
+export const idxCompChip = {
+    kitChip: (`md-kit-chip`),
+    resChip: (`md-res-chip`),
+};
 //
 /**/
 
 
 /* Storage - Data */
 export const md_Data = {
-    mdpath: ((jsTx).trm(idxSearchMD_CompId
+    srcPath: ((jsTx).trm(idxSearchMD_CompId
         .ftSrch.value)),
+    altPath: (jsVar.empty),
     fpMado: (`${jsVar.point}md`),
 };
 //

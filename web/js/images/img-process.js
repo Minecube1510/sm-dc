@@ -11,7 +11,7 @@ import * as iGit from '../init-github.js';
 /**/
 
 
-/* Vars - Switch */
+/* Variables - Images */
 const format_exts = ([
     `png`, `jpg`,`jpeg`, `webp`,
     //
@@ -147,7 +147,6 @@ export async function gather_AlImages () {
 
 
 /* Uji Coba */
-//Later...
 //
 /**/
 

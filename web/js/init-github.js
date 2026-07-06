@@ -10,7 +10,7 @@ import { jsVar, inGit,
 /**/
 
 
-/* Vars - Basic */
+/* Configs - Github */
 const ghCfg = ((tick) => ({
     bsc: (inGit.link.ltp.bsc),
     scr: (inGit.link.ltp.scr),

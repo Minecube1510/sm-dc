@@ -22,8 +22,8 @@ if (location.search) {
 /**/
 
 
-/* Initialize */
-const ldm_Data = {
+/* Initialize - LDM and Paging System */
+export const ldm_Data = {
     modeBtn: ("button-ldm"),
     btnClass: [ `cursor-pointer`,
         `fixed`, `flex`,
@@ -68,8 +68,9 @@ const sP_DataId = ((id) => {
 /**/
 
 
-/* Automate - Page Mode */
-const pageDom = {
+/* Automate - LDM and Paging System */
+export const ldm_Event = (new EventTarget());
+export const pageDom = {
     rMod: (document.documentElement),
     body: (document.body),
 };
@@ -121,16 +122,44 @@ function render_LdmBtn () {
         let mode = (((pageDom.rMod.dataset
             .theme) === (ldm_Data.setDark))
             ? (ldm_Data.setLight) : (ldm_Data
-                .setDark));
+                .setDark)
+        );
         (pageDom).rMod.dataset.theme = (mode);
         (localStorage).theme = (mode);
         //
         update_ThmCls();
         update_RenderBtn();
+        (ldm_Event).dispatchEvent(
+            new Event(`themechange`)
+        );
     };
     update_RenderBtn();
     //
     (document).body.appendChild(btn);
+}
+//
+    /** Updating Theme Classing - Dynamic Elemented
+     * @param {HTMLElement} elm
+     * @param {string[]} cLight "Light-mode class list"
+     * @param {string[]} cDark "Dark-mode class list"
+     * @returns {void}
+     */
+export function setLDm_ThemeClass (
+    elm,
+    cLight = (ldm_Data.lightCls),
+    cDark = (ldm_Data.darkCls),
+) {
+    switch (pageDom.rMod.dataset.theme) {
+        case (ldm_Data.setDark):
+            (elm).classList.remove(...cLight);
+            (elm).classList.add(...cDark);
+            break;
+        case (ldm_Data.setLight):
+        default:
+            (elm).classList.remove(...cDark);
+            (elm).classList.add(...cLight);
+            break;
+    }
 }
 //
 /**/

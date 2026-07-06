@@ -16,26 +16,51 @@ import * as idxStrg from './idx-storage.js';
         idxGT_CompId as iGt_cId,
             //
         idxGT_Switch as gtSwSide,
-        idxGt_Comps as iGtComp,
+        idxGtWait_Comps as iGtComp,
         //
         idxSearchMD_CompId as iScMd,
+        //
+        mdCosL_Comp_Cls as lCompCls,
+        mdCosD_Comp_Cls as dCompCls,
     } from "./idx-storage.js";
-/*|
+    /*|
+  //
 |*/
-import * as idxBP1 from './idx-blueprint-1.js';
+import { rppf_Moderact,
     //
-import * as idxBP2 from './idx-blueprint-2.js';
+    } from "./idx-blueprint-0b.js";
+//
+import * as idxBP1 from './idx-blueprint-1.js';
     import {
-        idxGtComp_Switch as gtC_Switch,
+        mdView_Search,
+    } from "./idx-blueprint-1.js";
+//
+    import {
         idxGtComp_Select as gtC_Select,
     } from "./idx-blueprint-2.js";
+    //
+    import { display_SrcList,
+        //
+    } from "./idx-blueprint-2a.js";
+    //
+    import { 
+        idxGtc_CompSwitch as gtC_Switch,
+    } from "./idx-blueprint-2b.js";
+//
+import { gtMd_Config, blockingEvent,
+    //
+    } from "./idx-system.js";
 /*|
 |*/
-import { setPage_Comping
+import {
+    setPage_Comping,
+    ldm_Data, ldm_Event,
+    setLDm_ThemeClass as ldmClasser,
 } from "../set-paging.js";
 /*|
 |*/
 import { mdVi_Clear,
+    //
     mdVi_Searching as mdSrc,
 } from "./idx-process.js";
 //
@@ -53,216 +78,32 @@ gtC_Switch({
     rid: (gtSwSide.posfile),
 });
     //
-//
-    //
 gtC_Select((Object)
     .values(rcLn.select));
-//
-/**/
-
-
-/* Connect, Config, Control */
-/** Component: Geartool Input Configs
- * @typedef {Object} GTInputConfig
- * @property {{file0:string, suFix:string}} gtIn_Fix
- * @property {(v:string)=>string} gtIn_Fmt
- * @property {(v:string)=>string} gtIn_Slash
- * @property {(v:string)=>string} gtIn_Paint
- */
-/** ?
- * ?
- */
-//
-const gtInElm = (iScMd.ftSrch);
-//
-    /** GT-Switch Feature-Config Working
-     * @param {HTMLElement} gtSwtcMode
-     * @returns {GTInputConfig}
-     */
-const gtInDefPlh = (gtInElm.placeholder);
-function gtSwitch_Change (
-    gtSwtcMode,
-) {
-    const tellGtMode = ((v) => (
-        `Changing Writing-Mode: ${v}`
-    ));
-    //
-    switch (gtSwtcMode) {
-        case ((jsTx).lower(rcLn.switch.rp)):
-            (jsCs).log(tellGtMode(
-                rcLn.switch.rp));
-            (gtInElm).placeholder = (gtInDefPlh);
-            //
-            break;
-        case ((jsTx).lower(rcLn.switch.pf)):
-            (jsCs).log(tellGtMode(
-                rcLn.switch.pf));
-            (gtInElm).placeholder = (
-                dirSafe.filename);
-            //
-            (gtInElm).addEventListener(
-                (`beforeinput`), ((e) => {
-                    //
-                }));
-            (gtInElm).addEventListener(
-                (`paste`), ((e) => {
-                    //
-                }));
-            break;
-    }
-}
-    /** GT-Switch Feature Working
-     * @param {HTMLElement} compGt
+/*|
+|*/
+    /** LDM-Render - For more than 1 Elements
+     * @param {Array} elms
      * @returns {void}
      */
-function gtSwitch_Sys (
-    compGt = (iGt_cId.gtSwitch),
+function ldmTheme_Render (
+    elms
 ) {
-    const gtcSwitch = ((iGtComp()).gtcSwitch);
-    let lastMode = (null);
-    let cSIsMode = (gtcSwitch.value);
-    //
-    if ((cSIsMode) === ((jsTx)
-        .lower(rcLn.switch.rp))
-    ) {
-        (jsCs).log((`First Writing-Mode:`),
-            (rcLn.switch.rp));
-    } else {
-        (jsCs).log((`Unknown Get-Mode:`),
-            (cSIsMode));
-    }
-    //
-    const syncSwitch = () => {
-        let sIsMode = ((jsTx).lower(
-            gtcSwitch.value));
-            //
-            if ((sIsMode) === (lastMode)) return;
-        lastMode = (sIsMode);
-        //
-        gtSwitch_Change(sIsMode);
-    };
-    (gtcSwitch).addEventListener(
-        (`change`), (syncSwitch));
-}
-    //
-    /** GT-Input Feature-Config Working
-     * @param {HTMLElement} gtiCfg
-     * @returns {GTInputConfig}
-     */
-function gtInput_Config (
-    gtiCfg,
-) {
-    const gtIn_Fix = {
-        file0: ((jsTx).upper(`README`)),
-        suFix: ((iMd).fpMado),
-    };
-    const gtIn_Fmt = ((v) => {
-        v = ((jsTx).trm(v));
-        //
-        switch (true) {
-            case (!(v)):
-                return (jsVar.empty);
-            case ((v).endsWith(gtIn_Fix.suFix)):
-                return (v);
-            default:
-                return (`${v}${gtIn_Fix.suFix}`);
-        }
-    });
-    //
-    let gtIn_Slash = (v) => ((v).replace(
-        (/\\/g), (jsVar.slash)));
-    let gtIn_Paint = (v) => ((v)? (`${jsVar
-        .slash}${v}`) : (jsVar.empty));
-    //
-    return {
-        gtIn_Fix, gtIn_Fmt,
-        gtIn_Slash, gtIn_Paint,
-    };
-}
-    /** GT-Input Feature-System Working
-     * @param {HTMLElement} compGt
-     * @returns {void}
-     */
-function gtInput_Sys (
-    compGt = (iGt_cId.iGtComp)
-) {
-    const cfg = gtInput_Config(compGt);
-    const gtcInput = (iGtComp().gtcInput);
-    const {
-        gtIn_Fix, gtIn_Fmt,
-        gtIn_Slash, gtIn_Paint,
-    } = (cfg);
-    const render = ((v) => (gtIn_Paint(
-        gtIn_Slash(gtIn_Fmt(v)))));
-    //
-    let sync = (() => {
-        let v = (gtInElm.value);
-        (iMd).mdpath = (v);
-        (gtcInput).value = (render(v));
-    });
-    //
-    (gtInElm).value = (gtIn_Fix.file0);
-    (gtcInput).readOnly = (true);
-    (gtcInput).value = render(gtIn_Fix.file0);
-    (iMd).mdpath = (gtIn_Fix.file0);
-    //
-    (gtInElm).addEventListener((`input`), (sync));
-    (gtInElm).addEventListener(
-        (`beforeinput`), ((e) => {
-            if ((e.data) !== (jsVar.bSlash)) return;
-        e.preventDefault();
-        let {
-            selectionStart: s,
-            selectionEnd: e2, value,
-        } = (e.target);
-        //
-        (e).target.value = (`${value.slice(0,
-            s)}/${value.slice(e2)}`);
-        (e).target.setSelectionRange(
-            ((s) + (1)), ((s) + (1)));
-        (e.target).dispatchEvent(new Event(
-            (`input`), { bubbles: (true), }));
-    }));
-    (gtInElm).addEventListener(
-        (`paste`), ((e) => {
-        (e).preventDefault();
-        let text = (
-            ((e.clipboardData) || (window.clipboardData))
-            .getData(`text`).replace((/\\/g),
-            (jsVar.slash)));
-        let {
-            selectionStart: s,
-            selectionEnd: e2, value,
-        } = (e.target);
-        //
-        (e).target.value = (`${value.slice((0),
-            (s))}${text}${value.slice(e2)}`);
-        (e).target.setSelectionRange(
-            ((s) + (text.length)), ((s) + (text.length)));
+    (elms).forEach(((elm) => { if ((elm)?.isConnected
+        ) { ldmClasser(elm, lCompCls, dCompCls); }
     }));
 }
-    //
-    /** GT-Select Feature Working
-     * @param {?} ?
-     * @param {HTMLElement} compGt
-     * @returns {void}
-     */
-function gtSelect_Sys (
-    //
-    compGt = (iGt_cId.gtSelect),
-) {
-    //
-    //
-}
 //
-function gtMd_Config () {
-    gtSwitch_Sys();
-    gtInput_Sys();
-    gtSelect_Sys();
-}
+const ldmComponents = [ (iGt_cId.gtSwitch),
+    (iGt_cId.gtInput), (iGt_cId.gtSelect),
+    //
+    (iScMd.inRoot), (iScMd.ftSrch),
+];
 //
-//(jsCs).log(gtRc);
-gtMd_Config();
+ldmTheme_Render(ldmComponents);
+(ldm_Event).addEventListener((`themechange`),
+    (() => { ldmTheme_Render(ldmComponents);
+}));
 //
 /**/
 
@@ -272,31 +113,63 @@ gtMd_Config();
      * @returns {void}
      */
 function mdVi_ActivatiOn () {
-    (iScMd.ftSrch).addEventListener(
-        (`keydown`), async (event) => {
-            switch (true) {
-                case ((event.key) !== (`Enter`)):
-                case (event.repeat):
-                    return;
-            }
-            (event).preventDefault();
-            await ((idxBP1).mdView_Search());
-    });
-    (iScMd.srcBtn).addEventListener(
-        (`click`), async () => {
-            await ((idxBP1).mdView_Search());
-    });
+    const mdSrc_Event = (display_SrcList()),
+        gtMode_Switch = (iGtComp().gtcSwitch
+        .value);
     //
     (iScMd.ftSrch).addEventListener(
-        (`input`), () => {
+        (`keydown`), (async (event) => {
+            const autoSrc = ((mdSrc_Event)
+                .onKeyDown_MdSrc(event));
+                //
+                if ((event.key) !== (`Enter`)
+                    || (event.repeat)) return;
+            //
+            rppf_Moderact(
+                (() => {
+                    (event).preventDefault();
+                    //
+                    if (!(autoSrc)) {
+                        mdView_Search();
+                    } else {
+                        (autoSrc).click();
+                        mdView_Search();
+                    }
+                }),
+                (() => {
+                    (event).preventDefault();
+                    //
+                    if (!(autoSrc)) {
+                        mdView_Search();
+                    } else {
+                        (autoSrc).click();
+                    }
+                }),
+            );
+    }));
+    (iScMd.srcBtn).addEventListener(
+        (`click`), (async () => {
+            await mdView_Search();
+            //
+    }));
+    //
+    (iScMd.ftSrch).addEventListener(
+        (`input`), (() => {
+            (mdSrc_Event).onInput_MdSrc();
+            //
             (idxBP1).mdSt((`lST`), (jsVar.empty));
             (idxBP1).mdSt((`lLR`), (jsVar.empty));
                 if ((jsTx).trm(iScMd.ftSrch.value)) return;
             mdVi_Clear();
             (idxBP1).mdVi_PlaceHolder((idxBP1)
                 .idx_CompText(`md_Plh`));
-    });
+    }));
+    //
+    (iScMd.ftSrch).addEventListener(
+        (`dragstart`), (blockingEvent));
+    //
 }
+//
     /** MD-Viewer Finalize Activating
      * @returns {void}
      */
@@ -332,6 +205,7 @@ export async function struct () {
     //
     /*
         Body */
+    gtMd_Config();
     mdVi_FinActivate();
 }
 //
@@ -339,7 +213,6 @@ export async function struct () {
 
 
 /* Uji Coba */
-//Later...
 //
 /**/
 

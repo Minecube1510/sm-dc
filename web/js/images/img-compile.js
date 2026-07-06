@@ -165,7 +165,6 @@ export async function struct () {
 
 
 /* Uji Coba */
-//Later...
 //
 /**/
 
