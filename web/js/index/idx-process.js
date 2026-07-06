@@ -22,16 +22,46 @@ const mdProc_State = {
     cache: new Map(),
     failed: new Set(),
     time_pend: new Set(),
-};
+},
+mdWaitLoad = ((ms) => {
+    return (new Promise((r) => (
+        setTimeout((r), (ms)))));
+});
 //
     /** Loading Screen Preview Maker
      * @param {Boolean} stLoad
+     * @param {?HTMLElement} loadElm
      * @returns {void}
      */
-export function loadScreen_MaDo (
+export async function loadScreen_MaDo (
     stLoad = (true),
+    loadElm = (iScMd.madoLs),
 ) {
     //
+    if (!(loadElm.classList.length)) {
+        (loadElm).className = ((jsHt).classer(
+            idxStrg.mdv_LsComp_Cls));
+    }
+    //
+    switch (true) {
+        case (!(loadElm)):
+            return;
+        case (stLoad): {
+            (loadElm).textContent = (
+                `Loading the Markdown...`);
+            (loadElm).classList.remove(`opacity-0`);
+            (loadElm).classList.add(`opacity-100`);
+            //
+            return;
+        }
+        default: {
+            (loadElm).classList.remove(`opacity-100`);
+            (loadElm).classList.add(`opacity-0`);
+            (loadElm).textContent = (jsVar.empty);
+            //
+            return;
+        }
+    }
 }
 //
 /**/
@@ -72,8 +102,8 @@ async function mdVi_Loader (
             };
         case ((md_Cache) !== (undefined)):
             return {
-                ok: true,
-                f_markdown: mdVi_Renderer(md_Cache),
+                ok: (true),
+                f_markdown: (md_Cache),
             };
         case (mdProc_State.time_pend
             .has(path_Loader)):
@@ -100,8 +130,9 @@ async function mdVi_Loader (
         (mdProc_State).cache
             .set(path_Loader, f_Md);
         //
-        return { ok: true,
-            f_markdown: mdVi_Renderer(f_Md),
+        return {
+            ok: (true),
+            f_markdown: (f_Md),
         };
     } catch {
         (mdProc_State).cache.set(path_Loader, false);
@@ -127,46 +158,54 @@ export async function mdVi_Searching (
         fpMado: (iMd.fpMado),
     };
     let md_PathSrc = ((jsTx).arr2Str(Object
-        .values((toMd)), (jsVar.empty))
-    );
-    let md_StSrc = ((!(toMd.mdPath))
+        .values((toMd)), (jsVar.empty))),
+        //
+        md_StSrc = ((!(toMd.mdPath))
         ? (`empty`) : (
             ((toMd.mdPath).endsWith(jsVar.point)) ||
             ((toMd.mdPath).endsWith(toMd.fpMado))
         ) ? (`invalid`) : (`valid`)
-    );
+        );
     //
     switch (md_StSrc) {
         case (`empty`):
             return {
-                ok: false,
+                ok: (false),
                 reason: (reaState.empty),
             };
         case (`invalid`):
             alert((`Didn't need to be formatted usual`)
                 + (`:\n`) + (md_PathSrc));
+            //
             return {
                 ok: false,
                 reason: (reaState.iv_fm),
             };
         case (`valid`):
-            const hasCache = ((mdProc_State)
-                .cache.has(md_PathSrc));
+            let hasCache = ((mdProc_State)
+                .cache.has(md_PathSrc)),
+                waitload = (1500);
+            const loadScreen = (async (st) => ((hasCache)
+                || (await loadScreen_MaDo(st))));
             //
-            if (!(hasCache)) {
-                loadScreen_MaDo(true);
+            await loadScreen_MaDo(true);
+            //
+            const [mdRes] = (await (Promise).all([
+                mdVi_Loader(md_PathSrc),
+                mdWaitLoad(waitload),
+            ]));
+            //
+            await loadScreen_MaDo(false);
+            //
+            if (mdRes.ok) { (mdRes)
+                .f_markdown = (mdVi_Renderer(
+                    mdRes.f_markdown));
             }
             //
-            try {
-                return (await mdVi_Loader(
-                    md_PathSrc));
-            } finally {
-                if (!(hasCache)) {
-                    loadScreen_MaDo(false);
-                }
-            }
+            return (mdRes);
     }
 }
+//
     /** Clearing Wipe-out MD that viewed
      * @returns {void}
      */

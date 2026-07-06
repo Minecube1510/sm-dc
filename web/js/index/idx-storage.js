@@ -71,9 +71,17 @@ export const mdv_Ph_Cls = [
     `inset-0`,
     `text-stone-500`,
 ];
-export const mdv_Ls_Cls = [
-    ``, ``,
-    ``, ``,
+export const mdv_LsComp_Cls = [ `flex`,
+    `pointer-events-none`, `absolute`,
+    `items-center`, `justify-center`,
+    //
+    `font-semibold`,
+    //
+    `transition-all`, `ease-in-out`,
+    //
+    `inset-0`, `z-50`,
+    `bg-white/70`, `backdrop-blur-sm`,
+    `duration-300`,
 ];
 //
 export const mdVi_InputPls_Cls = [ `rounded-lg`,
@@ -169,6 +177,7 @@ export const idxSearchMD_CompId = (
     idxSrch: (`idx-search`),
         //
     content: (`content`),
+    madoLs: (`md-loading-idx`),
     //
     inRoot: (`article-md-root`),
     ftSrch: (`article-md-search`),

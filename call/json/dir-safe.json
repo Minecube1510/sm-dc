@@ -1,5 +1,5 @@
 {
     "filename": "docent",
-    "getfiles": ".vscode/fs",
+    "getfiles": "_storage/fs",
     "countfile": "call/fs/count.json"
 }

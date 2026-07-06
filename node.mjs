@@ -115,8 +115,8 @@ function foldScan_Json (
      */
 function excing_ScanDir (
     inMethod = (`short`),
-    directer = (dirSafe),
-    filePath,
+    directer = (dirSafe.getfiles),
+    filePath = (jsVar.empty),
 ) {
     const rPath = (`./${directer}`),
         dirFd = ((fs).readdirSync(rPath)
@@ -157,7 +157,7 @@ function excing_ScanDir (
     (console).log(`\nResult of the Scanning:`);
     (console).timeEnd(`In-Scan`);
     //
-    (console).log([(`✔ Compiled, Done!`),
+    (console).log([ (`✔ Compiled, Done!`),
         (`Mode : ${inMethod}`),
         (`Path : ${rPath}`),
         (`JSON : ${(totalJson)}`),
@@ -173,18 +173,18 @@ function excing_ScanDir (
 
 
 /* Compiler */
+//
     /** Node True Final Executing
      * @returns {void}
      */
 function final_Excing () {
     (console).log(jsVar.empty);
     //
-    const totalFolder = excing_ScanDir(
-        (`short`), (dirSafe.filename),
-        (`.vscode/fs`));
+    const totalFolder = excing_ScanDir((`short`),
+        (dirSafe.filename), (dirSafe.getfiles)
+    );
         //
-    write_Json((`./call/fs/count.json`),
-        (totalFolder));
+    write_Json((dirSafe.countfile), (totalFolder));
     //
     (console).log(jsVar.empty);
 }
