@@ -25,7 +25,10 @@ const gitConfig = (iGit.gh_Config),
     isDeployed = (!(iGit.isLocal));
 let imgConfig = {
     Lcl: {
-        source: (`${iGit.htWeb.dom}/${dirSafe.countimgs}`),
+        source: ((jsTx).arr2Str([(iGit.htWeb.dom),
+            ...((isDeployed) ? [iGit.data.repo]
+            : []), (dirSafe.countimgs),
+        ], (jsVar.slash))),
         method: (true),
     },
     Git: {
@@ -137,7 +140,7 @@ async function autoBuild_Ateiler (
             //
             return (vBox);
         case ((reSource_Images.length) < (1)):
-            //(jsCs).warn(`⚠️ Tidak ada gambar ditemukan!`);
+            (jsCs).warn(`⚠️ Tidak ada gambar ditemukan!`);
             //
             (vAteiler).classList.remove(...imgStrg
                 .vImgAtlr_Rm_Cls);
@@ -212,6 +215,7 @@ export async function struct () {
 (jsCs).log(await (reSource_Images));
 // */
 //
+jsCs.log(imgConfig.Lcl.source);
 /**/
 
 
