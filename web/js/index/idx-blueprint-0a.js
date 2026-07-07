@@ -145,32 +145,7 @@ function cek_FetchRes (
 
 
 /* Get-File Fetcher System-Configs */
-    /** Github API - Know Rate Limit
-     * @param {string} gitProb
-     * @returns {void}
-     */
-function gitWarn_RateLimit (
-    gitProb,
-) {
-    const reset = Number((gitProb).headers
-        .get(`X-RateLimit-Reset`));
-    const remain = ((Math).max((0), ((Math)
-        .floor((((reset) * (1000)) - ((Date)
-            .now())) / (1000))
-    )));
-    const gTimer = [
-        Math.floor(remain / (3600)),
-        Math.floor((remain % (3600)) / (60)),
-        remain % (60),
-    ];
-    (jsCs).warn((jsTx).trm((jsTx).arr2Str([
-        (`GitHub API - Rate limit reached.${jsVar.enter}`),
-        (`Reset:${jsVar.enter}> ${new Date((reset)
-            * (1000))}${jsVar.enter}`), (`Retry:${jsVar
-        .enter}> ${gTimer[0]}h ${gTimer[1]}m ${gTimer[2]}s`),
-    ], (jsVar.enter))));
-}
-//
+
     /** [Async] Get All Files (Source: API or Local)
      * @param {string} fileFrom
      * @param {string} filePath
@@ -198,7 +173,7 @@ export async function get_DocFiles (
                 .then(async (res) => {
                     switch (res.status) {
                         case (403):
-                            gitWarn_RateLimit(res);
+                            (iGit).gitWarn_RateLimit(res);
                             throw new Error(`Rate limit hit!`);
                         case (404):
                             throw new Error(`Path not found: ${path}`);
@@ -244,7 +219,7 @@ export async function get_DocFiles (
 export async function init_SrcList (
     getData = (null),
 ) {
-    getData ??= (get_DocFiles());
+    getData ??= (get_DocFiles(`local`));
     docFiles = (((Object)
         .values(await (getData)))
         .flat(Infinity)

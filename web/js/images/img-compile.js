@@ -22,19 +22,16 @@ import * as imgPro from './img-process.js';
 /* Formalize - Componentor */
 const gitConfig = (iGit.gh_Config),
     //
-    isDeployed = (!(iGit.isLocal)),
-    localFetch = (`${iGit.htWeb.dom
-        }/${dirSafe.countimgs}`)
-/*
-||
-    Local:
-    (`${iGit.htWeb.dom}/${dirSafe.countimgs}`)
-||
-    Github:
-    ghApi_getLink(`img`)
-||
-*/
-    ;
+    isDeployed = (!(iGit.isLocal));
+let imgConfig = {
+    Lcl: {
+        source: (`${iGit.htWeb.dom}/${dirSafe.countimgs}`),
+        method: (true),
+    },
+    Git: {
+        source: ((iGit).ghApi_getLink(`img`)),
+        method: (false),
+}, };
 //
     /** View-Images - Component Building
      * @param {string} phAteiler
@@ -68,10 +65,13 @@ function buildComp_ViewImg (
 
 
 /* Formalize - Building */
-const reSource_Images = (await (
-    (imgPro).alImages_Ascertains(
-        (localFetch), (isDeployed))
-));
+let reSource_Images = (async (mode) => {
+    const { source, method } = (imgConfig[mode]);
+    return (await ((imgPro)
+        .alImages_Ascertains(source, method)));
+});
+reSource_Images = (await (
+    reSource_Images(`Lcl`)));
 //
     /** Images-Report of Console-Log
      * @returns {void}
@@ -208,8 +208,9 @@ export async function struct () {
 //
 (jsCs).log((`(iGit.isLocal) :`), (iGit.isLocal));
 (jsCs).log((`(!(iGit.isLocal)) :`), (!(iGit.isLocal)));
+//
+(jsCs).log(await (reSource_Images));
 // */
-//(jsCs).log(await (reSource_Images));
 //
 /**/
 

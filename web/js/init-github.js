@@ -95,6 +95,32 @@ export function ghApi_getLink (
     ])}?ref=${inGit.data.branch}`);
 }
 //
+    /** Github API - Know Rate Limit
+     * @param {string} gitProb
+     * @returns {void}
+     */
+export function gitWarn_RateLimit (
+    gitProb,
+) {
+    const reset = Number((gitProb).headers
+        .get(`X-RateLimit-Reset`));
+    const remain = ((Math).max((0), ((Math)
+        .floor((((reset) * (1000)) - ((Date)
+            .now())) / (1000))
+    )));
+    const gTimer = [
+        Math.floor(remain / (3600)),
+        Math.floor((remain % (3600)) / (60)),
+        remain % (60),
+    ];
+    (jsCs).warn((jsTx).trm((jsTx).arr2Str([
+        (`GitHub API - Rate limit reached.${jsVar.enter}`),
+        (`Reset:${jsVar.enter}> ${new Date((reset)
+            * (1000))}${jsVar.enter}`), (`Retry:${jsVar
+        .enter}> ${gTimer[0]}h ${gTimer[1]}m ${gTimer[2]}s`),
+    ], (jsVar.enter))));
+}
+//
 /**/
 
 
