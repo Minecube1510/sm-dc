@@ -1,8 +1,8 @@
 {
     "filename": "docent",
-    "getfiles": "__storage/fs",
+    "getfiles": "storage/fs",
     "countfile": "call/fs/count-idx.json",
     "imageset": "img",
-    "getimages": "__storage/img",
+    "getimages": "storage/img",
     "countimgs": "call/fs/count-img.json"
 }

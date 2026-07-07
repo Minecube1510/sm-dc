@@ -34,7 +34,7 @@ srcGetImg = (() => { return (`${(jsTx).arr2Str([
      * @param {Boolean} fetchMethod
      * @returns {Promise<string[]>}
      */
-async function srcLink_Fetcher (
+export async function srcLink_Fetcher (
     pathFetch = (jsVar.empty),
     fetchMethod = (true),
 ) {
@@ -71,7 +71,7 @@ async function srcLink_Fetcher (
      * @property {"dir"|"file"} type
      * @property {string} path
      */
-async function srcPrefix_Scanner (
+export async function srcPrefix_Scanner (
     pathGet = (jsVar.empty),
     scanMethod = (true),
 ) {
@@ -138,7 +138,7 @@ async function srcPrefix_Scanner (
      * @param {Boolean} lisMethod
      * @returns {Promise<string[]>}
      */
-async function alImages_Processor (
+export async function alImages_Processor (
     linkImgSrc = (jsVar.empty),
     lisMethod = (true),
 ) {

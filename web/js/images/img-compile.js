@@ -21,7 +21,20 @@ import * as imgPro from './img-process.js';
 
 /* Formalize - Componentor */
 const gitConfig = (iGit.gh_Config),
-    x = (``);
+    //
+    isDeployed = (!(iGit.isLocal)),
+    localFetch = (`${iGit.htWeb.dom
+        }/${dirSafe.countimgs}`)
+/*
+||
+    Local:
+    (`${iGit.htWeb.dom}/${dirSafe.countimgs}`)
+||
+    Github:
+    ghApi_getLink(`img`)
+||
+*/
+    ;
 //
     /** View-Images - Component Building
      * @param {string} phAteiler
@@ -55,9 +68,9 @@ function buildComp_ViewImg (
 
 
 /* Formalize - Building */
-const reSource_Images = (await ((imgPro)
-    .alImages_Ascertains((dirSafe
-        .countimgs), (!(iGit.isLocal)))
+const reSource_Images = (await (
+    (imgPro).alImages_Ascertains(
+        (localFetch), (isDeployed))
 ));
 //
     /** Images-Report of Console-Log
@@ -69,10 +82,11 @@ function loggeReport_ViewImg (
         /* First - View Linkings */
     (jsCs).log((jsTx).arr2Str([
         (`Now in Linking:`),
-        (`\n- `), (iGit.htWeb.dom),
-        (`\n- `), (iGit.htWeb.lnk),
-        (`\n> `), ((inGit.data.repo) ||
+        (`\n[-] `), (iGit.htWeb.dom),
+        (`\n[=] `), (iGit.htWeb.lnk),
+        (`\n[>] `), ((inGit.data.repo) ||
             (inGit.link.gh.path.repo)),
+        (`\n[$] `), (iGit.htWeb.path),
     ], (jsVar.empty)));
         /* Middle-12 - Warn */
     if (!(reSource_Images.length)) {
@@ -160,10 +174,11 @@ async function autoBuild_Ateiler (
 export function test () {
     /*
         Test */
-  //*
-  // Testing for waiting...
-  // */
-  //
+    //*
+    // Testing for waiting...
+    // */
+    (jsCs).warn(`Images in Under Development...`);
+    //
 }
     /** [Async] Presenting as "Struct" | | Images Ateiler
      * @returns {Promise<void>}
