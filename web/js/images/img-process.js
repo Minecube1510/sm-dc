@@ -2,7 +2,7 @@
 /* web/js/images/img-process.js */
 
 /* Imports */
-import { jsVar,
+import { jsVar, inGit, dirSafe,
     jsTx, jsCs, jsDoc, jsHt,
     } from "../basis.js";
 //
@@ -11,137 +11,205 @@ import * as iGit from '../init-github.js';
 /**/
 
 
-/* Variables - Images */
+/* Helpers & Variables */
 const format_exts = ([
     `png`, `jpg`,`jpeg`, `webp`,
     //
     `gif`,
-].map(ext => (`.${(jsTx).lower(ext)}`)));
-//
-const for_bd = (() => { return (
-    `${(jsTx).arr2Str([
+].map(ext => (`.${(jsTx).lower(ext)}`))),
+    //
+srcGetImg = (() => { return (`${(jsTx).arr2Str([
         //(`guide`),
         (`img`),
-], (jsVar.slash))}/`);
+    ], (jsVar.slash))}/`);
 })();
 //
 /**/
 
 
 /* Gets - Localize */
-    /** [Async] Fetching all Images method
+//
+    /** [Async] Fetching All-Images
      * @param {string} pathFetch
+     * @param {Boolean} fetchMethod
      * @returns {Promise<string[]>}
      */
-async function images_Fetchings (
-    pathFetch,
+async function srcLink_Fetcher (
+    pathFetch = (jsVar.empty),
+    fetchMethod = (true),
 ) {
-    const fetch_req = await (fetch(pathFetch));
-        if (!(fetch_req.ok)) return [];
-    return [ ...(new DOMParser().parseFromString(
-        await ((fetch_req).text()), (`text/html`)
-      ).querySelectorAll(`a`)), ].map(a => ((a)
-        .getAttribute(`href`))).filter(Boolean);
-}
-    /** [Async] Get Images Path-Prefix
-     * @typedef {Object} ImgPrefix
+    //(jsCs).log((`Fetcher:`), (fetchMethod));
+    //
+    const reqFetch = (await (fetch(pathFetch)));
+        if (!(reqFetch.ok)) return [];
+    //
+    switch (fetchMethod) {
+        case (true):  /* Local */
+            const imgCount = (parseInt(await (
+                (reqFetch).text()), (10)));
+            //
+            return ((Promise).all((Array).from({ length:
+                imgCount, }, (async (_, i) => ((await
+                fetch(`${dirSafe.getimages}/${(i) +
+                    (1)}.json`)).json()))))
+            );
+        case (false):  /* Github */
+            return ([ ...(new DOMParser().parseFromString(
+                await ((reqFetch).text()), (`text/html`))
+                .querySelectorAll(`a`)), ].map(a => ((a)
+                .getAttribute(`href`))).filter(Boolean)
+            );
+        default:
+            return;
+}}
+//
+    /** [Async] Scanning Images-Path Prefix
+     * @param {string} pathGet
+     * @param {Boolean} scanMethod
+        *
+     * @typedef {Object} GitImgPrefix
      * @property {"dir"|"file"} type
      * @property {string} path
      */
-async function getImg_Prefixes (
-    pathGet = (`./${for_bd}`),
+async function srcPrefix_Scanner (
+    pathGet = (jsVar.empty),
+    scanMethod = (true),
 ) {
-    let links = ((await images_Fetchings(pathGet)).filter(
-        href => ((href) !== (jsVar.linkBack))));
-    let getDom = (new URL((pathGet), (iGit.htWeb.dom)));
+    //(jsCs).log((`Scanner:`), (scanMethod));
     //
-    let items = [];
-    for (let href of links) {
-        let full = (new URL(href, getDom).pathname);
-        switch (true) {
-            case ([(jsVar.slash), (jsVar.linkRoot),
-                (jsVar.linkBack), ].includes(href)
-            ):
-                continue;
-            case (((full) === (jsVar.slash2s)) ||
-                ((full) === (jsVar.slash)) ||
-                ((href).includes(jsVar.dot2s))
-            ):
-                continue;
-        }
-        let isDir = ((href).endsWith(jsVar.slash));
+    let items = [],
+        links, getDom;
+    //
+    switch (scanMethod) {
+        case (true):  /* Local */
+            links = (await (srcLink_Fetcher(
+                pathGet, true)));
+            getDom = (jsVar.slash);
+            //
+            items = ((links).map((arr) => ((arr).map(
+                (v) => ((jsTx).arr2Str([ (getDom),
+                    (v), ], (jsVar.empty)))
+            ))));
+            return (items);
         //
-        (items).push({
-            type: ((isDir) ? (`dir`) : (`file`)),
-            path: (full),
-        });
-        if (isDir) {
-            let sub = (await (getImg_Prefixes(full)));
-            items = ((items).concat(sub));
-        }
-    }
-    return (items);
-}
-    /** [Async] Final getting all Images
-     * @param {string} [api=iGit.ghApi_getLink("img")]
-     * @returns {Promise<string[]>}
-     */
-async function getAll_Images (
-    api = ((iGit).ghApi_getLink(`img`)),
-) {
-    const seen = (new Set());
-    const addImage = ((img) => ((seen).add(img)));
-    //
-    switch (true) {
-        case (iGit.is_Local): {
-            let prefixes = (await (getImg_Prefixes(for_bd)));
-            for (const item of prefixes) {
-                let links = (await (images_Fetchings(item.path)));
-                for (const href of links) {
-                    if ((format_exts).some(ext => (
-                        (href)?.endsWith(ext)
-                    ))) {
-                        addImage(href);
-                    }
+        case (false):  /* Github */
+            pathGet = (`./${srcGetImg}`);
+                //
+            links = (await (srcLink_Fetcher(pathGet, false)
+                .then((result) => ((result).filter(
+                    (href) => ((href) !== (jsVar.linkBack)
+            ))))));
+            getDom = (new URL((pathGet), (iGit.htWeb.dom)));
+            //
+            for (let href of links) {
+                let full = ((new URL(href, getDom)).pathname),
+                    isDir = ((href).endsWith(jsVar.slash));
+                //
+                switch (true) {
+                    case ([ (jsVar.slash), (jsVar.linkRoot),
+                        (jsVar.linkBack), ].includes(href)):
+                        continue;
+                    case (((full) === (jsVar.slash2s)) ||
+                        ((full) === (jsVar.slash)) ||
+                        ((href).includes(jsVar.dot2s))):
+                        continue;
+                }
+                //
+                (items).push({
+                    type: ((isDir) ? (`dir`) : (`file`)),
+                    path: (full),
+                });
+                //
+                if (isDir) {
+                    let sub = (await srcPrefix_Scanner(
+                        full, scanMethod));
+                    //
+                    items = ((items).concat(sub));
                 }
             }
-            return [...seen];
-        }
-        case (!((iGit).htWeb.lcl.endsWith(`github.io`))):
-            return [];
+            //
+            return (items);
         default:
-            break;
+            return [];
     }
-    const req = await (fetch(api));
-        if (!(req.ok)) return [];
-    const data = (await (req.json()));
-    //
-    for (const item of data) {
-        switch (item.type) {
-            case (`dir`):
-                let sub = (await (getAll_Images(item.url)));
-                (sub).forEach(addImage);
-                break;
-            case (`file`):
-                if ((format_exts).some(ext => ((jsTx)
-                    .lower(item.name).endsWith(ext)))
-                ) {
-                    addImage(item.download_url);
-                }
-                break;
-            default:
-                break;
-        }
-    }
-    return [...seen];
 }
+    /** [Async] For All-Images Processor Methods
+     * @param {string} linkImgSrc
+     * @param {Boolean} lisMethod
+     * @returns {Promise<string[]>}
+     */
+async function alImages_Processor (
+    linkImgSrc = (jsVar.empty),
+    lisMethod = (true),
+) {
+    //(jsCs).log((`Processor:`), (lisMethod));
+    //
+    const isGitLink = ((iGit.htWeb
+        .lcl).endsWith(`github.io`)),
+        seen = (new Set());
+    let addImage = ((img) => ((seen).add(img))),
+        prefixes;
+    //
+    switch ((lisMethod) && (!(isGitLink))) {
+        case (true):
+            prefixes = (await (srcPrefix_Scanner(
+                linkImgSrc, true)));
+            //
+            for (const [ i, group, ]
+                of prefixes.entries()) {
+                (seen).clear();
+                (group).forEach((href) => (((format_exts)
+                    .some((ext) => ((href).toLowerCase()
+                    .endsWith(ext)))) && (addImage(href))
+                ));
+                //
+                prefixes[i] = [...seen];
+            }
+            return (prefixes);
+        case (false):
+            prefixes = (await (srcPrefix_Scanner(
+                srcGetImg, false)));
+            //
+            for (const item of prefixes) {
+                let links = (await (srcLink_Fetcher(
+                    (item.path), (false))));
+                //
+                for (const href of links) {
+                    if ((format_exts).some((ext) => (
+                        (href)?.endsWith(ext)
+                    ))) { addImage(href);
+            }}}
+            //
+            return [ ...(seen), ];
+        default:
+            return [];
+}}
+//
     /** [Async] Gathering that all Images
+     * @param {string} getImgSrc
+     * @param {Boolean} gatherMethod
      * @returns {void}
      */
-export async function gather_AlImages () {
-    await ((iGit).git_Config());
-    return (await (getAll_Images()));
-}
+export async function alImages_Ascertains(
+    getImgSrc = (jsVar.empty),
+    gatherMethod = (true),
+) {
+    //(jsCs).log((`Gathering:`), (gatherMethod));
+    //
+    switch (gatherMethod) {
+        case (true):
+            let gaterhing = (await (alImages_Processor(
+                getImgSrc, true)));
+            //
+            return (await ((gaterhing).flat()));
+        case (false):
+            await ((iGit).git_Config());
+            //
+            return (await (alImages_Processor(
+                getImgSrc, false)));
+        default:
+            return [];
+}}
 //
 /**/
 

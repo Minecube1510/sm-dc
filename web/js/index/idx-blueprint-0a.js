@@ -214,20 +214,21 @@ export async function get_DocFiles (
             urlPromise = (dirSafe.countfile);
             promParser = ((res) => ((res).text().then(
                 (v) => (parseInt((v), (10))))));
-            getPromise = fetch(dirSafe.countfile)
+            getPromise = (fetch(dirSafe.countfile)
                 .then((res) => {
                     cek_FetchRes(res);
+                    //
                     return (promParser(res));
                 }).then(async (count) => {
                     let files = [];
                     for (let i = 1; i <= count; i++) {
-                        const res = await fetch(`${
-                            dirSafe.getfiles}/${i}.json`);
+                        const res = (await fetch(`${
+                            dirSafe.getfiles}/${i}.json`));
                         cek_FetchRes(res);
                         (files).push(await ((res).json()));
                     }
                     return (files);
-                });
+                }));
             break;
         default:
             throw new Error(`Unknown source: ${fileFrom}`);

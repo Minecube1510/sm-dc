@@ -2,8 +2,9 @@
 /* web/js/images/img-compile.js */
 
 /* Imports */
-import { jsVar, inGit,
+import { jsVar, inGit, dirSafe,
     jsTx, jsCs, jsDoc, jsHt,
+    //
     } from "../basis.js";
     //
 import * as imgStrg from './img-storage.js';
@@ -19,12 +20,15 @@ import * as imgPro from './img-process.js';
 
 
 /* Formalize - Componentor */
-    /** Componentor for Images Viewing - Content Comping
-     * @param {string} conComp
+const gitConfig = (iGit.gh_Config),
+    x = (``);
+//
+    /** View-Images - Component Building
+     * @param {string} phAteiler
      * @returns {ViewImagesComp}
      */
-function comp_ViewImages (
-    conComp
+function buildComp_ViewImg (
+    phAteiler,
 ) {
         /* Varings */
     const vImg = {
@@ -42,7 +46,7 @@ function comp_ViewImages (
         .classer(imgStrg.vImg_PhTxt_Cls));
         /* Gabung */
     (vImg).atlr.appendChild(vImg.text);
-    (vImg).text.textContent = (conComp);
+    (vImg).text.textContent = (phAteiler);
     //
     return (vImg);
 }
@@ -51,13 +55,17 @@ function comp_ViewImages (
 
 
 /* Formalize - Building */
-const reSource_Images = (await (
-    (imgPro).gather_AlImages()));
+const reSource_Images = (await ((imgPro)
+    .alImages_Ascertains((dirSafe
+        .countimgs), (!(iGit.isLocal)))
+));
 //
-    /** Componentor for Images Viewing - Log Consoles
+    /** Images-Report of Console-Log
      * @returns {void}
      */
-function comp_LoggerImages () {
+function loggeReport_ViewImg (
+    //
+) {
         /* First - View Linkings */
     (jsCs).log((jsTx).arr2Str([
         (`Now in Linking:`),
@@ -68,13 +76,13 @@ function comp_LoggerImages () {
     ], (jsVar.empty)));
         /* Middle-12 - Warn */
     if (!(reSource_Images.length)) {
-        (jsCs).warn(
-            `⚠️ There's no Images in here`);
+        (jsCs).warn(`⚠️ There's no Images in here`);
+        //
         return;
     }
         /* Second - Success as Table */
     (jsCs).grBgn((jsTx).arr2Str([
-        (`Check Images`), ((iGit.is_Local)
+        (`Check Images`), ((iGit.isLocal)
             ? (`Local`) : (`Github API`))
     ], (` - `)));
         (jsCs).log((jsTx).arr2Str([
@@ -82,24 +90,37 @@ function comp_LoggerImages () {
                 .ghApi_getLink(`img`)),
         ], (jsVar.empty)));
         (jsCs).table((reSource_Images).map((item) => ({
-            name: ((item.name) ?? ((item)
-                .split(jsVar.slash).at(-1))),
-            path: ((item.path) ?? ((item).slice(1))),
-            src: ((item.src) ?? ((iGit).ghApi_getLink(item))),
+                /* Img-Name */
+            Image_Name: ((item).split(jsVar.slash)
+                .at(-1)),
+            //
+                /* Img-Relative-Path */
+            Relative_Path: ((item).slice(1)),
+                /* Img-Raw-Github-Path */
+            Gitraw_Path: ((iGit).ghRaw_inLink((item)
+                .slice(1))),
+            //
+                /* API-Src */
+            API_Src: ((iGit).ghApi_getLink(item)),
+                /* Link-Src */
+            Link_Src: (jsTx.arr2Str([ (iGit.htWeb
+                .dom), (item),], (jsVar.empty))),
         })));
     (jsCs).grEnd();
 }
-    /** [Async] In-Building Images Componentor
+//
+    /** [Async] Auto-Building Images Ateiler
      * @returns {Promise<ViewImagesComp>}
      */
-async function buildStruct_Images () {
-    let vAteiler = ((imgStrg).img_CompId(`vimg_Content`));
-    let vBox = comp_ViewImages(
-        `Images Ateilers has been here`);
+async function autoBuild_Ateiler (
+    //
+) {
+    let vAteiler = ((imgStrg).img_CompId(`vimg_Content`)),
+        vBox = buildComp_ViewImg(`Images Ateilers has been here`);
     //
     switch (true) {
-        case ((!(vAteiler))
-        || (!(vBox.atlr))):
+        case ((!(vAteiler)) || (!(vBox.atlr))):
+            //
             return (vBox);
         case ((reSource_Images.length) < (1)):
             //(jsCs).warn(`⚠️ Tidak ada gambar ditemukan!`);
@@ -115,13 +136,15 @@ async function buildStruct_Images () {
     (reSource_Images).forEach((item) => {
         let imgComp = ((jsDoc).createElm(`img`));
         //
-        (imgComp).src = ((item.path) ?? (item));
-            /* (item.path) | (item.src) */
+        (imgComp).src = ((iGit.isLocal) ? (item)
+            : (`/${inGit.data.repo}/${(item)
+                .slice(1)}`));
+            //
         (imgComp).draggable = (false);
         (imgComp).className = ((jsHt)
             .classer(imgStrg.vImger_Cls));
-        (imgComp).onclick = () => { (location)
-            .href = (imgComp.src); };
+        (imgComp).onclick = (() => { (location)
+            .href = (imgComp.src); });
         (vBox).atlr.appendChild(imgComp);
     });
     return (vBox);
@@ -153,11 +176,11 @@ export async function struct () {
     //
     /*
         Logs */
-    comp_LoggerImages();
+    loggeReport_ViewImg();
     //
     /*
         Body */
-    await (buildStruct_Images());
+    await (autoBuild_Ateiler());
     //
 }
 //
@@ -165,6 +188,13 @@ export async function struct () {
 
 
 /* Uji Coba */
+/*
+(jsCs).log(iGit.htWeb.lcl);
+//
+(jsCs).log((`(iGit.isLocal) :`), (iGit.isLocal));
+(jsCs).log((`(!(iGit.isLocal)) :`), (!(iGit.isLocal)));
+// */
+//(jsCs).log(await (reSource_Images));
 //
 /**/
 

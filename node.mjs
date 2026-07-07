@@ -44,10 +44,12 @@ const path = require(`path`);
     /** Scan Directory for Expanded Methods
      * @param {string} dir
      * @param {"short"|"full"} mode
+     * @param {Boolean} keepExt
      * @returns {Array}
      */
 function scanDir (
     dir, mode = (`short`),
+    keepExt = (false),
 ) {
     //
     return ((fs).readdirSync(dir)
@@ -57,8 +59,11 @@ function scanDir (
                     .isDirectory());
             let fullPath = ((realPath).replaceAll(
                 (path.sep), (jsVar.slash)));
-            fullPath = ((fullPath).replace((/\.[^.]+$/),
-                (jsVar.empty)));
+            //
+            if (!(keepExt)) {
+                fullPath = ((fullPath).replace((/\.[^.]+$/),
+                    (jsVar.empty)));
+            }
             //
             switch (mode) {
             case (`short`):
@@ -86,18 +91,20 @@ function scanDir (
     /** Compiling 1 Folder to JSON
      * @param {string} foldPath
      * @param {string} forPath
+     * @param {Boolean} keepExt
      * @param {string} compMode
      * @returns {{
-     *     files:number,
-     *     size:number,
+     *  files:number,
+     *  size:number,
      * }}
      */
 function foldScan_Json (
-    foldPath, forPath,
+    foldPath, forPath, keepExt,
     compMode = (`short`),
 ) {
-    const files = scanDir(
-        (foldPath), (compMode)),
+    const files = scanDir((foldPath),
+        (compMode), (keepExt)),
+        //
         size = ((Buffer).byteLength(
             (JSON).stringify(files)));
     //
@@ -111,12 +118,14 @@ function foldScan_Json (
      * @param {string} inMethod
      * @param {string} directer
      * @param {string} filePath
+     * @param {Boolean} keepExt
      * @returns {totalJson}
      */
 function excing_ScanDir (
     inMethod = (`short`),
     directer = (dirSafe.getfiles),
     filePath = (jsVar.empty),
+    keepExt,
 ) {
     const rPath = (`./${directer}`),
         dirFd = ((fs).readdirSync(rPath)
@@ -127,6 +136,8 @@ function excing_ScanDir (
     let totalFile = (0),
         totalSize = (0),
         totalJson = (0);
+    //
+    (console).log(jsVar.empty);
     //
     (console).time(`In-Scan`);
     (console).log(`Starting to Scan...`);
@@ -140,8 +151,9 @@ function excing_ScanDir (
                 .isDirectory())) continue;
         const getPath = ((path).join(
             (filePath), (`${plus_Fidx}.json`))),
+            //
             result = foldScan_Json((full_Sdp),
-                (getPath), (inMethod));
+                (getPath), (keepExt), (inMethod));
         //
         totalJson++;
         totalFile += result.files;
@@ -166,6 +178,8 @@ function excing_ScanDir (
             1024)).toFixed(2)} KB`)
     ].join(jsVar.enter));
     //
+    (console).log(jsVar.empty);
+    //
     return (totalJson);
 }
 //
@@ -180,11 +194,16 @@ function excing_ScanDir (
 function final_Excing () {
     (console).log(jsVar.empty);
     //
-    const totalFolder = excing_ScanDir((`short`),
-        (dirSafe.filename), (dirSafe.getfiles)
-    );
+    const
+        totalFolder = excing_ScanDir((`short`),
+            (dirSafe.filename), (dirSafe.getfiles),
+            (false)),
+        totalImages = excing_ScanDir((`short`),
+            (dirSafe.imageset), (dirSafe.getimages),
+            (true));
         //
     write_Json((dirSafe.countfile), (totalFolder));
+    write_Json((dirSafe.countimgs), (totalImages));
     //
     (console).log(jsVar.empty);
 }
