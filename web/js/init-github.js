@@ -2,10 +2,12 @@
 /* web/js/index/init-github.js */
 
 /* Imports */
-import { jsVar, inGit, dirSafe,
-    jsTx, jsCs, jsDoc, jsHt,
+import { jsVar,
+    jsTx, jsCs, jsHt,
     //
     toLink_txtPro,
+    //
+    sysGit,
     } from "./basis.js";
 //
 /**/
@@ -14,13 +16,13 @@ import { jsVar, inGit, dirSafe,
 /* Configs - Github */
 export const
     gh_Config = ((tick) => ({
-        bsc: (inGit.link.ltp.bsc),
-        scr: (inGit.link.ltp.scr),
+        bsc: (sysGit.link.ltp.bsc),
+        scr: (sysGit.link.ltp.scr),
         //
-        raw: (inGit.link.gh.base.raw),
-        api: (inGit.link.gh.base.api),
+        raw: (sysGit.link.gh.base.raw),
+        api: (sysGit.link.gh.base.api),
         // 
-        repo: (inGit.link.gh.path.repo),
+        repo: (sysGit.link.gh.path.repo),
 })[tick]),
     //
     htWeb = {
@@ -46,7 +48,7 @@ export let
 
 /* Initialize - Github */
     /** [Async] Config to Github for early
-     * @returns {Promise<typeof inGit.data>}
+     * @returns {Promise<typeof sysGit.data>}
      */
 export async function git_Config () {
     const get_repo = ((isLocal)
@@ -54,12 +56,12 @@ export async function git_Config () {
             (`./package.json`))).json()).name)
         : (gh_Config(`repo`).slice((0), (-1)))
     );
-    (inGit).data.repo = ((isLocal)
+    (sysGit).data.repo = ((isLocal)
         ? (get_repo) : (((htWeb.path).split(
             jsVar.slash).filter(Boolean)
         .at(0)) ?? (get_repo))
     );
-    return (inGit.data.name);
+    return (sysGit.data.name);
 }
 //
     /** Get linking to Github Raw
@@ -71,8 +73,8 @@ export function ghRaw_inLink (
 ) {
     return ((jsHt).linker([ toLink_txtPro(
         gh_Config(`scr`), gh_Config(`raw`)),
-        (inGit.data.name), (inGit.data.repo),
-        (inGit.data.branch), (gitPath),
+        (sysGit.data.name), (sysGit.data.repo),
+        (sysGit.data.branch), (gitPath),
     ]));
 }
     /** Get linking to Github API
@@ -86,13 +88,13 @@ export function ghApi_getLink (
         ? (gitPath.slice(1)) : (gitPath));
     let ghApi_Base = ((jsHt).linker([ (toLink_txtPro(
         gh_Config(`scr`), gh_Config(`api`))),
-        gh_Config(`repo`), (inGit.data.name),
-        (inGit.data.repo), (`contents`),
+        gh_Config(`repo`), (sysGit.data.name),
+        (sysGit.data.repo), (`contents`),
     ]));
     //
     return (`${(jsHt).linker([
         (ghApi_Base), (gitPath),
-    ])}?ref=${inGit.data.branch}`);
+    ])}?ref=${sysGit.data.branch}`);
 }
 //
     /** Github API - Know Rate Limit

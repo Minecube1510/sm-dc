@@ -49,13 +49,13 @@ class="min-h-screen flex flex-col container mx-auto p-3 select-none">
     defer></script>
     <!--
         Body: Contents -->
-    <header class="">
+    <header id="header-idx" class="">
         <h1 class="text-xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
             MD Previewer<br>
             (Under Development)
         </h1><hr class="rounded-2 border-2">
     </header>
-    <main id="main-idx" class="flex flex-col flex-1">
+    <main id="main-idx" class="flex flex-col flex-1 into-smooth">
         <div id="idx-remocon" class="grid gap-y-4 my-4">
             <div class="flex justify-center items-center gap-4 text-sm"
                 id="idx-geartool">
@@ -63,7 +63,7 @@ class="min-h-screen flex flex-col container mx-auto p-3 select-none">
                 class="inline-block text-center"></div>
                 <div id="idx-gt-input" class="flex-1">
                     <input placeholder="Path/Folder/File.formatted" type="text"
-                        class="w-full px-3 py-2 text-start focus:outline-none"
+                        class="w-full px-3 py-2 text-start focus:outline-none into-smooth"
                         id="idx-gt-input-comp" value="" data-value="">
                 </div>
                 <div id="idx-gt-select">
@@ -79,17 +79,17 @@ class="min-h-screen flex flex-col container mx-auto p-3 select-none">
                     spellcheck="false" value="" data-value=""
                     placeholder="Type the MD document name at here">
                 <button class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                    type="button" id="article-md-src-logo" aria-label="Search"
-                    value=""><span class="bi bi-search"></span></button>
+                    type="button" id="article-md-src-btn" aria-label="Search"
+                    value=""><span class="bi bi-search" id="article-md-src-icon"></span></button>
                 <div class="" id="src-md-res"></div>
             </div>
         </div><hr class="rounded-2 border-2">
         <div class="" id="idx-view"><div class="" id="md-loading-idx"></div><article
-            class="markdown-body bg-transparent m-0 p-4 flex-1 rounded-inherit"
+            class="markdown-body m-0 p-4 flex-1"
             id="content" title="">
         </article></div>
     </main>
-    <footer class="text-center mt-4">
+    <footer id="footer-idx" class="text-center mt-4">
         <p class="font-semibold">By:
             <span id="github-username">
                 Git-Username

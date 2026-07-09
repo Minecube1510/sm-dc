@@ -2,31 +2,43 @@
 /* web/js/images/img-compile.js */
 
 /* Imports */
-import { jsVar, inGit, dirSafe,
+import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
     //
+    dirSafe, sysGit,
     } from "../basis.js";
-    //
-import * as imgStrg from './img-storage.js';
     //
 import * as iGit from '../init-github.js';
 //
-import { setPage_Comping
-} from "../set-paging.js";
-//
+import { setPage_Comping,
+    //
+    } from "../set-paging.js";
+    /*|
+  //
+|*/
+import * as imgStrg from './img-storage.js';
+/*|
+|*/
 import * as imgPro from './img-process.js';
 //
 /**/
 
 
 /* Formalize - Componentor */
+/** Ateiler Images-Displayer Componentor Config
+ * @typedef {Object} ViewImagesComp
+ * @property {HTMLElement|null} mbox
+ * @property {HTMLElement|null} imgs
+ * @property {HTMLParagraphElement} text
+ */
+//
 const gitConfig = (iGit.gh_Config),
     //
     isDeployed = (!(iGit.isLocal));
 let imgConfig = {
     Lcl: {
         source: ((jsTx).arr2Str([(iGit.htWeb.dom),
-            ...((isDeployed) ? [iGit.data.repo]
+            ...((isDeployed) ? [sysGit.data.repo]
             : []), (dirSafe.countimgs),
         ], (jsVar.slash))),
         method: (true),
@@ -44,24 +56,37 @@ function buildComp_ViewImg (
     phAteiler,
 ) {
         /* Varings */
-    const vImg = {
-        base: ((imgStrg).img_CompId(`vimg_Base`)),
-        atlr: ((imgStrg).img_CompId(`vimg_Content`)),
-        text: ((jsDoc).createElm(`p`)),
-    };
-    switch (true) {
-        case (!(vImg.base)): return (vImg);
-        case (!(vImg.atlr)): return (vImg);
-    }
-        /* Classings */
-    (vImg).atlr.classList.add(...imgStrg.vImg_Atlr_Cls);
-    (vImg.text).className = ((jsHt)
-        .classer(imgStrg.vImg_PhTxt_Cls));
-        /* Gabung */
-    (vImg).atlr.appendChild(vImg.text);
-    (vImg).text.textContent = (phAteiler);
+    const
+        imgAteiler = {
+        //
+    mbox: ((imgStrg).img_CompId(`atlrC_MainBox`)),
+    imgs: ((imgStrg).img_CompId(`atlrC_ImageCon`)),
+    text: ((jsMod).setElm(((jsDoc).createElm(`p`)), {
+        className: ((jsHt).classer(
+            imgStrg.atlr_PhTxt_Cls)),
+        //
+        textContent: (phAteiler),
+    }))}
+        ;
     //
-    return (vImg);
+    if ((!(imgAteiler.mbox)) ||
+        (!(imgAteiler.imgs))) {
+        //
+        return (imgAteiler);
+    }
+    //
+    (imgAteiler.mbox).classList.add(`border-inherit`);
+        //
+    (imgAteiler.text).classList.add(`col-span-full`);
+        //
+    (imgAteiler.imgs).classList.add(
+        ...(imgStrg.atlr_ImageCon_Cls),
+        (`border-inherit`),
+    );
+    //
+    (imgAteiler.imgs).append(imgAteiler.text);
+    //
+    return (imgAteiler);
 }
 //
 /**/
@@ -69,7 +94,8 @@ function buildComp_ViewImg (
 
 /* Formalize - Building */
 let reSource_Images = (async (mode) => {
-    const { source, method } = (imgConfig[mode]);
+    let { source, method } = (imgConfig[mode]);
+    //
     return (await ((imgPro)
         .alImages_Ascertains(source, method)));
 });
@@ -79,16 +105,14 @@ reSource_Images = (await (
     /** Images-Report of Console-Log
      * @returns {void}
      */
-function loggeReport_ViewImg (
-    //
-) {
+function loggeReport_ViewImg () {
         /* First - View Linkings */
     (jsCs).log((jsTx).arr2Str([
         (`Now in Linking:`),
         (`\n[-] `), (iGit.htWeb.dom),
         (`\n[=] `), (iGit.htWeb.lnk),
-        (`\n[>] `), ((inGit.data.repo) ||
-            (inGit.link.gh.path.repo)),
+        (`\n[>] `), ((sysGit.data.repo) ||
+            (sysGit.link.gh.path.repo)),
         (`\n[$] `), (iGit.htWeb.path),
     ], (jsVar.empty)));
         /* Middle-12 - Warn */
@@ -106,65 +130,68 @@ function loggeReport_ViewImg (
             (`Get from`), (`:\n`), ((iGit)
                 .ghApi_getLink(`img`)),
         ], (jsVar.empty)));
-        (jsCs).table((reSource_Images).map((item) => ({
-                /* Img-Name */
-            Image_Name: ((item).split(jsVar.slash)
-                .at(-1)),
+        (jsCs).table((reSource_Images).map((item) => {
+            const pather = ((item).slice(1));
             //
-                /* Img-Relative-Path */
-            Relative_Path: ((item).slice(1)),
-                /* Img-Raw-Github-Path */
-            Gitraw_Path: ((iGit).ghRaw_inLink((item)
-                .slice(1))),
-            //
-                /* API-Src */
-            API_Src: ((iGit).ghApi_getLink(item)),
-                /* Link-Src */
-            Link_Src: (jsTx.arr2Str([ (iGit.htWeb
-                .dom), (item),], (jsVar.empty))),
-        })));
+            return {
+                    /* Img-Name */
+                Image_Name: ((item).split(jsVar.slash)
+                    .at(-1)),
+                //
+                    /* Img-Relative-Path */
+                Relative_Path: (pather),
+                    /* Img-Raw-Github-Path */
+                Gitraw_Path: ((iGit)
+                    .ghRaw_inLink(pather)),
+                //
+                    /* API-Src */
+                API_Src: ((iGit).ghApi_getLink(item)),
+                    /* Link-Src */
+                Link_Src: (jsTx.arr2Str([ (iGit.htWeb
+                    .dom), (item),], (jsVar.empty))),
+            }
+        }));
     (jsCs).grEnd();
 }
 //
     /** [Async] Auto-Building Images Ateiler
      * @returns {Promise<ViewImagesComp>}
      */
-async function autoBuild_Ateiler (
-    //
-) {
-    let vAteiler = ((imgStrg).img_CompId(`vimg_Content`)),
-        vBox = buildComp_ViewImg(`Images Ateilers has been here`);
+async function autoBuild_Ateiler () {
+    const atlrCom = ((imgStrg)
+        .img_CompId(`atlrC_ImageCon`)),
+        //
+        atlrBox = buildComp_ViewImg(
+            `Images Ateilers has been here`);
     //
     switch (true) {
-        case ((!(vAteiler)) || (!(vBox.atlr))):
-            //
-            return (vBox);
-        case ((reSource_Images.length) < (1)):
+        case ((!(atlrCom)) || (!(atlrBox.imgs))):
+            return (atlrBox);
+        case (!(reSource_Images.length)):
             (jsCs).warn(`⚠️ Tidak ada gambar ditemukan!`);
             //
-            (vAteiler).classList.remove(...imgStrg
-                .vImgAtlr_Rm_Cls);
-            (vAteiler).classList.add(...imgStrg
-                .vImgAtlr_Add_Cls);
-            //
-            return (vBox);
+            return (atlrBox);
     }
-    (vBox).atlr.innerHTML = (jsVar.empty);
+    //
+    (atlrBox.imgs).replaceChildren();
     (reSource_Images).forEach((item) => {
-        let imgComp = ((jsDoc).createElm(`img`));
+        let src = ((iGit.isLocal) ? (item) : (`/${
+            sysGit.data.repo}/${item.slice(1)}`));
         //
-        (imgComp).src = ((iGit.isLocal) ? (item)
-            : (`/${inGit.data.repo}/${(item)
-                .slice(1)}`));
-            //
-        (imgComp).draggable = (false);
-        (imgComp).className = ((jsHt)
-            .classer(imgStrg.vImger_Cls));
-        (imgComp).onclick = (() => { (location)
-            .href = (imgComp.src); });
-        (vBox).atlr.appendChild(imgComp);
+        const imgComp = ((jsMod).setElm(((jsDoc)
+            .createElm(`img`)), { src,
+                draggable: (false),
+                className: ((jsHt).classer(
+                    imgStrg.atlr_ElImg_Cls)),
+                onclick: (() => {
+                    (location).href = (src);
+            })},
+        ));
+        //
+        (atlrBox.imgs).append(imgComp);
     });
-    return (vBox);
+    //
+    return (atlrBox);
 }
 //
 /**/
@@ -206,16 +233,7 @@ export async function struct () {
 
 
 /* Uji Coba */
-/*
-(jsCs).log(iGit.htWeb.lcl);
 //
-(jsCs).log((`(iGit.isLocal) :`), (iGit.isLocal));
-(jsCs).log((`(!(iGit.isLocal)) :`), (!(iGit.isLocal)));
-//
-(jsCs).log(await (reSource_Images));
-// */
-//
-jsCs.log(imgConfig.Lcl.source);
 /**/
 
 

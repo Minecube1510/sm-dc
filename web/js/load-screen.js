@@ -4,22 +4,25 @@
 /* Imports */
 //Importing...
 //
-import {
-    jsTx, jsCs, jsDoc, jsHt,
+import { jsVar, jsMod,
+    jsTx, jsDoc, jsHt,
     } from "./basis.js";
 //
 /**/
 
 
 /* Loading Init */
-const ls_CompId = ((jsDoc)
+const coLoadScreen = ((jsDoc)
     .getId(`loading-screen`)),
-    transing = (750);
+    //
+    transing = (750)
+    ;
 //
-if (ls_CompId) {
-    (ls_CompId).classList.add(
-        `transition-opacity`, `duration-500`,
-        `ease-out`, `opacity-100`);
+if (coLoadScreen) {
+    (coLoadScreen).classList.add(
+        `ease-out`, `transition-opacity`,
+        `duration-500`, `opacity-100`,
+    );
 }
 //
 /**/
@@ -30,60 +33,74 @@ if (ls_CompId) {
      * @returns {HTMLElement|null}
      */
 function show_Waiting () {
-    if (!(ls_CompId)) return (null);
-    //
-    (ls_CompId).textContent = (``);
-    (ls_CompId).className = ((jsHt).classer([
-        `fixed`, `inset-0`, `z-[9999]`, `flex`,
-        `flex-col`, `items-center`, `justify-center`,
+        if (!(coLoadScreen)) return (null);
+        //
+    let loadScreenCls = [
+        `fixed`, `inset-0`, `z-[9999]`,
+        `flex`, `flex-col`,
+        `items-center`, `justify-center`,
         `bg-neutral-950`, `text-white`,
         `transition-all`, `duration-${transing}`,
         `ease-out`, `opacity-100`, `scale-100`,
-    ]));
+    ];
     //
-    const spinElm = ((jsDoc).createElm(`div`)),
-        textElm = ((jsDoc).createElm(`p`));
+    (jsMod).setElm((coLoadScreen), {
+        className: ((jsHt).classer(loadScreenCls)),
+        textContent: ((jsTx).trm(jsVar.empty)),
+    });
     //
-    (spinElm).className = ((jsHt).classer([
-        `rounded-full`, `animate-spin`,
-        `w-16`, `h-16`, `mb-4`,
-        `border-4`, `border-neutral-700`,
-        `border-t-white`,
-    ]));
-    (textElm).className = ((jsHt).classer([
-        `text-xl`, `font-semibold`,
-        `transition-opacity`, `duration-${transing}`,
-        `ease-out`, `opacity-100`,
-    ]));
-    (textElm).textContent = (`Loading the Page...`);
+    const spinElm = ((jsMod).setElm(
+        ((jsDoc).createElm(`div`)), {
+        //
+className: ((jsHt).classer([
+    `rounded-full`, `animate-spin`,
+    `w-16`, `h-16`, `mb-4`,
+    `border-4`, `border-neutral-700`,
+    `border-t-white`,
+])),
+    })),
+        //
+    textElm = ((jsMod).setElm(
+        ((jsDoc).createElm(`p`)), {
+            //
+className: ((jsHt).classer([
+    `text-xl`, `font-semibold`,
+    `transition-opacity`,
+    `duration-${transing}`,
+    `ease-out`, `opacity-100`,
+    `animate-pulse`,
+])),
+textContent: (`Loading the Page...`),
+        //
+    }))
+        ;
+    (coLoadScreen).append(spinElm, textElm);
     //
-    (ls_CompId).appendChild(spinElm);
-    (ls_CompId).appendChild(textElm);
-    //
-    return (ls_CompId);
+    return (coLoadScreen);
 }
     /** Hiding Loading-Screen
      * @returns {void}
      */
 function hide_Waiting () {
-    if (!(ls_CompId)) return;
+        if (!(coLoadScreen)) return;
     //
-    (ls_CompId).classList.remove(
-        `opacity-100`, `scale-100`);
-    (ls_CompId).classList.add(`pointer-events-none`,
-        `opacity-0`, `scale-105`);
+    [
+        [ `opacity-100`, `opacity-0`, ],
+        [ `scale-100`, `scale-105`, ],
+//
+[ `pointer-events-auto`, `pointer-events-none`, ],
+//
+    ].forEach(([from, to]) => { (coLoadScreen)
+        .classList.replace(from, to); });
     //
-    const textElm = ((ls_CompId).querySelector(`p`));
-    if (textElm) {
-        (textElm).classList
-            .remove(`opacity-100`);
-        (textElm).classList
-            .add(`opacity-0`);
-    }
+    const textElm = ((coLoadScreen)
+        .querySelector(`p`));
     //
-    setTimeout(() => {
-        (ls_CompId).remove();
-    }, (transing));
+    if (textElm) { (textElm).classList.replace(
+        `opacity-100`, `opacity-0`); }
+    //
+    setTimeout(() => { (coLoadScreen)
+        .remove(); }, (transing));
     //
 }
 //
@@ -98,13 +115,15 @@ function final_LoadScreen () {
     let ls_Wait = (show_Waiting());
     //
     requestAnimationFrame(() => {
-        if (!(ls_Wait)) return;
-        (ls_Wait).classList.remove(`opacity-0`, `pointer-events-none`);
-        (ls_Wait).classList.add(`opacity-100`, `scale-100`);
+            if (!(ls_Wait)) return;
         let textElm = ((ls_Wait).querySelector(`p`));
-        if (textElm) {
-            (textElm).classList.remove(`opacity-0`);
-            (textElm).classList.add(`opacity-100`);
+        //
+        (ls_Wait).classList.replace(`opacity-0`, `opacity-100`);
+        (ls_Wait).classList.replace(`scale-95`, `scale-100`);
+        (ls_Wait).classList.remove(`pointer-events-none`);
+        //
+        if (textElm) { (textElm).classList
+            .replace(`opacity-0`, `opacity-100`);
         }
     });
 }

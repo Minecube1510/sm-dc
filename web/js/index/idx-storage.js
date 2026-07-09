@@ -6,73 +6,103 @@ import { jsVar,
     jsTx, jsDoc, jsMod,
     } from "../basis.js";
 //
+import { ldm_Data,
+    //
+    } from "../set-paging.js";
 /**/
 
 
 /* Storage - Main-Comping Classes */
-export const idxView_Cls = [ `flex`,
-    `overflow-hidden`, `relative`,
+export const
+/*|*/
+idxView_Cls = [
+    `flex`, `relative`,
+    `overflow-hidden`,
     `flex-col`, `flex-1`,
     `mt-4`, `rounded-sm`,
     `border-4`,
-];
-//
+],
+idx_ColorChain_Cls = [
+    `bg-inherit`,
+    `text-inherit`,
+    `border-inherit`,
+    ],
+idx_LdmEff_cChain_Cls = [
+    `transition-colors`,
+    `ease-out`,
+]
+;
 /**/
 
 
 /* Storage - Geartool Classes */
-export const gt_Lined_Cls = [
+export const
+/*|*/
+gt_SynComp_Cls = [
     `border`, `rounded-lg`,
-    `focus-within:ring-1`
-];
+],
+gt_InvoComp_Cls = [
+    `into-smooth`, `rounded-lg`,
+    `focus:outline-none`,
+],
 //
-export const gt_MainSwitch_Cls = [
+gt_MainSwitch_Cls = [
     `border`, `rounded-lg`,
     `px-3`,`py-2`,
     `focus-within:ring-1`,
-];
-export const gt_SwitchSelect_Cls = [ `shadow`,
+],
+gt_SwitchSelect_Cls = [
+    `shadow`,  //
     `row-start-1`, `col-start-1`,
-];
-export const gt_SwitchBg_Cls = [
+],
+gt_SwitchBg_Cls = [
     `relative`, `grid`, `grid-cols-2`,
-];
-export const gt_SwitchText_Cls = [
+],
+gt_SwitchText_Cls = [
     `relative`, `z-10`, `px-2`,
     `font-semibold`,
-];
+],
 //
-export const gt_SelectOpting_Cls = [
-    `appearance-none`, `focus:outline-none`,
+gt_SelectOpting_Cls = [
+    `appearance-none`, `cursor-pointer`,
+    //
     `w-full`, `px-3`,`py-2`, `pr-8`,
-];
-export const gt_SelectCarrow_Cls = [
+],
+gt_SelectCarrow_Cls = [
     `absolute`, `pointer-events-none`,
-    `bi`,`bi-caret-down-fill`, `right-3`,
-];
+    `bi`,`bi-caret-down-fill`, 
+    `transition-transform`, `ease-in-out`,
+    //
+    `right-3`,
+    //
+    `duration-200`,
+],
 //
-export const gt_Rooter_Cls = [
+gt_Rooter_Cls = [
     `cursor-pointer`, `active:cursor-default`,
-];
-export const gt_SrcRes_Cls = [
+],
+gt_SrcRes_Cls = [
     `absolute`, `top-full`, `w-full`,
     `left-0`, `z-50`, `shadow`,
     `border-2`, `rounded-b-md`,
-];
-//
+]
+;
 /**/
 
 
 /* Storage - Search-Feature Classes */
-export const mdv_Ph_Cls = [
+export const
+/*|*/
+mdVi_Ph_Cls = [
     `flex`, `absolute`, `rounded-lg`,
     `items-center`,`justify-center`,
     `text-center`,`font-semibold`,
     `inset-0`,
     `text-stone-500`,
-];
-export const mdv_LsComp_Cls = [ `flex`,
-    `pointer-events-none`, `absolute`,
+],
+mdVi_LsComp_Cls = [
+    `absolute`, `flex`,
+    `pointer-events-none`,
     `items-center`, `justify-center`,
     //
     `font-semibold`,
@@ -82,64 +112,67 @@ export const mdv_LsComp_Cls = [ `flex`,
     `inset-0`, `z-50`,
     `bg-white/70`, `backdrop-blur-sm`,
     `duration-300`,
-];
+],
 //
-export const mdVi_InputPls_Cls = [ `rounded-lg`,
-    //`shadow-xs`,
+mdVi_InputPls_Cls = [
+    `rounded-lg`,
     `focus-within:ring-1`,
-];
-export const mdVi_InputRoot_Cls = [
-    `border`, `border-r`, `rounded-l-lg`
-];
-export const mdVi_InputDef_Cls = [ 
-    `focus:outline-none`,
-    `focus:relative`, `focus:z-10`,
-    `focus:ring-1`,
-    //
+],
+mdVi_InputRoot_Cls = [
+    `border`, `border-r`, `rounded-l-lg`,
+],
+mdVi_InputDef_Cls = [ 
     `border`, `border-l`, `rounded-r-lg`,
-];
+    `into-smooth`,
+],
 //
-export const mdCosL_Comp_Cls = [
-    `bg-gray-50`, `text-zinc-800`,
-    `border-zinc-800`,
-];
-export const mdCosD_Comp_Cls = [
-    `bg-zinc-900`, `text-zinc-100`,
-    `border-zinc-100`,
-];
+mdVi_SrcLogo_Cls = [ 
+    `transition-transform`,
+    `ease-in-out`,
+    //
+    `duration-200`,
+    //
+    `hover:scale-120`,
+    `active:scale-90`,
+],
 //
-export const mdSrch_AutoCm_Cls = [
-    `cursor-pointer`,
+mdCosL_Comp_Cls = (
+    ldm_Data.lightCls),
+mdCosD_Comp_Cls = (
+    ldm_Data.darkCls),
+//
+mdSrch_AutoCm_Cls = [
+    `cursor-pointer`, `into-smooth`,
     `py-1`,`px-2`,
-    `hover:bg-blue-300`, `active:bg-blue-400`,
-];
-export const mdSrch_Sacker_Cls = [
+],
+mdSrch_Sacker_Cls = [
     `absolute`, `items-center`,
     `flex`,
-];
+],
 //
-export const mdSrch_AddChips_Cls = [
+mdSrch_AddChips_Cls = [
     `inline-flex`, `items-center`,
-    "gap-1", `px-2`,`py-1`,
+    `gap-1`, `px-2`,`py-1`,
     `text-sm`,`font-medium`, `border`,
     `rounded-md`, `select-none`,
     `bg-blue-100`,`text-blue-800`,`border-blue-300`,
     `hover:bg-blue-200`,
-];
-export const mdSrch_PfChipy_Cls = [
+],
+mdSrch_PfChipy_Cls = [
     `text-transparent`, `caret-current`,
-];
-export const mdSrch_CrackChip_Cls = [ `bi`,
-    `bi-x-circle`, `relative`, `top-px`,
-    `cursor-pointer`,
-];
-//
+],
+mdSrch_CrackChip_Cls = [
+    `bi`,`bi-x-circle`, `relative`,
+    `top-px`, `cursor-pointer`,
+]
+;
 /**/
 
 
 /* Storage - Comping */
 export const idx_RemoCon = (
     (jsDoc).getId(`idx-remocon`));
+//
 export const idx_RcLang = {
     "switch": {
         "rp": (`Rawpath`),
@@ -153,24 +186,25 @@ export const idx_RcLang = {
 };
 /*|
 |*/
+export const gtComponter = {
+    cElmSw: (`idx-gt-switch-comp`),
+    cElmIn: (`idx-gt-input-comp`),
+    cElmSe: (`idx-gt-select-comp`),
+    cRow: (`arrow-gt-selector`),
+};
 export const idxGT_CompId = (
     (jsMod).getEl_Map({
     gtSwitch: (`idx-gt-switch`),
     gtInput: (`idx-gt-input`),
     gtSelect: (`idx-gt-select`),
 }));
+//
 export const idxGT_Switch = {
     rawpath: (`gt-switch-l`),
     posfile: (`gt-switch-r`),
 };
-export const idxGtWait_Comps = (() => (
-    (jsMod).getEl_Map({
-    gtcSwitch: (`idx-gt-switch-comp`),
-    gtcInput: (`idx-gt-input-comp`),
-})));
 /*|
 |*/
-//export const idxSResLi = (`src-res-lister`);
 export const idxSearchMD_CompId = (
     (jsMod).getEl_Map({
     idxView: (`idx-view`),
@@ -181,28 +215,33 @@ export const idxSearchMD_CompId = (
     //
     inRoot: (`article-md-root`),
     ftSrch: (`article-md-search`),
-    srcBtn: (`article-md-src-logo`),
+    srcBtn: (`article-md-src-btn`),
+    srcIcon: (`article-md-src-icon`),
         //
     srcRes: (`src-md-res`),
     srChip: (`src-md-chips`),
+    //
+    ldmBtn: (ldm_Data.modeBtn),
+    //
 }));
 export const idxCompChip = {
     kitChip: (`md-kit-chip`),
     resChip: (`md-res-chip`),
-};
-//
+}
+;
 /**/
 
 
 /* Storage - Data */
-export const md_Data = {
+export const
+/*|*/
+md_Data = {
     srcPath: ((jsTx).trm(idxSearchMD_CompId
         .ftSrch.value)),
     altPath: (jsVar.empty),
     fpMado: (`${jsVar.point}md`),
-};
-//
-export const reaState = {
+},
+reaState = {
     success: {  // {{Clear}} and {{Success}}
         type: `success`,
         msg: `success`,
@@ -241,8 +280,8 @@ export const reaState = {
         msg: `error_500_internal`,
         text: `Loading Failed`,
     }
-};
-//
+}
+;
 /**/
 
 

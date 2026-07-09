@@ -9,7 +9,7 @@
     /*|
     |*/
 :root {
-    --theme-speed: 500ms;
+    --theme-speed: .5s;
     --theme-opting: ease-in-out;
     /**/
 }
@@ -18,12 +18,7 @@
 
 
 /* Base */
-html, body,
-/**/
-#src-res-lister,
-/**/
-#idx-gt-switch, #idx-gt-input, #idx-gt-select,
-#article-md-root
+html, body
 /**/
 {
     transition:
@@ -31,20 +26,9 @@ html, body,
         color var(--theme-speed) var(--theme-opting),
         border-color var(--theme-speed) var(--theme-opting);
 }
-#article-md-search
-/**/
-{
-    transition:
-        background-color var(--theme-speed) var(--theme-opting),
-        /* color var(--theme-speed) var(--theme-opting), */
-        border-color var(--theme-speed) var(--theme-opting);
-}
 /**
 **/
-html[data-theme] .markdown-body,
-html[data-theme] .markdown-body * {
-    transition: none !important;
-}
+
 /**/
 /*
     */

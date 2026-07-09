@@ -2,10 +2,12 @@
 /* web/js/images/img-process.js */
 
 /* Imports */
-import { jsVar, inGit, dirSafe,
-    jsTx, jsCs, jsDoc, jsHt,
+import { jsVar,
+    jsTx, jsCs,
+    //
+    dirSafe,
     } from "../basis.js";
-//
+    //
 import * as iGit from '../init-github.js';
 //
 /**/
@@ -33,8 +35,7 @@ export async function srcLink_Fetcher (
 ) {
     //(jsCs).log((`Fetcher:`), (fetchMethod));
     //
-    const reqFetch = (await (
-        fetch(pathFetch)));
+    const reqFetch = (await (fetch(pathFetch)));
     //
     if (!(reqFetch.ok)) {
         (jsCs).log(reqFetch);
@@ -149,16 +150,11 @@ export async function alImages_Processor (
             prefixes = (await (srcPrefix_Scanner(
                 linkImgSrc, false)));
             //
-            //(jsCs).log(prefixes);
-            //
             for (const item of prefixes) {
-                if ((item.type) === (`file`) &&
-                    format_exts.some(ext =>
-                        item.path.toLowerCase().endsWith(ext)
-                    )
-                ) {
-                    addImage(item.path);
-                }
+                if (((item.type) === (`file`)) && ((format_exts)
+                    .some((ext) => ((jsTx).lower(item.path)
+                    .endsWith(ext)))
+                )) { addImage(item.path); }
             }
             //
             return [ ...(seen), ];

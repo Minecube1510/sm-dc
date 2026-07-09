@@ -9,8 +9,18 @@
     /*|
     |*/
 :root {
-    --switch-spooth: .2s;
-        /* ? */
+    --transer-smooth: .2s;
+    --longer-smooth: .5s;
+        /**/
+    --text-opting: ease-out;
+    --theme-opting: ease-in-out;
+    /**/
+    --index-transition-theme:
+        background-color var(--transer-smooth) var(--theme-opting),
+        color var(--transer-smooth) var(--text-opting),
+        border-color var(--transer-smooth) var(--theme-opting);
+    --index-transition-focus:
+        box-shadow var(--transer-smooth) var(--theme-opting);
     /**/
 }
 /**/
@@ -33,16 +43,12 @@ article.markdown-body#content ol {
 }
     /*|
     |*/
-html[data-theme="dark"] .markdown-body,
-html[data-theme="light"] .markdown-body {
-    border-color: inherit !important;
-}
-html[data-theme] .markdown-body *,
-html[data-theme] .markdown-body *::before,
-html[data-theme] .markdown-body *::after {
-    background-color: transparent !important;
-    border-color: inherit !important;
-    transition: none !important;
+article#content {
+    contain: style layout paint;
+    /*
+        contain: style;
+        contain: style layout paint;
+    */
 }
 /**/
 /*
@@ -52,8 +58,8 @@ html[data-theme] .markdown-body *::after {
 /* Costumize */
 .switch-left, .switch-right {
     transition:
-        opacity var(--switch-spooth) ease,
-        transform var(--switch-spooth) ease;
+        opacity var(--transer-smooth) var(--theme-opting),
+        transform var(--transer-smooth) var(--theme-opting);;
 }
 /**/
 .switch-left {
@@ -69,6 +75,12 @@ html[data-theme] .markdown-body *::after {
 .peer:checked + label .switch-right {
     opacity: 1;
 }
+/**/
+#arrow-gt-selector::before {
+    display: inline-block;
+    transform:
+        translateX(-0.5px) translateY(-0.5px);
+}
 /**
 **/
 .pf-mode::selection {
@@ -79,13 +91,6 @@ html[data-theme] .markdown-body *::after {
     background: transparent;
     color: inherit;
 }
-/**/
-#article-md-search {
-    /**/
-}
-#article-md-search::selection {
-    /* background: rgba(0,0,0,0); */
-}
 /**
 **/
 /*
@@ -93,6 +98,23 @@ html[data-theme] .markdown-body *::after {
 
 
 /* Comps */
+/* /*  */
+.into-smooth
+{
+    /* /*  */
+    box-shadow: 0 0 0 3px transparent;
+    /**/
+    transition:
+        var(--index-transition-theme),
+        var(--index-transition-focus)
+        ;
+    /* */ */
+}
+.into-smooth:focus-within
+{
+    box-shadow: 0 0 0 3px var(--tw-ring-color);
+}
+/* */ */
 /**/
 /*
     */

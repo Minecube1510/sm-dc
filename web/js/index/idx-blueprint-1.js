@@ -2,7 +2,9 @@
 /* web/js/index/idx-blueprint-1.js */
 
 /* Imports */
-import { jsVar, jsTx, jsCs, jsDoc, jsHt } from "../basis.js";
+import { jsVar, jsMod,
+  jsTx, jsCs, jsDoc, jsHt,
+  } from "../basis.js";
 //
 import * as idxStrg from "./idx-storage.js";
   import {
@@ -11,7 +13,8 @@ import * as idxStrg from "./idx-storage.js";
     idx_RcLang as rcLn,
     //
     idxSearchMD_CompId as iScMd,
-    idxGtWait_Comps as iGtComp,
+    gtComponter as comperGt,
+    //
   } from "./idx-storage.js";
 //
 import { mdVi_Searching as mdSrc } from "./idx-process.js";
@@ -19,7 +22,9 @@ import { mdVi_Searching as mdSrc } from "./idx-process.js";
 /**/
 
 /* Initialize - Helpers */
-export const idx_CompText = ((tick) => {
+export const
+  idx_CompText = ((tick) => {
+    //
   let map_ComTrim = {
     md_Err: (`404 - Markdown Not Found`),
     md_Plh: (`Preview-ing the Markdown-Document-File`),
@@ -29,14 +34,9 @@ export const idx_CompText = ((tick) => {
     ? ((jsTx).trm(map_ComTrim[tick]))
     : (undefined)
   );
-});
-//
-let mdCond_State = {
-  isSearching: (false),
-  lastSearchText: (jsVar.empty),
-  lastLoggedReason: (jsVar.empty),
-};
-export const mdSt = ((tick, val) => {
+}),
+  idx_MdStator = ((tick, val) => {
+    //
   let map_State = {
     iS: (`isSearching`),
     lST: (`lastSearchText`),
@@ -54,6 +54,12 @@ export const mdSt = ((tick, val) => {
   );
 });
 //
+let mdCond_State = {
+  isSearching: (false),
+  lastSearchText: (jsVar.empty),
+  lastLoggedReason: (jsVar.empty),
+};
+//
 /**/
 
 /* Comp-Struct - View */
@@ -62,16 +68,18 @@ export const mdSt = ((tick, val) => {
  * @returns {void}
  */
 export function mdVi_PlaceHolder (
-  ph_Texting
+  ph_Texting,
 ) {
-  let plHold = ((jsDoc).createElm(`div`));
+  let placeHolder = ((jsMod).setElm(
+    (jsDoc).createElm(`div`), {
+      className: ((jsHt).classer(
+        idxStrg.mdVi_Ph_Cls)),
+      textContent: (ph_Texting),
+    },
+  ));
   //
-  (plHold).className = ((jsHt)
-    .classer(idxStrg.mdv_Ph_Cls));
-  (plHold).textContent = (ph_Texting);
-  //
-  (iScMd).content.replaceChildren(plHold);
-  //
+  (iScMd).content
+    .replaceChildren(placeHolder);
 }
 /** MD-Placeholder as Error-404
  * @param {string} ph
@@ -91,18 +99,18 @@ export function mdViPh_404 (
    * @returns {Promise<boolean>}
    */
 async function cfg_mdVi_Search () {
-  const getInput = (iGtComp().gtcInput);
-    // { (iGtComp().gtcInput) } OR { (iScMd.ftSrch.value) }
+  const getInput = ((jsDoc).getId(comperGt.cElmIn));
+    // { ((jsDoc).getId(comperGt.cElmIn)) } OR { (iScMd.ftSrch.value) }
   const srcText = ((getInput.value) || (jsVar.empty));
   //
   switch (true) {
     case (!(srcText)):
-    case (mdSt(`iS`)):
-    case ((srcText) === (mdSt(`lST`))):
+    case (idx_MdStator(`iS`)):
+    case ((srcText) === (idx_MdStator(`lST`))):
       return (false);
   }
-  mdSt((`iS`), (true));
-  mdSt((`lST`), (srcText));
+  idx_MdStator((`iS`), (true));
+  idx_MdStator((`lST`), (srcText));
   //
   return (true);
 }
@@ -119,11 +127,14 @@ export async function mdView_Search () {
       switch (msg) {
         case (reaState.md_n_fnd.msg):
           mdViPh_404(idx_CompText(`md_Err`));
-          jsCs.log(get_ReSrc);
+          //
+          (jsCs).log(get_ReSrc);
           return;
         case (reaState.chc_n_fnd.msg):
           mdViPh_404(idx_CompText(`md_Err`));
-          jsCs.log(get_ReSrc);
+          //
+          (jsCs).log(get_ReSrc);
+          //
           return;
         case (reaState.error.msg):
           mdViPh_404(idx_CompText(`md_Err`));
@@ -132,13 +143,15 @@ export async function mdView_Search () {
           return;
         default:
           mdViPh_404(idx_CompText(`md_Err`));
-          jsCs.log(get_ReSrc);
+          //
+          (jsCs).log(get_ReSrc);
+          //
           return;
       }
     }
     (jsCs).log(get_ReSrc);
   } finally {
-    mdSt((`iS`), (false));
+    idx_MdStator((`iS`), (false));
   }
 }
 //
@@ -148,20 +161,16 @@ export async function mdView_Search () {
   /** Markdown-Viewer Classingers
    * @returns {void}
    */
-function mdVi_Classing () {
-  (iScMd.idxView).classList
-    .add(...idxStrg.idxView_Cls);
+function mdVi_Classing () {[
   //
-  (iScMd.idxSrch).classList
-    .add(...idxStrg.mdVi_InputPls_Cls);
+    [ (iScMd.idxView), (idxStrg.idxView_Cls), ],
+    [ (iScMd.idxSrch), (idxStrg.mdVi_InputPls_Cls), ],
+    [ (iScMd.inRoot), (idxStrg.mdVi_InputRoot_Cls), ],
+    [ (iScMd.ftSrch), (idxStrg.mdVi_InputDef_Cls), ],
+    [ (iScMd.srChip), (idxStrg.mdSrch_Sacker_Cls), ],
   //
-  (iScMd.inRoot).classList
-    .add(...idxStrg.mdVi_InputRoot_Cls);
-  (iScMd.ftSrch).classList
-    .add(...idxStrg.mdVi_InputDef_Cls);
-  //
-  (iScMd.srChip).classList
-    .add(...idxStrg.mdSrch_Sacker_Cls);
+  ].forEach(([elm, cls,]) => ((elm)
+    .classList.add(...cls)));
 }
 mdVi_Classing();
 //

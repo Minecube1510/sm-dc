@@ -33,13 +33,17 @@ let data = ((Object).fromEntries(
     })))
 ));
 //
-export const jsVar = (data[`vars`]);
-export const inGit = {
+export const
+    jsVar = (data[`vars`]),
+    sysGit = {
+    //
     data: (data[`git-data`]),
     link: (data[`git-link`]),
-}
-export const dirSafe = ((data
-    [`dir-safe`]));
+},
+    dirSafe = ((data
+    [`dir-safe`]))
+    ;
+//
 /**/
 
 
@@ -62,13 +66,18 @@ export const jsCs = {
 
 /* Func: Docs */
 export const jsDoc = {
-    getId: (id, doc = document) =>
-        ((doc).getElementById(id)),
     createElm: (tag, doc = document) =>
         ((doc).createElement(tag)),
+        //
+    getId: (id, doc = document) =>
+        ((doc).getElementById(id)),
+    //
+    qSelect: (tag, doc = document) =>
+        ((doc).querySelector(tag)),
     qSelectAll: (tag, doc = document) =>
         ((doc).querySelectorAll(tag)),
-    //
+    /*|
+    |*/
     appEnd_Ch: (el, doc = document) =>
         ((doc).body.appendChild(el)),
     prepEnd: (el, doc = document) =>
@@ -94,16 +103,18 @@ export function js_StRept (
     return (result);
 }
 //
-let mapEl = ((mapping, fn) => ((Object)
+let suMapElm = ((mapping, fn) => ((Object)
     .fromEntries((Object).entries(mapping)
         .map(([key, id]) => [ (key), (fn(id)),
 ]))));
 export let jsMod = {
-    createEl_Map: ((mapping) =>
-        mapEl((mapping), ((jsDoc).createElm))),
-    getEl_Map: ((mapping) =>
-        mapEl((mapping), ((jsDoc).getId))),
+    createEl_Map: ((mapping) => (suMapElm(
+        (mapping), ((jsDoc).createElm)))),
+    getEl_Map: ((mapping) => (suMapElm(
+        (mapping), ((jsDoc).getId)))),
     //
+    setElm: ((map, settler) => (
+        (Object).assign(map, settler))),
 };
 //
 export const jsHt = {

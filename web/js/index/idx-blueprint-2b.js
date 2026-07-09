@@ -2,7 +2,7 @@
 /* web/js/index/idx-blueprint-2b.js */
 
 /* Imports */
-import { jsVar,
+import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
     } from "../basis.js";
     //
@@ -10,8 +10,7 @@ import * as idxStrg from './idx-storage.js';
     import { 
         idx_RcLang as rcLn,
         //
-        idxGT_CompId as iGt_S,
-        idxGtWait_Comps as iGtComp,
+        idxGT_CompId as iGt_cId,
         idxSearchMD_CompId as iScMd,
         //
         mdSrch_PfChipy_Cls as pfChipCls,
@@ -63,43 +62,36 @@ export let
 function idxGtCtrl_Switch ({
     input, bg,
 }) {
-    const sides = [{
-        elm: bg.querySelector(`.switch-left`),
-        value: false,
-    }, {
-        elm: bg.querySelector(`.switch-right`),
-        value: true,
-    }, ];
-    let syncSides = (() => {(sides)
-        .forEach(({ elm, value }) => {
-            let inSelected = (
-                (input.checked) === (value)
-            );
-            (elm).classList.toggle(
-                (`selected`), (inSelected));
-            (elm).classList.toggle(
-                (`cursor-pointer`), (!(inSelected)));
+    const selSwitch = [
+        [ (bg.querySelector(`.switch-left`)), (false), ],
+        [ (bg.querySelector(`.switch-right`)), (true), ],
+    ];
+    //
+    let syncSides = (() => {
+        (selSwitch).forEach(([ elm, value, ]) => {
+            let selected = ((input.checked) === (value));
             //
-            if (inSelected) {
+            (elm).classList.toggle((`selected`),
+                (selected));
+            (elm).classList.toggle((`cursor-pointer`),
+                (!(selected)));
+            //
+            if (selected) {
                 (input).value = ((jsTx).lower(
-                    (jsTx).trm(elm.textContent)
-                ));
-            }
-        });
+                    (jsTx).trm(elm.textContent)));
+        }});
     });
     //
-    (sides).forEach(({ elm, value }) => {
-        (elm).addEventListener((`click`), ((ev) => {
-            (ev).preventDefault();
-            (ev).stopPropagation();
+    (selSwitch).forEach(([ elm, value, ]) =>
+        (elm).addEventListener((`click`), ((e) => {
+            (e).preventDefault();
+            (e).stopPropagation();
                 if ((input.checked) === (value)) return;
             (input).checked = (value);
             (input).dispatchEvent(new Event(`change`));
-        }));
-    });
+    })));
+    (input).addEventListener((`change`), (syncSides));
     //
-    (input).addEventListener(
-        (`change`), (syncSides));
     syncSides();
 }
     /** Comping a "toggle switch-texted" comp.
@@ -113,10 +105,10 @@ function idxGtCtrl_Switch ({
      */
 export function idxGtc_CompSwitch ({
     id, left, right,
-    lid = jsVar.empty,
-    rid = jsVar.empty,
+    lid = (jsVar.empty),
+    rid = (jsVar.empty),
 }) {
-    const box = (iGt_S.gtSwitch),
+    const box = (iGt_cId.gtSwitch),
         input = idxGt_SwtcElm((`input`), (id)),
         label = idxGt_SwtcElm((`label`), (id)),
         bg = idxGtComp_Bekgron({
@@ -126,8 +118,10 @@ export function idxGtc_CompSwitch ({
             rightId: (rid),
         });
     //
-    (label).className = (`relative inline-block`);
-    (label).append(bg);
+    (jsMod).setElm((label), {
+        className: (`relative inline-block`),
+    }).append(bg);
+    //
     (box).replaceChildren(input, label);
     //
     idxGtCtrl_Switch({ input, bg, });
@@ -170,20 +164,24 @@ export function mdSrc_ChipCrud (
             //
             return;
         case (`splitter`):
-            const rawVal = ((jsTx).trm(ftSrch.value));
-            let onlyChip = ((rawVal).endsWith(jsVar.slash));
-                (chipText).splice((chipIdx), (1));
+            const rawVal = ((jsTx).trm(ftSrch.value)),
+                onlyChip = ((rawVal).endsWith(jsVar.slash));
+            //
+            (chipText).splice((chipIdx), (1));
+            //
             (ftSrch).value = ((!(chipText.length))
-                ? (((onlyChip) ? ((jsTx).trm((rawVal)
-                    .slice((0), (-1)))) : (jsVar.empty)))
+                ? ((onlyChip) ? (jsTx.trm((rawVal)
+                    .slice((0), (-1)))) : (jsVar.empty))
                 : (((chipText.length) === (1)) ? ((jsTx)
                     .trm(chipText[0])) : ((jsTx).arr2Str(
-                        (chipText), (jsVar.slash)))));
-            //
+                    (chipText), (jsVar.slash))))
+            );
             break;
+        default:
+            return;
     }
     if ((chipMethod) !== (`splitter`)) {
-        ftSrch.value = ((jsTx).arr2Str(
+        (ftSrch).value = ((jsTx).arr2Str(
             (chipText), (jsVar.slash)));
     }
     //
@@ -196,57 +194,49 @@ export function mdSrc_ChipCrud (
 export function mdSrcAuto_Chipper (
     chipText = (mdSrc_ScanChips()),
 ) {
-    const srChip = (iScMd.srChip),
-        ftSrch = (iScMd.ftSrch);
+    const { srChip, ftSrch,
+        inRoot, } = (iScMd);
     //
-    (srChip).innerHTML = (jsVar.empty);
+    (srChip).replaceChildren();
     (ftSrch).readOnly = (false);
     //
-    if (!(Array).isArray(chipText)) {
+    if (!((Array).isArray(chipText))) {
         (ftSrch).classList.remove(...pfChipCls);
         (ftSrch).removeAttribute(`style`);
         //
-        (idxStrg.gt_Rooter_Cls).forEach(
-            (cls) => { (iScMd.inRoot)
-                .classList.remove(cls);
-        });
+        (idxStrg.gt_Rooter_Cls).forEach((cls) => (
+            inRoot.classList.remove(cls)));
         //
         return;
     }
     //
-    (chipText).forEach((textVal, idxVal) => {
-            if ((textVal) === (jsVar.empty)) return;
-        (srChip).appendChild(mdSrc_CreateChip(
-            textVal, chipText, idxVal));
+    (chipText).filter(Boolean).forEach((text, idx
+        ) => ((srChip).append(mdSrc_CreateChip(
+            text, chipText, idx,
+    ))));
+    //
+    let hasChip = ((srChip
+        .childElementCount) > (0));
+    //
+    (pfChipCls).forEach((cls) => ((ftSrch)
+        .classList.toggle(cls, hasChip)));
+    (jsMod).setElm((ftSrch), {
+        readOnly: (hasChip),
     });
+    (ftSrch).classList.toggle(
+        (`pf-mode`), (hasChip));
     //
-    let hasChip = (((srChip).childElementCount) > (0));
-    //
-    //(ftSrch).classList.toggle((pfChipCls[0]), (hasChip));
-    (pfChipCls).forEach((cls) => { (ftSrch)
-        .classList.toggle(cls, hasChip);
-    });
-    //
-    switch (hasChip) {
-        case (true):
-            (ftSrch).style.color = (`transparent`);
-            (ftSrch).style.caretColor = (`currentColor`);
-            (ftSrch).readOnly = (true);
-            //
-            break;
-        default:
-            (ftSrch).removeAttribute(`style`);
-            (ftSrch).readOnly = (false);
-            //
-            break;
+    if (hasChip) {
+        (jsMod).setElm((ftSrch.style), {
+            color: (`transparent`),
+            caretColor: (`currentColor`),
+        });
+    } else {
+        (ftSrch).removeAttribute(`style`);
     }
     //
-    (idxStrg.gt_Rooter_Cls).forEach(
-        (cls) => { (iScMd.inRoot)
-            .classList.toggle(
-            (cls), (hasChip));
-    });
-    //
+    (idxStrg.gt_Rooter_Cls).forEach((cls) => (
+        (inRoot).classList.toggle(cls, hasChip)));
 }
 //
 /**/
@@ -256,9 +246,7 @@ export function mdSrcAuto_Chipper (
     /** Feature for Posfile
      * @returns {void}
      */
-export async function feature_PosFile (
-    //
-) {
+export async function feature_PosFile () {
     let aRP_Res = (await (auto_RecievePress()));
     //
     await (init_SrcList(aRP_Res));

@@ -3,43 +3,38 @@
 
 /* Imports */
 import {
-    jsTx, jsCs, jsDoc, jsHt,
+    jsTx, jsDoc,
     } from "../basis.js";
 //
 /**/
 
 
 /* Storage - Classes */
-export const vImg_PhTxt_Cls = [ `py-8`,
-    `font-semibold`, `text-3xl`, `text-white`,
-];
-export const vImg_Atlr_Cls = [ `vimg-fill`,
-    `mx-auto`, `place-items-center`, `grid`,
+export const
+/*|*/
+atlr_ImageCon_Cls = [  /* Ateiler: Container */
+    `grid`, `mx-auto`, `place-items-center`,
     `px-2`,`py-4`, `gap-2`, `grid-cols-2`,
+    //
+    `sm:grid-cols-3`,
     `md:px-4`, `md:gap-4`,
-    `sm:grid-cols-3`, `lg:grid-cols-5`
-];
-//
-export const vImgAtlr_Add_Cls = [ `flex`,
-    `justify-center`, `items-center`,
-];
-export const vImgAtlr_Rm_Cls = [ `grid`,
-    //`justify-start`,
-    `grid-cols-2`,
-    `sm:grid-cols-3`, `lg:grid-cols-5`,
-];
-//
-export const vImger_Cls = [ `cursor-pointer`,
-    `transition-all`, `ease-in-out`,
-    `rounded-xl`,
+    `lg:grid-cols-5`
+],
+atlr_PhTxt_Cls = [  /* Ateiler: Text Placeholder (If:No-Images) */
+    `font-semibold`, `text-white`,
+    `text-3xl`, `py-8`,
+],
+atlr_ElImg_Cls = [  /* Ateiler: Image Element (If:Has-Images) */
+    `cursor-pointer`, `transition-all`,
+    `ease-in-out`, `rounded-xl`,
     //
     `w-[200px]`,
     `duration-200`,
     //
     `hover:scale-95`,
     `active:scale-105`,
-];
-//
+]
+;
 /**/
 
 
@@ -52,16 +47,11 @@ export const vImger_Cls = [ `cursor-pointer`,
      */
 export const img_CompId = ((id) => {
     return ((jsDoc).getId({
-        vimg_Base: "view-images",
-        vimg_Content: "vimg-content",
+        atlrC_MainBox: (`main-img-box`),
+        atlrC_ImageCon: (`main-img-content`),
     }[id]));
-});
-//
-/**/
-
-
-/* Later */
-//
+})
+;
 /**/
 
 

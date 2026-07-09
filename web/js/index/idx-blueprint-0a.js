@@ -2,20 +2,29 @@
 /* web/js/index/idx-blueprint-0a.js */
 
 /* Imports */
-import { jsVar, dirSafe,
+import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
+    //
+    dirSafe,
     } from "../basis.js";
     //
-import * as iGit from "../init-github.js";
+import * as iGit from '../init-github.js';
 //
+import { ldm_Color, ldm_Data, ldm_Event,
+    //
+    setLDm_ThemeClass as ldmClasser,
+    } from "../set-paging.js";
+    /*|
+  //
+|*/
 import * as idxStrg from './idx-storage.js';
     import {
-        idxGT_CompId as iGt_S,
+        idxGT_CompId as iGt_cId,
         //
         idxSearchMD_CompId as iScMd,
         //
-        mdCosL_Comp_Cls as lRootCls,
-        mdCosD_Comp_Cls as dRootCls,
+        mdCosL_Comp_Cls as lCompCls,
+        mdCosD_Comp_Cls as dCompCls,
         //
         mdSrch_AutoCm_Cls as srcAutoCls,
         gt_SrcRes_Cls as srcResCls,
@@ -27,11 +36,13 @@ import * as idxStrg from './idx-storage.js';
 import { rppf_Moderact,
     //
     } from "./idx-blueprint-0b.js";
-//
+/*|
+|*/
 import { mdView_Search,
     //
     } from "./idx-blueprint-1.js";
-//
+/*|
+|*/
 import { randomizeSrc,
     //
     } from "./idx-blueprint-2.js";
@@ -43,11 +54,13 @@ import {
 import { 
     //
     } from "./idx-blueprint-2b.js";
-/*|
+    /*|
+  //
 |*/
-import { ldm_Data, ldm_Event,
-    setLDm_ThemeClass as ldmClasser,
-} from "../set-paging.js";
+import { 
+    liresClsL, liresClsD,
+    //
+    } from "./idx-system.js";
 //
 /**/
 
@@ -68,12 +81,24 @@ export
 export function set_SrcSelected (v) {
     srcSelected = (v);
 }
+//
 /**/
 
 
 /* Helper - Inputters * /
     * (GearTool-Input & MD-Search)
 */
+export const
+    lisResId = (`src-res-md-lists`),
+    clsLForLis = [
+        (`hover:bg-${ldm_Color.light.hover}`),
+        (`active:bg-${ldm_Color.light.active}`),
+],
+    clsDForLis = [
+        (`hover:bg-${ldm_Color.dark.hover}`),
+        (`active:bg-${ldm_Color.dark.active}`),
+]
+    ;
 //
     /** MD-Searcher - FS-Config Lister
      * @param {HTMLElement} htElm
@@ -84,11 +109,9 @@ export function srcFilter_Visible (
     htElm, elState,
 ) {
     (htElm).classList.toggle(
-        (`overflow-visible`),
-        (elState));
+        (`overflow-visible`), (elState));
     (htElm).classList.toggle(
-        (`overflow-hidden`),
-        (!(elState)));
+        (`overflow-hidden`), (!(elState)));
 }
 //
     /** MD-Searcher - FS-Checker
@@ -145,7 +168,6 @@ function cek_FetchRes (
 
 
 /* Get-File Fetcher System-Configs */
-
     /** [Async] Get All Files (Source: API or Local)
      * @param {string} fileFrom
      * @param {string} filePath
@@ -234,12 +256,28 @@ export async function init_SrcList (
      * @returns {void}
      */
 export function gtIn_SrcUpDown () {
-    ((iScMd.srcRes).querySelectorAll
-        (`li`)).forEach((elm, idx) => {
-        (elm).classList.toggle(
-            (`bg-blue-400`),
-            ((idx) === (srcSelected)));
-    });
+    const
+        liSelected = (`list-selected`),
+            //
+        srcSelLight = (`bg-${ldm_Color
+            .light.hover}`),
+        srcSelDark = (`bg-${ldm_Color
+            .dark.hover}`)
+    ;
+    //
+    ((iScMd.srcRes).querySelectorAll(`li`))
+        .forEach((lisRes, idx) => {
+            let active = ((idx) === (srcSelected));
+            //
+            if (active) {
+                (lisRes).classList.add(liSelected);
+                //
+                ldmClasser(lisRes,
+                    srcSelLight, srcSelDark);
+            } else {
+                (lisRes).classList.remove((liSelected),
+                    (srcSelLight), (srcSelDark));
+        }});
 }
 //
     /** Search-Result Getter
@@ -266,57 +304,58 @@ export function shuffle_SrcReList (
      * @return {void}
      */
 export function render_SrcReList (
-    knowRes,
-    onSelect = (null),
+    knowRes, onSelect = (null),
 ) {
     srcCurrent = (knowRes);
     set_SrcSelected(-1);
     //
-    switch (knowRes.length) {
-        case (0):
-            srcFilter_Visible((iScMd
-                .idxSrch), (false));
-            (iScMd.srcRes)
-                .replaceChildren();
-            return;
+    if (!(knowRes.length)) {
+        srcFilter_Visible((iScMd.idxSrch), (false));
+        (iScMd).srcRes.replaceChildren();
+        //
+        return;
     }
     //
-    const dirBox = ((jsDoc).createElm(`ul`));
-    ldmClasser((dirBox), (lRootCls), (dRootCls));
+    const dirBox = ((jsMod).setElm((jsDoc)
+        .createElm(`ul`), {
+            id: (lisResId),
+    }));
+    //
+    ldmClasser((dirBox), (liresClsL), (liresClsD));
     //
     (knowRes).forEach((list, idx) => {
-        let srcList = ((jsDoc).createElm(`li`));
+        const srcList = ((jsMod).setElm(((jsDoc)
+            .createElm(`li`)), {
+                className: ((jsHt).classer(srcAutoCls)),
+                textContent: (list),
+                onclick: (() => {
+                    if (onSelect) return (onSelect(
+                        list, idx, srcList));
+                    //
+                    (iScMd.ftSrch).value = (list);
+                    (iScMd.ftSrch).dispatchEvent(new Event(
+                        (`input`), { bubbles: (true), }));
+                    //
+                    srcFilter_Visible((iScMd
+                        .idxSrch), (false));
+                    //
+                    (iScMd.srcRes).replaceChildren();
+                    //
+                    rppf_Moderact(
+                        (() => mdView_Search()),
+                        (() => {}),
+                    );
+            })
+        }));
+        //
+        ldmClasser(srcList, clsLForLis, clsDForLis);
+        //
+    (ldm_Event).addEventListener((`themechange`), (() => {
+        ldmClasser(srcList, clsLForLis, clsDForLis);
+    }));
         //
         (srcList).dataset.index = (idx);
-        (srcList).textContent = (list);
-        (srcList).className = ((jsHt)
-            .classer(srcAutoCls));
-        //
-        (srcList).onclick = (() => {
-            if (onSelect) {
-                onSelect(list, idx, srcList);
-                return;
-            }
-            //
-            (iScMd.ftSrch).value = (list);
-            (iScMd.ftSrch).dispatchEvent(
-                new Event((`input`), {
-                    bubbles: (true),
-            }));
-            //
-            srcFilter_Visible((iScMd
-                .idxSrch), (false));
-            (iScMd.srcRes).replaceChildren();
-            //
-            rppf_Moderact(
-                (() => {
-                    mdView_Search();
-                }),
-                (() => { }),
-            );
-        });
-        //
-        (dirBox).appendChild(srcList);
+        (dirBox).append(srcList);
     });
     //
     (iScMd.srcRes).replaceChildren(dirBox);

@@ -14,10 +14,9 @@ import * as idxStrg from './idx-storage.js';
         idx_RcLang as rcLn,
         //
         idxGT_CompId as iGt_cId,
+        gtComponter as comperGt,
             //
         idxGT_Switch as gtSwSide,
-        idxGtWait_Comps as iGtComp,
-        //
         idxSearchMD_CompId as iScMd,
         //
         mdCosL_Comp_Cls as lCompCls,
@@ -26,6 +25,12 @@ import * as idxStrg from './idx-storage.js';
     /*|
   //
 |*/
+import { lisResId,
+    //
+    gtIn_SrcUpDown,
+    clsLForLis, clsDForLis,
+    //
+    } from "./idx-blueprint-0a.js";
 import { rppf_Moderact,
     //
     } from "./idx-blueprint-0b.js";
@@ -35,26 +40,24 @@ import * as idxBP1 from './idx-blueprint-1.js';
         mdView_Search,
     } from "./idx-blueprint-1.js";
 //
-    import {
-        idxGtComp_Select as gtC_Select,
-    } from "./idx-blueprint-2.js";
+import { display_SrcList,
     //
-    import { display_SrcList,
-        //
     } from "./idx-blueprint-2a.js";
-    //
-    import { 
-        idxGtc_CompSwitch as gtC_Switch,
-    } from "./idx-blueprint-2b.js";
 //
 import { gtMd_Config, blockingEvent,
+    //
+    remocon_Designier, ldm_FilterCls,
+    //
+    liresClsL, liresClsD,
     //
     } from "./idx-system.js";
 /*|
 |*/
-import {
-    setPage_Comping,
+import { ldm_Color,
     ldm_Data, ldm_Event,
+    //
+    setPage_Comping,
+    //
     setLDm_ThemeClass as ldmClasser,
 } from "../set-paging.js";
 /*|
@@ -68,42 +71,65 @@ import { mdVi_Clear,
 
 
 /* Render */
-gtC_Switch({
-    id: (`idx-gt-switch-comp`),
+const
+    ldm_Sections = [
     //
-    left: (rcLn.switch.rp),
-    lid: (gtSwSide.rawpath),
+    (`header`), (`main`), (`footer`),
+    (iScMd.ldmBtn),
+],
     //
-    right: (rcLn.switch.pf),
-    rid: (gtSwSide.posfile),
-});
+    noBgL = ldm_FilterCls((lCompCls), (`bg`)),
+    noBgD = ldm_FilterCls((dCompCls), (`bg`)),
     //
-gtC_Select((Object)
-    .values(rcLn.select));
+    ldm_GetComp = ((e) => ((typeof (e) === (
+    `string`)) ? ((jsDoc).qSelect(e)) : (e)))
+    //
+    ;
+//
 /*|
 |*/
-    /** LDM-Render - For more than 1 Elements
-     * @param {Array} elms
+    /** Index-Renderer Colorize
      * @returns {void}
      */
-function ldmTheme_Render (
-    elms
-) {
-    (elms).forEach(((elm) => { if ((elm)?.isConnected
-        ) { ldmClasser(elm, lCompCls, dCompCls); }
+function idx_RenderColorize () {
+    (iScMd.srcBtn).classList.add(...
+        (idxStrg.mdVi_SrcLogo_Cls));
+    //
+    (ldm_Sections).map(ldm_GetComp).forEach(
+        (e) => { (e).classList.add(...(
+        idxStrg.idx_LdmEff_cChain_Cls));
+        ldmClasser(e, noBgL, noBgD);
+    });
+}
+    /** Index-Renderer Builder
+     * @returns {void}
+     */
+function idx_RenderBuild () {
+    let ldm_Gtcs = [
+        ((jsDoc).getId(comperGt.cElmIn)),
+        ((jsDoc).getId(comperGt.cElmSe)),
+    ];
+    //
+    idx_RenderColorize();
+    remocon_Designier();
+    //
+    (ldm_Event).addEventListener((`themechange`), (() => {
+        const eLisRes = ((jsDoc).getId(lisResId));
+        //
+        if (eLisRes) {
+            (eLisRes).classList.add(`into-smooth`);
+            //
+            ldmClasser(eLisRes, liresClsL, liresClsD);
+        }
+        //
+        (ldm_Sections).forEach((e) => (ldmClasser(
+            ldm_GetComp(e), noBgL, noBgD)));
+        (ldm_Gtcs).forEach((e) => (ldmClasser(
+            ldm_GetComp(e), noBgL, noBgD)));
+        //
+        gtIn_SrcUpDown();
     }));
 }
-//
-const ldmComponents = [ (iGt_cId.gtSwitch),
-    (iGt_cId.gtInput), (iGt_cId.gtSelect),
-    //
-    (iScMd.inRoot), (iScMd.ftSrch),
-];
-//
-ldmTheme_Render(ldmComponents);
-(ldm_Event).addEventListener((`themechange`),
-    (() => { ldmTheme_Render(ldmComponents);
-}));
 //
 /**/
 
@@ -114,8 +140,8 @@ ldmTheme_Render(ldmComponents);
      */
 function mdVi_ActivatiOn () {
     const mdSrc_Event = (display_SrcList()),
-        gtMode_Switch = (iGtComp().gtcSwitch
-        .value);
+        gtMode_Switch = (((jsDoc).getId(
+            comperGt.cElmSw).value));
     //
     (iScMd.ftSrch).addEventListener(
         (`keydown`), (async (event) => {
@@ -157,8 +183,8 @@ function mdVi_ActivatiOn () {
         (`input`), (() => {
             (mdSrc_Event).onInput_MdSrc();
             //
-            (idxBP1).mdSt((`lST`), (jsVar.empty));
-            (idxBP1).mdSt((`lLR`), (jsVar.empty));
+            (idxBP1).idx_MdStator((`lST`), (jsVar.empty));
+            (idxBP1).idx_MdStator((`lLR`), (jsVar.empty));
                 if ((jsTx).trm(iScMd.ftSrch.value)) return;
             mdVi_Clear();
             (idxBP1).mdVi_PlaceHolder((idxBP1)
@@ -206,7 +232,9 @@ export async function struct () {
     //
     /*
         Body */
-    gtMd_Config();
+    idx_RenderBuild();
+    //
+    await gtMd_Config();
     mdVi_FinActivate();
 }
 //

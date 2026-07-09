@@ -10,9 +10,6 @@
     |*/
 :root {
     --tw-rounded-2xl: 18px;
-        /*
-        */
-    --vimg-fill: 12px;
     /**/
 }
 /**/
@@ -28,12 +25,6 @@
 
 
 /* Costumize */
-/**/
-    /*|
-    |*/
-.vimg-fill {
-    padding: var(--vimg-fill);
-}
 /**/
 /*
     */

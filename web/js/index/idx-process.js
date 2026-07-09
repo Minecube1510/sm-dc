@@ -2,7 +2,7 @@
 /* web/js/index/idx-process.js */
 
 /* Imports */
-import { jsVar,
+import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
     } from "../basis.js";
     //
@@ -37,31 +37,30 @@ export async function loadScreen_MaDo (
     stLoad = (true),
     loadElm = (iScMd.madoLs),
 ) {
-    //
-    if (!(loadElm.classList.length)) {
-        (loadElm).className = ((jsHt).classer(
-            idxStrg.mdv_LsComp_Cls));
-    }
-    //
-    switch (true) {
-        case (!(loadElm)):
-            return;
-        case (stLoad): {
-            (loadElm).textContent = (
-                `Loading the Markdown...`);
-            (loadElm).classList.remove(`opacity-0`);
-            (loadElm).classList.add(`opacity-100`);
+        if (!loadElm) return;
+    (jsMod).setElm((loadElm), {
+        className: ((loadElm.classList.length)
+            ? (loadElm.className) : ((jsHt)
+            .classer(idxStrg.mdVi_LsComp_Cls))
+        ),
+    });
+    (loadElm).replaceChildren((stLoad)
+        ? ((jsMod).setElm(((jsDoc)
+            .createElm(`span`)), {
             //
-            return;
-        }
-        default: {
-            (loadElm).classList.remove(`opacity-100`);
-            (loadElm).classList.add(`opacity-0`);
-            (loadElm).textContent = (jsVar.empty);
+    className: (`animate-pulse`),
+    textContent: (`Loading the Markdown...`),
             //
-            return;
-        }
-    }
+        }))
+        : (null)
+    );
+    //
+    (Object).entries({
+        "opacity-100": (stLoad),
+        "opacity-0": (!(stLoad)),
+    }).forEach(([ cls, cond, ]) => ((loadElm)
+        .classList.toggle(cls, cond)
+    ));
 }
 //
 /**/
@@ -75,12 +74,14 @@ export async function loadScreen_MaDo (
 function mdVi_Renderer (
     file_MarkDown,
 ) {
-    (iScMd.content).innerHTML = marked(file_MarkDown);
+    (jsMod).setElm((iScMd.content), {
+        innerHTML: marked(file_MarkDown),
+    });
     //
     (jsDoc).qSelectAll(`img`).forEach(
-        (img) => { (img)
-            .draggable = (false);
-    });
+        (img) => ((jsMod).setElm((img), {
+            draggable: (false),
+    })));
     //
     return (file_MarkDown);
 }
@@ -91,7 +92,7 @@ function mdVi_Renderer (
 async function mdVi_Loader (
     path_Loader,
 ) {
-    const md_Cache = (mdProc_State
+    const md_Cache = ((mdProc_State)
         .cache.get(path_Loader));
     //
     switch (true) {
@@ -105,7 +106,7 @@ async function mdVi_Loader (
                 ok: (true),
                 f_markdown: (md_Cache),
             };
-        case (mdProc_State.time_pend
+        case ((mdProc_State).time_pend
             .has(path_Loader)):
             return {
                 ok: false,
@@ -113,26 +114,25 @@ async function mdVi_Loader (
             };
     }
     //
-    (mdProc_State).time_pend
-        .add(path_Loader);
+    (mdProc_State).time_pend.add(path_Loader);
     //
     try {
-        let f_Md = (await (fetch(path_Loader)));
+        let fileMd = (await (fetch(path_Loader)));
         //
-        if (!(f_Md.ok)) {
+        if (!(fileMd.ok)) {
             (mdProc_State).cache.set(path_Loader, false);
             return {
                 ok: false,
                 reason: (reaState.md_n_fnd),
             };
         }
-        f_Md = (await ((f_Md).text()));
+        fileMd = (await ((fileMd).text()));
         (mdProc_State).cache
-            .set(path_Loader, f_Md);
+            .set(path_Loader, fileMd);
         //
         return {
             ok: (true),
-            f_markdown: (f_Md),
+            f_markdown: (fileMd),
         };
     } catch {
         (mdProc_State).cache.set(path_Loader, false);
@@ -160,14 +160,14 @@ export async function mdVi_Searching (
     let md_PathSrc = ((jsTx).arr2Str(Object
         .values((toMd)), (jsVar.empty))),
         //
-        md_StSrc = ((!(toMd.mdPath))
+        md_StateSrc = ((!(toMd.mdPath))
         ? (`empty`) : (
             ((toMd.mdPath).endsWith(jsVar.point)) ||
             ((toMd.mdPath).endsWith(toMd.fpMado))
         ) ? (`invalid`) : (`valid`)
         );
     //
-    switch (md_StSrc) {
+    switch (md_StateSrc) {
         case (`empty`):
             return {
                 ok: (false),
@@ -210,7 +210,9 @@ export async function mdVi_Searching (
      * @returns {void}
      */
 export function mdVi_Clear () {
-    (iScMd).content.innerHTML = (jsVar.empty);
+    (jsMod).setElm((iScMd.content), {
+        innerHTML: (jsVar.empty),
+    });
 }
 //
 /**/

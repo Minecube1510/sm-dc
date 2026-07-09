@@ -10,12 +10,12 @@ import * as idxStrg from './idx-storage.js';
     import {
         md_Data as iMd,
         //
-        idxGtWait_Comps as iGtComp,
+        gtComponter as comperGt,
         //
         idxSearchMD_CompId as iScMd,
         //
-        mdCosL_Comp_Cls as lRootCls,
-        mdCosD_Comp_Cls as dRootCls,
+        mdCosL_Comp_Cls as lCompCls,
+        mdCosD_Comp_Cls as dCompCls,
         //
         mdSrch_AutoCm_Cls as srcAutoCls,
         gt_SrcRes_Cls as srcResCls,
@@ -30,6 +30,7 @@ import { srcFilter_Visible, init_SrcList,
     //
     gtIn_SrcUpDown, shuffle_SrcReList,
     render_SrcReList,
+    //
     } from "./idx-blueprint-0a.js";
     //
 import { rppf_Moderact, randomPf_SrcReList,
@@ -77,7 +78,8 @@ export function spaRender_SrList (
     srcText = (null),
     onSelect = (null),
 ) {
-    let inSrc = ((jsTx).trm((srcText) ?? (iScMd.ftSrch.value)));
+    let inSrc = ((jsTx).trm((srcText) ?? (
+        iScMd.ftSrch.value)));
     let shiftRes = shuffle_SrcReList(inSrc);
     //
     rppf_Moderact(
@@ -220,7 +222,7 @@ function gtInput_Config (
 function gtInput_Sys (
     compGt = {
     ftSrch: (iScMd.ftSrch),
-    gtcInput: (iGtComp().gtcInput),
+    gtcInput: ((jsDoc).getId(comperGt.cElmIn)),
 }) {
     const { gtIn_Fix, render,
     } = gtInput_Config(compGt),
@@ -239,7 +241,7 @@ function gtInput_Sys (
     (ftSrch).addEventListener((`beforeinput`), ((e) => {
             if ((e.data) !== (jsVar.bSlash)) return;
         //
-        gtInput_Insert((e), (`/`));
+        gtInput_Insert((e), (jsVar.slash));
     }));
     (ftSrch).addEventListener((`paste`), ((e) => {
         gtInput_Insert((e), (((e).clipboardData) || (
@@ -258,9 +260,6 @@ function gtInput_Sys (
 function render_SrcResults () {
     (iScMd.srcRes).className = ((jsHt).classer(srcResCls));
     //
-    (ldm_Event).addEventListener((`themechange`), (() => {
-        //
-    }));
 }
     /** Compiler the Inputters Process
      * @returns {void}

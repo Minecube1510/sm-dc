@@ -2,8 +2,9 @@
 /* web/js/set-paging.js */
 
 /* Imports */
-import { jsVar, inGit,
+import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
+    sysGit,
     } from "./basis.js";
 //
 /**/
@@ -11,7 +12,7 @@ import { jsVar, inGit,
 
 /* Automate - Web Page */
 if (location.search) {
-    const locate_Pn = (location.pathname);
+    let locate_Pn = (location.pathname);
     //
     (location).replace(locate_Pn);
     (history).replaceState((null),
@@ -23,8 +24,47 @@ if (location.search) {
 
 
 /* Initialize - LDM and Paging System */
+/** LDM-Theme Colorize Configs
+ * @typedef {Object} LdmColorTheme
+ * @property {string} bg [Background - Main]
+ * @property {string} text [Text - Main]
+ * @property {string} border [Border - Main]
+ * |
+ * @property {string} list [Background - Component List]
+ * |
+ * @property {string} hover [Hover - Main]
+ * @property {string} active [Hover - Main]
+ */
+//
+/**
+ * Light/Dark Mode color configuration.
+ * @type {Object} light: LdmColorTheme,
+ * @type {Object} dark: LdmColorTheme,
+ */
+export const ldm_Color = {
+    light: {
+        bg: (`gray-100`),
+        text: (`gray-900`),
+        border: (`gray-800`),
+        //
+        list: (`gray-300`),
+        //
+        hover: (`gray-500`),
+        active: (`gray-600`),
+    },
+    dark: {
+        bg: (`gray-900`),
+        text: (`gray-100`),
+        border: (`gray-200`),
+        //
+        list: (`gray-700`),
+        //
+        hover: (`gray-600`),
+        active: (`gray-500`),
+    },
+};
 export const ldm_Data = {
-    modeBtn: ("button-ldm"),
+    modeBtn: (`button-ldm`),
     btnClass: [ `cursor-pointer`,
         `fixed`, `flex`,
         //
@@ -35,164 +75,182 @@ export const ldm_Data = {
         //
         `border-4`, `rounded-full`,
         //
-        //`transition-all`, `ease-in-out`,
-        //`duration-300`,
         `shadow-lg`,
+    ],
+    logoClass: [ `hidden`,
+        `absolute`, `transition-all`,
+        `ease-out`,
+        //
+        `duration-300`,
     ],
     //
     setLight: ((jsTx).lower(`light`)),
     lightCls: [
-        `bg-gray-100`, `text-gray-800`,
-        `border-gray-800`,
-        //
+        `bg-${ldm_Color.light.bg}`,
+        `text-${ldm_Color.light.text}`,
+        `border-${ldm_Color.light.border}`,
     ],
+    //
     setDark: ((jsTx).lower(`dark`)),
     darkCls: [
-        `bg-gray-900`, `text-gray-100`,
-        `border-gray-100`,
-        //
+        `bg-${ldm_Color.dark.bg}`,
+        `text-${ldm_Color.dark.text}`,
+        `border-${ldm_Color.dark.border}`,
     ],
 };
 //
     /** Set-Paging ID
-     * @param {"sp_Title"|"git_UN"} id
+     * @param {"pagingTitle"|"gitUserName"} pagId
      * @returns {HTMLElement|null}
      */
-const sP_DataId = ((id) => {
+function pager_DataId (
+    pagId,
+) {
     return ((jsDoc).getId({
-        sp_Title: (`title`),
-        git_UN: (`github-username`),
-    }[id]));
-});
+        pagingTitle: (`title`),
+        gitUserName: (`github-username`),
+    }[pagId]));
+}
 //
 /**/
 
 
 /* Automate - LDM and Paging System */
-export const ldm_Event = (new EventTarget());
-export const pageDom = {
-    rMod: (document.documentElement),
-    body: (document.body),
+export const
+    ldm_Event = (new EventTarget()),
+    //
+    spDom = {
+        rMod: (document.documentElement),
+        body: (document.body),
 };
-(pageDom).body.classList.add(
-    ...ldm_Data.lightCls);
 //
     /** Updating Theme Classing
      * @returns {void}
      */
 function update_ThmCls () {
-    switch (pageDom.rMod.dataset.theme) {
+    switch (spDom.rMod.dataset.theme) {
         case (ldm_Data.setDark):
-            (pageDom).body.classList.remove(
-                ...ldm_Data.lightCls
-            );
-            (pageDom).body.classList.add(
-                ...ldm_Data.darkCls
-            );
+            (ldm_Data.lightCls).forEach((cls, i) => {
+                (spDom.body).classList.replace(
+                    (cls), (ldm_Data.darkCls[i]));
+            });
             break;
         case (ldm_Data.setLight):
         default:
-            (pageDom).body.classList.remove(
-                ...ldm_Data.darkCls
-            );
-            (pageDom).body.classList.add(
-                ...ldm_Data.lightCls
-            );
+            (ldm_Data.darkCls).forEach((cls, i) => {
+                (spDom.body).classList.replace(
+                    (cls), (ldm_Data.lightCls[i]));
+            });
             break;
     }
 }
     /** Rendering "Light-Dark Mode" Button
+     * @param {string[]} ldmIcon
+     * @param {(
+     *  button: HTMLElement,
+     *  icons: HTMLElement[],
+     * ) => void} ldmTranser
      * @returns {void}
      */
-function render_LdmBtn () {
-    let btn = ((jsDoc).createElm(`button`));
+function render_LdmBtn (
+    ldmIcon = [],
+    ldmTranser = (() => {}),
+) {
+    let
+        btn = ((jsMod).setElm(((jsDoc)
+        .createElm(`button`)), {
+            id: (ldm_Data.modeBtn),
+            type: (`button`),
+            className: ((jsHt).classer(
+                ldm_Data.btnClass)),
+            //
+    })),
+        icons = [];
     //
-    (btn).id = (ldm_Data.modeBtn);
-    (btn).className = ((jsHt).classer(ldm_Data.btnClass));
-    //
-    let icon = ((jsDoc).createElm(`span`)),
-        update_RenderBtn = (() => (
-            (icon).className = (`bi bi-${((pageDom.rMod
-                .dataset.theme) === (ldm_Data.setDark))
-                ? (`sun-fill`) : (`moon-fill`)}`)
-        ));
-    //
-    (btn).appendChild(icon);
-    (btn).onclick = () => {
-        let mode = (((pageDom.rMod.dataset
-            .theme) === (ldm_Data.setDark))
-            ? (ldm_Data.setLight) : (ldm_Data
-                .setDark)
-        );
-        (pageDom).rMod.dataset.theme = (mode);
-        (localStorage).theme = (mode);
+    (ldmIcon).forEach((icon, idx) => {
+        const elmCon = ((jsMod).setElm(
+            ((jsDoc).createElm(`span`)), {
+                id: (`mode-ldm-${idx}`),
+                className: ((jsHt).classer(
+                    ldm_Data.logoClass)),
+        }));
         //
-        update_ThmCls();
-        update_RenderBtn();
-        (ldm_Event).dispatchEvent(
-            new Event(`themechange`)
-        );
-    };
-    update_RenderBtn();
+        (elmCon).classList.add((`bi`),
+            (`bi-${icon}-fill`));
+        //
+        (btn).append(elmCon);
+        (icons).push(elmCon);
+    });
+    (btn).classList.add(`hover:animate-pulse`,
+        `active:animate-pulse`);
     //
-    (document).body.appendChild(btn);
+    ldmTranser({ button: btn, icons, });
+    //
+    (spDom.body).appendChild(btn);
 }
 //
     /** Updating Theme Classing - Dynamic Elemented
-     * @param {HTMLElement} elm
+     * @param {HTMLElement} eLDMode
      * @param {string[]} cLight "Light-mode class list"
      * @param {string[]} cDark "Dark-mode class list"
      * @returns {void}
      */
 export function setLDm_ThemeClass (
-    elm,
+    eLDMode = (jsVar.empty),
     cLight = (ldm_Data.lightCls),
     cDark = (ldm_Data.darkCls),
 ) {
-    switch (pageDom.rMod.dataset.theme) {
-        case (ldm_Data.setDark):
-            (elm).classList.remove(...cLight);
-            (elm).classList.add(...cDark);
-            break;
-        case (ldm_Data.setLight):
-        default:
-            (elm).classList.remove(...cDark);
-            (elm).classList.add(...cLight);
-            break;
-    }
+    cLight = (((Array).isArray(cLight)) ? (cLight) : [cLight]);
+    cDark = (((Array).isArray(cDark)) ? (cDark) : [cDark]);
+    //
+    let [ from, into, ] = (((spDom.rMod.dataset
+        .theme) === (ldm_Data.setDark)) ? [
+        cLight, cDark, ] : [ cDark, cLight,
+    ]);
+    //
+    (from).forEach((cls, i) => { if (!((eLDMode)
+        .classList.replace((cls), (into[i]))
+    )) { (eLDMode).classList .add(into[i]); }});
 }
 //
 /**/
 
 
 /* Automate - Paging */
-    /** Drawing "Dynamic-Title" for every Page
-     * @param {string} page_DyTitle
-     * @returns {void}
-     */
-function page_DynamicTitle (
-    page_DyTitle,
-) {
-    let ph_Title = (sP_DataId(`sp_Title`));
-    //
-    if (ph_Title) {
-        (ph_Title).textContent = ((jsTx).arr2Str([
-            (page_DyTitle), (ph_Title.textContent),
-        ], (` | `)));
-    }
-};
+setLDm_ThemeClass((spDom.body),
+    (ldm_Data.lightCls),
+    (ldm_Data.darkCls),
+);
 //
-    /** Signed as Potraying Github Username of Web Owner
-     * @param {string} git_UserName
+    /** Drawing "Dynamic-Title" for every Page
+     * @param {string} pageMethod
+     * @param {string} pagerValue
      * @returns {void}
      */
-function page_SignUserGit (
-    git_UserName,
+function page_Setter (
+    pageMethod, pagerValue,
 ) {
-    let git_UN = sP_DataId(`git_UN`);
-    //
-    if (git_UserName) { (git_UN)
-        .textContent = (git_UserName);
+    const pagElm = pager_DataId(pageMethod);
+        if (!(pagElm)) return;
+    switch (pageMethod) {
+        case (`pagingTitle`):
+            (jsMod).setElm((pagElm), {
+                textContent: (`${pagerValue
+                    } | ${pagElm.textContent}`),
+            });
+            break;
+        case (`gitUserName`):
+            (jsMod).setElm((pagElm), {
+                textContent: (pagerValue),
+            });
+            break;
+        //
+        // case (`?`):
+        // case (`?`):
+        // case (`?`):
+        //
+        default:
+            break;
     }
 }
 //
@@ -207,21 +265,117 @@ function page_SignUserGit (
 export function setPage_Comping (
     comPage_Title,
 ) {
-    const sp_Data = {
+    let sp_Data = {
         web_title: ((jsTx).trm(comPage_Title)),
-        git_name: (inGit.data.name),
+        git_name: (sysGit.data.name),
     };
     //
-    page_DynamicTitle(sp_Data.web_title);
-    page_SignUserGit(sp_Data.git_name);
+    page_Setter((`pagingTitle`), (sp_Data.web_title));
+    page_Setter((`gitUserName`), (sp_Data.git_name));
 }
+//
     /** Rendering Light-Dark-Mode Features
      * @returns {void}
      */
 function rendering_Ldm () {
-    render_LdmBtn();
+    const
+        ldmChange = {
+        //
+        inCame: [
+            `translate-y-0`,
+            `opacity-100`,
+        ],
+        outTop: [
+            `-translate-y-6`,
+            `opacity-0`,
+        ],
+        outBot: [
+            `translate-y-6`,
+            `opacity-0`,
+        ],
+    },
+        ldmSec = (150),
+        hLdmSec = (500)
+        ;
+    let isAnimating = (false);
+    //
+    render_LdmBtn(
+        [ (`sun`), (`moon`), ],
+        //
+    ({ button, icons, }) => {
+        const update_LdmBtn = ((animate = (true)) => {
+            //
+            let
+                isDark = ((1) - +((spDom.rMod.dataset
+                    .theme) === (ldm_Data.setDark))),
+                //
+                show = (icons[isDark]),
+                hide = (icons[(1) - (isDark)]),
+                //
+                swap = ((icon, from, to) => ((from)
+                    .forEach((cls, i) => ((icon)
+                    .classList.replace(cls, to[i])))
+                ))
+                ;
+            (icons).forEach((icon) => ((icon)
+                .classList.remove(`hidden`)));
+            //
+            if (!(animate)) {[
+                    [ (show), (`inCame`), ],
+                    [ (hide), (`outTop`), ],
+                ].forEach(([ icon, state, ]) => ((icon)
+                    .classList.add(...ldmChange[state])
+                ));
+                //
+                return;
+            }
+            //
+            (show).classList.add(...ldmChange.outBot);
+            //
+            requestAnimationFrame(() => {
+                swap((hide), (ldmChange.inCame),
+                    (ldmChange.outTop));
+                //
+                setTimeout(() => { swap((show),
+                    (ldmChange.outBot), (ldmChange.inCame));
+                }, (ldmSec));
+            });
+        });
+        //
+        (button).onclick = (() => {
+            let mode = (((spDom.rMod.dataset
+                .theme) === (ldm_Data.setDark))
+                    ? (ldm_Data.setLight)
+                    : (ldm_Data.setDark)
+            );
+                if (isAnimating) return;
+                //
+            isAnimating = (true);
+            //
+            (spDom.rMod).dataset.theme = (mode);
+            (localStorage).theme = (mode);
+            //
+            (ldm_Event).dispatchEvent(new
+                Event(`themechange`));
+            //
+            setTimeout(() => {
+                isAnimating = (false);
+            }, (hLdmSec));
+        });
+        //
+        update_LdmBtn(false);
+        //
+    (ldm_Event).addEventListener((`themechange`), (() => {
+        update_ThmCls();
+        update_LdmBtn(true);
+    }));
+    //
+    },
+    //
+    );
     //
 }
+//
 rendering_Ldm();
 //
 /**/

@@ -26,47 +26,47 @@ id="#">![Ability: Ice-Shroom][P5-W2]</td>
 align="center"><td>
 
 ![Figure: Maya Jouga][Fa-A2]</td><td
-id="#">![Ability: Ice-Shroom][P2-W4]</td>
+id="#">![Ability: Plantern][P2-W4]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Megumi Natsu][Fa-A3]</td><td
-id="#">![Ability: Ice-Shroom][P3-W1]</td>
+id="#">![Ability: Cherry Bomb][P3-W1]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Eru Jinja][Fa-A4]</td><td
-id="#">![Ability: Ice-Shroom][P3-W2]</td>
+id="#">![Ability: Hypno-Shroom][P3-W2]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Natsume Jinja][Fa-A5]</td><td
-id="#">![Ability: Ice-Shroom][ZI-03]</td>
+id="#">![Ability: ||...COMING-SOON...||][ZI-03]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Fuyu Fuiba][Fa-B1]</td><td
-id="#">![Ability: Ice-Shroom][P7-W4]</td>
+id="#">![Ability: Magnet][P7-W4]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Cocoa Hoto][Fb-A1]</td><td
-id="#">![Ability: Ice-Shroom][P5-W3]</td>
+id="#">![Ability: Jalapeno][P5-W3]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Sharo Kirima][Fb-B1]</td><td
-id="#">![Ability: Ice-Shroom][P3-W5]</td>
+id="#">![Ability: Kernel's Butter][P3-W5]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Chiya Ujimatsu][Fb-B2]</td><td
-id="#">![Ability: Ice-Shroom][P5-W5]</td>
+id="#">![Ability: Garlic][P5-W5]</td>
 </tr><tr id="" class="j-comp no-drag"
 align="center"><td>
 
 ![Figure: Rize Tezeda][Fc-10]</td><td
-id="#">![Ability: Ice-Shroom][P6-W2]</td>
+id="#">![Ability: Doom-Shroom][P6-W2]</td>
 </tr>
 <!--=-->
 </table>

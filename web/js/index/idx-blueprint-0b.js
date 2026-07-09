@@ -10,8 +10,9 @@ import * as idxStrg from './idx-storage.js';
     import {
         idx_RcLang as rcLn,
         //
-        idxGT_CompId as iGt_S,
-        idxGtWait_Comps as iGtComp,
+        idxGT_CompId as iGt_cId,
+        gtComponter as comperGt,
+            //
         idxSearchMD_CompId as iScMd,
         //
         mdSrch_AddChips_Cls as addChipCls,
@@ -57,7 +58,8 @@ let comFolders = (new Set());
      */
 export function rppf_Moderact (
     onRawPath, onPosFile, forDefault,
-    gtS_Mode = (iGtComp().gtcSwitch.value),
+    gtS_Mode = ((jsDoc).getId(
+        comperGt.cElmSw).value),
 ) {
     let rp = (rcLn.switch.rp),
         pf = (rcLn.switch.pf);
@@ -83,24 +85,27 @@ export function rppf_Moderact (
 export function idxGt_SwtcElm (
     tag, id,
 ) {
-    const elm = ((jsDoc).createElm(tag));
     switch (tag) {
         case (`input`):
-            (elm).id = (id);
-            (elm).type = (`checkbox`);
-            (elm).className = (
-                `peer sr-only`);
-            break;
+            return ((jsMod).setElm(((jsDoc)
+                .createElm(tag)), {
+                    id,
+                    type: (`checkbox`),
+                    className: (`peer sr-only`),
+            }));
         case (`label`):
-            (elm).htmlFor = (id);
-            (elm).className = (id.className);
-            break;
+            return ((jsMod).setElm(((jsDoc)
+                .createElm(tag)), {
+                    htmlFor: (id),
+                    className: (id.className),
+            }));
         case (`span`):
-            (elm).className = (id.className);
-            (elm).textContent = (id.textContent);
-            break;
+            return ((jsMod).setElm(((jsDoc)
+                .createElm(tag)), {
+                    className: (id.className),
+                    textContent: (id.textContent),
+            }));
     }
-    return (elm);
 }
 //
 /**/
@@ -133,30 +138,22 @@ function idxGtComp_SwitchTxt (
      */
 export function idxGtComp_Bekgron ({
     leftSide, rightSide,
-    leftId = jsVar.empty,
-    rightId = jsVar.empty,
+    leftId = (jsVar.empty),
+    rightId = (jsVar.empty),
 }) {
-    const bg = idxGt_SwtcElm((`span`), {
-        className: ((jsHt).classer(
-            idxStrg.gt_SwitchBg_Cls
-    ))});
+    const bg = idxGt_SwtcElm((`span`), { className: (
+        (jsHt).classer(idxStrg.gt_SwitchBg_Cls))});
     let txtSides = {
-        leftTxt: idxGtComp_SwitchTxt(
-            (leftSide), (`left`)),
-        rightTxt: idxGtComp_SwitchTxt(
-            (rightSide), (`right`)),
+        leftTxt: ((jsMod).setElm(idxGtComp_SwitchTxt(
+            (leftSide), (`left`)), { id: (leftId), })),
+        rightTxt: ((jsMod).setElm(idxGtComp_SwitchTxt(
+            (rightSide), (`right`)),{ id: (rightId), })),
     };
     //
-    (txtSides).leftTxt.id = (leftId);
     (txtSides).leftTxt.classList.add(`selected`);
-        //
-    (txtSides).rightTxt.id = (rightId);
     (txtSides).rightTxt.classList.add(`cursor-pointer`);
     //
-    (bg).append(
-        (txtSides.leftTxt),
-        (txtSides.rightTxt)
-    );
+    (bg).append((txtSides.leftTxt), (txtSides.rightTxt));
     return (bg);
 }
 //
@@ -199,33 +196,29 @@ export function mdSrc_CreateChip (
         label: (`span`),
         close: (`button`),
     })),
-        chippingId = ((prefix) => (
-        `${prefix}-${(chipIdx) + (1)}`));
     //
-    (elChip).id = chippingId(
-        idxCompChip.kitChip);
-    (label).id = chippingId(
-        idxCompChip.resChip);
+    chipNo = ((chipIdx) + (1))
+    ;
+    (jsMod).setElm((elChip), {
+        id: (`${idxCompChip.kitChip}-${chipNo}`),
+        className: ((jsHt).classer(addChipCls)),
+    });
+    (jsMod).setElm((label), {
+        id: (`${idxCompChip.resChip}-${chipNo}`),
+        textContent: (chipLabel),
+        onclick: (() => { mdSrc_ChipCrud(
+            (`editting`), (chipText), (chipIdx),
+            (jsVar.empty), (label));
+    })});
+    (jsMod).setElm((close), {
+        onclick: (() => {
+            mdSrc_ChipCrud((`splitter`),
+                (chipText), (chipIdx));
+    })});
     //
-    (label).textContent = (chipLabel);
-        //
-    (close).classList.add(...
-        mdSrch_CrackChip_Cls);
-    (elChip).className = ((jsHt)
-        .classer(addChipCls));
+    (close).classList.add(...mdSrch_CrackChip_Cls);
     //
     (elChip).append(label, close);
-    //
-    //
-    (close).onclick = ((e) => {
-        mdSrc_ChipCrud((`splitter`),
-            (chipText), (chipIdx));
-    });
-    (label).onclick = (() => {
-        mdSrc_ChipCrud((`editting`),
-            (chipText), (chipIdx),
-            (jsVar.empty), (label));
-    });
     //
     return (elChip);
 }
