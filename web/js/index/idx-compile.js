@@ -122,6 +122,11 @@ function idx_RenderBuild () {
             ldmClasser(eLisRes, liresClsL, liresClsD);
         }
         //
+        ldmClasser((iScMd.ftSrch),
+            (`text-${ldm_Color.light.text}`),
+            (`text-${ldm_Color.dark.text}`),
+        );
+        //
         (ldm_Sections).forEach((e) => (ldmClasser(
             ldm_GetComp(e), noBgL, noBgD)));
         (ldm_Gtcs).forEach((e) => (ldmClasser(

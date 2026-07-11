@@ -14,188 +14,243 @@ import * as iGit from '../init-github.js';
 
 
 /* Helpers & Variables */
-const format_exts = ([ `png`,
-    `jpg`,`jpeg`, `webp`,
+const format_exts = ([`png`,
+    `jpg`, `jpeg`, `webp`,
     //
     `gif`,
-].map((ext) => (`.${(jsTx).lower(ext)}`)));
+].map((ext) => (`.${(jsTx).lower(ext)}`))),
+    inScan = (new Set());
+    ;
+//
+    /** Autofy Integ-Parser
+     * @param {number} intRes
+     * @returns {number}
+     */
+function auto_IntParser (
+    intRes,
+) {
+    return (parseInt((intRes), (10)));
+}
 //
 /**/
 
 
-/* Gets - Localize */
+/* GET - Localize */
     /** [Async] Fetching All-Images
      * @param {string} pathFetch
      * @param {Boolean} fetchMethod
-     * @returns {Promise<string[]>}
+     * @param {Boolean} slf_Once
+     * @returns {Promise<any>}
      */
 export async function srcLink_Fetcher (
     pathFetch = (jsVar.empty),
     fetchMethod = (true),
+    slf_Once = (true),
 ) {
-    //(jsCs).log((`Fetcher:`), (fetchMethod));
+    if (slf_Once) {
+        (jsCs).log((`Fetcher:`), (fetchMethod));
+    }
     //
-    const reqFetch = (await (fetch(pathFetch)));
+    let slF_Result = (await fetch(pathFetch))
+        ;
     //
-    if (!(reqFetch.ok)) {
-        (jsCs).log(reqFetch);
-        (iGit).gitWarn_RateLimit(reqFetch);
+    if (!(slF_Result.ok)) {
+        (jsCs).log(slF_Result);
+        (iGit).gitWarn_RateLimit(slF_Result);
         //
         return [];
     }
     //
     switch (fetchMethod) {
         case (true):  /* Local */
-            const imgCount = (parseInt(await (
-                (reqFetch).text()), (10)));
+            slF_Result = (await ((Promise).all((Array).from({
+                length: auto_IntParser(await ((slF_Result)
+                .text())), }, (async (_, i) => (await (fetch(
+                `${dirSafe.getimages}/${i + 1}.json`))).json())
+            ))));
             //
-            return ((Promise).all((Array).from({ length:
-                imgCount, }, (async (_, i) => ((await
-                fetch(`${dirSafe.getimages}/${(i) +
-                    (1)}.json`)).json()))))
-            );
+            break;
         case (false):  /* Github */
-            pathFetch = (await ((reqFetch).json()));
+            slF_Result = (await ((slF_Result).json()));
             //
-            return (await (pathFetch));
+            break;
         default:
-            return [];
-}}
+            slF_Result = [];
+            //
+            break;
+    }
+    //
+    if (slf_Once) {
+        (jsCs).log(slF_Result);
+    }
+    //
+    return (slF_Result);
+}
 //
     /** [Async] Scanning Images-Path Prefix
-     * @param {string} pathGet
+     * @param {string} setPaths
      * @param {Boolean} scanMethod
-        *
-     * @typedef {Object} GitImgPrefix
-     * @property {"dir"|"file"} type
-     * @property {string} path
+     * @param {Boolean} sps_Once
+     * @returns {Promise<any>}
      */
 export async function srcPrefix_Scanner (
-    pathGet = (jsVar.empty),
+    setPaths = (jsVar.empty),
     scanMethod = (true),
+    sps_Once = (true),
 ) {
-    //(jsCs).log((`Scanner:`), (scanMethod));
+    if (sps_Once) {
+        (jsCs).log((`Scanner:`), (scanMethod));
+    }
     //
-    let items = [],
-        links;
+    let spS_Items = [],
+        spS_Result = (setPaths)
+        ;
+        //
     //
     switch (scanMethod) {
         case (true):  /* Local */
-            links = (await (srcLink_Fetcher(
-                pathGet, true)));
+            spS_Result = (await (srcLink_Fetcher(setPaths, true, true)));
+            spS_Items = ((spS_Result).map((arr) => ((arr).map((v) =>
+                (`/${v}`)))));
             //
-            items = ((links).map((arr) => ((arr).map(
-                (v) => (`/${v}`)
-            ))));
-            return (items);
-        //
+            break;
         case (false):  /* Github */
-            links = (await (srcLink_Fetcher(pathGet, false)
-                .then((result) => ((result).filter(
-                    (href) => ((href) !== (jsVar.linkBack)
-            ))))));
+            spS_Result = (await (srcLink_Fetcher(setPaths, false, true)));
+            spS_Result = ((spS_Result).filter((item) => (
+                (item.path) !== (jsVar.linkBack))));
             //
-            for (const item of links) {
-                (items).push({
-                    type: (item.type),
-                    path: (`/${item.path}`),
-                });
-                if ((item.type) === (`dir`)) {
-                    const sub = (await (srcPrefix_Scanner(
-                        ((iGit).ghApi_getLink(item.path)),
-                        (false),
-                    )));
-                    (items).push(...sub);
-            }}
+            (spS_Items).push(...((spS_Result).map((item) => ({
+                type: (item.type), path: (`/${item.path}`), }))));
+            for (const item of (spS_Result)) {
+                    if ((item.type) !== (`dir`)) continue;
+                    //
+                (spS_Items).push(...(await (srcPrefix_Scanner(((iGit)
+                    .ghApi_getLink(item.path)), (false), (false)))));
+            }
             //
-            return (items);
+            break;
         default:
-            return [];
+            spS_Items = [];
+            //
+            break;
     }
+    //
+    if (sps_Once) { 
+        (jsCs).log(spS_Items);
+    }
+    //
+    return (spS_Items);
 }
     /** [Async] For All-Images Processor Methods
-     * @param {string} linkImgSrc
-     * @param {Boolean} lisMethod
-     * @returns {Promise<string[]>}
+     * @param {string} collectSets
+     * @param {Boolean} procMethod
+     * @param {Boolean} aip_Once
+     * @returns {Promise<any>}
      */
 export async function alImages_Processor (
-    linkImgSrc = (jsVar.empty),
-    lisMethod = (true),
+    collectSets = (jsVar.empty),
+    procMethod = (true),
+    aip_Once = (true),    
 ) {
-    //(jsCs).log((`Processor:`), (lisMethod));
+    if (aip_Once) {
+        (jsCs).log((`Processor:`), (procMethod));
+    }
     //
     const isGitLink = ((iGit.htWeb
         .lcl).endsWith(`github.io`)),
-        seen = (new Set());
-    let addImage = ((img) => ((seen).add(img))),
-        prefixes;
+        proGetImgs = (new Set())
+        ;
+    let addImage = ((img) => ((proGetImgs).add(img))),
+        aiP_Result = (collectSets)
+        ;
     //
-    switch ((lisMethod) && (!(isGitLink))) {
+    switch ((procMethod) || (!(isGitLink))) {
         case (true):  /* Local */
-            prefixes = (await (srcPrefix_Scanner(
-                linkImgSrc, true)));
+            aiP_Result = (await (srcPrefix_Scanner(collectSets, true, true)));
             //
-            for (const [ i, group, ]
-                of prefixes.entries()) {
-                (seen).clear();
+            for (const [ i, group, ] of aiP_Result.entries()) {
+                (proGetImgs).clear();
                 (group).forEach((href) => (((format_exts)
                     .some((ext) => ((href).toLowerCase()
                     .endsWith(ext)))) && (addImage(href))
                 ));
                 //
-                prefixes[i] = [...seen];
+                aiP_Result[i] = [ ...(proGetImgs) ];
             }
-            return (prefixes);
+            //
+            break;
         case (false):  /* Github */
-            prefixes = (await (srcPrefix_Scanner(
-                linkImgSrc, false)));
+            aiP_Result = await srcPrefix_Scanner(collectSets, false, true);
             //
-            for (const item of prefixes) {
-                if (((item.type) === (`file`)) && ((format_exts)
-                    .some((ext) => ((jsTx).lower(item.path)
-                    .endsWith(ext)))
-                )) { addImage(item.path); }
+            for (const item of aiP_Result) {
+                if (((item.type) === (`file`)) && ((format_exts).some(
+                (ext) => ((jsTx).lower(item.path).endsWith(ext))))) {
+                    addImage(item.path); }
             }
             //
-            return [ ...(seen), ];
+            aiP_Result = [ ...(proGetImgs), ];
+            //
+            break;
         default:
-            return [];
-}}
+            aiP_Result = [];
+            //
+            break;
+    }
+    //
+    if (aip_Once) {
+        (jsCs).log(aiP_Result);
+    }
+    //
+    return (aiP_Result);
+}
 //
     /** [Async] Gathering that all Images
-     * @param {string} getImgSrc
+     * @param {string} pickCollects
      * @param {Boolean} gatherMethod
-     * @returns {void}
+     * @param {Boolean} aia_Once
+     * @returns {Promise<any>}
      */
-export async function alImages_Ascertains(
-    getImgSrc = (jsVar.empty),
+export async function alImages_Ascertains (
+    pickCollects = (jsVar.empty),
     gatherMethod = (true),
+    aia_Once = (true),
 ) {
-    //(jsCs).log((`Gathering:`), (gatherMethod));
+    if (aia_Once) {
+        (jsCs).log((`Gathering:`), (gatherMethod));
+    }
     //
-    let gaterhing;
+    let aiA_Result = (pickCollects)
+        ;
     //
     switch (gatherMethod) {
         case (true):  /* Local */
-            gaterhing = (await (alImages_Processor(
-                getImgSrc, true)));
+            aiA_Result = (await alImages_Processor(pickCollects, true, true)).flat();
             //
-            return (await ((gaterhing).flat()));
+            break;
         case (false):  /* Github */
             await ((iGit).git_Config());
             //
-            gaterhing = (await (alImages_Processor(
-                getImgSrc, false)));
+            aiA_Result = (await (alImages_Processor(pickCollects, false, true)));
             //
-            return (await ((gaterhing)));
+            break;
         default:
-            return [];
-}}
+            aiA_Result = [];
+            //
+            break;
+    }
+    //
+    if (aia_Once) {
+        (jsCs).log(aiA_Result);
+    }
+    //
+    return (aiA_Result);
+}
 //
 /**/
 
 
 /* Uji Coba */
+//console.count(`alImages_Ascertains`);
 //
 /**/
 

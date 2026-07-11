@@ -17,7 +17,6 @@ import * as idxStrg from './idx-storage.js';
         mdCosL_Comp_Cls as lCompCls,
         mdCosD_Comp_Cls as dCompCls,
         //
-        mdSrch_AutoCm_Cls as srcAutoCls,
         gt_SrcRes_Cls as srcResCls,
         //
     } from "./idx-storage.js";

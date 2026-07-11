@@ -17,7 +17,6 @@ import * as idxStrg from './idx-storage.js';
         mdCosL_Comp_Cls as lCompCls,
         mdCosD_Comp_Cls as dCompCls,
         //
-        mdSrch_AutoCm_Cls as srcAutoCls,
         gt_SrcRes_Cls as srcResCls,
     } from "./idx-storage.js";
     /*|
@@ -50,7 +49,7 @@ import { mdSrcAuto_Chipper,
 //
 /*|
 |*/
-import { ldm_Data, ldm_Event,
+import { ldm_Color, ldm_Data, ldm_Event,
     setLDm_ThemeClass as ldmClasser,
 } from "../set-paging.js";
 /*|
@@ -235,6 +234,12 @@ function gtInput_Sys (
     //
     (ftSrch).value = (gtIn_Fix.file0);
     (gtcInput).readOnly = (true);
+    //
+    ldmClasser((ftSrch),
+        (`text-${ldm_Color.light.text}`),
+        (`text-${ldm_Color.dark.text}`),
+    );
+    //
     sync();
     //
     (ftSrch).addEventListener((`input`), (sync));
@@ -258,7 +263,8 @@ function gtInput_Sys (
      * @returns {void}
      */
 function render_SrcResults () {
-    (iScMd.srcRes).className = ((jsHt).classer(srcResCls));
+    (iScMd.srcRes).className = ((jsHt)
+        .classer(srcResCls));
     //
 }
     /** Compiler the Inputters Process

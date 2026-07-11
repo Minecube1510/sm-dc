@@ -9,6 +9,9 @@ import { jsVar,
 import { ldm_Data,
     //
     } from "../set-paging.js";
+//
+import * as tw from '../tw-css-cls.js';
+//
 /**/
 
 
@@ -39,7 +42,7 @@ idx_LdmEff_cChain_Cls = [
 export const
 /*|*/
 gt_SynComp_Cls = [
-    `border`, `rounded-lg`,
+    `border-2`, `rounded-lg`,
 ],
 gt_InvoComp_Cls = [
     `into-smooth`, `rounded-lg`,
@@ -65,6 +68,7 @@ gt_SwitchText_Cls = [
 //
 gt_SelectOpting_Cls = [
     `appearance-none`, `cursor-pointer`,
+    `font-semibold`,
     //
     `w-full`, `px-3`,`py-2`, `pr-8`,
 ],
@@ -82,9 +86,15 @@ gt_Rooter_Cls = [
     `cursor-pointer`, `active:cursor-default`,
 ],
 gt_SrcRes_Cls = [
-    `absolute`, `top-full`, `w-full`,
-    `left-0`, `z-50`, `shadow`,
-    `border-2`, `rounded-b-md`,
+    `absolute`, `shadow`,
+    `top-full`, `w-full`,
+    //
+    `rounded-lg`,
+    //
+    `left-0`, `z-50`,
+    `border-2`,
+    //
+    `translate-y-1.5`,
 ]
 ;
 /**/
@@ -115,14 +125,14 @@ mdVi_LsComp_Cls = [
 ],
 //
 mdVi_InputPls_Cls = [
-    `rounded-lg`,
-    `focus-within:ring-1`,
+    //
 ],
 mdVi_InputRoot_Cls = [
-    `border`, `border-r`, `rounded-l-lg`,
+    `border-transparent`,
+    `-translate-y-0.25`,
 ],
 mdVi_InputDef_Cls = [ 
-    `border`, `border-l`, `rounded-r-lg`,
+    `border-transparent`,
     `into-smooth`,
 ],
 //

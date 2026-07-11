@@ -8,6 +8,8 @@ import { jsVar, jsMod,
     dirSafe,
     } from "../basis.js";
     //
+import * as twCls from "../tw-css-cls.js";
+    //
 import * as iGit from '../init-github.js';
 //
 import * as idxStrg from './idx-storage.js';
@@ -24,8 +26,6 @@ import * as idxStrg from './idx-storage.js';
         //
         mdCosL_Comp_Cls as lCompCls,
         mdCosD_Comp_Cls as dCompCls,
-        //
-        mdSrch_AutoCm_Cls as srcACls,
         //
         mdSrch_PfChipy_Cls as pfChipCls,
     } from "./idx-storage.js";
@@ -213,7 +213,7 @@ function gtSwitch_Sys (
      * @returns {void}
      */
 function gtSelect_Sys (
-    compGt = ((jsDoc).getId(comperGt.cRow)),
+    compGt = ((jsDoc).getId(comperGt.cElmSe)),
     selRow = ((jsDoc).getId(comperGt.cRow)),
 ) {
     let opened = (false);

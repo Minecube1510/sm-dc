@@ -1,5 +1,5 @@
 #!/usr/bin/env js
-/* web/js/images/load-screen.js */
+/* web/js/load-screen.js */
 
 /* Imports */
 //Importing...

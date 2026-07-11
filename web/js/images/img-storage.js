@@ -1,10 +1,12 @@
 #!/usr/bin/env js
-/* web/js/index/img-storage.js */
+/* web/js/images/img-storage.js */
 
 /* Imports */
-import {
-    jsTx, jsDoc,
+import { jsVar,
+    jsTx, jsDoc, jsCs,
     } from "../basis.js";
+//
+import * as tw from '../tw-css-cls.js';
 //
 /**/
 
@@ -28,11 +30,13 @@ atlr_ElImg_Cls = [  /* Ateiler: Image Element (If:Has-Images) */
     `cursor-pointer`, `transition-all`,
     `ease-in-out`, `rounded-xl`,
     //
+    //`bg-taupe-400`,
+    //
     `w-[200px]`,
     `duration-200`,
     //
-    `hover:scale-95`,
-    `active:scale-105`,
+    `hover:scale-105`, `hover:[filter:drop-shadow(0_0_8px_white)]`,
+    `active:scale-95`, `active:[filter:drop-shadow(0_0_8px_gray)]`,
 ]
 ;
 /**/
@@ -52,6 +56,12 @@ export const img_CompId = ((id) => {
     }[id]));
 })
 ;
+/**/
+
+
+/* Uji Coba */
+//?
+//
 /**/
 
 

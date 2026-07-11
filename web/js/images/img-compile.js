@@ -69,20 +69,16 @@ function buildComp_ViewImg (
     }))}
         ;
     //
-    if ((!(imgAteiler.mbox)) ||
-        (!(imgAteiler.imgs))) {
-        //
-        return (imgAteiler);
-    }
+    if ((!(imgAteiler.mbox)) || (!(imgAteiler
+        .imgs))) return (imgAteiler);
     //
-    (imgAteiler.mbox).classList.add(`border-inherit`);
-        //
-    (imgAteiler.text).classList.add(`col-span-full`);
-        //
-    (imgAteiler.imgs).classList.add(
-        ...(imgStrg.atlr_ImageCon_Cls),
-        (`border-inherit`),
-    );
+    [[
+        (imgAteiler.text), [`col-span-full`]
+    ], [
+        (imgAteiler.imgs), (imgStrg.atlr_ImageCon_Cls),
+    //
+    ]].forEach(([ elm, cls, ]) => (
+        (elm).classList.add(...cls)));
     //
     (imgAteiler.imgs).append(imgAteiler.text);
     //
@@ -106,22 +102,28 @@ reSource_Images = (await (
      * @returns {void}
      */
 function loggeReport_ViewImg () {
-        /* First - View Linkings */
-    (jsCs).log((jsTx).arr2Str([
-        (`Now in Linking:`),
-        (`\n[-] `), (iGit.htWeb.dom),
-        (`\n[=] `), (iGit.htWeb.lnk),
-        (`\n[>] `), ((sysGit.data.repo) ||
-            (sysGit.link.gh.path.repo)),
-        (`\n[$] `), (iGit.htWeb.path),
-    ], (jsVar.empty)));
-        /* Middle-12 - Warn */
-    if (!(reSource_Images.length)) {
-        (jsCs).warn(`⚠️ There's no Images in here`);
-        //
-        return;
-    }
-        /* Second - Success as Table */
+        /*| First - View Linkings
+    |*/
+    (jsCs).grBgn(`Check Linking - Webpage`);
+        (jsCs).log((jsTx).arr2Str([
+            (`Now in Linking:`),
+            (`\n[-] `), (iGit.htWeb.dom),
+            (`\n[=] `), (iGit.htWeb.lnk),
+            (`\n[>] `), ((sysGit.data.repo) ||
+                (sysGit.link.gh.path.repo)),
+            (`\n[$] `), (iGit.htWeb.path),
+        ], (jsVar.empty)));
+            /* Middle-12 - Warn */
+        if (!(reSource_Images.length)) {
+            (jsCs).warn(
+                `⚠️ There's no Images in here`);
+            //
+            return;
+        }
+    (jsCs).grEnd();
+    //-|-//
+        /*| Second - Success as Table
+    |*/
     (jsCs).grBgn((jsTx).arr2Str([
         (`Check Images`), ((iGit.isLocal)
             ? (`Local`) : (`Github API`))
@@ -233,6 +235,7 @@ export async function struct () {
 
 
 /* Uji Coba */
+//console.log(imgStrg);
 //
 /**/
 
