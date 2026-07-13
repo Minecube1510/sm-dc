@@ -4,8 +4,11 @@
 /* Imports */
 import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
+    //
     sysGit,
     } from "./basis.js";
+//
+import * as tw from './tw-css-cls.js';
 //
 /**/
 
@@ -30,58 +33,93 @@ if (location.search) {
  * @property {string} text [Text - Main]
  * @property {string} border [Border - Main]
  * |
- * @property {string} list [Background - Component List]
- * |
  * @property {string} hover [Hover - Main]
- * @property {string} active [Hover - Main]
+ * @property {string} active [Active - Main]
+ * |
+ * @property {string} ldmbtn [Background - LDM-Button]
  */
 //
-/**
- * Light/Dark Mode color configuration.
+/** Light/Dark Mode Color Configurates
  * @type {Object} light: LdmColorTheme,
  * @type {Object} dark: LdmColorTheme,
  */
-export const ldm_Color = {
+//
+export const
+/*|*/
+N4 = (4),
+strButton = (`button`),
+//
+ldm_Event = (new EventTarget()),
+//
+spDom = {
+    rMod: (document.documentElement),
+    body: (document.body),
+},
+/*|
+|*/
+hidden = (tw.layout.hidden),
+//
+opacity0 = ((tw).tcRegulate((tw
+    .effects.opacity), (0))),
+//
+animatePulse = ((tw).tcRegulate((tw
+.transition.animate), (`pulse`))),
+//
+translateY6 = ((tw).tcRegulate((tw
+.transform.translate), (`y`), (6))),
+/*|
+|*/
+ldm_BICons_Cls = ((bicon) => { return [
+    (`bi`), (`bi-${bicon}-fill`), ]}),
+    //
+ldm_StatBtn_Cls = [ (`z-[999]`),
+    (`hover:${animatePulse}`),
+    (`active:${animatePulse}`),
+],
+/*|
+|*/
+ldm_Color = {
     light: {
         bg: (`gray-100`),
         text: (`gray-900`),
         border: (`gray-800`),
         //
-        list: (`gray-300`),
-        //
         hover: (`gray-500`),
         active: (`gray-600`),
+        //
+        ldmbtn: (`mist-200`),
     },
     dark: {
         bg: (`gray-900`),
         text: (`gray-100`),
         border: (`gray-200`),
         //
-        list: (`gray-700`),
-        //
         hover: (`gray-600`),
         active: (`gray-500`),
+        //
+        ldmbtn: (`mist-800`),
     },
-};
-export const ldm_Data = {
-    modeBtn: (`button-ldm`),
-    btnClass: [ `cursor-pointer`,
-        `fixed`, `flex`,
+},
+//
+ldm_Data = {
+    modeBtn: (`${strButton}-ldm`),
+    btnClass: [
+        (`fixed`),(`flex`), (`cursor-pointer`),
+        (`items-center`), (`justify-center`),
         //
-        `bottom-5`,`right-5`,
-        `w-12`, `h-12`,
+        (`rounded-full`), (`shadow-lg`),
+        (`into-smooth`),
         //
-        `items-center`, `justify-center`,
+        (`size-${(N4)*(3)}`),
+        (`bottom-${N4}`),(`right-${N4}`),
         //
-        `border-4`, `rounded-full`,
-        //
-        `shadow-lg`,
+        (`border-${N4}`),
     ],
-    logoClass: [ `hidden`,
-        `absolute`, `transition-all`,
-        `ease-out`,
+    logoClass: [
+        (hidden), (`absolute`), (`ease-out`),
         //
-        `duration-300`,
+        (`transition-all`),
+        (`duration-300`),
     ],
     //
     setLight: ((jsTx).lower(`light`)),
@@ -116,14 +154,6 @@ function pager_DataId (
 
 
 /* Automate - LDM and Paging System */
-export const
-    ldm_Event = (new EventTarget()),
-    //
-    spDom = {
-        rMod: (document.documentElement),
-        body: (document.body),
-};
-//
     /** Updating Theme Classing
      * @returns {void}
      */
@@ -147,8 +177,8 @@ function update_ThmCls () {
     /** Rendering "Light-Dark Mode" Button
      * @param {string[]} ldmIcon
      * @param {(
-     *  button: HTMLElement,
-     *  icons: HTMLElement[],
+     *  compBtn: HTMLElement,
+     *  compBIs: HTMLElement[],
      * ) => void} ldmTranser
      * @returns {void}
      */
@@ -156,17 +186,18 @@ function render_LdmBtn (
     ldmIcon = [],
     ldmTranser = (() => {}),
 ) {
-    let
-        btn = ((jsMod).setElm(((jsDoc)
-        .createElm(`button`)), {
-            id: (ldm_Data.modeBtn),
-            type: (`button`),
-            className: ((jsHt).classer(
-                ldm_Data.btnClass)),
-            //
-    })),
-        icons = [];
-    //
+    const
+    /*|*/
+ldmButton = ((jsMod).setElm(((jsDoc)
+    .createElm(strButton)), {
+        id: (ldm_Data.modeBtn),
+        type: (strButton),
+        className: ((jsHt).classer(
+            ldm_Data.btnClass)),
+})),
+//
+ldmIcons = []
+    ;
     (ldmIcon).forEach((icon, idx) => {
         const elmCon = ((jsMod).setElm(
             ((jsDoc).createElm(`span`)), {
@@ -175,18 +206,23 @@ function render_LdmBtn (
                     ldm_Data.logoClass)),
         }));
         //
-        (elmCon).classList.add((`bi`),
-            (`bi-${icon}-fill`));
+        (elmCon).classList.add(...
+        (ldm_BICons_Cls(icon)));
         //
-        (btn).append(elmCon);
-        (icons).push(elmCon);
+        (ldmButton).append(elmCon);
+        (ldmIcons).push(elmCon);
     });
-    (btn).classList.add(`hover:animate-pulse`,
-        `active:animate-pulse`);
     //
-    ldmTranser({ button: btn, icons, });
+    (ldmButton).classList.add(
+        ...(ldm_StatBtn_Cls));
+    setLDm_ThemeClass((ldmButton),
+        (`bg-${ldm_Color.light.ldmbtn}`),
+        (`bg-${ldm_Color.dark.ldmbtn}`),
+    );
     //
-    (spDom.body).appendChild(btn);
+    ldmTranser({ compBtn: (ldmButton), compBIs: (ldmIcons), });
+    //
+    (spDom.body).appendChild(ldmButton);
 }
 //
     /** Updating Theme Classing - Dynamic Elemented
@@ -210,7 +246,7 @@ export function setLDm_ThemeClass (
     //
     (from).forEach((cls, i) => { if (!((eLDMode)
         .classList.replace((cls), (into[i]))
-    )) { (eLDMode).classList .add(into[i]); }});
+    )) { (eLDMode).classList.add(into[i]); }});
 }
 //
 /**/
@@ -279,58 +315,52 @@ export function setPage_Comping (
      */
 function rendering_Ldm () {
     const
-        ldmChange = {
-        //
-        inCame: [
-            `translate-y-0`,
-            `opacity-100`,
-        ],
-        outTop: [
-            `-translate-y-6`,
-            `opacity-0`,
-        ],
-        outBot: [
-            `translate-y-6`,
-            `opacity-0`,
-        ],
-    },
-        ldmSec = (150),
-        hLdmSec = (500)
-        ;
-    let isAnimating = (false);
+    /*|*/
+ldmChange = {
+    inCame: [ (`translate-y-0`),
+        (`opacity-100`), ],
+    outTop: [ (translateY6),
+        (opacity0), ],
+    outBot: [ (translateY6),
+        (opacity0), ],
+},
+    ldmSec = (150),
+    hLdmSec = (500)
+    ;
+    let
+        isAnimating = (false);
     //
-    render_LdmBtn(
-        [ (`sun`), (`moon`), ],
-        //
-    ({ button, icons, }) => {
+    render_LdmBtn([ (`sun`), (`moon`),
+    ],
+    ({ compBtn, compBIs, }) => {
         const update_LdmBtn = ((animate = (true)) => {
             //
             let
                 isDark = ((1) - +((spDom.rMod.dataset
                     .theme) === (ldm_Data.setDark))),
                 //
-                show = (icons[isDark]),
-                hide = (icons[(1) - (isDark)]),
+                show = (compBIs[isDark]),
+                hide = (compBIs[(1) - (isDark)]),
                 //
                 swap = ((icon, from, to) => ((from)
                     .forEach((cls, i) => ((icon)
                     .classList.replace(cls, to[i])))
                 ))
                 ;
-            (icons).forEach((icon) => ((icon)
+            (compBIs).forEach((icon) => ((icon)
                 .classList.remove(`hidden`)));
             //
             if (!(animate)) {[
                     [ (show), (`inCame`), ],
                     [ (hide), (`outTop`), ],
                 ].forEach(([ icon, state, ]) => ((icon)
-                    .classList.add(...ldmChange[state])
+                    .classList.add(...(ldmChange[state]))
                 ));
                 //
                 return;
             }
             //
-            (show).classList.add(...ldmChange.outBot);
+            (show).classList.add(...(ldmChange.outBot));
             //
             requestAnimationFrame(() => {
                 swap((hide), (ldmChange.inCame),
@@ -342,7 +372,7 @@ function rendering_Ldm () {
             });
         });
         //
-        (button).onclick = (() => {
+        (compBtn).onclick = (() => {
             let mode = (((spDom.rMod.dataset
                 .theme) === (ldm_Data.setDark))
                     ? (ldm_Data.setLight)
@@ -365,18 +395,27 @@ function rendering_Ldm () {
         //
         update_LdmBtn(false);
         //
-    (ldm_Event).addEventListener((`themechange`), (() => {
-        update_ThmCls();
-        update_LdmBtn(true);
-    }));
-    //
-    },
-    //
-    );
+        (ldm_Event).addEventListener(
+            (`themechange`), (() => {
+                setLDm_ThemeClass((compBtn),
+                    (`bg-${ldm_Color.light.ldmbtn}`),
+                    (`bg-${ldm_Color.dark.ldmbtn}`),
+                );
+                //
+                update_ThmCls();
+                update_LdmBtn(true);
+        }));
+    });
     //
 }
 //
 rendering_Ldm();
+//
+/**/
+
+
+/* Testing */
+//Test...
 //
 /**/
 

@@ -3,44 +3,73 @@
 
 /* Imports */
 import { jsVar,
-    jsTx, jsDoc,
-    } from "./basis.js";
+     jsTx, jsDoc,
+     } from "./basis.js";
 //
 /**/
 
 
 /* Rule - Tailwind Defaulter */
-    /** For Auto-Define Tailwind "Class-W1" Map
+     /** For Auto-Define Tailwind "Class-W1" Map
      * @param {...string} twCls
      * @returns {Object.<string,string>}
      */
 function twClasser (
-    ...twCls
+     ...twCls
 ) {
-    return ((Object).fromEntries((twCls)
-        .map((v) => [ (v), (v), ])));
+     return ((Object).fromEntries((twCls)
+          .map((v) => [ (v), (v), ])));
 }
 //
-    /** ?
+     /** Tailwind Fixing Service (Dasher Method)
      * @param {...string} twFix
-     * @param {?} 
-     * @returns {?}
+     * @returns {string}
      */
 export function tcRegulate (
-    ...twFix
+     ...twFix
 ) {
-    return ((jsTx).arr2Str(
-    (twFix), (jsVar.dash)));
+     return ((jsTx).arr2Str(
+     (twFix), (jsVar.dash)));
+}
+     /** Tailwind Pluginer Service (Coloner Method)
+     * @param {string} twPlug
+     * @param {string[]} twClss
+     * @returns {string}
+     */
+export function tcPlugnite (
+     twPlug,
+     twClss = [],
+) {
+     return ((twClss).map((cls) => (
+          `${twPlug}:${cls}`)));
 }
 //
 /**/
 
 
 /* Storage - Classes */
+//
+/** Tailwind Prettier Sorting
+ * [1] Layouts
+ * [2] Positions
+ * [3] Flexes / Grids
+ * [4] Sizing
+ * [5] Spacings
+ * [6] Components
+ * [7] Shapes
+ * [8] Colors
+ * [9] Typographies
+ * [10] Effects
+ * [11] Transitions / Animations
+ * [12] Transformations
+ * [13] Interactions
+ * [14] States / Variants
+ */
+//
 export const
 /*|*/
 layout = {...twClasser(
-        /* 1. Layout
+          /* 1. Layouts
      * {container}, {block}
      * {inline}, {flex}, {grid}
      * {hidden}
@@ -54,7 +83,7 @@ layout = {...twClasser(
 //
 )},
 position = {...twClasser(
-        /* 2. Position
+          /* 2. Positions
      * ==Position==
      * {absolute}, {relative}, {fixed}, {static}, {sticky}
      *
@@ -78,7 +107,7 @@ position = {...twClasser(
 (`z`),
 )},
 flexGrid = {...twClasser(
-        /* 3. Flex / Grid
+          /* 3. Flexes / Grids
      * {flex-*}, {grid-*}
      * {col-*}, {row-*}
      *
@@ -106,7 +135,7 @@ flexGrid = {...twClasser(
 (`place`), (`self`),
 )},
 sizing = {...twClasser(
-        /* 4. Sizing
+          /* 4. Sizings
      * {w-*}, {h-*}
      * {min-w-*},{max-w-*}, {min-h-*},{max-h-*}
      *
@@ -118,7 +147,7 @@ sizing = {...twClasser(
 (`aspect`),
 )},
 spacing = {...twClasser(
-        /* 5. Spacing
+          /* 5. Spacings
      * {p-*}, {m-*}
      * {px-*},{py-*}, {mx-*},{my-*}
      * {pr/pb/pl/pt}, {mr/mb/ml/mt}
@@ -138,7 +167,7 @@ spacing = {...twClasser(
 (`space`), (`gap`),
 )},
 comp = {...twClasser(
-        /* 6. Component
+          /* 6. Components
      * {border}, {text}, {bg},
      *
      * {ring}
@@ -149,7 +178,7 @@ comp = {...twClasser(
 (`ring`),
 )},
 shape = {...twClasser(
-        /* 7. Shape
+          /* 7. Shapes
      * {rounded}, {outline}
      *
      * {outline-offset}, {ring-offset}
@@ -163,7 +192,7 @@ shape = {...twClasser(
 (`divide`),
 )},
 colorize = {...twClasser(
-        /* 8. Color
+          /* 8. Colors
      * {from-*}, {via-*}, {to-*}
      *
      * {accent-*}, {caret-*}
@@ -178,7 +207,7 @@ colorize = {...twClasser(
 (`fill`), (`stroke`),
 )},
 typography = {...twClasser(
-        /* 9. Typography
+          /* 9. Typographies
      * {font-*}
      * {text-size}, {text-align}
      *
@@ -195,7 +224,7 @@ typography = {...twClasser(
 (`whitespace`), (`break`), (`list`),
 )},
 effects = {...twClasser(
-        /* 10. Effects
+          /* 10. Effects
      * {grayscale}, {invert}, {sepia}, {saturate}, {mix-blend}
      *
      * {shadow-*}, {opacity-*}, {blur-*}
@@ -208,21 +237,25 @@ effects = {...twClasser(
 (`grayscale`), (`invert`), (`sepia`),
 (`saturate`), (`mix-blend`),
 //
-(`shadow`),(`opacity`),(`blur`), (`brightness`),(`contrast`),
+(`shadow`), (`opacity`), (`blur`),
+(`brightness`), (`contrast`),
+//
 (`backdrop`),
 )},
 transition = {...twClasser(
-        /* 11. Transition / Animation
+          /* 11. Transitions / Animations
      * {transition-*}, {animate-*}
      * {ease-*}, {duration-*}
      * {delay-*}
      *//*
 */
-(`transition`),(`animate`), (`ease`),(`duration`),
+(`transition`),(`animate`),
+(`ease`),(`duration`),
+//
 (`delay`),
 )},
 transform = {...twClasser(
-        /* 12. Transform
+          /* 12. Transformations
      * {transform}
      *
      * {scale-*}
@@ -238,7 +271,7 @@ transform = {...twClasser(
 (`skew`),
 )},
 interaction = {...twClasser(
-        /* 13. Interaction
+          /* 13. Interactions
      * {appearance-none}
      *
      * {pointer-events-*}
@@ -250,9 +283,12 @@ interaction = {...twClasser(
 (`cursor`), (`select`), (`resize`), (`touch`),
 //
 (`appearance`),
+//
+(`pointer`),
+//
 )},
 states = {...twClasser(
-        /* 14. States / Variants
+          /* 14. States / Variants
      * ==Pseudo==
      * {hover:*}, {focus:*}, {active:*}
      * {disabled:*}

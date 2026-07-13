@@ -62,10 +62,10 @@ function buildComp_ViewImg (
     mbox: ((imgStrg).img_CompId(`atlrC_MainBox`)),
     imgs: ((imgStrg).img_CompId(`atlrC_ImageCon`)),
     text: ((jsMod).setElm(((jsDoc).createElm(`p`)), {
-        className: ((jsHt).classer(
-            imgStrg.atlr_PhTxt_Cls)),
-        //
-        textContent: (phAteiler),
+    //
+className: ((jsHt).classer(imgStrg.atlr_PhTxt_Cls)),
+textContent: (phAteiler),
+    //
     }))}
         ;
     //
@@ -209,7 +209,7 @@ export function test () {
     //*
     // Testing for waiting...
     // */
-    (jsCs).warn(`Images in Under Development...`);
+    //(jsCs).warn(`Images in Under Development...`);
     //
 }
     /** [Async] Presenting as "Struct" | | Images Ateiler

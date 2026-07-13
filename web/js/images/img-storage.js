@@ -15,28 +15,28 @@ import * as tw from '../tw-css-cls.js';
 export const
 /*|*/
 atlr_ImageCon_Cls = [  /* Ateiler: Container */
-    `grid`, `mx-auto`, `place-items-center`,
-    `px-2`,`py-4`, `gap-2`, `grid-cols-2`,
+    (`grid`), (`grid-cols-2`), (`place-items-center`),
     //
-    `sm:grid-cols-3`,
-    `md:px-4`, `md:gap-4`,
-    `lg:grid-cols-5`
+    (`mx-auto`), (`gap-2`), (`px-2`),(`py-4`),
+    //
+    ...((tw).tcPlugnite((`sm`), [ (`grid-cols-3`), ])),
+    ...((tw).tcPlugnite((`md`), [ (`px-4`), (`gap-4`), ])),
+    ...((tw).tcPlugnite((`lg`), [ (`grid-cols-5`), ])),
 ],
 atlr_PhTxt_Cls = [  /* Ateiler: Text Placeholder (If:No-Images) */
-    `font-semibold`, `text-white`,
-    `text-3xl`, `py-8`,
+    (`py-8`), (`text-white`), (`text-3xl`), (`font-semibold`),
 ],
 atlr_ElImg_Cls = [  /* Ateiler: Image Element (If:Has-Images) */
-    `cursor-pointer`, `transition-all`,
-    `ease-in-out`, `rounded-xl`,
+    (`w-[200px]`), (`rounded-xl`),
     //
-    //`bg-taupe-400`,
+    (`transition-all`), (`duration-200`), (`ease-in-out`),
     //
-    `w-[200px]`,
-    `duration-200`,
+    (`cursor-pointer`),
     //
-    `hover:scale-105`, `hover:[filter:drop-shadow(0_0_8px_white)]`,
-    `active:scale-95`, `active:[filter:drop-shadow(0_0_8px_gray)]`,
+    ...((tw).tcPlugnite((`hover`), [ (`scale-105`),
+        (`[filter:drop-shadow(0_0_8px_white)]`), ])),
+    ...((tw).tcPlugnite(`active`, [ (`scale-95`),
+        (`[filter:drop-shadow(0_0_8px_gray)]`), ])),
 ]
 ;
 /**/
@@ -59,8 +59,8 @@ export const img_CompId = ((id) => {
 /**/
 
 
-/* Uji Coba */
-//?
+/* Testing */
+//Test...
 //
 /**/
 

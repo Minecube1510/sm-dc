@@ -79,7 +79,7 @@ let rootPf = [],
     gtMode_Now = (null),
     //
     rp = (rcLn.switch.rp),
-    pf = (rcLn.switch.pf);;
+    pf = (rcLn.switch.pf);
 //
 /**/
 
@@ -91,10 +91,10 @@ export const
     (e).preventDefault();
 }),
     liresClsL = [ ...(ldm_FilterCls((lCompCls),
-        (`bg`))), (`bg-${ldm_Color.light.list}`),
+        (`bg`))), (`bg-${ldm_Color.light.bg}`),
 ],
     liresClsD = [ ...(ldm_FilterCls((dCompCls),
-        (`bg`))), (`bg-${ldm_Color.dark.list}`),
+        (`bg`))), (`bg-${ldm_Color.dark.bg}`),
 ]
     ;
 //
@@ -274,14 +274,11 @@ export async function gtMd_Config () {
 export function ldm_FilterCls (
     ldmCls, ldmPrefix,
 ) {
-    ldmPrefix = ((((Array).isArray
-        (ldmPrefix))
-        ? (ldmPrefix) : [ldmPrefix]
-    ).map((p) => `${p}-`));
+    ldmPrefix = ((((Array).isArray(ldmPrefix)) ?
+    (ldmPrefix) : [ldmPrefix]).map((p) => (`${p}-`)));
     //
     return ((ldmCls).filter((c) => (!(ldmPrefix)
-        .some((p) => ((c).startsWith(p)))
-    )));
+        .some((p) => ((c).startsWith(p))))));
 }
 //
     /** Remocon Designing, with Tailwind Classes

@@ -22,8 +22,8 @@ export const jsTx = {
 /* Fetchings */
 let data = ((Object).fromEntries(
     await ((Promise).all([
-        `vars`, `dir-safe`,
-        `git-data`, `git-link`,
+        (`vars`), (`dir-safe`),
+        (`git-data`), (`git-link`),
     ].map(async (file) => {
         let json = (await (fetch(jsTx
             .lower(`call/json/${file}.json`
@@ -41,7 +41,7 @@ export const
     link: (data[`git-link`]),
 },
     dirSafe = ((data
-    [`dir-safe`]))
+        [`dir-safe`]))
     ;
 //
 /**/

@@ -59,8 +59,8 @@ function compGt_SelectOpting (
             //
             id: (gtComSel.cElmSe),
     })),
-        lSelOptCls = (`bg-${ldm_Color.light.list}`),
-        dSelOptCls = (`bg-${ldm_Color.dark.list}`)
+        lSelOptCls = (`bg-${ldm_Color.light.bg}`),
+        dSelOptCls = (`bg-${ldm_Color.dark.bg}`)
         ;
     //
     (jsMod).setElm((gtSelect), {
@@ -113,10 +113,10 @@ function idxGtElm_Select ({
         className: (`hidden`),
         textContent: (optLbl),
     });
-    //
-    (gtElm_Select).comWrap.className = (
-        `relative flex items-center`);
-    //
+    (jsMod).setElm((gtElm_Select.comWrap), {
+        className: (
+            `relative flex items-center`),
+    });
     (jsMod).setElm((gtElm_Select.cosArrow), {
         className: ((jsHt).classer(
             idxStrg.gt_SelectCarrow_Cls)),

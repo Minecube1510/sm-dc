@@ -119,7 +119,10 @@ function idx_RenderBuild () {
         if (eLisRes) {
             (eLisRes).classList.add(`into-smooth`);
             //
-            ldmClasser(eLisRes, liresClsL, liresClsD);
+            ldmClasser((eLisRes),
+                ldm_FilterCls((lCompCls), (`border`)),
+                ldm_FilterCls((dCompCls), (`border`))
+            );
         }
         //
         ldmClasser((iScMd.ftSrch),

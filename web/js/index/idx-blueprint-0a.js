@@ -27,7 +27,6 @@ import * as idxStrg from './idx-storage.js';
         mdCosD_Comp_Cls as dCompCls,
         //
         mdSrch_AutoCm_Cls as srcAutoCls,
-        gt_SrcRes_Cls as srcResCls,
         //
     } from "./idx-storage.js";
     /*|
@@ -57,7 +56,8 @@ import {
     /*|
   //
 |*/
-import { 
+import { ldm_FilterCls,
+    //
     liresClsL, liresClsD,
     //
     } from "./idx-system.js";
@@ -270,13 +270,16 @@ export function gtIn_SrcUpDown () {
             let active = ((idx) === (srcSelected));
             //
             if (active) {
-                (lisRes).classList.add(liSelected);
-                //
+                (lisRes).classList.add(
+                    (liSelected), (`font-semibold`)
+                );
                 ldmClasser(lisRes,
                     srcSelLight, srcSelDark);
             } else {
-                (lisRes).classList.remove((liSelected),
-                    (srcSelLight), (srcSelDark));
+                (lisRes).classList.remove(
+                    (liSelected), (`font-semibold`),
+                    (srcSelLight), (srcSelDark)
+                );
         }});
 }
 //
@@ -287,7 +290,28 @@ export function gtIn_SrcUpDown () {
 export function shuffle_SrcReList (
     inSrc
 ) {
-    const MAX_SRC_RES = (11);
+    let MAX_SRC_RES;
+    const
+        phone_W = (window.innerWidth),
+        phone_H = (window.innerHeight)
+        ;
+        //
+    switch (true) {
+        case (((phone_W) >= (800))
+            || ((phone_H) <= (550))):
+            MAX_SRC_RES = (4);
+            break;
+        case ((phone_W) <= (540)):
+            MAX_SRC_RES = (5);
+            break;
+        case ((phone_W) <= (634)):
+            MAX_SRC_RES = (6);
+            break;
+        default:
+            MAX_SRC_RES = (8);
+            break;
+    }
+        //
         if (!(inSrc.length)) return [];
     inSrc = ((jsTx).lower(inSrc));
     //
@@ -311,17 +335,22 @@ export function render_SrcReList (
     //
     if (!(knowRes.length)) {
         srcFilter_Visible((iScMd.idxSrch), (false));
-        (iScMd).srcRes.replaceChildren();
+        (iScMd.srcRes).replaceChildren();
         //
         return;
     }
     //
-    const dirBox = ((jsMod).setElm((jsDoc)
-        .createElm(`ul`), {
+    const dirBox = ((jsMod).setElm(
+        (jsDoc).createElm(`ul`), {
             id: (lisResId),
     }));
     //
-    ldmClasser((dirBox), (liresClsL), (liresClsD));
+    (dirBox).classList.add((`p-1`),
+        (`space-y-1`), (`rounded-lg`));
+    ldmClasser((dirBox),
+        ldm_FilterCls((liresClsL), (`border`)),
+        ldm_FilterCls((liresClsD), (`border`))
+    );
     //
     (knowRes).forEach((list, idx) => {
         const srcList = ((jsMod).setElm(((jsDoc)
@@ -352,6 +381,7 @@ export function render_SrcReList (
         //
     (ldm_Event).addEventListener((`themechange`), (() => {
         ldmClasser(srcList, clsLForLis, clsDForLis);
+        
     }));
         //
         (srcList).dataset.index = (idx);

@@ -2,8 +2,10 @@
 /* web/js/index/idx-blueprint-2a.js */
 
 /* Imports */
-import { jsVar,
+import { jsVar, jsMod,
+    //
     jsTx, jsCs, jsDoc, jsHt,
+    //
     } from "../basis.js";
 //
 import * as idxStrg from './idx-storage.js';
@@ -259,20 +261,16 @@ function gtInput_Sys (
 
 
 /* END */
-    /** Rendering Search Results Listed
-     * @returns {void}
-     */
-function render_SrcResults () {
-    (iScMd.srcRes).className = ((jsHt)
-        .classer(srcResCls));
-    //
-}
     /** Compiler the Inputters Process
      * @returns {void}
      */
 export function compiling_Inputters () {
     gtInput_Sys();
-    render_SrcResults();
+    //
+    (jsMod).setElm((iScMd.srcRes), {
+        className: ((jsHt)
+            .classer(srcResCls)),
+    });
 }
     /** [Async] Finalize - For RawPath Feature
      * @returns {void}

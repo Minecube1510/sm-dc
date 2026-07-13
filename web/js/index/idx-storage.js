@@ -15,14 +15,17 @@ import * as tw from '../tw-css-cls.js';
 /**/
 
 
-/* Storage - Main-Comping Classes */
+/* Storage - WIP Classes */
 export const
 /*|*/
 idxView_Cls = [
     `flex`, `relative`,
     `overflow-hidden`,
-    `flex-col`, `flex-1`,
-    `mt-4`, `rounded-sm`,
+    //
+    `flex-col`, `rounded-sm`,
+    //
+    `flex-1`, `mt-4`,
+    //
     `border-4`,
 ],
 idx_ColorChain_Cls = [
@@ -33,29 +36,23 @@ idx_ColorChain_Cls = [
 idx_LdmEff_cChain_Cls = [
     `transition-colors`,
     `ease-out`,
-]
-;
-/**/
-
-
-/* Storage - Geartool Classes */
-export const
-/*|*/
+],
 gt_SynComp_Cls = [
     `border-2`, `rounded-lg`,
+    //
+    `md:border-4`,
 ],
 gt_InvoComp_Cls = [
     `into-smooth`, `rounded-lg`,
     `focus:outline-none`,
 ],
-//
 gt_MainSwitch_Cls = [
     `border`, `rounded-lg`,
     `px-3`,`py-2`,
     `focus-within:ring-1`,
 ],
 gt_SwitchSelect_Cls = [
-    `shadow`,  //
+    `shadow`,
     `row-start-1`, `col-start-1`,
 ],
 gt_SwitchBg_Cls = [
@@ -65,7 +62,6 @@ gt_SwitchText_Cls = [
     `relative`, `z-10`, `px-2`,
     `font-semibold`,
 ],
-//
 gt_SelectOpting_Cls = [
     `appearance-none`, `cursor-pointer`,
     `font-semibold`,
@@ -77,32 +73,24 @@ gt_SelectCarrow_Cls = [
     `bi`,`bi-caret-down-fill`, 
     `transition-transform`, `ease-in-out`,
     //
-    `right-3`,
+    `right-2.5`,
     //
     `duration-200`,
 ],
-//
 gt_Rooter_Cls = [
     `cursor-pointer`, `active:cursor-default`,
 ],
 gt_SrcRes_Cls = [
-    `absolute`, `shadow`,
+    `absolute`,
     `top-full`, `w-full`,
     //
-    `rounded-lg`,
+    `inset-shadow-md`, `shadow-xl/30`,
+    `rounded-xl`,
     //
     `left-0`, `z-50`,
-    `border-2`,
     //
-    `translate-y-1.5`,
-]
-;
-/**/
-
-
-/* Storage - Search-Feature Classes */
-export const
-/*|*/
+    `translate-y-10.25`,
+],
 mdVi_Ph_Cls = [
     `flex`, `absolute`, `rounded-lg`,
     `items-center`,`justify-center`,
@@ -123,7 +111,6 @@ mdVi_LsComp_Cls = [
     `bg-white/70`, `backdrop-blur-sm`,
     `duration-300`,
 ],
-//
 mdVi_InputPls_Cls = [
     //
 ],
@@ -135,7 +122,6 @@ mdVi_InputDef_Cls = [
     `border-transparent`,
     `into-smooth`,
 ],
-//
 mdVi_SrcLogo_Cls = [ 
     `transition-transform`,
     `ease-in-out`,
@@ -154,12 +140,18 @@ mdCosD_Comp_Cls = (
 mdSrch_AutoCm_Cls = [
     `cursor-pointer`, `into-smooth`,
     `py-1`,`px-2`,
+    //
+    `transition-all`,
+    `duration-300`,
+    //
+    `rounded-md`,
+    //
+    `hover:font-semibold`,
 ],
 mdSrch_Sacker_Cls = [
     `absolute`, `items-center`,
     `flex`,
 ],
-//
 mdSrch_AddChips_Cls = [
     `inline-flex`, `items-center`,
     `gap-1`, `px-2`,`py-1`,
@@ -180,8 +172,10 @@ mdSrch_CrackChip_Cls = [
 
 
 /* Storage - Comping */
-export const idx_RemoCon = (
-    (jsDoc).getId(`idx-remocon`));
+export const
+/*|*/
+idx_RemoCon = ((jsDoc)
+.getId(`idx-remocon`));
 //
 export const idx_RcLang = {
     "switch": {
@@ -292,6 +286,12 @@ reaState = {
     }
 }
 ;
+/**/
+
+
+/* Testing */
+//Test...
+//
 /**/
 
 

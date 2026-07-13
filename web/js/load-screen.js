@@ -5,103 +5,143 @@
 //Importing...
 //
 import { jsVar, jsMod,
-    jsTx, jsDoc, jsHt,
+    jsTx, jsCs, jsDoc, jsHt,
+    //
     } from "./basis.js";
 //
+import * as tw from './tw-css-cls.js';
+//
 /**/
 
 
-/* Loading Init */
-const coLoadScreen = ((jsDoc)
-    .getId(`loading-screen`)),
+/* Loading Screen - Storage */
+const
+/*|*/
+comp_LoadScreen = ((jsDoc)
+.getId(`loading-screen`)),
+/*|
+|*/
+transing = (750),
+N4 = (4),
+/*|
+|*/
+opacity0 = ((tw).tcRegulate((tw
+    .effects.opacity), (0))),
+opacity100 = ((tw).tcRegulate((tw
+    .effects.opacity), (100))),
+//
+easeOut = ((tw).tcRegulate((tw
+    .transition.ease), (`out`))),
     //
-    transing = (750)
-    ;
+transite_Opacity = ((tw).tcRegulate((tw
+    .transition.transition), (`opacity`))),
+    //
+durate_TimeTran = ((tw).tcRegulate((tw
+    .transition.duration), (transing))),
 //
-if (coLoadScreen) {
-    (coLoadScreen).classList.add(
-        `ease-out`, `transition-opacity`,
-        `duration-500`, `opacity-100`,
-    );
-}
+scale95 = ((tw).tcRegulate((tw
+    .transform.scale), (95))),
+scale100 = ((tw).tcRegulate((tw
+    .transform.scale), (100))),
+scale105 = ((tw).tcRegulate((tw
+    .transform.scale), (105))),
 //
+tw_PoEvAuto = ((tw).tcRegulate((tw.interaction
+    .pointer), (`events`), (`auto`))),
+tw_PoEvNone = ((tw).tcRegulate((tw.interaction
+    .pointer), (`events`), (`none`))),
+/*|
+|*/
+loadScreen_CoreCls = [ (opacity100),
+    (transite_Opacity), (easeOut),
+    (`duration-500`),
+],
+loadScreen_LayerCls = [ (`flex`), (`fixed`),
+    (`inset-0`), (`z-[9999]`),
+    //
+    (`flex-col`), (`items-center`),(`justify-center`),
+    (`text-white`),(`bg-neutral-950`), (opacity0),
+    //
+    (`transition-all`), (durate_TimeTran),
+    (easeOut), (scale95), (tw_PoEvNone),
+],
+//
+loadScreen_SpinCls = [
+    (`size-${(N4)**(2)}`), (`m-${N4}`),
+    //
+    (`rounded-full`), (`border-${N4}`),
+    (`border-neutral-700`),(`border-t-white`),
+    //
+    (`animate-spin`),
+],
+loadScreen_TextCls = [ (`text-xl`), (`font-semibold`),
+    (opacity0), (transite_Opacity), (durate_TimeTran),
+    (easeOut), (`animate-pulse`),
+]
+;
+export const
+/*|*/
+classReplace = ((elm, mappings) => {
+    (mappings).forEach(([ from, to, ]) => {
+        (elm).classList.replace(from, to);
+    });
+})
+;
 /**/
 
 
-/* Struct - Loading */
+/* Build - Loading */
+if (comp_LoadScreen) { (comp_LoadScreen)
+.classList.add(...loadScreen_CoreCls); }
+//
     /** Showing Loading-Screen
      * @returns {HTMLElement|null}
      */
 function show_Waiting () {
-        if (!(coLoadScreen)) return (null);
+        if (!(comp_LoadScreen)) return (null);
         //
-    let loadScreenCls = [
-        `fixed`, `inset-0`, `z-[9999]`,
-        `flex`, `flex-col`,
-        `items-center`, `justify-center`,
-        `bg-neutral-950`, `text-white`,
-        `transition-all`, `duration-${transing}`,
-        `ease-out`, `opacity-100`, `scale-100`,
-    ];
-    //
-    (jsMod).setElm((coLoadScreen), {
-        className: ((jsHt).classer(loadScreenCls)),
+    (jsMod).setElm((comp_LoadScreen), {
+        className: ((jsHt).classer(loadScreen_LayerCls)),
         textContent: ((jsTx).trm(jsVar.empty)),
     });
     //
-    const spinElm = ((jsMod).setElm(
-        ((jsDoc).createElm(`div`)), {
-        //
-className: ((jsHt).classer([
-    `rounded-full`, `animate-spin`,
-    `w-16`, `h-16`, `mb-4`,
-    `border-4`, `border-neutral-700`,
-    `border-t-white`,
-])),
+    const
+spinElm = ((jsMod).setElm((
+    (jsDoc).createElm(`div`)), {
+        className: ((jsHt).classer(
+            loadScreen_SpinCls)),
     })),
-        //
-    textElm = ((jsMod).setElm(
-        ((jsDoc).createElm(`p`)), {
-            //
-className: ((jsHt).classer([
-    `text-xl`, `font-semibold`,
-    `transition-opacity`,
-    `duration-${transing}`,
-    `ease-out`, `opacity-100`,
-    `animate-pulse`,
-])),
-textContent: (`Loading the Page...`),
-        //
-    }))
-        ;
-    (coLoadScreen).append(spinElm, textElm);
+textElm = ((jsMod).setElm((
+    (jsDoc).createElm(`p`)), {
+        className: ((jsHt).classer(
+            loadScreen_TextCls)),
+        textContent: (`Loading the Page...`),
+    }));
     //
-    return (coLoadScreen);
+    (comp_LoadScreen).append(spinElm, textElm);
+    //
+    return (comp_LoadScreen);
 }
     /** Hiding Loading-Screen
      * @returns {void}
      */
 function hide_Waiting () {
-        if (!(coLoadScreen)) return;
+        if (!(comp_LoadScreen)) return;
     //
-    [
-        [ `opacity-100`, `opacity-0`, ],
-        [ `scale-100`, `scale-105`, ],
-//
-[ `pointer-events-auto`, `pointer-events-none`, ],
-//
-    ].forEach(([from, to]) => { (coLoadScreen)
-        .classList.replace(from, to); });
+    let textElm = ((comp_LoadScreen)
+        .querySelector(`p`))
+        ;
+    classReplace((comp_LoadScreen), [
+        [ opacity100, opacity0, ],
+        [ scale100, scale105, ],
+        [ tw_PoEvAuto, tw_PoEvNone, ],
+    ]);
     //
-    const textElm = ((coLoadScreen)
-        .querySelector(`p`));
+    if (textElm) { classReplace((textElm), [
+        [ opacity100, opacity0, ]]); }
     //
-    if (textElm) { (textElm).classList.replace(
-        `opacity-100`, `opacity-0`); }
-    //
-    setTimeout(() => { (coLoadScreen)
+    setTimeout(() => { (comp_LoadScreen)
         .remove(); }, (transing));
-    //
 }
 //
 /**/
@@ -112,19 +152,20 @@ function hide_Waiting () {
      * @returns {void}
      */
 function final_LoadScreen () {
-    let ls_Wait = (show_Waiting());
-    //
+    let ls_Wait = (show_Waiting())
+        ;
     requestAnimationFrame(() => {
             if (!(ls_Wait)) return;
-        let textElm = ((ls_Wait).querySelector(`p`));
+        let textElm = (ls_Wait).querySelector(`p`);
         //
-        (ls_Wait).classList.replace(`opacity-0`, `opacity-100`);
-        (ls_Wait).classList.replace(`scale-95`, `scale-100`);
-        (ls_Wait).classList.remove(`pointer-events-none`);
+        classReplace((ls_Wait), [[
+            opacity0, opacity100, ],[
+            scale95, scale100, ],[
+            tw_PoEvNone, tw_PoEvAuto,
+        ]]);
         //
-        if (textElm) { (textElm).classList
-            .replace(`opacity-0`, `opacity-100`);
-        }
+        if (textElm) { classReplace((textElm),
+            [[ opacity0, opacity100, ]]); }
     });
 }
 //
@@ -142,6 +183,12 @@ async function on_LoadScreen () {
 }
 //
 await on_LoadScreen();
+//
+/**/
+
+
+/* Testing */
+//Test...
 //
 /**/
 

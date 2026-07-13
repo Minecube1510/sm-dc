@@ -7,7 +7,19 @@ import * as idxCompile from './idx-compile.js';
 
 
 /* Automate */
-//TODO: Later
+//TODO
+// 1. Switch
+// 2. Select
+// 3. Search List (V2)
+// 4. LDM Data Saving
+//
+/**
+ * Size yg dibutuhkan:
+ * Desktop
+ * HP Portrait
+ * Desktop
+ * Desktop
+ */
 //
 /**/
 

@@ -59,7 +59,7 @@ article#content {
 .switch-left, .switch-right {
     transition:
         opacity var(--transer-smooth) var(--theme-opting),
-        transform var(--transer-smooth) var(--theme-opting);;
+        transform var(--transer-smooth) var(--theme-opting);
 }
 /**/
 .switch-left {

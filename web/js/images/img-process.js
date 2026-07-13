@@ -14,8 +14,8 @@ import * as iGit from '../init-github.js';
 
 
 /* Helpers & Variables */
-const format_exts = ([`png`,
-    `jpg`, `jpeg`, `webp`,
+const format_exts = ([ (`png`),
+    (`jpg`),(`jpeg`), (`webp`),
     //
     `gif`,
 ].map((ext) => (`.${(jsTx).lower(ext)}`))),
@@ -215,6 +215,7 @@ export async function alImages_Ascertains (
     gatherMethod = (true),
     aia_Once = (true),
 ) {
+    (jsCs).grBgn(`Fetching Process...`);
     if (aia_Once) {
         (jsCs).log((`Gathering:`), (gatherMethod));
     }
@@ -242,6 +243,9 @@ export async function alImages_Ascertains (
     if (aia_Once) {
         (jsCs).log(aiA_Result);
     }
+    //
+    (jsCs).grEnd();
+    (jsCs).log(`All process is done, Completely.`);
     //
     return (aiA_Result);
 }
