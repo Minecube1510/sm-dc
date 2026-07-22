@@ -10,7 +10,9 @@ import { jsVar, jsMod,
     //
 import * as iGit from '../init-github.js';
 //
-import { setPage_Comping,
+import { ldm_Color, ldm_Data, ldm_Event,
+    //
+    setPage_Comping,
     //
     } from "../set-paging.js";
     /*|
@@ -24,7 +26,7 @@ import * as imgPro from './img-process.js';
 /**/
 
 
-/* Formalize - Componentor */
+/* Establize - Component */
 /** Ateiler Images-Displayer Componentor Config
  * @typedef {Object} ViewImagesComp
  * @property {HTMLElement|null} mbox
@@ -61,7 +63,7 @@ function buildComp_ViewImg (
         //
     mbox: ((imgStrg).img_CompId(`atlrC_MainBox`)),
     imgs: ((imgStrg).img_CompId(`atlrC_ImageCon`)),
-    text: ((jsMod).setElm(((jsDoc).createElm(`p`)), {
+    text: ((jsMod).setElm(((jsDoc).creatElm(`p`)), {
     //
 className: ((jsHt).classer(imgStrg.atlr_PhTxt_Cls)),
 textContent: (phAteiler),
@@ -88,7 +90,7 @@ textContent: (phAteiler),
 /**/
 
 
-/* Formalize - Building */
+/* Establize - Rendering */
 let reSource_Images = (async (mode) => {
     let { source, method } = (imgConfig[mode]);
     //
@@ -181,7 +183,7 @@ async function autoBuild_Ateiler () {
             sysGit.data.repo}/${item.slice(1)}`));
         //
         const imgComp = ((jsMod).setElm(((jsDoc)
-            .createElm(`img`)), { src,
+            .creatElm(`img`)), { src,
                 draggable: (false),
                 className: ((jsHt).classer(
                     imgStrg.atlr_ElImg_Cls)),
@@ -199,7 +201,7 @@ async function autoBuild_Ateiler () {
 /**/
 
 
-/* Final */
+/* Finalize - DOM */
     /** Presenting as "Test" | Images Ateiler
      * @returns {void}
      */
@@ -209,7 +211,7 @@ export function test () {
     //*
     // Testing for waiting...
     // */
-    //(jsCs).warn(`Images in Under Development...`);
+    //(jsCs).warn(`Under Development...`);
     //
 }
     /** [Async] Presenting as "Struct" | | Images Ateiler
@@ -235,7 +237,7 @@ export async function struct () {
 
 
 /* Uji Coba */
-//console.log(imgStrg);
+//Testing...
 //
 /**/
 

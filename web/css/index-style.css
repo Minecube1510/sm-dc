@@ -22,6 +22,8 @@
     --index-transition-focus:
         box-shadow var(--transer-smooth) var(--theme-opting);
     /**/
+    --none: (none);
+    /**/
 }
 /**/
 /*
@@ -56,24 +58,11 @@ article#content {
 
 
 /* Costumize */
-.switch-left, .switch-right {
-    transition:
-        opacity var(--transer-smooth) var(--theme-opting),
-        transform var(--transer-smooth) var(--theme-opting);
-}
-/**/
-.switch-left {
-    opacity: 1;
-}
-.peer:checked + label .switch-left {
-    opacity: .5;
-}
-/**/
-.switch-right {
-    opacity: .5;
-}
-.peer:checked + label .switch-right {
-    opacity: 1;
+.theme-smooth {
+    transition-property:
+        /* opacity var(--transer-smooth) var(--theme-opting), */
+        var(--index-transition-theme)
+        ;
 }
 /**/
 #arrow-gt-selector::before {
@@ -93,6 +82,15 @@ article#content {
 }
 /**
 **/
+.no-scrollbar::-webkit-scrollbar {
+    display: var(--none);
+}
+.no-scrollbar {
+    scrollbar-width: var(--none);
+    -ms-overflow-style: var(--none);
+/**
+**/
+}
 /*
     */
 
@@ -102,8 +100,6 @@ article#content {
 .into-smooth
 {
     /* /*  */
-    box-shadow: 0 0 0 3px transparent;
-    /**/
     transition:
         var(--index-transition-theme),
         var(--index-transition-focus)

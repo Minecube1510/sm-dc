@@ -40,61 +40,72 @@ data-theme="">
 |
 !-->
 <body draggable="false" id="body"
-class="min-h-screen flex flex-col container mx-auto p-3 select-none">
+class="container flex flex-col min-h-screen p-3 mx-auto select-none">
     <!--
         Loading Screening, then just Script... -->
-    <div class="center fixed flex items-center justify-center inset-0 z-[9999] bg-neutral-950"
+    <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-neutral-950"
         id="loading-screen"></div>
     <script type="module" src="web/js/load-screen.js"
     defer></script>
     <!--
         Body: Contents -->
     <header id="header-idx" class="">
-        <h1 class="text-xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
+        <h1 class="py-5 text-2xl font-bold text-center md:text-5xl lg:text-5xl">
             MD Previewer<br>
             (Under Development)
-        </h1><hr class="rounded-2 border-2">
-    </header>
-    <main id="main-idx" class="flex flex-col flex-1 into-smooth">
-        <div id="idx-remocon" class="grid gap-y-4 my-4">
-            <div class="flex justify-center items-center gap-4 text-sm"
-                id="idx-geartool">
-                <div id="idx-gt-switch"
-                class="inline-block text-center"></div>
-                <div id="idx-gt-input" class="flex-1">
-                    <input placeholder="Path/Folder/File.formatted" type="text"
-                        class="w-full px-3 py-2 text-start focus:outline-none font-semibold into-smooth"
-                        id="idx-gt-input-comp" value="" data-value="">
-                </div>
-                <div id="idx-gt-select">
-                </div>
-            </div><div class="relative flex overflow-hidden border-2 rounded-lg into-smooth md:border-4"
-                id="idx-search">
+    </h1></header>
+    <main id="main-idx" class="flex flex-col flex-1">
+        <hr class="border-2">
+        <div class="grid my-4 gap-y-4"
+            id="idx-remocon">
+            <div class="grid grid-cols-2 gap-4 text-sm font-semibold"
+                id="idx-rc-geartool">
+                <div
+class="relative flex items-center justify-center gap-2 p-2 text-center rounded-lg size-full into-smooth"
+                    id="idx-rcgt-lever">RP | PF</div>
+                <div class="flex-none w-full col-span-2 row-start-2 rounded-lg into-smooth"
+                    id="idx-rcgt-linav">
+                    <input type="text" value="" data-value=""
+                        placeholder="Path/Folder/File.formatted"
+class="px-3 py-2 font-semibold size-full text-start focus:outline-none"
+                        id="idx-rcgt-linav-comp" readonly>
+                </div><div
+class="relative flex items-center justify-center p-2 text-center rounded-lg size-full group into-smooth"
+                    id="idx-rcgt-select">Select \V/</div>
+            </div><div
+class="relative flex py-2 rounded-lg into-smooth"
+                id="idx-rc-search">
                 <span class="inline-flex items-center px-3 font-black"
-                    id="article-md-root" data-path-root="/">/</span>
-                <div class="left-12 top-1/2 -translate-y-1/2 gap-1 z-20"
-                    id="src-md-chips"></div>
-                <input class="flex-1 px-3 py-2 pr-10" autocomplete="off"
-                    type="text" id="article-md-search" aria-label="View"
-                    spellcheck="false" value="" data-value=""
+                    data-path-root="/" id="idx-rcsc-root">/</span>
+                <div class="absolute flex items-center gap-1"
+                    id="idx-rcsc-chips"></div>
+                <input class="size-full focus:outline-none"
+                    autocomplete="off" aria-label="View" spellcheck="false"
+                    type="text" id="idx-rcsc-input" value="" data-value=""
                     placeholder="Type the MD document name at here">
-                <button class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                    type="button" id="article-md-src-btn" aria-label="Search"
-                    value=""><span class="bi bi-search" id="article-md-src-icon"></span></button>
-                <div class="" id="src-md-res"></div>
+                <button type="button" aria-label="Search"
+class="flex items-center justify-center mx-2 border cursor-pointer size-6"
+                    id="idx-rcsc-btn" value="">
+                </button>
+                <div
+class="absolute inset-x-0 flex items-center max-w-[98%] gap-1 p-2 mx-auto my-2 rounded-lg z-999 theme-smooth"
+                    id="idx-rcsc-result"></div>
             </div>
-        </div><hr class="rounded-2 border-2">
-        <div class="" id="idx-view"><div class="" id="md-loading-idx"></div><article
-            class="markdown-body m-0 p-4 flex-1"
-            id="content" title="">
-        </article></div>
+        </div><hr class="border-2">
+        <div
+class="relative flex flex-1 my-4 overflow-hidden border-2 rounded-lg bg-gray-950 into-smooth"
+            id="idx-view">
+            <div class=""
+                id="idx-view-loading"></div>
+            <article
+class="flex-1 p-4 m-0 bg-transparent rounded-lg markdown-body"
+                id="idx-view-content"></article>
+        </div><hr class="border-2">
     </main>
-    <footer id="footer-idx" class="text-center mt-4">
-        <p class="font-semibold">By:
-            <span id="github-username">
+    <footer id="footer-idx" class="mt-4 text-center">
+        <p class="font-semibold">
+            By:<span id="github-username">
                 Git-Username
-            </span>
-        </p>
-    </footer>
+    </span></p></footer>
 </body>
 </html>

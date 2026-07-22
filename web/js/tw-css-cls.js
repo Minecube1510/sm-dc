@@ -66,6 +66,16 @@ export function tcPlugnite (
  * [14] States / Variants
  */
 //
+/** Tailwind Responsivity [RULERESPONSIVE]
+ * Def: Phone - Portrait (W < 640px)
+ * SM: Phone - Landscape (W >= 640px)
+ * MD: Tablet (W >= 768px)
+ * LG: Laptop/Desktop (W >= 1024px)
+ *
+ * For (W < 200px) OR (W =< 360px)
+ * JUST BLANK IT ALL!
+ */
+//
 export const
 /*|*/
 layout = {...twClasser(
@@ -124,6 +134,8 @@ flexGrid = {...twClasser(
      * {content-*}
      * {place-*}
      * {self-*}
+     *
+     * {overflow}
      *//*
 */
 (`col`),(`row`),
@@ -133,16 +145,18 @@ flexGrid = {...twClasser(
 //
 (`items`), (`justify`), (`content`),
 (`place`), (`self`),
+//
+(`overflow`),
 )},
 sizing = {...twClasser(
           /* 4. Sizings
-     * {w-*}, {h-*}
+     * {w-*},{h-*}, {size}
      * {min-w-*},{max-w-*}, {min-h-*},{max-h-*}
      *
      * {aspect-*}
      *//*
 */
-(`w`),(`h`),
+(`w`),(`h`), (`size`),
 //
 (`aspect`),
 )},
@@ -206,7 +220,7 @@ colorize = {...twClasser(
 //
 (`fill`), (`stroke`),
 )},
-typography = {...twClasser(
+typograph = {...twClasser(
           /* 9. Typographies
      * {font-*}
      * {text-size}, {text-align}
@@ -289,6 +303,9 @@ interaction = {...twClasser(
 )},
 states = {...twClasser(
           /* 14. States / Variants
+     * ==Adders==
+     * {group}
+     *
      * ==Pseudo==
      * {hover:*}, {focus:*}, {active:*}
      * {disabled:*}
@@ -301,6 +318,7 @@ states = {...twClasser(
      * {sm:*}, {md:*}, {lg:*}, {xl:*}, {2xl:*}
      *//*
 */
+(`group`),
 (`hover`), (`focus`), (`active`), (`disabled`),
 //
 (`aria`), (`data`),

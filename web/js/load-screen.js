@@ -8,6 +8,9 @@ import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
     //
     } from "./basis.js";
+import {
+    wDisplay_Settler,
+} from "./set-paging.js";
 //
 import * as tw from './tw-css-cls.js';
 //
@@ -15,12 +18,14 @@ import * as tw from './tw-css-cls.js';
 
 
 /* Loading Screen - Storage */
-const
-/*|*/
+export const
 comp_LoadScreen = ((jsDoc)
-.getId(`loading-screen`)),
+.getId(`loading-screen`))
+;
 /*|
 |*/
+const
+/*|*/
 transing = (750),
 N4 = (4),
 /*|
@@ -38,6 +43,8 @@ transite_Opacity = ((tw).tcRegulate((tw
     //
 durate_TimeTran = ((tw).tcRegulate((tw
     .transition.duration), (transing))),
+durate_MultiGen = ((tw).tcRegulate((tw
+    .transition.duration), (500))),
 //
 scale95 = ((tw).tcRegulate((tw
     .transform.scale), (95))),
@@ -48,13 +55,13 @@ scale105 = ((tw).tcRegulate((tw
 //
 tw_PoEvAuto = ((tw).tcRegulate((tw.interaction
     .pointer), (`events`), (`auto`))),
-tw_PoEvNone = ((tw).tcRegulate((tw.interaction
+tw_PoEvNon = ((tw).tcRegulate((tw.interaction
     .pointer), (`events`), (`none`))),
 /*|
 |*/
 loadScreen_CoreCls = [ (opacity100),
     (transite_Opacity), (easeOut),
-    (`duration-500`),
+    (durate_MultiGen),
 ],
 loadScreen_LayerCls = [ (`flex`), (`fixed`),
     (`inset-0`), (`z-[9999]`),
@@ -63,7 +70,7 @@ loadScreen_LayerCls = [ (`flex`), (`fixed`),
     (`text-white`),(`bg-neutral-950`), (opacity0),
     //
     (`transition-all`), (durate_TimeTran),
-    (easeOut), (scale95), (tw_PoEvNone),
+    (easeOut), (scale95), (tw_PoEvNon),
 ],
 //
 loadScreen_SpinCls = [
@@ -107,18 +114,26 @@ function show_Waiting () {
     //
     const
 spinElm = ((jsMod).setElm((
-    (jsDoc).createElm(`div`)), {
+    (jsDoc).creatElm(`div`)), {
         className: ((jsHt).classer(
             loadScreen_SpinCls)),
     })),
 textElm = ((jsMod).setElm((
-    (jsDoc).createElm(`p`)), {
+    (jsDoc).creatElm(`p`)), {
         className: ((jsHt).classer(
             loadScreen_TextCls)),
         textContent: (`Loading the Page...`),
-    }));
+    })),
     //
-    (comp_LoadScreen).append(spinElm, textElm);
+    web_WX = ((window
+        .innerWidth) <= (400)),
+    web_HY = ((window
+        .innerHeight) <= (200))
+        ;
+    if ((!(web_WX)) && (!(web_HY))) {
+        (comp_LoadScreen).append(
+            (spinElm), (textElm));
+    }
     //
     return (comp_LoadScreen);
 }
@@ -134,7 +149,7 @@ function hide_Waiting () {
     classReplace((comp_LoadScreen), [
         [ opacity100, opacity0, ],
         [ scale100, scale105, ],
-        [ tw_PoEvAuto, tw_PoEvNone, ],
+        [ tw_PoEvAuto, tw_PoEvNon, ],
     ]);
     //
     if (textElm) { classReplace((textElm), [
@@ -161,7 +176,7 @@ function final_LoadScreen () {
         classReplace((ls_Wait), [[
             opacity0, opacity100, ],[
             scale95, scale100, ],[
-            tw_PoEvNone, tw_PoEvAuto,
+            tw_PoEvNon, tw_PoEvAuto,
         ]]);
         //
         if (textElm) { classReplace((textElm),
@@ -173,6 +188,8 @@ function final_LoadScreen () {
      * @returns {void}
      */
 async function on_LoadScreen () {
+    //wDisplay_Settler();
+    //
     final_LoadScreen();
     //
     await new Promise((r) => {

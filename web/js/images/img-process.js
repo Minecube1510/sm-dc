@@ -14,10 +14,12 @@ import * as iGit from '../init-github.js';
 
 
 /* Helpers & Variables */
-const format_exts = ([ (`png`),
+const
+/*|*/
+format_exts = ([ (`png`),
     (`jpg`),(`jpeg`), (`webp`),
     //
-    `gif`,
+    (`gif`),
 ].map((ext) => (`.${(jsTx).lower(ext)}`))),
     inScan = (new Set());
     ;
@@ -35,7 +37,7 @@ function auto_IntParser (
 /**/
 
 
-/* GET - Localize */
+/* Obtaining Images ("Local" / "Github") */
     /** [Async] Fetching All-Images
      * @param {string} pathFetch
      * @param {Boolean} fetchMethod
@@ -168,7 +170,7 @@ export async function alImages_Processor (
         case (true):  /* Local */
             aiP_Result = (await (srcPrefix_Scanner(collectSets, true, true)));
             //
-            for (const [ i, group, ] of aiP_Result.entries()) {
+            for (const [ i, group, ] of ((aiP_Result).entries())) {
                 (proGetImgs).clear();
                 (group).forEach((href) => (((format_exts)
                     .some((ext) => ((href).toLowerCase()
@@ -182,7 +184,7 @@ export async function alImages_Processor (
         case (false):  /* Github */
             aiP_Result = await srcPrefix_Scanner(collectSets, false, true);
             //
-            for (const item of aiP_Result) {
+            for (const item of (aiP_Result)) {
                 if (((item.type) === (`file`)) && ((format_exts).some(
                 (ext) => ((jsTx).lower(item.path).endsWith(ext))))) {
                     addImage(item.path); }
@@ -254,7 +256,7 @@ export async function alImages_Ascertains (
 
 
 /* Uji Coba */
-//console.count(`alImages_Ascertains`);
+//Test...
 //
 /**/
 

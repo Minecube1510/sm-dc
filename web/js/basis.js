@@ -49,6 +49,8 @@ export const
 
 /* Func: Logs */
 export const jsCs = {
+    clear: ((console).clear),
+    //
     log: ((console).log),
     warn: ((console).warn),
     error: ((console).error),
@@ -66,7 +68,7 @@ export const jsCs = {
 
 /* Func: Docs */
 export const jsDoc = {
-    createElm: (tag, doc = document) =>
+    creatElm: (tag, doc = document) =>
         ((doc).createElement(tag)),
         //
     getId: (id, doc = document) =>
@@ -107,24 +109,29 @@ let suMapElm = ((mapping, fn) => ((Object)
     .fromEntries((Object).entries(mapping)
         .map(([key, id]) => [ (key), (fn(id)),
 ]))));
-export let jsMod = {
-    createEl_Map: ((mapping) => (suMapElm(
-        (mapping), ((jsDoc).createElm)))),
+//
+export const
+jsMod = {
+    creatEl_Map: ((mapping) => (suMapElm(
+        (mapping), ((jsDoc).creatElm)))),
     getEl_Map: ((mapping) => (suMapElm(
         (mapping), ((jsDoc).getId)))),
     //
     setElm: ((map, settler) => (
         (Object).assign(map, settler))),
-};
-//
-export const jsHt = {
+    makElm: ((map, settler) => ((Object).assign(
+        ((jsDoc).creatElm(map)), settler))),
+},
+/*|
+|*/
+jsHt = {
     classer: ((classes) => (
         (jsTx).arr2Str((classes), (jsVar.space)))),
     linker: ((paths) => (
         (jsTx).arr2Str((paths), (jsVar.slash)))),
     //
-};
-//
+}
+;
 /**/
 
 

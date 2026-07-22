@@ -7,6 +7,9 @@ import { jsVar, jsMod,
     //
     sysGit,
     } from "./basis.js";
+import {
+    comp_LoadScreen,
+} from "./load-screen.js";
 //
 import * as tw from './tw-css-cls.js';
 //
@@ -51,10 +54,20 @@ strButton = (`button`),
 //
 ldm_Event = (new EventTarget()),
 //
+resDisplay = {
+    w: (window.innerWidth),
+    h: (window.innerHeight)
+},
 spDom = {
     rMod: (document.documentElement),
     body: (document.body),
 },
+    //
+webComp = ((jsMod).getEl_Map({
+    coHeader: (`header-idx`),
+    compMain: (`main-idx`),
+    coFooter: (`footer-idx`),
+})),
 /*|
 |*/
 hidden = (tw.layout.hidden),
@@ -67,6 +80,9 @@ animatePulse = ((tw).tcRegulate((tw
 //
 translateY6 = ((tw).tcRegulate((tw
 .transform.translate), (`y`), (6))),
+//
+durate_250 = ((tw).tcRegulate((tw
+.transition.duration), (`250`))),
 /*|
 |*/
 ldm_BICons_Cls = ((bicon) => { return [
@@ -102,38 +118,40 @@ ldm_Color = {
 },
 //
 ldm_Data = {
-    modeBtn: (`${strButton}-ldm`),
+    modeBtn: (`${strButton}-ldm`),  /* "button-ldm" */
     btnClass: [
         (`fixed`),(`flex`), (`cursor-pointer`),
         (`items-center`), (`justify-center`),
         //
         (`rounded-full`), (`shadow-lg`),
-        (`into-smooth`),
         //
         (`size-${(N4)*(3)}`),
         (`bottom-${N4}`),(`right-${N4}`),
         //
         (`border-${N4}`),
+        //
+        (`transition`), (durate_250),
+        //
+        (`into-smooth`),
     ],
     logoClass: [
         (hidden), (`absolute`), (`ease-out`),
         //
-        (`transition-all`),
-        (`duration-300`),
+        (`transition-all`), (durate_250),
     ],
     //
     setLight: ((jsTx).lower(`light`)),
     lightCls: [
-        `bg-${ldm_Color.light.bg}`,
-        `text-${ldm_Color.light.text}`,
-        `border-${ldm_Color.light.border}`,
+        (`bg-${ldm_Color.light.bg}`),
+        (`text-${ldm_Color.light.text}`),
+        (`border-${ldm_Color.light.border}`),
     ],
     //
     setDark: ((jsTx).lower(`dark`)),
     darkCls: [
-        `bg-${ldm_Color.dark.bg}`,
-        `text-${ldm_Color.dark.text}`,
-        `border-${ldm_Color.dark.border}`,
+        (`bg-${ldm_Color.dark.bg}`),
+        (`text-${ldm_Color.dark.text}`),
+        (`border-${ldm_Color.dark.border}`),
     ],
 };
 //
@@ -189,7 +207,7 @@ function render_LdmBtn (
     const
     /*|*/
 ldmButton = ((jsMod).setElm(((jsDoc)
-    .createElm(strButton)), {
+    .creatElm(strButton)), {
         id: (ldm_Data.modeBtn),
         type: (strButton),
         className: ((jsHt).classer(
@@ -200,7 +218,7 @@ ldmIcons = []
     ;
     (ldmIcon).forEach((icon, idx) => {
         const elmCon = ((jsMod).setElm(
-            ((jsDoc).createElm(`span`)), {
+            ((jsDoc).creatElm(`span`)), {
                 id: (`mode-ldm-${idx}`),
                 className: ((jsHt).classer(
                     ldm_Data.logoClass)),
@@ -324,6 +342,19 @@ ldmChange = {
     outBot: [ (translateY6),
         (opacity0), ],
 },
+ldmMainColors = {
+    lights: [
+        (`bg-${ldm_Color.light.ldmbtn}`),
+        (`text-${ldm_Color.light.text}`),
+        (`border-${ldm_Color.light.border}`),
+    ],
+    darks: [
+        (`bg-${ldm_Color.dark.ldmbtn}`),
+        (`text-${ldm_Color.dark.text}`),
+        (`border-${ldm_Color.dark.border}`),
+    ],
+},
+//
     ldmSec = (150),
     hLdmSec = (500)
     ;
@@ -397,10 +428,10 @@ ldmChange = {
         //
         (ldm_Event).addEventListener(
             (`themechange`), (() => {
-                setLDm_ThemeClass((compBtn),
-                    (`bg-${ldm_Color.light.ldmbtn}`),
-                    (`bg-${ldm_Color.dark.ldmbtn}`),
-                );
+                (ldmMainColors.lights).forEach((light, i) => {
+                    setLDm_ThemeClass((compBtn), (light),
+                        ((ldmMainColors).darks[i]));
+                });
                 //
                 update_ThmCls();
                 update_LdmBtn(true);
@@ -408,8 +439,56 @@ ldmChange = {
     });
     //
 }
+    /** Displaying Updater (For Width)
+     * @returns {void}
+     */
+export function wDisplay_Settler () {
+        if (!(comp_LoadScreen)) return;
+    //
+    const
+        webW = (window.innerWidth),
+        webH = (window.innerHeight),
+        //
+        modeBtn = ((jsDoc).getId(
+            ldm_Data.modeBtn)),
+        //
+        x_HideWeb = ((webW) <= (400)),
+        x_HideLdm = ((webW) <= (360)),
+            //
+        y_HideWeb = ((webH) <= (400)),
+        y_HideLdm = ((webH) <= (100)),
+        //
+        for_HideWeb = ((x_HideWeb) || (y_HideWeb)),
+        for_HideLdm = ((x_HideLdm) || (y_HideLdm)),
+        //
+        toggle_Displayer = ((elm, hidden) => {
+                if (!(elm)) return;
+                //
+            (elm).classList.toggle(
+                (opacity0), (hidden));
+            (elm).classList.toggle(
+                (`pointer-events-none`), (hidden));
+        })
+        ;
+    (Object).values(webComp).forEach((el) => {
+        toggle_Displayer((el), (for_HideWeb));
+    });
+    toggle_Displayer((modeBtn), (for_HideLdm));
+}
 //
-rendering_Ldm();
+    /** Finalizing Functing (Setting Page)
+     * @returns {void}
+     */
+function finalSetPage () {
+    rendering_Ldm();
+    //
+    wDisplay_Settler();
+        //
+    (window).addEventListener(
+        (`resize`), (wDisplay_Settler));
+}
+//
+finalSetPage();
 //
 /**/
 

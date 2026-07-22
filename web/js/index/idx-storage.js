@@ -2,11 +2,11 @@
 /* web/js/index/idx-storage.js */
 
 /* Imports */
-import { jsVar,
-    jsTx, jsDoc, jsMod,
+import { jsVar, jsMod,
+    jsTx, jsCs, jsDoc, jsHt,
     } from "../basis.js";
 //
-import { ldm_Data,
+import { ldm_Color, ldm_Data,
     //
     } from "../set-paging.js";
 //
@@ -15,222 +15,240 @@ import * as tw from '../tw-css-cls.js';
 /**/
 
 
-/* Storage - WIP Classes */
+/* Storage - Functions */
+    /** Auto Shortcut Tailwind-Plugniter
+     * @param {Object.<string, string[]>} twVariers
+     * @returns {string[]}
+     */
+export function tCls_AutoSet (
+    twVariers = {}
+) {
+    return ((Object).entries(twVariers)
+        .flatMap(([ variant, cls, ]) => ((tw)
+            .tcPlugnite(variant, cls))
+    ));
+}
+//
+    /** Auto Sizing by Number
+     * @param {number} idx_WebH
+     * @returns {number}
+     */
+export function responSize (
+    idx_WebH,
+) {
+    return ((idx_WebH)
+        - (550) - (30) - (8));
+}
+/**/
+
+
+/* Storage - Auto Tailwind */
 export const
-/*|*/
-idxView_Cls = [
-    `flex`, `relative`,
-    `overflow-hidden`,
-    //
-    `flex-col`, `rounded-sm`,
-    //
-    `flex-1`, `mt-4`,
-    //
-    `border-4`,
-],
-idx_ColorChain_Cls = [
-    `bg-inherit`,
-    `text-inherit`,
-    `border-inherit`,
-    ],
-idx_LdmEff_cChain_Cls = [
-    `transition-colors`,
-    `ease-out`,
-],
-gt_SynComp_Cls = [
-    `border-2`, `rounded-lg`,
-    //
-    `md:border-4`,
-],
-gt_InvoComp_Cls = [
-    `into-smooth`, `rounded-lg`,
-    `focus:outline-none`,
-],
-gt_MainSwitch_Cls = [
-    `border`, `rounded-lg`,
-    `px-3`,`py-2`,
-    `focus-within:ring-1`,
-],
-gt_SwitchSelect_Cls = [
-    `shadow`,
-    `row-start-1`, `col-start-1`,
-],
-gt_SwitchBg_Cls = [
-    `relative`, `grid`, `grid-cols-2`,
-],
-gt_SwitchText_Cls = [
-    `relative`, `z-10`, `px-2`,
-    `font-semibold`,
-],
-gt_SelectOpting_Cls = [
-    `appearance-none`, `cursor-pointer`,
-    `font-semibold`,
-    //
-    `w-full`, `px-3`,`py-2`, `pr-8`,
-],
-gt_SelectCarrow_Cls = [
-    `absolute`, `pointer-events-none`,
-    `bi`,`bi-caret-down-fill`, 
-    `transition-transform`, `ease-in-out`,
-    //
-    `right-2.5`,
-    //
-    `duration-200`,
-],
-gt_Rooter_Cls = [
-    `cursor-pointer`, `active:cursor-default`,
-],
-gt_SrcRes_Cls = [
-    `absolute`,
-    `top-full`, `w-full`,
-    //
-    `inset-shadow-md`, `shadow-xl/30`,
-    `rounded-xl`,
-    //
-    `left-0`, `z-50`,
-    //
-    `translate-y-10.25`,
-],
-mdVi_Ph_Cls = [
-    `flex`, `absolute`, `rounded-lg`,
-    `items-center`,`justify-center`,
-    `text-center`,`font-semibold`,
-    `inset-0`,
-    `text-stone-500`,
-],
-mdVi_LsComp_Cls = [
-    `absolute`, `flex`,
-    `pointer-events-none`,
-    `items-center`, `justify-center`,
-    //
-    `font-semibold`,
-    //
-    `transition-all`, `ease-in-out`,
-    //
-    `inset-0`, `z-50`,
-    `bg-white/70`, `backdrop-blur-sm`,
-    `duration-300`,
-],
-mdVi_InputPls_Cls = [
-    //
-],
-mdVi_InputRoot_Cls = [
-    `border-transparent`,
-    `-translate-y-0.25`,
-],
-mdVi_InputDef_Cls = [ 
-    `border-transparent`,
-    `into-smooth`,
-],
-mdVi_SrcLogo_Cls = [ 
-    `transition-transform`,
-    `ease-in-out`,
-    //
-    `duration-200`,
-    //
-    `hover:scale-120`,
-    `active:scale-90`,
-],
+flex = (tw.layout.flex),
 //
-mdCosL_Comp_Cls = (
-    ldm_Data.lightCls),
-mdCosD_Comp_Cls = (
-    ldm_Data.darkCls),
+absolute = (tw.position.absolute),
+inset = (tw.position.inset),
+z_Index = (tw.position.z),
 //
-mdSrch_AutoCm_Cls = [
-    `cursor-pointer`, `into-smooth`,
-    `py-1`,`px-2`,
+items = (tw.flexGrid.items),
+justify = (tw.flexGrid.justify),
+//
+w_SizeX = (tw.sizing.w),
+h_SizeY = (tw.sizing.h),
     //
-    `transition-all`,
-    `duration-300`,
+w_MaxX = ((tw).tcRegulate(
+    (`max`), (w_SizeX))),
+h_MaxY = ((tw).tcRegulate(
+    (`max`), (h_SizeY))),
+//
+border = (tw.comp.border),
+rounded = (tw.shape.rounded),
+//
+font = (tw.typograph.font),
+//
+shadow = (tw.effects.shadow),
+//
+transition = (tw.transition.transition),
+ease = (tw.transition.ease),
+duration = (tw.transition.duration),
+//
+scale = (tw.transform.scale),
+//
+pointer = (tw.interaction.pointer),
+cursor = (tw.interaction.cursor),
+/*|
+|*/
+flex1 = ((tw).tcRegulate((flex), (1))),
     //
-    `rounded-md`,
+inset0 = ((tw).tcRegulate((inset), (0))),
     //
-    `hover:font-semibold`,
-],
-mdSrch_Sacker_Cls = [
-    `absolute`, `items-center`,
-    `flex`,
-],
-mdSrch_AddChips_Cls = [
-    `inline-flex`, `items-center`,
-    `gap-1`, `px-2`,`py-1`,
-    `text-sm`,`font-medium`, `border`,
-    `rounded-md`, `select-none`,
-    `bg-blue-100`,`text-blue-800`,`border-blue-300`,
-    `hover:bg-blue-200`,
-],
-mdSrch_PfChipy_Cls = [
-    `text-transparent`, `caret-current`,
-],
-mdSrch_CrackChip_Cls = [
-    `bi`,`bi-x-circle`, `relative`,
-    `top-px`, `cursor-pointer`,
-]
+idx_z0 = ((tw).tcRegulate((z_Index), (0))),
+idx_z10 = ((tw).tcRegulate((z_Index), (10))),
+idx_z99 = ((tw).tcRegulate((z_Index), (99))),
+//
+itemsCenter = ((tw).tcRegulate(
+    (items), (`center`))),
+justifyCenter = ((tw).tcRegulate(
+    (justify), (`center`))),
+//
+idxW_AutoX = ((tw).tcRegulate((w_SizeX), (`auto`))),
+idxW_FullX = ((tw).tcRegulate((w_SizeX), (`full`))),
+idxW_MaxX = ((tw).tcRegulate((w_SizeX), (`max`))),
+    //
+idxH_AutoY = ((tw).tcRegulate((h_SizeY), (`auto`))),
+idxH_FullY = ((tw).tcRegulate((h_SizeY), (`full`))),
+idxH_MaxY = ((tw).tcRegulate((h_SizeY), (`max`))),
+    //
+max_HY_80 = ((tw).tcRegulate(
+    (h_MaxY), (80))),
+max_HY_160 = ((tw).tcRegulate(
+    (h_MaxY), (160))),
+max_HY_164 = ((tw).tcRegulate(
+    (h_MaxY), (164))),
+//
+border2 = ((tw).tcRegulate((border), (2))),
+border4 = ((tw).tcRegulate((border), (4))),
+    //
+roundedLG = ((tw).tcRegulate((rounded), (`lg`))),
+//
+fontSemibold = ((tw).tcRegulate((font), (`semibold`))),
+//
+shadow_MDx20 = ((tw).tcRegulate(
+    (shadow), (`md/20`))),
+//
+transiteAll = ((tw).tcRegulate(
+    (transition), (`all`))),
+transiteColors = ((tw).tcRegulate(
+    (transition), (`colors`))),
+transiteTransform = ((tw).tcRegulate(
+    (transition), (`transform`))),
+    //
+easeOut = ((tw).tcRegulate(
+    (ease), (`out`))),
+easeInOut = ((tw).tcRegulate(
+    (ease), (`in`), (`out`))),
+    //
+gen_Durate = ((tw).tcRegulate(
+    (duration), (200))),
+durate_half1 = ((tw).tcRegulate(
+    (duration), (150))),
+//
+scale95 = ((tw).tcRegulate(
+    (duration), (95))),
+scale120 = ((tw).tcRegulate(
+    (duration), (120))),
+//
+pointer_EvNon = ((tw).tcRegulate(
+    (pointer), (`events`), (`none`))),
+cursorPoint = ((tw).tcRegulate(
+    (cursor), (`pointer`)))
 ;
 /**/
 
 
-/* Storage - Comping */
+/* Storage - Component ID */
 export const
 /*|*/
-idx_RemoCon = ((jsDoc)
-.getId(`idx-remocon`));
-//
-export const idx_RcLang = {
-    "switch": {
-        "rp": (`Rawpath`),
-        "pf": (`Posfile`),
+idx_MComp = {
+    rc: {  /* Remocon, Remote-Control */
+        main: (`idx-remocon`),
+        i_Gt: {  /*
+            [mc]-OR-[C/c] = [Main Component] OR [Component]
+                |
+            Linav = "Link (Path) Navigation"
+            */
+            main: (`idx-rc-geartool`),
+            sLever: (`idx-rcgt-lever`),
+            c_Lever: (`idx-rcgt-lever-comp`),
+            LinNav: (`idx-rcgt-linav`),
+            c_Linav: (`idx-rcgt-linav-comp`),
+            Select: (`idx-rcgt-select`),
+            cSelect: (`idx-rcgt-select-comp`),
+        },
+        iSrc: {
+            main: (`idx-rc-search`),
+            R_t: (`idx-rcsc-root`),
+            Chp: (`idx-rcsc-chips`),
+            Pth: (`idx-rcsc-input`),
+            Btn: (`idx-rcsc-btn`),
+            Res: (`idx-rcsc-result`),
+        },
     },
-    "select": {
-        "s": (`Single`),
-        "c": (`Compose`),
-        "t": (`Testing`),
+    mv: {  /* Markdown View */
+        main: (`idx-view`),
+        mWait: (`idx-view-loading`),
+        mBase: (`idx-view-content`),
     },
-};
+},
+idxMc = ({
+    rcMain: ((jsDoc).getId(idx_MComp.rc.main)),
+        //
+    m_Gt: ((jsDoc).getId(idx_MComp.rc.i_Gt.main)),
+            //
+    gtLvr: ((jsDoc).getId(idx_MComp.rc.i_Gt.sLever)),
+    gtLvrC: (idx_MComp.rc.i_Gt.c_Lever),
+    gtNav: ((jsDoc).getId(idx_MComp.rc.i_Gt.LinNav)),
+    gtNavC: ((jsDoc).getId(idx_MComp.rc.i_Gt.c_Linav)),
+    gtSel: ((jsDoc).getId(idx_MComp.rc.i_Gt.Select)),
+    gtSelC: (idx_MComp.rc.i_Gt.cSelect),
+        //
+    mSrc: ((jsDoc).getId(idx_MComp.rc.iSrc.main)),
+            //
+    srcRoot: ((jsDoc).getId(idx_MComp.rc.iSrc.R_t)),
+    srcChip: ((jsDoc).getId(idx_MComp.rc.iSrc.Chp)),
+    srcPath: ((jsDoc).getId(idx_MComp.rc.iSrc.Pth)),
+    src_Btn: ((jsDoc).getId(idx_MComp.rc.iSrc.Btn)),
+    src_Res: ((jsDoc).getId(idx_MComp.rc.iSrc.Res)),
+    //
+    mvMain: ((jsDoc).getId(idx_MComp.mv.main)),
+        //
+    vieWaitM: ((jsDoc).getId(idx_MComp.mv.mWait)),
+    viewBase: ((jsDoc).getId(idx_MComp.mv.mBase)),
+    /*|
+    |*/
+    mvPhText: (`idx-view-content-placeholder`),
+}),
 /*|
 |*/
-export const gtComponter = {
-    cElmSw: (`idx-gt-switch-comp`),
-    cElmIn: (`idx-gt-input-comp`),
-    cElmSe: (`idx-gt-select-comp`),
-    cRow: (`arrow-gt-selector`),
-};
-export const idxGT_CompId = (
-    (jsMod).getEl_Map({
-    gtSwitch: (`idx-gt-switch`),
-    gtInput: (`idx-gt-input`),
-    gtSelect: (`idx-gt-select`),
-}));
-//
-export const idxGT_Switch = {
-    rawpath: (`gt-switch-l`),
-    posfile: (`gt-switch-r`),
-};
+idxGt_Lang = {
+    lvr: {
+        rp: (`Rawpath`),
+        pf: (`Posfile`),
+    },
+    sel: {
+        s: (`Single`),
+        c: (`Compose`),
+        t: (`Testing`),
+    },
+},
+gtLang_Ids = {
+    lvrAct: (idxMc.gtLvrC),
+        //
+    lvrs: {
+        rp: (`rcgt-lever-l`),
+        pf: (`rcgt-lever-r`),
+    },
+    //
+    selIt: (idxMc.gtSelC),
+    selCo: (`idx-rcgt-select-option`),
+        //
+    sels:{
+        s: (`rcgt-sel-opt-${(jsTx).lower(idxGt_Lang
+            .sel.s).slice((0), (1))}`),
+        c: (`rcgt-sel-opt-${(jsTx).lower(idxGt_Lang
+            .sel.c).slice((0), (1))}`),
+        t: (`rcgt-sel-opt-${(jsTx).lower(idxGt_Lang
+            .sel.t).slice((0), (1))}`),
+    },
+},
 /*|
 |*/
-export const idxSearchMD_CompId = (
-    (jsMod).getEl_Map({
-    idxView: (`idx-view`),
-    idxSrch: (`idx-search`),
-        //
-    content: (`content`),
-    madoLs: (`md-loading-idx`),
-    //
-    inRoot: (`article-md-root`),
-    ftSrch: (`article-md-search`),
-    srcBtn: (`article-md-src-btn`),
-    srcIcon: (`article-md-src-icon`),
-        //
-    srcRes: (`src-md-res`),
-    srChip: (`src-md-chips`),
-    //
-    ldmBtn: (ldm_Data.modeBtn),
-    //
-}));
-export const idxCompChip = {
-    kitChip: (`md-kit-chip`),
-    resChip: (`md-res-chip`),
+rscs_Comps = {
+    search: (idxMc.srcPath),
+    result: {
+        main: (idxMc.src_Res),
+        list: (`rscs-result-lists-content`),
+    }
 }
 ;
 /**/
@@ -239,52 +257,13 @@ export const idxCompChip = {
 /* Storage - Data */
 export const
 /*|*/
-md_Data = {
-    srcPath: ((jsTx).trm(idxSearchMD_CompId
-        .ftSrch.value)),
-    altPath: (jsVar.empty),
-    fpMado: (`${jsVar.point}md`),
-},
-reaState = {
-    success: {  // {{Clear}} and {{Success}}
-        type: `success`,
-        msg: `success`,
-        text: `Markdown Loaded`,
-    },
+idx_FirSearch = ((jsTx).upper(`ReadMe`)),
     //
-    pndg: {  // Pending
-        type: `loading`,
-        msg: `pending`,
-        text: `Markdown Loading`,
-    },
-    //
-    empty: {  // Empty
-        type: `warning`,
-        msg: `empty`,
-        text: `Input is Empty`,
-    },
-    iv_fm: {  // Invalid Format
-        type: `warning`,
-        msg: `invalid_format`,
-        text: `Invalid Markdown Format`,
-    },
-    //
-    md_n_fnd: {  // Err-404 MD File
-        type: `error`,
-        msg: `md_GetFile_404`,
-        text: `Markdown Not Found (MD File)`,
-    },
-    chc_n_fnd: {  // Err-404 MD Cache
-        type: `error`,
-        msg: `md_GetCache_404`,
-        text: `Markdown Not Found (Cache)`,
-    },
-    error: {  // Err (Internal, maybe...)
-        type: `error`,
-        msg: `error_500_internal`,
-        text: `Loading Failed`,
-    }
-}
+format_Md = (`.md`),
+//
+autoFile_Md = ((fName) => ((jsTx).arr2Str([
+    (fName), (format_Md),
+], (jsVar.empty))))
 ;
 /**/
 

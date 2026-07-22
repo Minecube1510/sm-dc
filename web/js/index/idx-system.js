@@ -7,308 +7,256 @@ import { jsVar, jsMod,
     //
     dirSafe,
     } from "../basis.js";
-    //
-import * as twCls from "../tw-css-cls.js";
-    //
-import * as iGit from '../init-github.js';
 //
-import * as idxStrg from './idx-storage.js';
-    import { 
-        md_Data as iMd,
-        //
-        idx_RcLang as rcLn,
-        //
-        idxGT_CompId as iGt_cId,
-        //
-        gtComponter as comperGt,
-        idxGT_Switch as gtSwSide,
-        idxSearchMD_CompId as iScMd,
-        //
-        mdCosL_Comp_Cls as lCompCls,
-        mdCosD_Comp_Cls as dCompCls,
-        //
-        mdSrch_PfChipy_Cls as pfChipCls,
-    } from "./idx-storage.js";
+import * as tw from '../tw-css-cls.js';
+//
+import { ldm_Color, ldm_Data, ldm_Event,
+    //
+    setLDm_ThemeClass as ldmClasser,
+    //
+    } from "../set-paging.js";
     /*|
   //
 |*/
-import { srcFilter_Visible,
-    cek_GetPath,
-    //
-    init_SrcList,
-    } from "./idx-blueprint-0a.js";
-    //
-    import { rppf_Moderact,
-    //
-    } from "./idx-blueprint-0b.js";
-    //
-import { feature_RawPath, spaRender_SrList,
-    compiling_Inputters as finSys_Inputters,
-    } from "./idx-blueprint-2a.js";
-    //
-    import { feature_PosFile, 
-    //
-    idxGtc_CompSwitch as gtC_Switch,
-    //
-    } from "./idx-blueprint-2b.js";
-    //
+import * as idxStrg from './idx-storage.js';
+import * as idxCls from './idx-storage-class.js';
+    import { idxMc,
+        idx_FirSearch, autoFile_Md,
+        //
+        idx_MComp as cIdx,
+        //
+    } from "./idx-storage.js";
+//
+import { 
+    comps_GtSel as gtSelC,
+    comps_GtLvr as gtLvrC,
+} from "./idx-render.js";
+//
+    import { gtSel_AutoSeld,
+        //
+        srcList_LiClick_LdmCls,
+        srcList_LiRowed_LdmCls,
+    } from './idx-render-config.js';
     import {
-        idxGtComp_Select as gtC_Select,
-    } from "./idx-blueprint-2c.js";
+        init_RcGt_LeverSides,
+    } from './idx-render-kit.js';
+//
+import * as sysF from "./idx-system-fetch.js";
+import {
+    idx_MainLists as getLists,
+    idx_10TriaLists as triaLists,
+    //
+    } from "./idx-system-fetch.js";
+//
+/**/
+
+
+/* Systemate Core - Storage */
+const
+/*|*/
+vieWaitM = (idxMc.vieWaitM),
 /*|
 |*/
-import { ldm_Color, ldm_Data, ldm_Event,
-    setLDm_ThemeClass as ldmClasser,
-} from "../set-paging.js";
+opacity = (tw.effects.opacity),
 //
-/**/
-
-
-/* Initialize - Variablings */
-const drFs = (dirSafe.filename),
-    gtInDefPlh = (iScMd.ftSrch
-        .placeholder);
-//
-let rootPf = [],
-    pfLister = (jsVar.empty),
-    //
-    gtFile_LastLoad,
-    gitFile_ClickHandler = (null),
-    //
-    load_RtPf,
-    gtMode_Now = (null),
-    //
-    rp = (rcLn.switch.rp),
-    pf = (rcLn.switch.pf);
-//
-/**/
-
-
-/* Helpers */
-export const
-    blockingEvent = ((e) => {
-    //
-    (e).preventDefault();
-}),
-    liresClsL = [ ...(ldm_FilterCls((lCompCls),
-        (`bg`))), (`bg-${ldm_Color.light.bg}`),
-],
-    liresClsD = [ ...(ldm_FilterCls((dCompCls),
-        (`bg`))), (`bg-${ldm_Color.dark.bg}`),
+opacity0 = ((tw).tcRegulate((opacity), (0))),
+/*|
+|*/
+mdView_Transer_Cls = [
+    (`bg-white/70`), (`opacity-100`),
+    (`backdrop-blur-sm`),
 ]
-    ;
-//
-    /** GearTool-Switch Blocking System In-Mode
-     * @param {Boolean} forMode
-     * @returns {void}
-     */
-function artMdSrc_toggleBlocking (
-    forMode,
-) {
-    forMode = ((forMode)
-        ? (`addEventListener`)
-        : (`removeEventListener`)
-    );
-    //
-    (iScMd).ftSrch[forMode](
-        (`selectstart`),
-        (blockingEvent));
-}
+;
+/*|
+|*/
+export const
+/*|*/
+delay_MdvWait = ((ms) => (new Promise(
+(res) => (setTimeout(res, ms))))),
+noSpam_SrcTime = (5000)
+;
 //
 /**/
 
 
-/* GearTool - Connect, Config, Control */
-/** Component: Geartool Input Configs
- * @typedef {Object} GearToolInputConfig
- * @property {{file0:string, suFix:string}} gtIn_Fix
- * @property {(v:string)=>string} gtIn_Fmt
- * @property {(v:string)=>string} gtIn_Slash
- * @property {(v:string)=>string} gtIn_Paint
- */
-//
-    /** GearTool-Switch Feature-Config Working
-     * @param {string} gtSwtcMode
+/* Syncronize - Elements */
+    /** Syncronizing - [Index-GT-Lever]=[Index-Rc-Search]
+     *
+     * Rawpath-Posfile Switch-Mode Chips Configs.
+     *
      * @returns {void}
      */
-function gtSwitch_Change (
-    gtSwtcMode,
-) {
-    const tellGtMode = ((v) => (
-        `Changing Writing-Mode: ${v}`)),
-        //
-        isPf = ((gtSwtcMode) === (
-            (jsTx).lower(pf))),
-        //
-        { ftSrch, srChip } = (iScMd)
+export function valChips_GtSrc_Lever () {
+    for (const [ key, elm, ] of ((Object).entries(
+        gtLvrC))) { if (!(elm)) return; }
+    //
+    let
+    /*|*/
+    firstActive = (null),
+    currentMode = (null)
         ;
     //
-    gtMode_Now = (gtSwtcMode);
-    //
-    artMdSrc_toggleBlocking(isPf);
+    (Object).values(gtLvrC.sides).forEach((id) => {
+        const btn = ((jsDoc).getId(id));
+            if (!(btn)) return;
         //
-    rppf_Moderact(
-        () => {
-            gtFile_LastLoad = (null);
+        (btn).addEventListener((`click`), (() => {
+            init_RcGt_LeverSides(btn);
             //
-            (jsCs).log(tellGtMode(rp));
-            //
-            (jsMod).setElm((ftSrch), {
-                placeholder: (gtInDefPlh),
-            });
-            //
-            (ftSrch).removeAttribute(`style`);
-            (ftSrch).classList.remove(...pfChipCls);
-            //
-            (jsMod).setElm((srChip), {
-                innerHTML: (jsVar.empty),
-            });
-            //
-            feature_RawPath();
-        },
-        () => {
-            (jsCs).log(tellGtMode(pf));
-            //
-            (jsMod).setElm((ftSrch), {
-                placeholder: (drFs),
-            });
-            //
-            spaRender_SrList(false);
-            feature_PosFile();
-        },
-    );
-}
-    /** GearTool-Switch Feature Working
-     * @param {HTMLElement} compGt
-     * @returns {void}
-     */
-function gtSwitch_Sys (
-    compGt = ((jsDoc).getId(comperGt.cElmSw)),
-) {
-    let lastMode = (null),
-        conSwtcMod = (compGt.value);
-    //
-    if ((conSwtcMod) === ((jsTx).lower(rp))) {
-        (jsCs).log((`First Writing-Mode:`),
-            (rp));
-    } else {
-        (jsCs).log((`Unknown Get-Mode:`),
-            (conSwtcMod));
-    }
-    //
-    const syncSwitch = (() => {
-        let sIsMode = ((jsTx).lower(compGt.value));
-            if ((sIsMode) === (lastMode)) return;
-        lastMode = (sIsMode);
+            if ((currentMode) !== (btn.textContent)) {
+                currentMode = (btn.textContent);
+                //
+                (jsCs).log(`Change to Mode: ${
+                    currentMode}`);
+            }
+        }));
         //
-        gtSwitch_Change(sIsMode);
+        if (((firstActive) === (null)) && (((btn)
+            .getAttribute(`aria-selected`)
+        ) === (`true`))) {
+            firstActive = (btn);
+            currentMode = (firstActive.textContent);
+            //
+            (jsCs).log(`First in Mode: ${
+                currentMode}`);
+        }
     });
-    (compGt).addEventListener(
-        (`change`), (syncSwitch));
+    //
+    // Later...
+    //
 }
-//
-    /** GearTool-Select Feature Working
-     * @param {HTMLElement} compGt
-     * @param {HTMLElement} selRow
+    /** Syncroning - [Index-Gt-Linav]=[Index-Rc-Search]
+     *
+     * Full-Path Searcher for Linking Navigation.
+     *
      * @returns {void}
      */
-function gtSelect_Sys (
-    compGt = ((jsDoc).getId(comperGt.cElmSe)),
-    selRow = ((jsDoc).getId(comperGt.cRow)),
-) {
-    let opened = (false);
+export function linkPath_GtSrc_LiNav () {
+    let srcPath = ((jsTx).trm(
+        idxMc.srcPath.value));
     //
-    (compGt).addEventListener((`mousedown`), (() => {
-        //*
-        opened = (!(opened));
+    (jsMod).setElm((idxMc.gtNavC), {
+        value: ((srcPath)
+            ? (autoFile_Md(srcPath))
+            : (jsVar.slash)),
+    });
+}
+    /** Syncronize Mode - [Index-Gt-Select]=[MD-Viewer-Article]
+     *
+     * Select Viewing Modes for MD-Viewer-Article.
+     *
+     * @returns {void}
+     */
+export function viewMode_GtArtic_Select () {
+        if ((!(gtSelC.choose)) || (!(gtSelC.optBox))) return;
         //
-        (selRow).classList.toggle(
-            (`rotate-180`), (opened));
-        // */
-    }));
-    (compGt).addEventListener((`blur`), (() => {
-        //*
-        opened = (false);
-        //
-        (selRow).classList.remove(`rotate-180`);
-        // */
-    }));
-    //
+    (gtSelC.opts).forEach((opt) => {
+        (opt).addEventListener((`click`), (() => {
+            (jsMod).setElm((gtSelC.choose), {
+                textContent: (opt.textContent),
+                value: ((jsTx).lower(opt.value)),
+            })
+            //
+            (gtSelC.opts).forEach((btn) => {
+                (btn).setAttribute(
+                    (`aria-selected`), (`false`));
+                //
+                (btn).classList.remove(`selected`);
+                gtSel_AutoSeld(btn);
+            });
+            //
+            (opt).setAttribute((`aria-selected`), (`true`));
+            //
+            (opt).classList.add(`selected`);
+            gtSel_AutoSeld(opt);
+            //
+            // Sinkronisasi dengan sistem lain
+            // Later...
+        }));
+    });
 }
 //
-gtC_Switch({
-    id: (comperGt.cElmSw),
+    /** Markdown Loading Autofy
+     * @param {string} mdlwMode
+     * @param {string} mdvPhText
+     * @returns {void}
+     */
+export function loadWait_Markdown_Viewer (
+    mdlwMode, mdvPhText = (jsVar.empty),
+) {
+    const
+        mdv_WaiText = ((jsMod).makElm((`span`), {
+textContent: (mdvPhText),
+className: (`animate-pulse`),
+    }))
+    ;
+    switch (mdlwMode) {
+        case (`show`):
+            (vieWaitM).classList.remove(opacity0);
+            (vieWaitM).classList.add(
+                ...(mdView_Transer_Cls));
+            //
+            setTimeout(() => {
+                (vieWaitM).append(mdv_WaiText);
+            }, (100))
+            //
+            break;
+        case (`hide`):
+            (vieWaitM).classList.remove(
+                ...(mdView_Transer_Cls));
+            (vieWaitM).classList.add(opacity0);
+            //
+            (jsMod).setElm((vieWaitM), {
+                textContent: (jsVar.empty),
+            });
+            //
+            break;
+        default:
+            throw (new TypeError(
+                `Unknown mdWait mode: "${mode}".`));
+    }
+}
+//
+    /** Delay Waiting for Anti-Spam.
+     * @param {boolean} is_LetSetle
+     * @param {(state: boolean) => void} idx_Settler
+     * @param {() => void} idx_ActDoes
+     * @param {number} idx_HolDate
+     * @returns {void}
+     */
+export function mdView_SearchList_Cooldown (
+    is_LetSetle = (false),
+    idx_Settler = (() => (true)),
+    idx_ActDoes = (() => {}),
+    idx_HolDate = (0),
+) {
+        if (is_LetSetle) return;
+    idx_Settler(true);
+    idx_ActDoes();
     //
-    left: (rcLn.switch.rp),
-    lid: (gtSwSide.rawpath),
-    //
-    right: (rcLn.switch.pf),
-    rid: (gtSwSide.posfile),
-});
-gtC_Select((Object)
-    .values(rcLn.select));
+    setTimeout(() => {
+        idx_Settler(false);
+    }, (idx_HolDate));
+}
 //
 /**/
 
 
-/* Finalize */
-    /** [Async] GearTool-Markdown Config
+/* Syncronize - Finalize */
+    /** Index System - Finals Syncronizing (Render and Process)
      * @returns {void}
      */
-export async function gtMd_Config () {
-    await init_SrcList();
-    /*|
-    |*/
-    gtSwitch_Sys();
-    //
-    finSys_Inputters();
-    //
-    gtSelect_Sys();
+export function idxSyncron_System () {
+    valChips_GtSrc_Lever();
+    linkPath_GtSrc_LiNav();
+    viewMode_GtArtic_Select();
 }
 //
-    /** LDM Classing Filterer
-     * @param {string[]} ldmCls
-     * @param {string|string[]} ldmPrefix
-     * @returns {string[]}
-     */
-export function ldm_FilterCls (
-    ldmCls, ldmPrefix,
-) {
-    ldmPrefix = ((((Array).isArray(ldmPrefix)) ?
-    (ldmPrefix) : [ldmPrefix]).map((p) => (`${p}-`)));
-    //
-    return ((ldmCls).filter((c) => (!(ldmPrefix)
-        .some((p) => ((c).startsWith(p))))));
-}
-//
-    /** Remocon Designing, with Tailwind Classes
-     * @returns {void}
-     */
-export function remocon_Designier() {
-    const
-        comps = [
-        //
-        ((jsDoc).getId(comperGt
-        .cElmSe)), (iScMd.idxSrch),
-    ],
-        apply = (() => { [
-            [ [iScMd.ftSrch], (`border`), ],
-            [ (comps), (`ring`), ],
-        ].forEach(([ list, cls, ]) =>
-            (list).forEach((e) => (ldmClasser((e),
-                (`${cls}-${ldm_Color.light.border}`),
-                (`${cls}-${ldm_Color.dark.border}`),
-        ))));
-    });
-    //
-    (iScMd.ftSrch).classList.add(`focus:outline-none`);
-    (comps).forEach((e) => ((e).classList.add(...
-        (idxStrg.gt_InvoComp_Cls))));
-    //
-    apply();
-    (ldm_Event).addEventListener((`themechange`),
-        (apply));
-}
+/**/
+
+
+/* Uji Coba */
+//Testing...
 //
 /**/
 

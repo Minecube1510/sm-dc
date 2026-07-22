@@ -38,33 +38,29 @@ data-theme="">
 |
 !-->
 <body draggable="false" id="body"
-class="min-h-screen flex flex-col container mx-auto p-3 select-none">
+class="flex min-h-screen flex-col container mx-auto p-3 select-none">
     <!--
         Loading Screening, then just Script... -->
-    <div class="center fixed flex items-center justify-center inset-0 z-[9999] bg-neutral-950"
+    <div class="fixed inset-0 z-[9999] flex items-center justify-center bg-neutral-950"
         id="loading-screen"></div>
     <script type="module" src="web/js/load-screen.js"
     defer></script>
     <!--
         Body: Contents -->
     <header id="header-img" class="">
-        <h1 class="text-2xl py-5 text-center font-bold lg:text-5xl md:text-5xl">
+        <h1 class="py-5 text-center text-2xl font-bold md:text-5xl lg:text-5xl">
             Ateiler that viewing Images
-        </h1>
-    </header>
+    </h1></header>
     <main id="main-img" class="flex flex-1 shadow-lg border-inherit">
-        <div class="w-full text-center rounded-3xl" id="main-img-box"><div
-            class="w-full h-full border-4 border-solid rounded-xl border-inherit bg-taupe-950"
+        <div class="w-full rounded-3xl text-center" id="main-img-box"><div
+            class="size-full border-4 border-solid border-inherit rounded-xl bg-taupe-950"
             id="main-img-content">
         </div></div>
     </main>
-    <footer id="footer-img" class="text-center mt-4">
+    <footer id="footer-img" class="mt-4 text-center">
         <p class="font-semibold">
-            By:
-            <span id="github-username">
+            By:<span id="github-username">
                 Git-Username
-            </span>
-        </p>
-    </footer>
+    </span></p></footer>
 </body>
 </html>

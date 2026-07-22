@@ -3,223 +3,352 @@
 
 /* Imports */
 import { jsVar, jsMod,
-    jsTx, jsCs, jsDoc, jsHt,
-    } from "../basis.js";
-    //
-import * as idxStrg from './idx-storage.js';
-    import { reaState,
-        md_Data as iMd,
-        idxSearchMD_CompId as iScMd,
-    } from "./idx-storage.js";
+  jsTx, jsCs, jsDoc, jsHt,
+  //
+  dirSafe,
+  } from "../basis.js";
 //
+import { ldm_Color, ldm_Data, ldm_Event,
+  setPage_Comping,
+  //
+  setLDm_ThemeClass as ldmClasser,
+  } from "../set-paging.js";
+  /*|
+|*/
 import { marked,
-    } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+  } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+  /*|
+|*/
+import * as idxStrg from './idx-storage.js';
+  import { idxMc, idx_FirSearch,
+    //
+    idx_MComp as cIdx,
+    //rscs_Comps as src_ComId,
+    //
+  } from "./idx-storage.js";
+//
+import { noSpam_SrcTime,
+  linkPath_GtSrc_LiNav,
+  //
+  delay_MdvWait,
+  loadWait_Markdown_Viewer,
+  //
+  mdView_SearchList_Cooldown,
+  //
+  } from "./idx-system.js";
+import * as idxSysF from "./idx-system-fetch.js";
+import {
+  limit_Fetch_Files,
+  shuffle_Random_Files,
+  //
+  idx_MainLists as getLists,
+  idx_10TriaLists as triaLists,
+  random_LiSeeder_Files,
+  //
+  } from "./idx-system-fetch.js";
+//
+import { 
+  render_ViewMd,
+  //
+  } from "./idx-render.js";
+import { toggle_ResultList,
+  //
+  srcList_LiClick_LdmCls,
+  srcList_LiRowed_LdmCls,
+  //
+  } from "./idx-render-config.js";
+import { idCo_UliRes,
+  init_RcSrc_List,
+  //
+  } from "./idx-render-kit.js";
+//
 /**/
 
 
-/* Struct - Comping */
-const mdProc_State = {
-    cache: new Map(),
-    failed: new Set(),
-    time_pend: new Set(),
-},
-mdWaitLoad = ((ms) => {
-    return (new Promise((r) => (
-        setTimeout((r), (ms)))));
-});
+/* Main Processes - Storage */
+const
+/*|*/
+src_Res = (idxMc.src_Res)
+;
+let
+/*|*/
+selectIndex = (-1),
+currentRes = []
+;
 //
-    /** Loading Screen Preview Maker
-     * @param {Boolean} stLoad
-     * @param {?HTMLElement} loadElm
-     * @returns {void}
-     */
-export async function loadScreen_MaDo (
-    stLoad = (true),
-    loadElm = (iScMd.madoLs),
-) {
-        if (!loadElm) return;
-    (jsMod).setElm((loadElm), {
-        className: ((loadElm.classList.length)
-            ? (loadElm.className) : ((jsHt)
-            .classer(idxStrg.mdVi_LsComp_Cls))
-        ),
+/**/
+
+
+/* Features - Function */
+  /** [Async] Rendering Markdown Files
+   * @returns {void}
+   */
+export async function render_MdFile () {
+  let path = ((jsTx).trm(idxMc.srcPath.value));
+    if (!(path)) return;
+    //
+  switch (true) {
+    case ((path).endsWith(idxStrg.format_Md)):
+      return (alert(`Didn't need to do that!`));
+    default:
+      break;
+  }
+  //
+  loadWait_Markdown_Viewer((`show`),
+    (`Loading the Markdown...`));
+  //
+  try {
+    path = (await fetch(`${path}.md`));
+    //
+    switch ((path).status) {
+      case (404):
+(jsMod).setElm(((jsDoc).getId(idxMc.mvPhText)), {
+  textContent: (`404 - Markdown Not Found`),
+});
+        return;
+      default:
+        break;
+    }
+    //
+    await delay_MdvWait(2500);
+    //
+    (jsMod).setElm((idxMc.viewBase), {
+      innerHTML: ((marked).parse(
+        await ((path).text()))),
     });
-    (loadElm).replaceChildren((stLoad)
-        ? ((jsMod).setElm(((jsDoc)
-            .createElm(`span`)), {
-            //
-    className: (`animate-pulse`),
-    textContent: (`Loading the Markdown...`),
-            //
-        }))
-        : (null)
+  }
+  finally {
+    loadWait_Markdown_Viewer(`hide`);
+}}
+//
+  /** Gets list (li) of Files.
+   * @returns {HTMLLIElement[]}
+   */
+function get_ResultLists () {
+  const proLists = [ ...((src_Res)
+    .querySelectorAll(`li`)), ];
+  return (proLists);
+}
+  /** Refreshes the cached search result list.
+   * @returns {void}
+   */
+function refresh_ResultLists () {
+  currentRes = (get_ResultLists());
+}
+//
+  /** Updates the highlighted search result based on `selectIndex`.
+   * @returns {void}
+   */
+function update_ResultSelect () {
+  const
+    items = (currentRes),
+    active = (items[selectIndex])
+    ;
+  //
+  (items).forEach((li, i) => {
+    ldmClasser((li),
+      (srcList_LiClick_LdmCls.lights),
+      (srcList_LiClick_LdmCls.darks),
     );
     //
-    (Object).entries({
-        "opacity-100": (stLoad),
-        "opacity-0": (!(stLoad)),
-    }).forEach(([ cls, cond, ]) => ((loadElm)
-        .classList.toggle(cls, cond)
-    ));
+    (li).classList.remove(
+      ...(srcList_LiRowed_LdmCls.lights),
+      ...(srcList_LiRowed_LdmCls.darks),
+    );
+    //
+    if ((i) === (selectIndex)) {
+      ldmClasser((li),
+        (srcList_LiRowed_LdmCls.lights),
+        (srcList_LiRowed_LdmCls.darks),
+      );
+    } else {
+      //
+    }
+  });
+  //
+  if (active) {
+    (active).scrollIntoView({
+      behavior: (`smooth`),
+      block: (`nearest`),
+    });
+  }
+}
+  /** Select methods a search result item.
+   * @param {boolean} tCoolDown
+   * @param {HTMLLIElement} seList
+   * @returns {void}
+   */
+export function select_ResultItem (
+  tCoolDown, seList,
+) {
+    if (!(seList)) return;
+    //
+  (jsMod).setElm((idxMc.srcPath), {
+    value: (seList.textContent),
+  });
+  //
+  toggle_ResultList(false);
+  //
+  selectIndex = (-1);
+  currentRes = [];
+  //
+  linkPath_GtSrc_LiNav();
+  mdView_SearchList_Cooldown((tCoolDown),
+    ((v) => (tCoolDown = (v))),
+    (render_MdFile), (noSpam_SrcTime),
+  );
 }
 //
 /**/
 
 
-/* Struct - Functing */
-    /** Render Markdown into Viewered
-     * @param {string} file_MarkDown
-     * @returns {string}
-     */
-function mdVi_Renderer (
-    file_MarkDown,
+/* Feature - Gathering */
+  /** Event Feature: Search-Button - Click
+   * @param {() => {}} ft_Func1
+   * @returns {void}
+   */
+function init_SearchButton (
+  ft_Func1,
 ) {
-    (jsMod).setElm((iScMd.content), {
-        innerHTML: marked(file_MarkDown),
-    });
-    //
-    (jsDoc).qSelectAll(`img`).forEach(
-        (img) => ((jsMod).setElm((img), {
-            draggable: (false),
-    })));
-    //
-    return (file_MarkDown);
+  (idxMc.src_Btn).addEventListener(
+    (`click`), (() => { ft_Func1();
+  }));
 }
-    /** [Async] Loaded Markdown Files
-     * @param {string} path_Loader
-     * @returns {Promise<Object>}
-     */
-async function mdVi_Loader (
-    path_Loader,
+  //
+  /** Event Feature: Input-Path - Input
+   * @param {string} srcIn_Keying
+   * @returns {void}
+   */
+function init_SearchInput (
+  srcIn_Keying,
 ) {
-    const md_Cache = ((mdProc_State)
-        .cache.get(path_Loader));
-    //
-    switch (true) {
-        case ((md_Cache) === (false)):
-            return {
-                ok: false,
-                reason: (reaState.chc_n_fnd),
-            };
-        case ((md_Cache) !== (undefined)):
-            return {
-                ok: (true),
-                f_markdown: (md_Cache),
-            };
-        case ((mdProc_State).time_pend
-            .has(path_Loader)):
-            return {
-                ok: false,
-                reason: reaState.pndg,
-            };
-    }
-    //
-    (mdProc_State).time_pend.add(path_Loader);
-    //
-    try {
-        let fileMd = (await (fetch(path_Loader)));
-        //
-        if (!(fileMd.ok)) {
-            (mdProc_State).cache.set(path_Loader, false);
-            return {
-                ok: false,
-                reason: (reaState.md_n_fnd),
-            };
-        }
-        fileMd = (await ((fileMd).text()));
-        (mdProc_State).cache
-            .set(path_Loader, fileMd);
-        //
-        return {
-            ok: (true),
-            f_markdown: (fileMd),
-        };
-    } catch {
-        (mdProc_State).cache.set(path_Loader, false);
-        //
-        return {
-            ok: false,
-            reason: (reaState.error),
-        };
-    } finally {
-        (mdProc_State).time_pend.delete(path_Loader);
-    }
+  srcIn_Keying = ((jsTx).trm(
+    idxMc.srcPath.value));
+  //
+  switch (srcIn_Keying) {
+    case (jsVar.empty):
+      (idxMc.viewBase).replaceChildren();
+      //
+      render_ViewMd();
+      //
+      init_RcSrc_List();
+      toggle_ResultList(true);
+      //
+      break;
+    default:
+      //
+      break;
+  }
 }
-//
-    /** [Async] Search Markdown File
-     * @param {?string} src_Ph
-     * @returns {Promise<Object>}
-     */
-export async function mdVi_Searching (
-    src_Ph,
+  /** Event Feature: Input-Path - Keydown
+   * @param {?} kdEvent
+   * @param {() => {}} kdFunc1
+   * @returns {void}
+   */
+function init_SearchKeyDown (
+  kdEvent, kdFunc1,
 ) {
-    const toMd = {
-        mdPath: (iMd.srcPath),
-        fpMado: (iMd.fpMado),
-    };
-    let md_PathSrc = ((jsTx).arr2Str(Object
-        .values((toMd)), (jsVar.empty))),
+  const comp_UliRes = (
+    (jsDoc).getId(idCo_UliRes));
+  //
+  switch (kdEvent.key) {
+    case (`Enter`):
+      refresh_ResultLists();
+      //
+      if (((selectIndex) >= (0)) && (
+        (selectIndex) < (currentRes.length)
+      )) { (currentRes[selectIndex]).click();
+      } else {
+        kdFunc1();
+      }
+      //
+      break;
+    case (`Escape`):
+      toggle_ResultList(false);
+      (idxMc.srcPath).blur();
+      //
+      break;
+    case (`ArrowUp`):
+      (kdEvent).preventDefault();
+      refresh_ResultLists();
+        if (!((currentRes).length)) break;
         //
-        md_StateSrc = ((!(toMd.mdPath))
-        ? (`empty`) : (
-            ((toMd.mdPath).endsWith(jsVar.point)) ||
-            ((toMd.mdPath).endsWith(toMd.fpMado))
-        ) ? (`invalid`) : (`valid`)
-        );
-    //
-    switch (md_StateSrc) {
-        case (`empty`):
-            return {
-                ok: (false),
-                reason: (reaState.empty),
-            };
-        case (`invalid`):
-            alert((`Didn't need to be formatted usual`)
-                + (`:\n`) + (md_PathSrc));
-            //
-            return {
-                ok: false,
-                reason: (reaState.iv_fm),
-            };
-        case (`valid`):
-            let hasCache = ((mdProc_State)
-                .cache.has(md_PathSrc)),
-                waitload = (1500);
-            const loadScreen = (async (st) => ((hasCache)
-                || (await loadScreen_MaDo(st))));
-            //
-            await loadScreen_MaDo(true);
-            //
-            const [mdRes] = (await (Promise).all([
-                mdVi_Loader(md_PathSrc),
-                mdWaitLoad(waitload),
-            ]));
-            //
-            await loadScreen_MaDo(false);
-            //
-            if (mdRes.ok) { (mdRes)
-                .f_markdown = (mdVi_Renderer(
-                    mdRes.f_markdown));
-            }
-            //
-            return (mdRes);
-    }
+      selectIndex--;
+      //
+      if ((selectIndex) < (0)) {
+        selectIndex = ((currentRes
+          .length) - (1));
+      }
+      //
+      update_ResultSelect();
+      //
+      break;
+    case (`ArrowDown`):
+      (kdEvent).preventDefault();
+      refresh_ResultLists();
+        if (!((currentRes).length)) break;
+        //
+      selectIndex++;
+      //
+      if ((selectIndex) >= (currentRes.length)) {
+        selectIndex = (0);
+      }
+      //
+      update_ResultSelect();
+      //
+      break;
+    default:
+      break;
+  }
 }
 //
-    /** Clearing Wipe-out MD that viewed
-     * @returns {void}
-     */
-export function mdVi_Clear () {
-    (jsMod).setElm((iScMd.content), {
-        innerHTML: (jsVar.empty),
-    });
+  /** Finalize Processors the Features
+   * @param {() => {}} iM_SrcBx_Func1
+   * @returns {void}
+   */
+function initMix_SearchBox (
+  iM_SrcBx_Func1,
+) {
+  const srcPath = (idxMc.srcPath);
+  //
+  init_SearchButton(iM_SrcBx_Func1);
+    //
+  (srcPath).addEventListener(
+    (`keydown`), ((e) => (
+      init_SearchKeyDown((e),
+      (iM_SrcBx_Func1))
+  )));
+  (srcPath).addEventListener(
+    (`input`), (() => {
+      linkPath_GtSrc_LiNav();
+      init_SearchInput();
+  }));
+}
+  /** [Async] Finalize Processors the Features
+   * @returns {void}
+   */
+export async function idxFeature_Process () {
+  let
+  /*|*/
+    enterCooldown = (false)
+    ;
+  const
+  /*|*/
+    srcWith_Cooldown = (() => {
+      mdView_SearchList_Cooldown((enterCooldown),
+        ((v) => (enterCooldown = (v))),
+        (render_MdFile), (noSpam_SrcTime)
+    ); })
+    ;
+  //
+  initMix_SearchBox(srcWith_Cooldown);
 }
 //
 /**/
 
 
 /* Uji Coba */
-//Later...
+//Testing...
 //
 /**/
 

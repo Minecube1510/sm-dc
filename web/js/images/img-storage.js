@@ -11,9 +11,28 @@ import * as tw from '../tw-css-cls.js';
 /**/
 
 
-/* Storage - Classes */
+/* Classes - Auto Tailwind */
+const
+ease = (tw.transition.ease),
+duration = (tw.transition.duration),
+/*|
+|*/
+easeInOut = ((tw).tcRegulate(
+    (ease), (`in`), (`out`))),
+gen_Durate = ((tw).tcRegulate(
+    (duration), (200)))
+;
+/**/
+
+
+/* Classes - Main Components */
 export const
 /*|*/
+img_Internimate = [
+    (easeInOut), (gen_Durate),
+],
+/*|
+|*/
 atlr_ImageCon_Cls = [  /* Ateiler: Container */
     (`grid`), (`grid-cols-2`), (`place-items-center`),
     //
@@ -29,13 +48,13 @@ atlr_PhTxt_Cls = [  /* Ateiler: Text Placeholder (If:No-Images) */
 atlr_ElImg_Cls = [  /* Ateiler: Image Element (If:Has-Images) */
     (`w-[200px]`), (`rounded-xl`),
     //
-    (`transition-all`), (`duration-200`), (`ease-in-out`),
+    (`transition-all`), ...(img_Internimate),
     //
     (`cursor-pointer`),
     //
     ...((tw).tcPlugnite((`hover`), [ (`scale-105`),
         (`[filter:drop-shadow(0_0_8px_white)]`), ])),
-    ...((tw).tcPlugnite(`active`, [ (`scale-95`),
+    ...((tw).tcPlugnite((`active`), [ (`scale-95`),
         (`[filter:drop-shadow(0_0_8px_gray)]`), ])),
 ]
 ;
@@ -45,9 +64,8 @@ atlr_ElImg_Cls = [  /* Ateiler: Image Element (If:Has-Images) */
 /* Storage - Comping */
     /** Images Ateiler - Component IDs
      * @typedef {Object} ViewImagesComp
-     * @property {HTMLElement|null} base
-     * @property {HTMLElement|null} atlr
-     * @property {HTMLParagraphElement} text
+     * @property {string} atlrC_MainBox
+     * @property {string} atlrC_ImageCon
      */
 export const img_CompId = ((id) => {
     return ((jsDoc).getId({
