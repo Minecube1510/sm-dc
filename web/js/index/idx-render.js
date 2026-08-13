@@ -186,6 +186,10 @@ export function idxRender_AutoDraw () {
     idxRender_SysPage();
     //
     (ldm_Event).addEventListener((`themechange`), (() => {
+        const
+        /*|*/
+        lastFocus = (document.activeElement)
+            ;
         [ (webComp), (cfg.idxComp),
         ].forEach(autoRender_Ldm);
         //
@@ -200,17 +204,29 @@ export function idxRender_AutoDraw () {
                 gtSel_AutoSeld(btn);
         });
         (ldmSyncs).forEach(([ id, light, dark, ]) => {
-                ldmClasser(((id instanceof Element) ? (id)
-                    : (jsDoc.getId(id))), (light), (dark));
-            });
+            ldmClasser(((id instanceof Element) ? (id)
+                : (jsDoc.getId(id))), (light), (dark));
+        });
         //
-        [...((idxMc.src_Res).querySelectorAll
-            (`li`)),].forEach((list) => {
+        [ ...((idxMc.src_Res).querySelectorAll
+            (`li`)), ].forEach((list) => {
+                //
             ldmClasser((list),
                 (cfg.srcList_LiClick_LdmCls.lights),
                 (cfg.srcList_LiClick_LdmCls.darks),
             );
+            //
+            if ((list.ariaSelected) === (`true`)) {
+                ldmClasser((list),
+                    (cfg.srcList_LiRowed_LdmCls.lights),
+                    (cfg.srcList_LiRowed_LdmCls.darks),
+                );
+            }
         });
+        //
+        if (lastFocus instanceof HTMLElement) {
+            (lastFocus).focus();
+        }
     }));
     //
 }

@@ -67,6 +67,7 @@ rounded = (tw.shape.rounded),
 font = (tw.typograph.font),
 //
 shadow = (tw.effects.shadow),
+opacity = (tw.effects.opacity),
 //
 transition = (tw.transition.transition),
 ease = (tw.transition.ease),
@@ -134,9 +135,9 @@ durate_half1 = ((tw).tcRegulate(
     (duration), (150))),
 //
 scale95 = ((tw).tcRegulate(
-    (duration), (95))),
+    (scale), (95))),
 scale120 = ((tw).tcRegulate(
-    (duration), (120))),
+    (scale), (120))),
 //
 pointer_EvNon = ((tw).tcRegulate(
     (pointer), (`events`), (`none`))),
@@ -257,6 +258,9 @@ rscs_Comps = {
 /* Storage - Data */
 export const
 /*|*/
+str_Kb = (`keyboard`),
+str_Ms = (`mouse`),
+//
 idx_FirSearch = ((jsTx).upper(`ReadMe`)),
     //
 format_Md = (`.md`),

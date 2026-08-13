@@ -40,11 +40,14 @@ import { noSpam_SrcTime,
 import { 
     limit_Fetch_Files,
     shuffle_Random_Files,
-    //
-    idx_MainLists as getLists,
-    idx_10TriaLists as triaLists,
-    //
+        //
+    autoRank_Fuzzerch_Files,
+        //
     random_LiSeeder_Files,
+    //
+    idx_RpList as rp_Lists,
+        //
+    idx_10TriaLists as triaLists,
     //
     } from "./idx-system-fetch.js";
 //
@@ -56,8 +59,11 @@ import * as cfg from './idx-render-config.js';
         toggle_ResultList,
     } from "./idx-render-config.js";
 //
-import { render_MdFile,
-    select_ResultItem,
+import { srcSt,
+    //
+    unit_Select_ResItem,
+        //
+    kit_Update_RestSel,
     //
     } from "./idx-process.js";
 //
@@ -306,7 +312,7 @@ export function build_RcSrc_List () {
         const li = ((e).target.closest(`li`));
             if (!(li)) return;
             //
-        select_ResultItem((src_Cooldown), (li));
+        unit_Select_ResItem((src_Cooldown), (li));
     }));
     //
     (idxMc.src_Res).append(leadList);
@@ -357,29 +363,67 @@ export function init_RcSrc_Path (
         srcPathBtnIcon);
 }
     /** Init-Search-Comp: Search List
+     * @param {string[]} proLists
      * @returns {void}
      */
-export function init_RcSrc_List () {
+export function init_RcSrc_List (
+    proLists,
+) {
     const
     /*|*/
-    proLists = (random_LiSeeder_Files()),
-/*
-    (getLists),
-    (random_LiSeeder_Files()),
-*/
     comp_UliRes = ((jsDoc).getId(idCo_UliRes))
         ;
+    if (!(proLists)) {
+        proLists = (random_LiSeeder_Files());
+    }
+    //
     (jsMod).setElm((comp_UliRes), {
         textContent: (jsVar.empty),
     });
     //
-    (shuffle_Random_Files(proLists)).forEach((item) => {
-        const liComp = ((jsMod).makElm((`li`), {
+    if ((proLists.length) === (0)) {
+        (comp_UliRes).append(
+            (jsMod).makElm((`span`), {
+className: ((jsHt).classer([ ...(idxCls.rcSrc_ResLists_Cls),
+    (`pointer-events-none`), (`italic`), (`animate-pulse`),
+    (`text-center`), (`opacity-70`),
+])),
+textContent: (
+    `Sorry, the search is not availiable here...`),
+//
+role: (`presentation`),
+            }),
+        );
+        //
+        return;
+    }
+    //
+    (proLists).forEach((item, i) => {
+        const
+        /*|*/
+        liComp = ((jsMod).makElm((`li`), {
             id: (``),
             className: ((jsHt).classer(
                 idxCls.rcSrc_ResLists_Cls)),
             //
             textContent: (item),
+            //
+            role: (`option`),
+            ariaSelected: (`false`),
+        }));
+        //
+        (liComp).addEventListener((`mouseenter`), (() => {
+            (srcSt).srControl = (idxStrg.str_Ms);
+            //
+            (srcSt).selectIndex = (i);
+            (srcSt).hoverIndex = (i);
+            //
+            kit_Update_RestSel();
+        }));
+        (liComp).addEventListener((`mouseleave`), (() => {
+            (srcSt).srControl = (idxStrg.str_Kb);
+            //
+            kit_Update_RestSel();
         }));
         //
         ldmClasser((liComp),
@@ -397,7 +441,6 @@ export function init_RcSrc_List () {
 
 /* Uji Coba */
 //Test...
-//(jsCs).log(ldm_Color.light.border);
 //
 /**/
 

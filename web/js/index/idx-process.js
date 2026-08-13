@@ -36,21 +36,27 @@ import { noSpam_SrcTime,
   mdView_SearchList_Cooldown,
   //
   } from "./idx-system.js";
-import * as idxSysF from "./idx-system-fetch.js";
+  //
+import { 
+  init_SearchButton,
+  init_SearchInput,
+  init_SearchKeyDown,
+  //
+  } from "./idx-system-config.js";
+  //
+import * as idxSysF from './idx-system-fetch.js';
 import {
   limit_Fetch_Files,
   shuffle_Random_Files,
-  //
-  idx_MainLists as getLists,
-  idx_10TriaLists as triaLists,
+    //
   random_LiSeeder_Files,
+  //
+  idx_RpList as rp_Lists,
+    //
+  idx_10TriaLists as triaLists,
   //
   } from "./idx-system-fetch.js";
 //
-import { 
-  render_ViewMd,
-  //
-  } from "./idx-render.js";
 import { toggle_ResultList,
   //
   srcList_LiClick_LdmCls,
@@ -70,12 +76,18 @@ const
 /*|*/
 src_Res = (idxMc.src_Res)
 ;
-let
-/*|*/
-selectIndex = (-1),
-currentRes = []
-;
 //
+export const
+/*|*/
+srcSt = {
+  selectIndex: (-1),
+  hoverIndex: (-1),
+    //
+  srControl: (idxStrg.str_Kb),
+  //
+  currentRes: [],
+};
+;
 /**/
 
 
@@ -83,7 +95,7 @@ currentRes = []
   /** [Async] Rendering Markdown Files
    * @returns {void}
    */
-export async function render_MdFile () {
+export async function ft_Render_MdFile () {
   let path = ((jsTx).trm(idxMc.srcPath.value));
     if (!(path)) return;
     //
@@ -124,61 +136,99 @@ export async function render_MdFile () {
   /** Gets list (li) of Files.
    * @returns {HTMLLIElement[]}
    */
-function get_ResultLists () {
+export function kit_Get_ResLists () {
   const proLists = [ ...((src_Res)
     .querySelectorAll(`li`)), ];
   return (proLists);
 }
+  //
   /** Refreshes the cached search result list.
    * @returns {void}
    */
-function refresh_ResultLists () {
-  currentRes = (get_ResultLists());
+export function kit_Refresh_ResLists () {
+  (srcSt).currentRes = kit_Get_ResLists();
 }
-//
-  /** Updates the highlighted search result based on `selectIndex`.
+  /** Updates the highlighted index.
    * @returns {void}
    */
-function update_ResultSelect () {
+export function kit_Update_RestSel () {
   const
-    items = (currentRes),
-    active = (items[selectIndex])
+    actIndex = (((srcSt.srControl
+      ) === (idxStrg.str_Ms))
+      ? (srcSt.hoverIndex)
+      : (srcSt.selectIndex)
+    ),
+    //
+    resLi_Items = (srcSt.currentRes),
+    resLi_Activate = (resLi_Items[actIndex]),
+      //
+    resLi_MainText = ((resLi_Activate)?.textContent),
+    //
+    phComp_ResLi = (idxMc.srcPath.placeholder),
+    linav_GtPath = (idxMc.gtNavC.value)
     ;
   //
-  (items).forEach((li, i) => {
+  (resLi_Items).forEach((li, i) => {
+    const
+      isSelected = ((i) === (
+        srcSt.selectIndex))
+      ;
     ldmClasser((li),
       (srcList_LiClick_LdmCls.lights),
       (srcList_LiClick_LdmCls.darks),
     );
+    //
+    (li).setAttribute(
+      (`aria-selected`), (`false`));
     //
     (li).classList.remove(
       ...(srcList_LiRowed_LdmCls.lights),
       ...(srcList_LiRowed_LdmCls.darks),
     );
     //
-    if ((i) === (selectIndex)) {
-      ldmClasser((li),
-        (srcList_LiRowed_LdmCls.lights),
-        (srcList_LiRowed_LdmCls.darks),
+    if (
+      ((srcSt.srControl) === (idxStrg.str_Kb)) ||
+      (!((srcSt.srControl) === (idxStrg.str_Ms)))
+    ) {
+      (li).classList.remove(
+        ...(srcList_LiClick_LdmCls.lights),
+        ...(srcList_LiClick_LdmCls.darks),
       );
-    } else {
-      //
     }
+    //
+    if (isSelected) { ldmClasser((li),
+      (srcList_LiRowed_LdmCls.lights),
+      (srcList_LiRowed_LdmCls.darks),
+    ); }
   });
   //
-  if (active) {
-    (active).scrollIntoView({
+  if (resLi_Activate) {
+    (resLi_Activate).setAttribute(
+      (`aria-selected`), (`true`));
+    //
+    (resLi_Activate).scrollIntoView({
       behavior: (`smooth`),
       block: (`nearest`),
     });
   }
+  //
+  [
+    [ (idxMc.srcPath), { placeholder: (
+      (resLi_MainText) ?? (phComp_ResLi)), },
+    ], [ (idxMc.gtNavC), { value: (
+      (resLi_MainText) ?? (linav_GtPath)), },
+    ],].forEach(([el, props,]) => {
+      //
+      (jsMod).setElm(el, props);
+  });
 }
+//
   /** Select methods a search result item.
    * @param {boolean} tCoolDown
    * @param {HTMLLIElement} seList
    * @returns {void}
    */
-export function select_ResultItem (
+export function unit_Select_ResItem (
   tCoolDown, seList,
 ) {
     if (!(seList)) return;
@@ -189,13 +239,13 @@ export function select_ResultItem (
   //
   toggle_ResultList(false);
   //
-  selectIndex = (-1);
-  currentRes = [];
+  (srcSt).selectIndex = (-1);
+  (srcSt).currentRes = [];
   //
   linkPath_GtSrc_LiNav();
   mdView_SearchList_Cooldown((tCoolDown),
     ((v) => (tCoolDown = (v))),
-    (render_MdFile), (noSpam_SrcTime),
+    (ft_Render_MdFile), (noSpam_SrcTime),
   );
 }
 //
@@ -203,105 +253,6 @@ export function select_ResultItem (
 
 
 /* Feature - Gathering */
-  /** Event Feature: Search-Button - Click
-   * @param {() => {}} ft_Func1
-   * @returns {void}
-   */
-function init_SearchButton (
-  ft_Func1,
-) {
-  (idxMc.src_Btn).addEventListener(
-    (`click`), (() => { ft_Func1();
-  }));
-}
-  //
-  /** Event Feature: Input-Path - Input
-   * @param {string} srcIn_Keying
-   * @returns {void}
-   */
-function init_SearchInput (
-  srcIn_Keying,
-) {
-  srcIn_Keying = ((jsTx).trm(
-    idxMc.srcPath.value));
-  //
-  switch (srcIn_Keying) {
-    case (jsVar.empty):
-      (idxMc.viewBase).replaceChildren();
-      //
-      render_ViewMd();
-      //
-      init_RcSrc_List();
-      toggle_ResultList(true);
-      //
-      break;
-    default:
-      //
-      break;
-  }
-}
-  /** Event Feature: Input-Path - Keydown
-   * @param {?} kdEvent
-   * @param {() => {}} kdFunc1
-   * @returns {void}
-   */
-function init_SearchKeyDown (
-  kdEvent, kdFunc1,
-) {
-  const comp_UliRes = (
-    (jsDoc).getId(idCo_UliRes));
-  //
-  switch (kdEvent.key) {
-    case (`Enter`):
-      refresh_ResultLists();
-      //
-      if (((selectIndex) >= (0)) && (
-        (selectIndex) < (currentRes.length)
-      )) { (currentRes[selectIndex]).click();
-      } else {
-        kdFunc1();
-      }
-      //
-      break;
-    case (`Escape`):
-      toggle_ResultList(false);
-      (idxMc.srcPath).blur();
-      //
-      break;
-    case (`ArrowUp`):
-      (kdEvent).preventDefault();
-      refresh_ResultLists();
-        if (!((currentRes).length)) break;
-        //
-      selectIndex--;
-      //
-      if ((selectIndex) < (0)) {
-        selectIndex = ((currentRes
-          .length) - (1));
-      }
-      //
-      update_ResultSelect();
-      //
-      break;
-    case (`ArrowDown`):
-      (kdEvent).preventDefault();
-      refresh_ResultLists();
-        if (!((currentRes).length)) break;
-        //
-      selectIndex++;
-      //
-      if ((selectIndex) >= (currentRes.length)) {
-        selectIndex = (0);
-      }
-      //
-      update_ResultSelect();
-      //
-      break;
-    default:
-      break;
-  }
-}
-//
   /** Finalize Processors the Features
    * @param {() => {}} iM_SrcBx_Func1
    * @returns {void}
@@ -321,9 +272,10 @@ function initMix_SearchBox (
   (srcPath).addEventListener(
     (`input`), (() => {
       linkPath_GtSrc_LiNav();
-      init_SearchInput();
+      init_SearchInput(idxMc.srcPath);
   }));
 }
+//
   /** [Async] Finalize Processors the Features
    * @returns {void}
    */
@@ -337,8 +289,8 @@ export async function idxFeature_Process () {
     srcWith_Cooldown = (() => {
       mdView_SearchList_Cooldown((enterCooldown),
         ((v) => (enterCooldown = (v))),
-        (render_MdFile), (noSpam_SrcTime)
-    ); })
+        (ft_Render_MdFile), (noSpam_SrcTime));
+    })
     ;
   //
   initMix_SearchBox(srcWith_Cooldown);

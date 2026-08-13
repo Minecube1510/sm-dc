@@ -23,6 +23,7 @@ import * as idxCls from './idx-storage-class.js';
     import { idxMc,
         idx_FirSearch, autoFile_Md,
         //
+        idxGt_Lang as gt_LangCo,
         idx_MComp as cIdx,
         //
     } from "./idx-storage.js";
@@ -34,19 +35,23 @@ import {
 //
     import { gtSel_AutoSeld,
         //
-        srcList_LiClick_LdmCls,
-        srcList_LiRowed_LdmCls,
     } from './idx-render-config.js';
     import {
         init_RcGt_LeverSides,
     } from './idx-render-kit.js';
 //
-import * as sysF from "./idx-system-fetch.js";
+import * as sysF from './idx-system-fetch.js';
 import {
-    idx_MainLists as getLists,
+    idx_RpList as rp_Lists,
+        //
     idx_10TriaLists as triaLists,
     //
     } from "./idx-system-fetch.js";
+import {
+    cfg_GtLever_Confirm,
+    cfg_GtLever_Change,
+    //
+    } from "./idx-system-config.js";
 //
 /**/
 
@@ -92,6 +97,8 @@ export function valChips_GtSrc_Lever () {
     //
     let
     /*|*/
+    cekMode = (jsVar.empty),
+    //
     firstActive = (null),
     currentMode = (null)
         ;
@@ -101,14 +108,10 @@ export function valChips_GtSrc_Lever () {
             if (!(btn)) return;
         //
         (btn).addEventListener((`click`), (() => {
-            init_RcGt_LeverSides(btn);
+            currentMode = cfg_GtLever_Confirm(
+                btn, currentMode);
             //
-            if ((currentMode) !== (btn.textContent)) {
-                currentMode = (btn.textContent);
-                //
-                (jsCs).log(`Change to Mode: ${
-                    currentMode}`);
-            }
+            cfg_GtLever_Change(currentMode);
         }));
         //
         if (((firstActive) === (null)) && (((btn)
@@ -121,9 +124,6 @@ export function valChips_GtSrc_Lever () {
                 currentMode}`);
         }
     });
-    //
-    // Later...
-    //
 }
     /** Syncroning - [Index-Gt-Linav]=[Index-Rc-Search]
      *
@@ -155,7 +155,7 @@ export function viewMode_GtArtic_Select () {
             (jsMod).setElm((gtSelC.choose), {
                 textContent: (opt.textContent),
                 value: ((jsTx).lower(opt.value)),
-            })
+            });
             //
             (gtSelC.opts).forEach((btn) => {
                 (btn).setAttribute(

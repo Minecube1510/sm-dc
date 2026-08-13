@@ -158,11 +158,11 @@ srcList_LiClick_LdmCls = {
 },
 srcList_LiRowed_LdmCls = {
     lights: [
-        (`bg-${ldm_Color.light.hover}`),
+        (`bg-${ldm_Color.light.selected}`),
         (`text-${ldm_Color.dark.text}`),
     ],
     darks: [
-        (`bg-${ldm_Color.dark.hover}`),
+        (`bg-${ldm_Color.dark.selected}`),
         (`text-${ldm_Color.light.text}`),
     ],
 },
@@ -258,7 +258,7 @@ export function toggle_ResultList (
     const
     /*|*/
     show_ResList_Cls = [
-        [ (`translate-y-6`), (`translate-y-8`), ],
+        [ (`translate-y-2`), (`translate-y-4`), ],
         [ (`opacity-0`), (`opacity-100`), ],
         [ (`scale-95`), (`scale-100`), ],
         [ (`pointer-events-none`), (`pointer-events-auto`), ],

@@ -39,7 +39,8 @@ const gitConfig = (iGit.gh_Config),
     isDeployed = (!(iGit.isLocal));
 let imgConfig = {
     Lcl: {
-        source: ((jsTx).arr2Str([(iGit.htWeb.dom),
+        source: ((jsTx).arr2Str([
+            (iGit.htWeb.dom),
             ...((isDeployed) ? [sysGit.data.repo]
             : []), (dirSafe.countimgs),
         ], (jsVar.slash))),

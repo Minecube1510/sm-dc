@@ -36,8 +36,10 @@ if (location.search) {
  * @property {string} text [Text - Main]
  * @property {string} border [Border - Main]
  * |
- * @property {string} hover [Hover - Main]
- * @property {string} active [Active - Main]
+ * @property {string} hover [Hover - Mouse Control]
+ * @property {string} active [Active - Mouse Control]
+ *      |
+ * @property {string} selected [Background - Keyboard Sele-Controlled]
  * |
  * @property {string} ldmbtn [Background - LDM-Button]
  */
@@ -102,6 +104,8 @@ ldm_Color = {
         //
         hover: (`gray-500`),
         active: (`gray-600`),
+            //
+        selected: (`blue-700`),
         //
         ldmbtn: (`mist-200`),
     },
@@ -112,6 +116,8 @@ ldm_Color = {
         //
         hover: (`gray-600`),
         active: (`gray-500`),
+            //
+        selected: (`blue-300`),
         //
         ldmbtn: (`mist-800`),
     },
@@ -231,14 +237,16 @@ ldmIcons = []
         (ldmIcons).push(elmCon);
     });
     //
-    (ldmButton).classList.add(
-        ...(ldm_StatBtn_Cls));
+    (ldmButton).classList.add(...(ldm_StatBtn_Cls));
     setLDm_ThemeClass((ldmButton),
         (`bg-${ldm_Color.light.ldmbtn}`),
         (`bg-${ldm_Color.dark.ldmbtn}`),
     );
     //
-    ldmTranser({ compBtn: (ldmButton), compBIs: (ldmIcons), });
+    ldmTranser({
+        compBtn: (ldmButton),
+        compBIs: (ldmIcons),
+    });
     //
     (spDom.body).appendChild(ldmButton);
 }
@@ -403,6 +411,10 @@ ldmMainColors = {
             });
         });
         //
+        (compBtn).addEventListener((`mousedown`), ((e) => {
+            (e).preventDefault();
+        }));
+        //
         (compBtn).onclick = (() => {
             let mode = (((spDom.rMod.dataset
                 .theme) === (ldm_Data.setDark))
@@ -439,6 +451,7 @@ ldmMainColors = {
     });
     //
 }
+//
     /** Displaying Updater (For Width)
      * @returns {void}
      */

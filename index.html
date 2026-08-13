@@ -73,23 +73,28 @@ class="px-3 py-2 font-semibold size-full text-start focus:outline-none"
 class="relative flex items-center justify-center p-2 text-center rounded-lg size-full group into-smooth"
                     id="idx-rcgt-select">Select \V/</div>
             </div><div
-class="relative flex py-2 rounded-lg into-smooth"
+class="relative flex items-center py-2 rounded-lg into-smooth"
                 id="idx-rc-search">
                 <span class="inline-flex items-center px-3 font-black"
                     data-path-root="/" id="idx-rcsc-root">/</span>
-                <div class="absolute flex items-center gap-1"
-                    id="idx-rcsc-chips"></div>
-                <input class="size-full focus:outline-none"
-                    autocomplete="off" aria-label="View" spellcheck="false"
-                    type="text" id="idx-rcsc-input" value="" data-value=""
-                    placeholder="Type the MD document name at here">
+                <div
+class="relative flex-1 h-full"
+                    id="idx-rcsc-editor"><div
+class="absolute inset-0 flex items-center gap-1 duration-200 ease-in-out opacity-0 pointer-events-none"
+                        id="idx-rcsc-chips">
+                    </div><input
+class="duration-200 ease-in-out focus:outline-none size-full"
+                        autocomplete="off" aria-label="View" spellcheck="false"
+                        type="text" id="idx-rcsc-input" value="" data-value=""
+                        placeholder="Type the MD document name at here">
+                    <div
+class="absolute inset-x-0 flex items-center max-w-full gap-1 p-2 mx-auto my-2 rounded-lg z-999 theme-smooth"
+                        id="idx-rcsc-result"></div>
+                </div>
                 <button type="button" aria-label="Search"
 class="flex items-center justify-center mx-2 border cursor-pointer size-6"
                     id="idx-rcsc-btn" value="">
                 </button>
-                <div
-class="absolute inset-x-0 flex items-center max-w-[98%] gap-1 p-2 mx-auto my-2 rounded-lg z-999 theme-smooth"
-                    id="idx-rcsc-result"></div>
             </div>
         </div><hr class="border-2">
         <div

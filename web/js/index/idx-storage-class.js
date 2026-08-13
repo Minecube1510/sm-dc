@@ -99,8 +99,11 @@ gtLvr_BuildSides_Cls = [
     (idx.cursorPoint),
 ],
 //
-gtSel_BuildCor_Cls = [ (`inline-block`),
-    (idx.transiteTransform), ...(idx_Internimate),
+gtSel_BuildCor_Cls = [
+    (`inline-block`),
+    //
+    (idx.transiteTransform),
+    ...(idx_Internimate),
     //
     (idx.cursorPoint),
     //
@@ -145,16 +148,21 @@ gtSel_BuildOpt_Cls = [ (idx.flex),
     //
     ...((idx).tCls_AutoSet({
         hover: [ (`scale-100`),
-            (`opacity-90`), (`grayscale-25`),
+            ((tw).tcRegulate((idx
+                .opacity), (90))),
+            (`grayscale-25`),
         ],
         active: [ (idx.scale95),
-            (`opacity-100`), (`grayscale-0`),
+            ((tw).tcRegulate((idx
+                .opacity), (100))),
+            (`grayscale-0`),
         ],
     })),
 ],
 /*|
 |*/
-rcPath_SrcLogo_Cls = [ (idx.transiteTransform),
+rcPath_SrcLogo_Cls = [
+    (idx.transiteTransform),
     ...(idx_Internimate),
     //
     ...((idx).tCls_AutoSet({
@@ -163,8 +171,19 @@ rcPath_SrcLogo_Cls = [ (idx.transiteTransform),
     })),
 ],
 //
+rcChips_Chipper_Cls = [ (idx.flex),
+    (`items-center`), (`gap-1`),
+    //
+    (`px-2`), (`py-1`),
+    //
+    (idx.border), (idx.roundedLG),
+    //
+    (idx.cursorPoint),
+],
+    //
 rcSrc_MainCompB_Cls = [
-    (idx.shadow_MDx20), (`opacity-0`),
+    (idx.shadow_MDx20), ((tw).tcRegulate(
+        (idx.opacity), (0))),
     (idx.transiteTransform), ...(idx_Internimate),
     //
     (`scale-95`), (`translate-y-6`),
@@ -186,9 +205,12 @@ rcSrc_ResConbox_Cls = [
 rcSrc_ResLists_Cls = [
     (`p-2`), (idx.roundedLG),
     //
+    (idx.transiteTransform),
+    ...(idx_Internimate),
+    //
     (idx.cursorPoint),
     //
-    (`into-smooth`),
+    (`theme-smooth`),
 ],
 //
 mdView_MdPh_Cls = [ (idx.flex),
