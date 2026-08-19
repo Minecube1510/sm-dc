@@ -1,52 +1,68 @@
 {
-    /* Ignored Config */
-    "liveServer.settings.port": 5502,
+  /* Need to Config */
+  /* READ!
+    |
+    Actual: http://localhost:9999/
+    Live: http://127.0.0.1:5502/
+    |
+  */
+  "task.allowAutomaticTasks": "off",
+  // Port: "5502" - ""
+  "liveServer.settings.port": 5502,
+  "liveServer.settings.proxy": {
+    "enable": true,
+    "baseUri": "/",
+    "proxyUri": "http://localhost:9999"
+  },
+  "liveServer.settings.useWebExt": true,
+  "liveServer.settings.NoBrowser": true,
 
+  //
+  /* TOP: Markdowns */
+  "json.schemaDownload.enable": true,
+  //
+  //"markdown.preview.fileRoot": "/",
+  "markdownlint.configFile": ".vscode/plugin/.markdownlint.json",
 
-        //
-    /* TOP: Markdowns */
-    "json.schemaDownload.enable": true,
+  //
+  /* Performance boost */
+  "files.watcherExclude": {
+    "**/.git/**": true,
     //
-    //"markdown.preview.fileRoot": "/",
-    "markdownlint.configFile": ".vscode/plugin/.markdownlint.json",
-
-
-        //
-    /* Performance boost */
-    "files.watcherExclude": {
-        "**/.git/**": true,
-        //
-        "**/.storage/.images/**": true,
-        "**/ASSETS/**": true,
-            //
-        "**/*.png": true,
-        "**/*.jpg": true,
-        "**/*.jpeg": true,
-        "**/*.webp": true,
-        "**/*.gif": true
-    },
+    "**/.storage/.images/**": true,
+    "**/ASSETS/**": true,
     //
-    "extensions.ignoreRecommendations": true,
+    "**/*.png": true,
+    "**/*.jpg": true,
+    "**/*.jpeg": true,
+    "**/*.webp": true,
+    "**/*.gif": true
+  },
+  //
+  "extensions.ignoreRecommendations": true,
+  //
+  "search.exclude": {
+    "**/.storage/.images/**": true,
+    "**/ASSETS/**": true,
     //
-    "search.exclude": {
-        "**/.storage/.images/**": true,
-        "**/ASSETS/**": true,
-            //
-        "**/*.png": true,
-        "**/*.jpg": true,
-        "**/*.jpeg": true,
-        "**/*.webp": true,
-        "**/*.gif": true
-    },
+    "**/*.png": true,
+    "**/*.jpg": true,
+    "**/*.jpeg": true,
+    "**/*.webp": true,
+    "**/*.gif": true
+  },
 
-
-        //
-    /* 🔧 MCP and Files fix */
-    "files.associations": {
-        "mcp.json": "jsonc"
-    },
-    "python.analysis.extraPaths": [
-        "./.vscode/system/py",
-        "./.vscode/plugin",
-    ]
+  //
+  /* 🔧 MCP and Files fix */
+  "files.associations": {
+    "mcp.json": "jsonc"
+  },
+  "python.analysis.extraPaths": ["./.vscode/system/py", "./.vscode/plugin"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
 }

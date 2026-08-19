@@ -36,13 +36,17 @@ import * as imgPro from './img-process.js';
 //
 const gitConfig = (iGit.gh_Config),
     //
-    isDeployed = (!(iGit.isLocal));
+    isDeployed = (!(iGit.isLocal)),
+        //
+    isGithub = (iGit.isGitLink);
+    ;
 let imgConfig = {
     Lcl: {
         source: ((jsTx).arr2Str([
             (iGit.htWeb.dom),
-            ...((isDeployed) ? [sysGit.data.repo]
-            : []), (dirSafe.countimgs),
+            ...((isDeployed) ? ((isGithub) ??
+                [sysGit.data.repo]) : []),
+            (dirSafe.countimgs),
         ], (jsVar.slash))),
         method: (true),
     },

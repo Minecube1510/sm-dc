@@ -158,15 +158,13 @@ export async function alImages_Processor (
         (jsCs).log((`Processor:`), (procMethod));
     }
     //
-    const isGitLink = ((iGit.htWeb
-        .lcl).endsWith(`github.io`)),
-        proGetImgs = (new Set())
+    const proGetImgs = (new Set())
         ;
     let addImage = ((img) => ((proGetImgs).add(img))),
         aiP_Result = (collectSets)
         ;
     //
-    switch ((procMethod) || (!(isGitLink))) {
+    switch ((procMethod) || (!(iGit.isGitLink))) {
         case (true):  /* Local */
             aiP_Result = (await (srcPrefix_Scanner(collectSets, true, true)));
             //

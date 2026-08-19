@@ -43,6 +43,9 @@ export let
         ((htWeb.lcl) === (`localhost`))
 );
 //
+export const isGitLink = ((htWeb
+    .lcl).endsWith(`github.io`))
+//
 /**/
 
 

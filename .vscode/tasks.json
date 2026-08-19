@@ -1,0 +1,103 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        /* Run */
+        {
+            "label": "PHP Server :9999",
+            "type": "shell",
+            "command": "php -S localhost:9999",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "php",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.*)$",
+                    "message": 1,
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*",
+                    "endsPattern": ".*",
+                }
+            },
+            "runOptions": {
+                "runOn": "folderOpen",
+            },
+            "presentation": {
+                "reveal": "never",
+                "panel": "dedicated",
+                "close": false,
+            },
+            "hide": true,
+        },
+{
+            "label": "Open Local Link",
+            "type": "shell",
+            "command": "start \"\" \"http://localhost:9999/\"",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "never",
+                "close": true,
+            },
+            "hide": true,
+        },
+        //
+        {
+            "label": "Start Live Server",
+            "command": "${command:extension.liveServer.goOnline}",
+            "problemMatcher": [],
+            "dependsOn": [
+                "PHP Server :9999",
+            ],
+            "dependsOrder": "sequence",
+            "hide": true,
+        },
+        //
+        {
+            "label": "Start AutoLive - PHP",
+            "dependsOn": [
+                "Start Live Server",
+                //
+                "Open Local Link",
+            ],
+            "problemMatcher": [],
+        },
+        /* Run */
+
+
+        /* Terminate */
+        {
+            "label": "Kill PHP Process",
+            "type": "shell",
+            "command": "Get-Process -Id (Get-NetTCPConnection -LocalPort 9999 -ErrorAction SilentlyContinue).OwningProcess -ErrorAction SilentlyContinue | Stop-Process -Force",
+            "problemMatcher": [],
+            "hide": true,
+        },
+        {
+            "label": "Close Terminals",
+            "command": "${command:workbench.action.terminal.killAll}",
+            "problemMatcher": [],
+            "hide": true,
+        },
+        //
+        {
+            "label": "Stop Live Server",
+            "command": "${command:extension.liveServer.goOffline}",
+            "problemMatcher": [],
+            "hide": true,
+        },
+        //
+        {
+            "label": "Stop AutoLive - PHP",
+            "dependsOn": [
+                "Stop Live Server",
+                //
+                "Kill PHP Process",
+                "Close Terminals",
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+        },
+        /* Terminate */
+    ],
+}

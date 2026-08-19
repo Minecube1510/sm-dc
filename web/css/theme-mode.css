@@ -9,8 +9,20 @@
     /*|
     |*/
 :root {
+    --transer-smooth: .2s;
     --theme-speed: .5s;
+    /**/
+    --text-opting: ease-out;
     --theme-opting: ease-in-out;
+    /**/
+    --index-transition-theme:
+        background-color var(--transer-smooth) var(--theme-opting),
+        color var(--transer-smooth) var(--text-opting),
+        border-color var(--transer-smooth) var(--theme-opting);
+    --index-transition-focus:
+        box-shadow var(--transer-smooth) var(--theme-opting);
+    /**/
+    --none: (none);
     /**/
 }
 /*
@@ -35,7 +47,28 @@ html, body
 
 
 /* Costumize */
+.theme-smooth
+{
+    transition-property:
+        /* opacity var(--transer-smooth) var(--theme-opting), */
+        var(--index-transition-theme)
+        ;
+}
 /**/
+.into-smooth
+{
+    /* /*  */
+    transition:
+        var(--index-transition-theme),
+        var(--index-transition-focus)
+        ;
+    /* */ */
+}
+.into-smooth:focus-within
+{
+    box-shadow: 0 0 0 3px var(--tw-ring-color);
+}
+/* *
 /*
     */
 

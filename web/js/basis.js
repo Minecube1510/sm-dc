@@ -40,8 +40,7 @@ export const
     data: (data[`git-data`]),
     link: (data[`git-link`]),
 },
-    dirSafe = ((data
-        [`dir-safe`]))
+    dirSafe = (data[`dir-safe`])
     ;
 //
 /**/
