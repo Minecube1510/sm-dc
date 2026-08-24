@@ -40,6 +40,9 @@ import {
 import { render_ViewMd,
     //
     } from "./idx-render.js";
+import { setLDm_ThemeClass as ldmClasser,
+    //
+    } from "../set-paging.js";
 import { toggle_ResultList,
     //
     } from "./idx-render-config.js";
@@ -79,8 +82,8 @@ cursorPoint = (idxStrg.cursorPoint),
 rcChip_Chiplost_Cls = [ (`bi`),
     (`bi-x-circle`),
     //
-    (idxStrg.transiteTransform),
-    ...(idxCls.idx_Internimate),
+    // (idxStrg.transiteTransform),
+    // ...(idxCls.idx_Internimate),
     //
     (`translate-y-0.25`),
     //
@@ -90,6 +93,7 @@ rcChip_Chiplost_Cls = [ (`bi`),
     })),
 ]
 ;
+let gtLvr_CrudChipHandler;
 /*|
 |*/
     /** Event Feature: Search-Button - Click
@@ -137,7 +141,7 @@ export function init_SearchInput (
                 limit_Fetch_Files(scanFiles))
                 ;
             //
-            init_RcSrc_List(scanFiles);
+            init_RcSrc_List(mit_LFiles);
             //
             break;
     }
@@ -210,6 +214,10 @@ export function init_SearchKeyDown (
     }
 }
 //
+(window).addEventListener((`idx-search-limit-change`), (() => {
+    init_SearchInput(idxMc.srcPath);
+}));
+//
 /**/
 
 
@@ -221,40 +229,121 @@ export function init_SearchKeyDown (
 export function crudChip_Create (
     pathFile,
 ) {
-    //?
+    const
+        chipName = ((window).prompt(
+            `Add for next directing:`)),
+        newChip = ((jsTx).trm(chipName ?? jsVar.empty)),
+        validName = ((/^[A-Za-z0-9]+$/).test(newChip)),
+        chipList = (((Array).isArray(pathFile))
+            ? ([ ...(pathFile), ])
+            : ((jsTx).trm((pathFile) ?? (jsVar.empty))
+                .split(jsVar.slash).filter(Boolean)))
+            ;
+        if (!(validName)) return;
+        if (!((window).confirm
+            (`Add "${newChip}"?`))) return;
     //
-    alert(`For: Create`);
-    (jsCs).log(pathFile);
+    (chipList).push(newChip);
     //
-    //?
+    (idxMc.srcPath).value = ((jsTx).arr2Str(
+        chipList, jsVar.slash));
+    (idxMc.srcChip).replaceChildren();
+    //
+    gtLvr_AutoChip_Setup((chipList), (idxMc.srcChip));
 }
     /** Event Feature: CRUD Chip (U - Edit)
      * @param {string/string[]} pathFile
      * @returns {void}
      */
 export function crudChip_Update (
-    pathFile,
+    pathFile, chipIndex, chip,
 ) {
-    //?
+    let isDone = (false)
+        ;
+    if ((!((Array).isArray
+        (pathFile))) || !(chip)) return;
     //
-    alert(`For: Update`);
-    (jsCs).log(pathFile);
+    const chipLabel = ((chip).firstElementChild);
+        if (!(chipLabel)) return;
+    const chipInput = ((jsMod).makElm((`input`), {
+        value: (pathFile[chipIndex]),
+        className: ((jsHt).classer([
+            (`min-w-0.5`), (`bg-transparent`),
+            (`outline-none`), ])),
+    }));
     //
-    //?
+    const fitChipInput = (() => { const
+        valen_Chip = (chipInput.value.length),
+        autoVlc = (((valen_Chip) * (0.9)) + (1))
+                ;
+        (chipInput).style.width = (`${(Math)
+            .max((autoVlc), (8))}ch`);
+    });
+    //
+    fitChipInput();
+    (chipInput).addEventListener(
+        (`input`), (fitChipInput));
+    //
+    const finishEdit = ((saveEdit) => {
+        if (isDone) return;
+        //
+        isDone = (true);
+        //
+        const newName = ((jsTx).trm((chipInput).value));
+        if (saveEdit && ((/^[A-Za-z0-9]+$/).test(newName))) {
+            pathFile[chipIndex] = (newName);
+            (idxMc.srcPath).value = ((jsTx).arr2Str(
+                (pathFile), (jsVar.slash)));
+        }
+        //
+        (idxMc.srcChip).replaceChildren();
+        gtLvr_AutoChip_Setup((pathFile), (idxMc.srcChip));
+    });
+    //
+    (chipInput).addEventListener(
+        (`keydown`), ((event) => {
+        switch (event.key) {
+            case (`Enter`):
+                (event).preventDefault();
+                finishEdit(true);
+                break;
+            case (`Escape`):
+                (event).preventDefault();
+                finishEdit(false);
+                break;
+            default:
+                break;
+        }
+    }));
+    (chipInput).addEventListener((`blur`),
+        (() => { finishEdit(true);
+    }));
+    (chip).replaceChild((chipInput), (chipLabel));
+    //
+    (chipInput).focus();
+    (chipInput).select();
 }
     /** Event Feature: CRUD Chip (D - Remove)
      * @param {string/string[]} pathFile
      * @returns {void}
      */
 export function crudChip_Delete (
-    pathFile,
+    pathFile, chipIndex,
 ) {
-    //?
+    if (!((Array).isArray(pathFile)) ||
+        ((chipIndex) < (0)) ||
+        ((chipIndex) >= (pathFile.length))) return;
     //
-    alert(`For: Delete`);
-    (jsCs).log(pathFile);
+    const shouldCrack = ((window).confirm(
+        `Close chip "${pathFile[chipIndex]}"?\n\n` +
+        `OK = Crack (delete)\nCancel = Letting (keep)`));
+        if (!(shouldCrack)) return;
     //
-    //?
+    (pathFile).splice((chipIndex), (1));
+    (idxMc.srcPath).value = ((jsTx).arr2Str(
+        (pathFile), (jsVar.slash)));
+    (idxMc.srcChip).replaceChildren();
+    gtLvr_AutoChip_Setup((pathFile), (idxMc.srcChip));
 }
 //
     /** GT-Lever Feature - CRUD Chip (Full)
@@ -265,14 +354,24 @@ export function crudChip_Delete (
 export function gtLvr_CrudChip (
     cPath, crudMode,
 ) {
-    //?
+    const mode = ((typeof crudMode === (`string`))
+        ? (crudMode)
+        : ((crudMode)?.value ?? (crudMode)?.textContent)
+    );
+    if (!(mode)) return;
     //
-    alert(`For: CRUD-ing`);
-    (jsCs).log(cPath);
-    //
-    //?
+    switch ((jsTx).lower((jsTx).trm(mode))) {
+        case (`create`):
+            return (crudChip_Create(cPath));
+        case (`update`):
+        case (`edit`):
+            return (crudChip_Update(cPath));
+        case (`delete`):
+            return (crudChip_Delete(cPath));
+        default:
+            return;
+    }
 }
-//
 //
 /**/
 
@@ -305,13 +404,30 @@ export function cfg_GtLever_Confirm (
 export function gtLvr_AutoChip_Setup (
     liSearchs, boxChips,
 ) {
-    for (const part of liSearchs) {
+    if (!((Array).isArray(liSearchs)) ||
+        ((liSearchs.length) === (0))) {
+        (boxChips).append((jsMod).makElm((`span`), {
+            className: ((jsHt).classer([ (`italic`),
+                (`pointer-events-none`),
+                (`text-gray-400`), (`opacity-60`),
+            ])),
+            textContent: (`Please add the directory chips`),
+        }));
+        return;
+    }
+    //
+    for (const [i, part] of liSearchs.entries()) {
         const chip = ((jsMod).makElm((`div`), {
 id: (``),
 className: ((jsHt).classer(
     idxCls.rcChips_Chipper_Cls)),
 //
         }));
+        //
+        ldmClasser((chip),
+            [ (`bg-gray-100`), (`text-gray-900`), ],
+            [ (`bg-gray-800`), (`text-gray-100`), ],
+        );
         //
         (chip).append((jsMod)
             .makElm((`span`), {
@@ -328,8 +444,33 @@ className: ((jsHt).classer(
         );
         //
         (boxChips).append(chip);
+        const chipClose = (chip).lastElementChild;
+        (chipClose).addEventListener((`click`), ((event) => {
+            (event).stopPropagation();
+            crudChip_Delete(liSearchs, i);
+        }));
+        (chip).addEventListener((`dblclick`), ((event) => {
+            (event).stopPropagation();
+            crudChip_Update(liSearchs, i, chip);
+        }));
         //
-        //TODO: Warna BG, lalu warna Teks...
+        requestAnimationFrame(() => {
+            (chip).classList.remove(
+                (`opacity-0`), (`translate-y-1`), (`scale-95`),
+            );
+            (chip).classList.add(
+                (`opacity-100`), (`translate-y-0`), (`scale-100`),
+            );
+            ldmClasser((chip),
+                [ (`bg-blue-100`), (`text-blue-900`), ],
+                [ (`bg-blue-900`), (`text-blue-100`), ],
+            );
+            setTimeout(() => {
+                (chip).classList.remove(
+                    (idxStrg.transiteAll), (idxStrg.gen_Durate),
+                );
+            }, ((200) + ((i) * (35))));
+        });
     }
 }
     /** Handling GT-Lever Mode Changes.
@@ -374,6 +515,18 @@ export function cfg_GtLever_Change (
     ph_SrcChip = ((jsTx).trm(`Posfile Chips`));
     get_SrcPath = (srcPath.value);
     //
+    if (nDefMode) {
+        [ (srcChip), ...((srcChip).querySelectorAll(`*`)),
+        ].forEach((elm) => {
+            (elm).classList.remove(
+                (idxStrg.transiteAll), (idxStrg.gen_Durate),
+            );
+            (elm).classList.add(`transition-none`);
+        });
+    } else {
+        (srcChip).classList.remove(`transition-none`);
+    }
+    //
     for (const { elm, state } of classMap) {
         [ (opacity_0), (pointer_EvNon),
         ].forEach((cls) => { (elm).classList
@@ -394,6 +547,12 @@ export function cfg_GtLever_Change (
     //
     (jsCs).warn(`Still under development...`);
     //
+    if (gtLvr_CrudChipHandler) {
+        (srcRoot).removeEventListener(
+            (`click`), (gtLvr_CrudChipHandler));
+        gtLvr_CrudChipHandler = (null);
+    }
+    //
     switch (lever) {
         case ((jsTx).lower(gt_LangCo.lvr.rp)):  /* Rawpath */
             get_SrcPath = (
@@ -401,12 +560,6 @@ export function cfg_GtLever_Change (
                 ? ((jsTx).arr2Str((get_SrcPath),
                 (jsVar.slash))) : (get_SrcPath)
             );
-            //
-            (srcRoot).removeEventListener(
-                (`click`), (() => {
-                    //
-                (gtLvr_CrudChip(get_SrcPath))
-            }));
             //
             break;
         case ((jsTx).lower(gt_LangCo.lvr.pf)):  /* Posfile */
@@ -416,17 +569,11 @@ export function cfg_GtLever_Change (
                 .filter(Boolean))
             );
             //
-            (srcRoot).removeEventListener(
-                (`click`), (() => {
-                    //
-                (gtLvr_CrudChip(get_SrcPath))
-            }));
+            gtLvr_CrudChipHandler = (() => {
+                (gtLvr_CrudChip(get_SrcPath, (`create`)));
+            });
             (srcRoot).addEventListener(
-                (`click`), (() => {
-                    //
-                (gtLvr_CrudChip(get_SrcPath))
-            }));
-            //
+                (`click`), (gtLvr_CrudChipHandler));
             break;
         default:
             break;

@@ -1,8 +1,12 @@
 {
   "name": "sm-dc",
+  "displayName": "SM-DC Icon Theme",
+  "publisher": "Minecube1510",
   "version": "1.0.0",
   "description": "- Branch\r - \"work-dev\"",
-  "main": "index.js",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +19,15 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "sm-dc-icon-theme",
+        "label": "SM-DC Icon Theme",
+        "path": "./theme.json"
+      }
+    ]
+  },
   "bugs": {
     "url": "https://github.com/Minecube1510/sm-dc/issues"
   },

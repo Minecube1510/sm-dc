@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD022 MD034 -->
+
 "Details"
 [-] Live Server (VSCode - 5502)
 [ON] Bottom Right: "Go Live" > "Port: 5502" > "Live Server (VSCode)"

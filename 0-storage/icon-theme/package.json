@@ -1,0 +1,19 @@
+{
+  "name": "icon-theme",
+  "displayName": "SM-DC Icon Theme",
+  "description": "Customize special icon theme",
+  "version": "1.0.0",
+  "publisher": "Minecube1510",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "icon-theme",
+        "label": "SM-DC Icon Theme",
+        "path": "./theme.json"
+      }
+    ]
+  }
+}

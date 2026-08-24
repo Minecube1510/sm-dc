@@ -15,8 +15,48 @@ require("stack/system/var.php");
 /**/
 
 
-/* Test */
-// later...
+/* Method: Minify - Booster */
+ob_start(function ( $buffer, ) {
+    global $empty, $space,
+        $angleL, $angleR
+        ;
+    return preg_replace([
+//
+    /* Newline / Tab */
+('/\r\n|\r|\n/'), ('/\t/'),
+    /* Whitespace antar-element */
+('/>[ \t]+</'),
+    /* Whitespace sebelum / sesudah tag */
+('/>\s+</'),
+    /* Whitespace setelah opening tag */
+('/<([a-zA-Z][^>]*?)\s+>/'),
+    /* Multiple whitespace */
+('/[ ]{2,}/'),
+], [
+($space), ($space),
+("><"), ("><"),
+('<$1>'),
+($space),
+//
+], ($buffer));
+});
+//
+/**/
+
+
+/* Method: Var - Rooting */
+function autoFormat (
+    string $File,
+    string $Format,
+) {
+    global $point
+        ;
+    return implode(($point), [
+        ($File), ($Format),
+    ]);
+}
+//
+/**/
 
 
 /* Method: Var - Rooting */
@@ -27,31 +67,26 @@ $path = trim(
     parse_url(($requestUri),
         (PHP_URL_PATH)), ($slash));
 //
-$php = (".php");
-//
 function shortLink (
     string $link,
 ) {
-    global $slash,
-        $Root,
-        $php
+    global $slash, $PHP,
+        $Root
         ;
-    //
-    return (
-        ($Root) . ($slash)
-        . ($link) . ($php));
+    return autoFormat(implode(
+        ($slash), [ ($Root), ($link),
+    ]), ($PHP));
 }
 //
 function autoStat (
     string $lStat,  // Link Status
     int $coStat,  // Code Status
 ) {
-    global
-        $slash
+    global $slash
         ;
     http_response_code(404);
     //
-    $autoLink = (($lStat) 
+    $autoLink = (($lStat)
         . ($slash));
     //
     require(shortLink(($autoLink)
@@ -62,7 +97,7 @@ function rootPath (
     array $arrPath,  // Array Path
 ): string {
     global $slash, $bSlash,
-        $php
+        $PHP
         ;
     $caller = (debug_backtrace(
         (DEBUG_BACKTRACE_IGNORE_ARGS),
@@ -70,8 +105,9 @@ function rootPath (
         //
     $base = (dirname($caller));
     //
-    $toPath = (($base) . ($slash) . (implode(
-        ($slash), ($arrPath))) . ($php));
+    $toPath = (($base) . ($slash) . (autoFormat(
+        implode(($slash), ($arrPath)),
+        ($PHP))));
     $pathFix = (str_replace(($bSlash),
         ($slash), ($toPath)));
     //
@@ -102,58 +138,14 @@ function autoPath (
 /**/
 
 
-/* Method: Minify - Booster */
-ob_start(function ( $buffer, ) {
-    global $empty, $space,
-        $angleL, $angleR
-        ;
-    return preg_replace([
-('/\r\n|\r|\n/'), ('/\t/'),
-//
-('/> +/'), ('/ +</'), ('/>[ \t]+</'),
-    ], [
-($empty), ($empty),  # ($space),
-($angleR), ($angleL), ("><"),
-    ], ($buffer));
-});
-//
-/**/
+/* Test */
+// later...
 
 
 /* Method: Process - Rooting */
-$Link_Direct = rootPath([
-    ("stack"), ("build"), ("page"),
-]);
-$Import_Func = rootPath([
-    ("stack"), ("system"), ("func"),
-]);
-//
-switch ($path) {
-        /* Display mau ke halaman mana */
-    case ($empty):
-    case ("direct"):
-        require(shortLink("public/direct"));
-        break;
-    /*|
-    |*/
-    case ("main"):  /* Halaman: Project Utama */
-        require(shortLink("public/main"));
-        break;
-        //
-    case ("img-php"):  /* Halaman: Gudangan file Gambar-Gambar */
-        require(shortLink("public/img-php"));
-        break;
-    case ("img-js"):  /* Halaman: Gudangan file Gambar-Gambar */
-        require(shortLink("public/img-js"));
-        break;
-    /*|
-    |*/
-        /* Halaman: Fallback Error (Auto) */
-    default:
-        autoStat(("public/error"), (404));
-        break;
-    //
-}
+require (rootPath([ ("web"),
+    ($PHP), ("route"),
+]));
 //
 /**/
 

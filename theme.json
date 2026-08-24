@@ -1,0 +1,15 @@
+{
+  "iconDefinitions": {
+    "my_documents": {
+      "iconPath": "./img/favic/favicon.png"
+    }
+  },
+
+  "folderNames": {
+    "docent": "my_documents"
+  },
+
+  "folderNamesExpanded": {
+    "docent": "my_documents"
+  }
+}

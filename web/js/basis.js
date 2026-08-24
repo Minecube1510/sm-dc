@@ -21,9 +21,8 @@ export const jsTx = {
 
 /* Fetchings */
 let data = ((Object).fromEntries(
-    await ((Promise).all([
-        (`vars`), (`dir-safe`),
-        (`git-data`), (`git-link`),
+    await ((Promise).all([ (`vars`),
+        (`git-link`),
     ].map(async (file) => {
         let json = (await (fetch(jsTx
             .lower(`call/json/${file}.json`

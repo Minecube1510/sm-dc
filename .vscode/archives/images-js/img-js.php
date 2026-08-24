@@ -1,7 +1,7 @@
 <?php  /*
     |
-    "img-js.php"
-    "public/img-js.php"
+    img-js.php
+    public/img-js.php
     |
 */
 /* Imports */

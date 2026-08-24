@@ -151,7 +151,7 @@ function idxRender_SysPage () {
     autoRender_Ldm(webComp);
     //
     (Object).values(webComp).forEach((comp) => {
-        (comp).classList.add(`into-smooth`);
+        (comp).classList.add(`comp-smooth`);
     });
     //
 }

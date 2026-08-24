@@ -97,16 +97,18 @@ article#content {
 
 /* Comps */
 /* /*  */
-.into-smooth
+.comp-smooth
 {
     /* /*  */
     transition:
-        var(--index-transition-theme),
-        var(--index-transition-focus)
+        background-color var(--longer-smooth) var(--theme-opting),
+        color var(--longer-smooth) var(--text-opting),
+        border-color var(--longer-smooth) var(--theme-opting),
+        box-shadow var(--longer-smooth) var(--theme-opting)
         ;
     /* */ */
 }
-.into-smooth:focus-within
+.comp-smooth:focus-within
 {
     box-shadow: 0 0 0 3px var(--tw-ring-color);
 }

@@ -1,7 +1,7 @@
 <?php  /*
     |
-    "body.php"
-    "stack/build/body.php"
+    body.php
+    stack/build/body.php
     |
 */
     /* Auto - Compound */

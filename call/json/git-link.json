@@ -1,10 +1,10 @@
 {
-    "ltp": {
+    "pro": {
         "bsc": "http",
         "scr": "https"
     },
-    "gh": {
-        "base": {
+    "github": {
+        "host": {
             "raw": "raw.githubusercontent.com",
             "api": "api.github.com"
         },

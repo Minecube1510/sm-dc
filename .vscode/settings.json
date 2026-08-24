@@ -40,6 +40,7 @@
   },
   //
   "extensions.ignoreRecommendations": true,
+  "workbench.iconTheme": "vscode-icons",
   //
   "search.exclude": {
     "**/.storage/.images/**": true,
@@ -65,4 +66,5 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true
   },
+  "markdown.validate.enabled": false
 }

@@ -46,7 +46,7 @@ atlr_PhTxt_Cls = [  /* Ateiler: Text Placeholder (If:No-Images) */
     (`py-8`), (`text-white`), (`text-3xl`), (`font-semibold`),
 ],
 atlr_ElImg_Cls = [  /* Ateiler: Image Element (If:Has-Images) */
-    (`w-[200px]`), (`rounded-xl`),
+    (`w-full`), (`max-w-full`), (`h-auto`), (`rounded-xl`),
     //
     (`transition-all`), ...(img_Internimate),
     //

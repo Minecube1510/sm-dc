@@ -9,7 +9,6 @@ import { jsVar, jsMod,
   } from "../basis.js";
 //
 import { ldm_Color, ldm_Data, ldm_Event,
-  setPage_Comping,
   //
   setLDm_ThemeClass as ldmClasser,
   } from "../set-paging.js";

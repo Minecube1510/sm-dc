@@ -6,6 +6,11 @@
             "label": "PHP Server :9999",
             "type": "shell",
             "command": "php -S localhost:9999",
+            "options": {
+                "env": {
+                    "PHP_CLI_SERVER_WORKERS": "4",
+                },
+            },
             "isBackground": true,
             "problemMatcher": {
                 "owner": "php",

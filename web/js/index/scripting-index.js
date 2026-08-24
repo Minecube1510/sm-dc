@@ -8,10 +8,7 @@ import * as idxCompile from './idx-compile.js';
 
 /* Automate */
 //TODO
-// 1. Switch
-// 2. Select
-// 3. Search List (V2)
-// 4. LDM Data Saving
+// 1. Select
 //
 /**
  * Size yg dibutuhkan:

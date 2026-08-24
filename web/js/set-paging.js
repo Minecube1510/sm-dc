@@ -7,10 +7,6 @@ import { jsVar, jsMod,
     //
     sysGit,
     } from "./basis.js";
-import {
-    comp_LoadScreen,
-} from "./load-screen.js";
-//
 import * as tw from './tw-css-cls.js';
 //
 /**/
@@ -65,11 +61,22 @@ spDom = {
     body: (document.body),
 },
     //
-webComp = ((jsMod).getEl_Map({
-    coHeader: (`header-idx`),
-    compMain: (`main-idx`),
-    coFooter: (`footer-idx`),
-})),
+webComp = ({
+    coHeader: ((jsDoc).qSelect(`header`)),
+    compMain: ((jsDoc).qSelect(`main`)),
+    coFooter: ((jsDoc).qSelect(`footer`)),
+}),
+frameComp = (() => {
+    const
+        pageMain = ((jsDoc).qSelect(`main`)),
+        dirList = ((pageMain)?.querySelector(`ul`))
+        ;
+    return {
+        dirContainer: ((dirList) ? (pageMain.parentElement) : (null)),
+        dirLists: [ ...((pageMain)?.querySelectorAll(`ul > li`)
+            ?? []), ],
+    };
+})(),
 /*|
 |*/
 hidden = (tw.layout.hidden),
@@ -284,58 +291,10 @@ setLDm_ThemeClass((spDom.body),
     (ldm_Data.darkCls),
 );
 //
-    /** Drawing "Dynamic-Title" for every Page
-     * @param {string} pageMethod
-     * @param {string} pagerValue
-     * @returns {void}
-     */
-function page_Setter (
-    pageMethod, pagerValue,
-) {
-    const pagElm = pager_DataId(pageMethod);
-        if (!(pagElm)) return;
-    switch (pageMethod) {
-        case (`pagingTitle`):
-            (jsMod).setElm((pagElm), {
-                textContent: (`${pagerValue
-                    } | ${pagElm.textContent}`),
-            });
-            break;
-        case (`gitUserName`):
-            (jsMod).setElm((pagElm), {
-                textContent: (pagerValue),
-            });
-            break;
-        //
-        // case (`?`):
-        // case (`?`):
-        // case (`?`):
-        //
-        default:
-            break;
-    }
-}
-//
 /**/
 
 
 /* Final - Paging */
-    /** Componentor for Setting Paging
-     * @param {string} comPage_Title
-     * @returns {void}
-     */
-export function setPage_Comping (
-    comPage_Title,
-) {
-    let sp_Data = {
-        web_title: ((jsTx).trm(comPage_Title)),
-        git_name: (sysGit.data.name),
-    };
-    //
-    page_Setter((`pagingTitle`), (sp_Data.web_title));
-    page_Setter((`gitUserName`), (sp_Data.git_name));
-}
-//
     /** Rendering Light-Dark-Mode Features
      * @returns {void}
      */
@@ -456,8 +415,6 @@ ldmMainColors = {
      * @returns {void}
      */
 export function wDisplay_Settler () {
-        if (!(comp_LoadScreen)) return;
-    //
     const
         webW = (window.innerWidth),
         webH = (window.innerHeight),
@@ -485,6 +442,16 @@ export function wDisplay_Settler () {
         ;
     (Object).values(webComp).forEach((el) => {
         toggle_Displayer((el), (for_HideWeb));
+    });
+    [ (frameComp.dirContainer), ...(frameComp.dirLists),
+    ].forEach((el) => {
+        if (!(el)) return;
+    [
+        (`border`), (`rounded-lg`),
+        (`shadow-sm`),
+    ].forEach((cls) => {
+            (el).classList.toggle((cls), (!(for_HideWeb)));
+        });
     });
     toggle_Displayer((modeBtn), (for_HideLdm));
 }

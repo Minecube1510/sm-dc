@@ -5,7 +5,6 @@
 import { jsVar, jsMod,
     jsTx, jsCs, jsDoc, jsHt,
     //
-    dirSafe,
     } from "../basis.js";
 //
 //?
@@ -14,18 +13,57 @@ import { jsVar, jsMod,
 
 
 /* Fetching - Process */
-const MAX_LIST_FILES = ((15) + (3));
+export let MAX_LIST_FILES = ((15) + (3));
+const PER_DOKSLI_AN = (`/api/doxlye`);
+const RESPONSIVE_LIMITS = {
+    mobile: (3),
+    tablet: (4),
+    computer: ((15) + (3)),
+};
 //
-    /** [Async] Fetches every JSON file and Compress for the array.
+function getResponsiveCategory () {
+    switch (true) {
+        case ((window.innerWidth) < (768)):
+            return (`mobile`);
+        case ((window.innerWidth) < (1024)):
+            return (`tablet`);
+        default:
+            return (`computer`);
+    }
+}
+//
+function updateResponsiveLimit () {
+    const nextLimit = (RESPONSIVE_LIMITS[
+        getResponsiveCategory()]);
+        if ((nextLimit) === (MAX_LIST_FILES)) return (false);
+    MAX_LIST_FILES = (nextLimit);
+    return (true);
+}
+//
+updateResponsiveLimit();
+//
+window.addEventListener((`resize`), (() => {
+    if (updateResponsiveLimit()) {
+        window.dispatchEvent((new CustomEvent(
+            `idx-search-limit-change`)));
+    }
+}));
+//
+    /** [Async] Fetches the document paths from the Doxlye API.
      * @returns {Promise<Array>}
      */
 async function system_Fetch_AllFiles () {
-    return (
-        (await ((Promise).all(((Array).from({length: (Number(
-            await (await (fetch(dirSafe.countfile))).text())),
-        }, ((_, i) => (fetch(`${dirSafe.getfiles}/${(i) + (1)
-            }.json`).then((r) => ((r).json()))))))))).flat()
-    );
+    const response = (await (fetch(PER_DOKSLI_AN)));
+        if (!(response.ok)) {
+            throw (new Error(
+                `Doxlye API request failed: ${response.status}`));
+        }
+    const data = (await (response.json()));
+        if (!((Array).isArray(data.link))) {
+            throw (new TypeError(
+                `Doxlye API response has no document links.`));
+        }
+    return (data.link);
 }
 //
 const rp_ResLists = (await (

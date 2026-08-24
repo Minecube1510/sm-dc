@@ -1,7 +1,7 @@
 <?php  /*
     |
-    "head.php"
-    "stack/build/head.php"
+    head.php
+    stack/build/head.php
     |
 */
     /* Control: Varing */

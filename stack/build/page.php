@@ -1,7 +1,7 @@
 <?php  /*
     |
-    "page.php"
-    "stack/build/page.php"
+    page.php
+    stack/build/page.php
     |
 */
     /* Setup - Headers */

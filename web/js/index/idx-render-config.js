@@ -169,6 +169,7 @@ srcList_LiRowed_LdmCls = {
 /*|
 |*/
 idxComp = {
+    mGt: (idxMc.m_Gt),
     gtLvr: (idxMc.gtLvr),
     gtNav: (idxMc.gtNav),
     gtSel: (idxMc.gtSel),

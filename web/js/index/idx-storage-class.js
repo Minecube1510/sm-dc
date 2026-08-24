@@ -89,7 +89,7 @@ gtLvr_BuildAct_Cls = [
     (idx.border), (idx.roundedLG),
     (idx.transiteTransform), ...(idx_Internimate),
     //
-    (`theme-smooth`),
+    (`comp-smooth`),
 ],
 gtLvr_BuildSides_Cls = [
     (idx.flex), (idx.flex1), (`relative`),
@@ -177,6 +177,9 @@ rcChips_Chipper_Cls = [ (idx.flex),
     (`px-2`), (`py-1`),
     //
     (idx.border), (idx.roundedLG),
+    //
+    (idx.transiteAll), (idx.gen_Durate),
+    (`opacity-0`), (`translate-y-1`), (`scale-95`),
     //
     (idx.cursorPoint),
 ],

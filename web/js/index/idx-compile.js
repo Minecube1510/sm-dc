@@ -7,7 +7,6 @@ import { jsVar, dirSafe,
     } from "../basis.js";
 //
 import { ldm_Color, ldm_Data, ldm_Event,
-    setPage_Comping,
     //
     setLDm_ThemeClass as ldmClasser,
     } from "../set-paging.js";
@@ -37,20 +36,6 @@ import { idxFeature_Process,
 
 //
 /**/
-
-
-/*
-#
-    (Easy)
-//
-|
-    (Medium)
-//
-|
-    (Hard)
-TODO: [1] Bikinin {Search List} untuk Searcher-utama.
-#
-*/
 
 
 /* Clusterizes */
@@ -83,8 +68,7 @@ export function test () {
 export async function struct () {
     /*
         Head */
-    setPage_Comping(
-        `Index Page (Under Development)`);
+    //`Index Page (Under Development)`
     //
     /*
         Body */
