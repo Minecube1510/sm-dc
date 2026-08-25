@@ -27,7 +27,7 @@ title="AT-SECTION-BUNCH">
   ${\textcolor{#B651FF}{Hunfle}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="https://minecube1510.github.io/sm-dc/img/btc/5HPW.png"
+  src="/img/btc/5HPW.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.HuPaWi - Jinja Natsume" >
 </td></tr></table></div>

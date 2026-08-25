@@ -33,13 +33,13 @@ title="AT-SECTION-TYPE">
 </td></tr><tr><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
+src="/img/btc/1GFB.png"
 title="Click for more information."
 alt="BTC.GFB - Kafuu Chino">][On-Bunch]
 </td><td>
 
 <img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
+src="/img/btc/6CTE.png"
 title="SECTION_LOGO_TYPE-NO_LINK"
 alt="BTC.CloTriEld - Fuiba Fuyu">
 </td></tr></table></div>

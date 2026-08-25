@@ -26,7 +26,7 @@ title="AT-SECTION-BUNCH">
   ${\textcolor{#FF1B39}{Accesive}}$
 </td></tr><tr><td>
   <img draggable="false" width="100"
-  src="https://minecube1510.github.io/sm-dc/img/btc/3AVD.png"
+  src="/img/btc/3AVD.png"
   title="SECTION_LOGO_BUNCH-NO_LINK"
   alt="BTC.AVD - Natsu Megumi">
 </td></tr></table></div>

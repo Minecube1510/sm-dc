@@ -62,7 +62,7 @@ Just use:
 > #### {>} *Terkini: "3.2"*
 >
 > - **Tanggal**: "09/05/2025" - "12 Mei 2026"
-> - **05:19**: "*[Dev - Ateiler] Web Fixing and Developing - 3.2*"
+> - **10:XX**: "*[Dev] Fixing Markdowns - 1.8*"
 > - **Commit Pesanan**: "*2a21a96*"
 > - **Commit Hash**: "**2a21a96795f4a62745e97c5582396afefa894dc7**"
 
@@ -112,9 +112,9 @@ Menggunakan 2 metode:
 > - Dan linking sampel-nya, gak boleh asal-asalan.
 > - Wajib mengikuti ID asli yang ditentukan-nya
 
-- Linking
+- Linking (Not opened for now...)
 
-  > [Sample Memory - Data Center (Full Web in Development...)][Link-SMDC]
+  > [Sample Memory - Data Center (No more added, for now...)][Link-SMDC]
 
 [Link-SMDC]: https://minecube1510.github.io/sm-dc "SM-DC - Image Ateiler"
 
