@@ -196,10 +196,15 @@ idxMc = ({
     mSrc: ((jsDoc).getId(idx_MComp.rc.iSrc.main)),
             //
     srcRoot: ((jsDoc).getId(idx_MComp.rc.iSrc.R_t)),
+            //
+        chipEdit: ((jsDoc).getId(`idx-rcsc-editor`)),
     srcChip: ((jsDoc).getId(idx_MComp.rc.iSrc.Chp)),
+            //
     srcPath: ((jsDoc).getId(idx_MComp.rc.iSrc.Pth)),
     src_Btn: ((jsDoc).getId(idx_MComp.rc.iSrc.Btn)),
     src_Res: ((jsDoc).getId(idx_MComp.rc.iSrc.Res)),
+            //
+        srcTester: ((jsDoc).getId(`test-searcher`)),
     //
     mvMain: ((jsDoc).getId(idx_MComp.mv.main)),
         //

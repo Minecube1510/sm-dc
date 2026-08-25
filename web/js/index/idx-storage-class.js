@@ -171,7 +171,8 @@ rcPath_SrcLogo_Cls = [
     })),
 ],
 //
-rcChips_Chipper_Cls = [ (idx.flex),
+rcChips_Chipper_Cls = [
+    (idx.flex), (`shrink-0`),
     (`items-center`), (`gap-1`),
     //
     (`px-2`), (`py-1`),
@@ -182,6 +183,11 @@ rcChips_Chipper_Cls = [ (idx.flex),
     (`opacity-0`), (`translate-y-1`), (`scale-95`),
     //
     (idx.cursorPoint),
+],
+rcChips_Container_Cls = [
+    (`overflow-x-auto`), (`overflow-y-hidden`),
+    (`py-1`), (`pr-2`),
+    (`scrollbar-thin`),
 ],
     //
 rcSrc_MainCompB_Cls = [

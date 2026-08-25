@@ -7,6 +7,12 @@
 /**/
 
 
+/* Func */
+//TODO: Minifyzing all CSS and JS...
+//
+/**/
+
+
 /* Route */
 switch ($path) {
     /* Display mau ke halaman mana */

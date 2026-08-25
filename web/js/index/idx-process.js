@@ -41,7 +41,7 @@ import {
   init_SearchInput,
   init_SearchKeyDown,
   //
-  } from "./idx-system-config.js";
+  } from "./idx-system-setup.js";
   //
 import * as idxSysF from './idx-system-fetch.js';
 import {
@@ -65,7 +65,7 @@ import { toggle_ResultList,
 import { idCo_UliRes,
   init_RcSrc_List,
   //
-  } from "./idx-render-kit.js";
+    } from "./idx-render-src-kit.js";
 //
 /**/
 

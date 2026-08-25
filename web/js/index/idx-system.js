@@ -38,7 +38,7 @@ import {
     } from './idx-render-config.js';
     import {
         init_RcGt_LeverSides,
-    } from './idx-render-kit.js';
+    } from './idx-render-gt-kit.js';
 //
 import * as sysF from './idx-system-fetch.js';
 import {

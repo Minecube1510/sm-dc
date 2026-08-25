@@ -8,7 +8,7 @@ public/images.php
 require($Import_Func);
 /**
  **/
-/* Auto - Compound */
+    /* Auto - Compound */
 $CompHead = (
     buildHtml(("meta"), [
         "charset" => ("UTF-8"),
@@ -30,13 +30,13 @@ $API = fetchApi("git-data/user");
 $GitUser = (($API["GITUSER_NAME"]) ?? ("Git-Username"));
 /**
  **/
-/* Control: Root */
+    /* Control: Root */
 $Title = ("SM-DC - Main Project");
 //
 $AddHead = ($CompHead);
 /**
  **/
-/* Customs */
+    /* Customs */
 $BodyCls = autoClass([ "flex",
     "container", "flex-col",
     //
@@ -47,7 +47,6 @@ $BodyCls = autoClass([ "flex",
 ]);
 /**
  **/
-/* Customs */
 $ImgBox = [
     "w-full", "max-w-full", "h-auto", "rounded-xl",
     "transition-all", "ease-in-out",
@@ -78,7 +77,7 @@ $GridImgs = [ "grid", "grid-cols-1",
 ];
 /**
  **/
-/* Process */
+    /* Process */
 $RootImg = ("img");
 $PathImg = autoPath([
     ($RootImg),

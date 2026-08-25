@@ -42,13 +42,24 @@ $GitUser = (($API["GITUSER_NAME"]) ?? ("Git-Username"));
 /**
  **/
   /* Customs */
-$BodyCls = autoClass([
-  "container", "flex", "flex-col",
+$BodyCls = autoClass([ ("flex"),
+  ("container"), ("flex-col"),
   //
-  "min-h-screen",
-  "p-3", "mx-auto",
+  ("min-h-screen"),
+  ("p-3"), ("mx-auto"),
   //
-  "select-none",
+  ("select-none"),
+]);
+/**
+ **/
+$ChipperCls = autoClass([ ("flex"),
+  ("absolute"), ("items-center"),
+  ("ease-in-out"),
+  //
+  ("inset-0"), ("gap-1"), ("opacity-0"),
+  ("duration-200"),
+  //
+  ("pointer-events-none"),
 ]);
 /**
  **/
@@ -75,23 +86,29 @@ id="header-idx"><h1 class="py-5 text-2xl font-bold text-center md:text-5xl lg:te
   readonly></div><div
  class="relative flex items-center justify-center p-2 text-center rounded-lg size-full group comp-smooth"
   id="idx-rcgt-select">
-      Select \V/</div>
+    Select \V/</div>
   </div><div id="idx-rc-search"
  class="relative flex items-center py-2 rounded-lg comp-smooth"><span
  class="inline-flex items-center px-3 font-black" data-path-root="/" id="idx-rcsc-root">/</span><div
- class="relative flex-1 h-full" id="idx-rcsc-editor"><div
- class="absolute inset-0 flex items-center gap-1 duration-200 ease-in-out opacity-0 pointer-events-none"
-  id="idx-rcsc-chips"></div><input
+ class="relative flex-1 h-full"
+  id="idx-rcsc-editor"><div
+ class="<?php echo ($ChipperCls); ?>"
+  id="idx-rcsc-chips" aria-label="Path segments"></div><input
  class="duration-200 ease-in-out comp-smooth focus:outline-none size-full" autocomplete="off" aria-label="View"
   spellcheck="false" type="text" id="idx-rcsc-input" value="" data-value=""
   placeholder="Type the MD document name at here"><div
  class="absolute inset-x-0 flex items-center max-w-full gap-1 p-2 mx-auto my-2 rounded-lg z-999 theme-smooth"
   id="idx-rcsc-result"></div></div><button type="button" aria-label="Search"
  class="flex items-center justify-center mx-2 border cursor-pointer size-6" id="idx-rcsc-btn" value="">
-  </button></div></div><hr class="border-2"><div
+  </button></div><div class="flex items-center gap-2"
+  id=""><input id="test-searcher"
+  class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+  type="checkbox"><label for="test-searcher"
+ class="font-semibold italic">Use for can testing the search
+  </label></div></div><hr class="border-2"><div
  class="relative flex flex-1 my-4 overflow-hidden border-2 rounded-lg bg-gray-950 comp-smooth"
   id="idx-view"><div class="" id="idx-view-loading"></div><article
- class="flex-1 p-4 m-0 bg-transparent rounded-lg markdown-body"
+ class="flex-1 p-4 m-0 bg-transparent rounded-lg min-w-0 min-h-0 overflow-auto markdown-body"
   id="idx-view-content"></article></div><hr class="border-2">
 </main><footer id="footer-idx" class="mt-4 text-center">
   <p class="font-semibold">By:<span class="ml-1"

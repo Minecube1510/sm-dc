@@ -8,13 +8,14 @@ import * as idxCompile from './idx-compile.js';
 
 /* Automate */
 //TODO
-// 1. Select
+// A1. Refactor
+// B1. Select
+// B2. Penyesuaian linking gambar...
 //
 /**
  * Size yg dibutuhkan:
- * Desktop
  * HP Portrait
- * Desktop
+ * Tablet
  * Desktop
  */
 //

@@ -46,19 +46,19 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/6CTE.png"
+src="/img/btc/6CTE.png"
 title="Click for more information."
 alt="BTC.CloTriEld - Fuiba Fuyu">][On-Bunch]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/4MRK.png"
+src="/img/btc/4MRK.png"
 title="Click for more information."
 alt="BTC.MiRaKa - Jinja Eru">][On-Type]
 </td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Category]
 </td></tr></table></div>
@@ -75,7 +75,7 @@ alt="BTC-ALT">][On-Category]
 <div align="center">
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png">
+src="/img/def/1alt.png">
 <br><br><b>
 
 GAMBAR ILUSTRASI SAMPEL

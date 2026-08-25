@@ -77,19 +77,19 @@ title="JUDULAN HOLD - CATEGORY">
 </tr><tr><td>
 <!--
   Gambar ada pada:
-  https://minecube1510.github.io/sm-dc/img/
+  /img/
     [16/03/2026 - 11:49] = https://raw.githubusercontent.com/Minecube1510/s4mpl3_m3m0ry/main
     [14/05/2026 - 03:59]:
   Mulai sekarang, WAJIB linking secara dari HTTPS. Ini demi keamanan:
-  https://minecube1510.github.io/sm-dc/img/def/
-  https://minecube1510.github.io/sm-dc/img/btc/
+  /img/def/
+  /img/btc/
   |
   Untuk mengambil salah satu dari 6 PNG, berdasarkan urutannya.
   |
   |
   TEMP:
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-BTC]
 -->
@@ -108,7 +108,7 @@ alt="BTC-ALT">][On-BTC]
   |
   TEMP:
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-BTC]
 -->
@@ -127,7 +127,7 @@ alt="BTC-ALT">][On-BTC]
   |
   TEMP:
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-BTC]
 -->

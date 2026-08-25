@@ -2,8 +2,8 @@
 /* web/js/index/idx-system-config.js */
 
 /* Imports */
-import { jsVar, jsMod,
-    jsTx, jsCs, jsDoc, jsHt,
+import { jsVar,
+    jsTx, jsCs,
     //
     dirSafe,
     } from "../basis.js";
@@ -37,341 +37,33 @@ import {
     //
     } from "./idx-system-fetch.js";
 //
-import { render_ViewMd,
+import { init_RcGt_LeverSides,
     //
-    } from "./idx-render.js";
-import { setLDm_ThemeClass as ldmClasser,
-    //
-    } from "../set-paging.js";
-import { toggle_ResultList,
-    //
-    } from "./idx-render-config.js";
-import { idCo_UliRes,
-    init_RcSrc_List,
-    //
-    init_RcGt_LeverSides,
-    //
-    } from "./idx-render-kit.js";
-//
-import {
-    srcSt,
-    //
-    kit_Get_ResLists,
-    kit_Refresh_ResLists,
-    kit_Update_RestSel,
-        //
-    unit_Select_ResItem,
-    //
-    } from "./idx-process.js";
+    } from "./idx-render-gt-kit.js";
+import { ediChip_Fits,
+    gtLvr_AutoChip_Setup,
+    gtLvr_CrudChip,
+    sync_TeSearChannel,
+    } from "./idx-system-crud.js";
 //
 /**/
 
 
 /* System.Feature - Config */
 let
-comp_UliRes
+gtLvr_ChipCruder
 ;
 //
 const
+pad_Y2 = (`py-2`),
+pad_Y3 = (`py-3`),
+//
 opacity_0 = ((tw).tcRegulate((
     idxStrg.opacity), (0))),
     //
 pointer_EvNon = (idxStrg.pointer_EvNon),
-cursorPoint = (idxStrg.cursorPoint),
-//
-rcChip_Chiplost_Cls = [ (`bi`),
-    (`bi-x-circle`),
-    //
-    // (idxStrg.transiteTransform),
-    // ...(idxCls.idx_Internimate),
-    //
-    (`translate-y-0.25`),
-    //
-    ...((idxStrg).tCls_AutoSet({
-        hover: [ (`scale-110`), ],
-        active: [ (`scale-95`), ],
-    })),
-]
+cursorPoint = (idxStrg.cursorPoint)
 ;
-let gtLvr_CrudChipHandler;
-/*|
-|*/
-    /** Event Feature: Search-Button - Click
-     * @param {() => {}} ft_Func1
-     * @returns {void}
-     */
-export function init_SearchButton (
-    ft_Func1,
-) {
-    (idxMc.src_Btn).addEventListener(
-    (`click`), (() => { ft_Func1(); }));
-}
-//
-    /** Event Feature: Input-Path - Input
-     * @param {HTMLInputElement} srcIn_CompKey
-     * @returns {void}
-     */
-export function init_SearchInput (
-    srcIn_CompKey,
-) {
-    const inputKey = ((jsTx).trm(
-        (srcIn_CompKey).value));
-    //
-    comp_UliRes = ((jsDoc).getId(idCo_UliRes));
-    //
-    switch (inputKey) {
-        case (jsVar.empty):
-            (idxMc.viewBase).replaceChildren();
-            //
-            render_ViewMd();
-            //
-            init_RcSrc_List();
-            toggle_ResultList(true);
-            //
-            break;
-        default:
-            const
-            /*|*/
-            kResults = (
-                validate_Fuzzerch_Files(inputKey)),
-            scanFiles = (autoRank_Fuzzerch_Files(
-                kResults, inputKey)),
-                //
-            mit_LFiles = (
-                limit_Fetch_Files(scanFiles))
-                ;
-            //
-            init_RcSrc_List(mit_LFiles);
-            //
-            break;
-    }
-}
-    //
-    /** Event Feature: Input-Path - Keydown
-     * @param {KeyboardEvent} kdEvent
-     * @param {() => {}} kdFunc1
-     * @returns {void}
-     */
-export function init_SearchKeyDown (
-    kdEvent, kdFunc1,
-) {
-    //
-    switch (kdEvent.key) {
-        case (`Enter`):
-            kit_Refresh_ResLists();
-            //
-            if (((srcSt.selectIndex) >= (0)) && ((srcSt
-                .selectIndex) < (srcSt.currentRes.length)
-            )) {
-                (srcSt.currentRes[srcSt
-                .selectIndex]).click();
-            } else {
-                kdFunc1();
-            }
-            //
-            break;
-        case (`Escape`):
-            toggle_ResultList(false);
-            (idxMc.srcPath).blur();
-            //
-            break;
-        case (`ArrowUp`):
-            (kdEvent).preventDefault();
-            //
-            kit_Refresh_ResLists();
-                if (!(srcSt.currentRes.length)) break;
-                //
-            (srcSt).srControl = (idxStrg.str_Kb);
-            (srcSt).selectIndex--;
-            //
-            if ((srcSt.selectIndex) < (0)) { (srcSt)
-                .selectIndex = ((srcSt.currentRes
-                .length) - (1));
-            }
-            //
-            kit_Update_RestSel();
-            //
-        break;
-        case (`ArrowDown`):
-            (kdEvent).preventDefault();
-            //
-            kit_Refresh_ResLists();
-                if (!(srcSt.currentRes.length)) break;
-                //
-            (srcSt).srControl = (idxStrg.str_Kb);
-            (srcSt).selectIndex++;
-            //
-            if ((srcSt.selectIndex) >= (
-                srcSt.currentRes.length)) {
-                (srcSt).selectIndex = (0);
-            }
-            //
-            kit_Update_RestSel();
-            //
-            break;
-        default:
-            break;
-    }
-}
-//
-(window).addEventListener((`idx-search-limit-change`), (() => {
-    init_SearchInput(idxMc.srcPath);
-}));
-//
-/**/
-
-
-/* GT-Lever.Feature - Config */
-    /** Event Feature: CRUD Chip (C - Add)
-     * @param {string/string[]} pathFile
-     * @returns {void}
-     */
-export function crudChip_Create (
-    pathFile,
-) {
-    const
-        chipName = ((window).prompt(
-            `Add for next directing:`)),
-        newChip = ((jsTx).trm(chipName ?? jsVar.empty)),
-        validName = ((/^[A-Za-z0-9]+$/).test(newChip)),
-        chipList = (((Array).isArray(pathFile))
-            ? ([ ...(pathFile), ])
-            : ((jsTx).trm((pathFile) ?? (jsVar.empty))
-                .split(jsVar.slash).filter(Boolean)))
-            ;
-        if (!(validName)) return;
-        if (!((window).confirm
-            (`Add "${newChip}"?`))) return;
-    //
-    (chipList).push(newChip);
-    //
-    (idxMc.srcPath).value = ((jsTx).arr2Str(
-        chipList, jsVar.slash));
-    (idxMc.srcChip).replaceChildren();
-    //
-    gtLvr_AutoChip_Setup((chipList), (idxMc.srcChip));
-}
-    /** Event Feature: CRUD Chip (U - Edit)
-     * @param {string/string[]} pathFile
-     * @returns {void}
-     */
-export function crudChip_Update (
-    pathFile, chipIndex, chip,
-) {
-    let isDone = (false)
-        ;
-    if ((!((Array).isArray
-        (pathFile))) || !(chip)) return;
-    //
-    const chipLabel = ((chip).firstElementChild);
-        if (!(chipLabel)) return;
-    const chipInput = ((jsMod).makElm((`input`), {
-        value: (pathFile[chipIndex]),
-        className: ((jsHt).classer([
-            (`min-w-0.5`), (`bg-transparent`),
-            (`outline-none`), ])),
-    }));
-    //
-    const fitChipInput = (() => { const
-        valen_Chip = (chipInput.value.length),
-        autoVlc = (((valen_Chip) * (0.9)) + (1))
-                ;
-        (chipInput).style.width = (`${(Math)
-            .max((autoVlc), (8))}ch`);
-    });
-    //
-    fitChipInput();
-    (chipInput).addEventListener(
-        (`input`), (fitChipInput));
-    //
-    const finishEdit = ((saveEdit) => {
-        if (isDone) return;
-        //
-        isDone = (true);
-        //
-        const newName = ((jsTx).trm((chipInput).value));
-        if (saveEdit && ((/^[A-Za-z0-9]+$/).test(newName))) {
-            pathFile[chipIndex] = (newName);
-            (idxMc.srcPath).value = ((jsTx).arr2Str(
-                (pathFile), (jsVar.slash)));
-        }
-        //
-        (idxMc.srcChip).replaceChildren();
-        gtLvr_AutoChip_Setup((pathFile), (idxMc.srcChip));
-    });
-    //
-    (chipInput).addEventListener(
-        (`keydown`), ((event) => {
-        switch (event.key) {
-            case (`Enter`):
-                (event).preventDefault();
-                finishEdit(true);
-                break;
-            case (`Escape`):
-                (event).preventDefault();
-                finishEdit(false);
-                break;
-            default:
-                break;
-        }
-    }));
-    (chipInput).addEventListener((`blur`),
-        (() => { finishEdit(true);
-    }));
-    (chip).replaceChild((chipInput), (chipLabel));
-    //
-    (chipInput).focus();
-    (chipInput).select();
-}
-    /** Event Feature: CRUD Chip (D - Remove)
-     * @param {string/string[]} pathFile
-     * @returns {void}
-     */
-export function crudChip_Delete (
-    pathFile, chipIndex,
-) {
-    if (!((Array).isArray(pathFile)) ||
-        ((chipIndex) < (0)) ||
-        ((chipIndex) >= (pathFile.length))) return;
-    //
-    const shouldCrack = ((window).confirm(
-        `Close chip "${pathFile[chipIndex]}"?\n\n` +
-        `OK = Crack (delete)\nCancel = Letting (keep)`));
-        if (!(shouldCrack)) return;
-    //
-    (pathFile).splice((chipIndex), (1));
-    (idxMc.srcPath).value = ((jsTx).arr2Str(
-        (pathFile), (jsVar.slash)));
-    (idxMc.srcChip).replaceChildren();
-    gtLvr_AutoChip_Setup((pathFile), (idxMc.srcChip));
-}
-//
-    /** GT-Lever Feature - CRUD Chip (Full)
-     * @param {string/string[]} cPath
-     * @param {string} crudMode
-     * @returns {void}
-     */
-export function gtLvr_CrudChip (
-    cPath, crudMode,
-) {
-    const mode = ((typeof crudMode === (`string`))
-        ? (crudMode)
-        : ((crudMode)?.value ?? (crudMode)?.textContent)
-    );
-    if (!(mode)) return;
-    //
-    switch ((jsTx).lower((jsTx).trm(mode))) {
-        case (`create`):
-            return (crudChip_Create(cPath));
-        case (`update`):
-        case (`edit`):
-            return (crudChip_Update(cPath));
-        case (`delete`):
-            return (crudChip_Delete(cPath));
-        default:
-            return;
-    }
-}
 //
 /**/
 
@@ -386,8 +78,8 @@ export function cfg_GtLever_Confirm (
     compBtn, leverMode,
 ) {
     init_RcGt_LeverSides(compBtn);
-        if ((leverMode) === (compBtn
-        .textContent)) return (leverMode);
+        if ((leverMode) === (compBtn.textContent
+            )) return (leverMode);
         //
     leverMode = (compBtn.textContent);
     //
@@ -396,83 +88,6 @@ export function cfg_GtLever_Confirm (
     return (leverMode);
 }
 //
-    /** Auto-Chipper for GT-Lever Mode:Posfile
-     * @param {string[] || array} liSearchs
-     * @param {HTMLDivElement} boxChips
-     * @returns {void}
-     */
-export function gtLvr_AutoChip_Setup (
-    liSearchs, boxChips,
-) {
-    if (!((Array).isArray(liSearchs)) ||
-        ((liSearchs.length) === (0))) {
-        (boxChips).append((jsMod).makElm((`span`), {
-            className: ((jsHt).classer([ (`italic`),
-                (`pointer-events-none`),
-                (`text-gray-400`), (`opacity-60`),
-            ])),
-            textContent: (`Please add the directory chips`),
-        }));
-        return;
-    }
-    //
-    for (const [i, part] of liSearchs.entries()) {
-        const chip = ((jsMod).makElm((`div`), {
-id: (``),
-className: ((jsHt).classer(
-    idxCls.rcChips_Chipper_Cls)),
-//
-        }));
-        //
-        ldmClasser((chip),
-            [ (`bg-gray-100`), (`text-gray-900`), ],
-            [ (`bg-gray-800`), (`text-gray-100`), ],
-        );
-        //
-        (chip).append((jsMod)
-            .makElm((`span`), {
-id: (``),
-textContent: (part),
-//
-            }),
-            //
-            (jsMod).makElm((`span`), {
-className: ((jsHt).classer(
-    rcChip_Chiplost_Cls)),
-//
-            }),
-        );
-        //
-        (boxChips).append(chip);
-        const chipClose = (chip).lastElementChild;
-        (chipClose).addEventListener((`click`), ((event) => {
-            (event).stopPropagation();
-            crudChip_Delete(liSearchs, i);
-        }));
-        (chip).addEventListener((`dblclick`), ((event) => {
-            (event).stopPropagation();
-            crudChip_Update(liSearchs, i, chip);
-        }));
-        //
-        requestAnimationFrame(() => {
-            (chip).classList.remove(
-                (`opacity-0`), (`translate-y-1`), (`scale-95`),
-            );
-            (chip).classList.add(
-                (`opacity-100`), (`translate-y-0`), (`scale-100`),
-            );
-            ldmClasser((chip),
-                [ (`bg-blue-100`), (`text-blue-900`), ],
-                [ (`bg-blue-900`), (`text-blue-100`), ],
-            );
-            setTimeout(() => {
-                (chip).classList.remove(
-                    (idxStrg.transiteAll), (idxStrg.gen_Durate),
-                );
-            }, ((200) + ((i) * (35))));
-        });
-    }
-}
     /** Handling GT-Lever Mode Changes.
      * @param {string} gtLvrMode
      * @returns {void}
@@ -480,108 +95,67 @@ className: ((jsHt).classer(
 export function cfg_GtLever_Change (
     gtLvrMode,
 ) {
-    let
-        lever = (jsVar.empty),
-        //
-        get_SrcPath = [],
-        ph_SrcChip = (jsVar.empty)
-        //
-        ;
-    const
-        delay_Change = (200),
-        //
-        srcRoot = (idxMc.srcRoot),
-        srcPath = (idxMc.srcPath),
-        //
-        srcChip = (idxMc.srcChip),
-        //
-        nDefMode = ((
-            (jsTx).lower(gtLvrMode)) === (
-                (jsTx).lower(gt_LangCo.lvr.rp)
-        )),
-        //
-        classMap = [ {
-            elm: (srcPath),
-            state: (!(nDefMode)),
-        }, {
-            elm: (srcChip),
-            state: (nDefMode),
-        }, ]
-        ;
         if (!(gtLvrMode)) return;
-    //
-    lever = ((jsTx).lower(gtLvrMode));
+    const
+        srcRoot = (idxMc.srcRoot), srcPath = (idxMc.srcPath),
+        chipEdit = (idxMc.chipEdit), srcChip = (idxMc.srcChip),
         //
-    ph_SrcChip = ((jsTx).trm(`Posfile Chips`));
-    get_SrcPath = (srcPath.value);
+        lever = ((jsTx).lower(gtLvrMode)),
+        //
+        nDefMode = (lever === ((jsTx).lower(gt_LangCo.lvr.rp))),
+        //
+        pathList = (((Array).isArray(srcPath.value)) ? ([
+            ...(srcPath.value) ]) : ((jsTx).trm(srcPath.value)
+                .split(jsVar.slash).filter(Boolean))),
+        //
+        classMap = [
+            { elm: (srcPath), state: (!(nDefMode)), },
+            { elm: (srcChip), state: (nDefMode), },
+        ]
+            ;
+    (chipEdit).classList.remove((pad_Y2), (pad_Y3));
     //
-    if (nDefMode) {
-        [ (srcChip), ...((srcChip).querySelectorAll(`*`)),
-        ].forEach((elm) => {
-            (elm).classList.remove(
-                (idxStrg.transiteAll), (idxStrg.gen_Durate),
-            );
-            (elm).classList.add(`transition-none`);
-        });
+    if (nDefMode) { [
+        (srcChip), ...((srcChip).querySelectorAll(`*`)),
+    ].forEach((elm) => { (elm).classList.remove((idxStrg
+            .transiteAll), (idxStrg.gen_Durate));
+        (elm).classList.add(`transition-none`); });
     } else {
         (srcChip).classList.remove(`transition-none`);
+        (srcChip).classList.add(...idxCls.rcChips_Container_Cls,);
+        (srcChip).classList.toggle((`pf-mode-chip`), ((lever
+            ) === ((jsTx).lower(gt_LangCo.lvr.pf))));
+        requestAnimationFrame(() => (ediChip_Fits(pathList)));
     }
     //
-    for (const { elm, state } of classMap) {
-        [ (opacity_0), (pointer_EvNon),
-        ].forEach((cls) => { (elm).classList
-            .toggle((cls), (state)); });
-    }
+    for (const { elm, state } of classMap) { [
+        (opacity_0), (pointer_EvNon) ].forEach((cls) => {
+        (elm).classList.toggle((cls), (state));
+    }); }
     //
-    (srcRoot).classList.toggle(
-        (cursorPoint), (!(nDefMode)));
-    //
-    get_SrcPath = (
-        ((Array).isArray(get_SrcPath)) ? (get_SrcPath) : ((jsTx)
-        .trm(get_SrcPath) .split(jsVar.slash).filter(Boolean))
-    );
+    (srcRoot).classList.toggle((cursorPoint), (!(nDefMode)));
     //
     (srcChip).replaceChildren();
-    gtLvr_AutoChip_Setup(
-        (get_SrcPath), (srcChip));
+    sync_TeSearChannel((srcPath.value));
+    gtLvr_AutoChip_Setup((pathList),
+        (srcChip), (!(nDefMode)));
     //
     (jsCs).warn(`Still under development...`);
     //
-    if (gtLvr_CrudChipHandler) {
-        (srcRoot).removeEventListener(
-            (`click`), (gtLvr_CrudChipHandler));
-        gtLvr_CrudChipHandler = (null);
+    if (gtLvr_ChipCruder) { (srcRoot)
+        .removeEventListener(
+            (`click`), (gtLvr_ChipCruder));
+        gtLvr_ChipCruder = (null);
     }
     //
-    switch (lever) {
-        case ((jsTx).lower(gt_LangCo.lvr.rp)):  /* Rawpath */
-            get_SrcPath = (
-                ((Array).isArray(get_SrcPath))
-                ? ((jsTx).arr2Str((get_SrcPath),
-                (jsVar.slash))) : (get_SrcPath)
-            );
-            //
-            break;
-        case ((jsTx).lower(gt_LangCo.lvr.pf)):  /* Posfile */
-            get_SrcPath = (
-                ((Array).isArray(get_SrcPath)) ? (get_SrcPath)
-                : ((jsTx).trm(get_SrcPath).split(jsVar.slash)
-                .filter(Boolean))
-            );
-            //
-            gtLvr_CrudChipHandler = (() => {
-                (gtLvr_CrudChip(get_SrcPath, (`create`)));
-            });
-            (srcRoot).addEventListener(
-                (`click`), (gtLvr_CrudChipHandler));
-            break;
-        default:
-            break;
+    if ((lever) === ((jsTx).lower(gt_LangCo.lvr.pf))) {
+        gtLvr_ChipCruder = (() => { gtLvr_CrudChip(
+            (pathList), (`create`));
+        });
+        (srcRoot).addEventListener(
+            (`click`), (gtLvr_ChipCruder));
     }
-    //
-    //(jsCs).log(get_SrcPath);
 }
-//
 /**/
 
 

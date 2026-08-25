@@ -30,7 +30,8 @@ import * as idxCls from './idx-storage-class.js';
     } from "./idx-storage.js";
 //
 import * as cfg from './idx-render-config.js';
-import * as kit from './idx-render-kit.js';
+import * as gtKit from './idx-render-gt-kit.js';
+import * as srcKit from './idx-render-src-kit.js';
     import { idxGtSel_Comps, idxGtLvr_Comps,
         //
         autoRender_Ldm, gtSel_AutoSeld,
@@ -63,16 +64,16 @@ comps_GtLvr = (cfg.idxGtLvr_Comps)
      */
 export function render_Rmcn_Gts () {
     (comps_GtSel).opts = (
-        (kit).build_RcGt_SelOpts());
+        (gtKit).build_RcGt_SelOpts());
     //
     const
     /*|*/
     gtSelComp_Opts = (comps_GtSel.opts),
     //
-    gtLvrComps = ((kit).build_RcGt_Lever()),
+    gtLvrComps = ((gtKit).build_RcGt_Lever()),
         //
     { gtSelCom_Choose, gtSelCom_OptBox, } = (
-        (kit).build_RcGt_Select(gtSelComp_Opts))
+        (gtKit).build_RcGt_Select(gtSelComp_Opts))
         ;
     (cfg.idxComp.gtLvr).replaceChildren(
         (gtLvrComps.activate),
@@ -80,11 +81,11 @@ export function render_Rmcn_Gts () {
         (gtLvrComps.left),
         (gtLvrComps.right),
     );
-    (kit).init_RcGt_LeverSides(
+    (gtKit).init_RcGt_LeverSides(
         gtLvrComps.activate);
     //
-    (kit).paint_RcGt_Selects(gtSelCom_OptBox);
-    (kit).init_RcGt_Selects(
+    (gtKit).paint_RcGt_Selects(gtSelCom_OptBox);
+    (gtKit).init_RcGt_Selects(
         gtSelCom_Choose, gtSelComp_Opts);
 }
     /** Main-Comp-Render: Section Remocon-Search
@@ -96,11 +97,11 @@ export function render_RcSrc () {
     btnIcon = ((jsMod).setElm(((jsDoc).creatElm(
     `span`)), { className: (`bi bi-search`), }))
         ;
-    (kit).paint_RcSrc_Path();
-    (kit).init_RcSrc_Path(btnIcon);
+    (srcKit).paint_RcSrc_Path();
+    (srcKit).init_RcSrc_Path(btnIcon);
     //
-    (kit).build_RcSrc_List();
-    (kit).paint_RcSrc_List();
+    (srcKit).build_RcSrc_List();
+    (srcKit).paint_RcSrc_List();
     //
 }
     /** Main-Comp-Render: Display Markdown-View

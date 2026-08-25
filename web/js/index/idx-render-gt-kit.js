@@ -1,71 +1,26 @@
 #!/usr/bin/env js
-/* web/js/index/idx-render-kit.js */
+/* web/js/index/idx-render-gt-kit.js */
 
 /* Imports */
 import { jsVar, jsMod,
-    jsTx, jsCs, jsDoc, jsHt,
-    //
-    dirSafe,
+    jsTx, jsDoc, jsHt,
     } from "../basis.js";
 //
-import * as tw from '../tw-css-cls.js';
-//
-import { ldm_Color, ldm_Data, ldm_Event,
-    //
-    setLDm_ThemeClass as ldmClasser,
-    //
+import { setLDm_ThemeClass as ldmClasser,
     } from "../set-paging.js";
-    /*|
-  //
-|*/
-import * as idxStrg from './idx-storage.js';
+//
 import * as idxCls from './idx-storage-class.js';
-    import { idxMc, idx_FirSearch,
-        //
+    import { idxMc,
         idxGt_Lang as gt_LangCo,
-        //
-        idx_MComp as cIdx,
         gtLang_Ids as gt_LangId,
-        rscs_Comps as src_ComId,
-        //
         tCls_AutoSet,
     } from "./idx-storage.js";
 //
-import { noSpam_SrcTime,
-    //
-    linkPath_GtSrc_LiNav,
-    mdView_SearchList_Cooldown,
-    //
-    } from "./idx-system.js";
-import { 
-    limit_Fetch_Files,
-    shuffle_Random_Files,
-        //
-    autoRank_Fuzzerch_Files,
-        //
-    random_LiSeeder_Files,
-    //
-    idx_RpList as rp_Lists,
-        //
-    idx_10TriaLists as triaLists,
-    //
-    } from "./idx-system-fetch.js";
-//
 import * as cfg from './idx-render-config.js';
-    import { idxGtSel_Comps, idxGtLvr_Comps,
-        //
+    import { idxGtSel_Comps,
+        idxGtLvr_Comps,
         autoMap_GtElm, gtSel_AutoSeld,
-        //
-        toggle_ResultList,
     } from "./idx-render-config.js";
-//
-import { srcSt,
-    //
-    unit_Select_ResItem,
-        //
-    kit_Update_RestSel,
-    //
-    } from "./idx-process.js";
 //
 /**/
 
@@ -73,25 +28,13 @@ import { srcSt,
 /* Renderer - Configs */
 export let
 /*|*/
-comps_GtSel = (cfg.idxGtSel_Comps),
-comps_GtLvr = (cfg.idxGtLvr_Comps),
-//
-src_Cooldown = (false)
-;
-//
-export const
-idCo_UliRes = (src_ComId.result.list)
+comps_GtSel = (idxGtSel_Comps),
+comps_GtLvr = (idxGtLvr_Comps)
 ;
 /**/
 
 
 /* Index Generate - Main Setups (GT Parts) */
-/** GT-Select Builder
- * @typedef {Object} GtSelectBuild
- * @property {HTMLButtonElement} gtSelCom_Choose
- * @property {HTMLDivElement} gtSelCom_OptBox
- */
-//
     /** Build-GT-Comp: Geartool - Levers
      * @returns {HTMLButtonElement{}}
      */
@@ -102,7 +45,7 @@ export function build_RcGt_Lever () {
         id: (gt_LangId.lvrAct),
         className: ((jsHt).classer(
             idxCls.gtLvr_BuildAct_Cls)),
-        "aria-selected": (`jsVar.empty`),
+        "aria-selected": (jsVar.empty),
     })),
     sides = (autoMap_GtElm((gt_LangCo.lvr), ((key,
         text, index) => ((jsMod).makElm((`button`), {
@@ -158,7 +101,6 @@ export function build_RcGt_Select (
     gtSelOptBox = ((jsMod).makElm((`div`), {
         id: (gt_LangId.selCo),
         className: ((jsHt).classer(idxCls.gtSel_BuildBox_Cls)),
-        //
     }));
     //
     (gtSelOptBox).append(...(gtOpts));
@@ -194,7 +136,7 @@ export function paint_RcGt_Selects (
     (idxMc.m_Gt).classList.add(...(tCls_AutoSet({
         md: [ (`flex`), (`items-center`), ],
     })));
-    (idxMc.gtSel).classList.add(...(tCls_AutoSet({
+    (cfg.idxComp.gtSel).classList.add(...(tCls_AutoSet({
         md: [ (`w-28`), ],
     })));
         //
@@ -222,17 +164,13 @@ export function init_RcGt_LeverSides (
 ) {
     const
     /*|*/
-    sides = (comps_GtLvr.sides),
-    //
-    leverMap = [ (`left`), (`right`), ]
+    sides = (comps_GtLvr.sides)
         ;
     let
     /*|*/
     isActive = (false),
-    //
-    isFirstBtn = (false),  // Button Pertama (Pilihan Kiri)
-    isFirstComp = (false),  // Komponen Pertama (Slider Btn)
-    //
+    isFirstBtn = (false),
+    isFirstComp = (false),
     activate = (comps_GtLvr.active)
         ;
     isFirstComp = ((gtLvrActive) === (
@@ -288,159 +226,6 @@ export function init_RcGt_Selects (
         gtSel_AutoSeld(btn);
     });
 }
-//
-/**/
-
-
-/* Index Generate - Main Setups (Searchs Parts) */
-    /** Build-Search-Comp: Search List
-     * @returns {void}
-     */
-export function build_RcSrc_List () {
-    const
-    /*|*/
-    leadList = ((jsMod).makElm((`ul`), {
-        id: (idCo_UliRes),
-        className: ((jsHt).classer(
-            idxCls.rcSrc_ResConbox_Cls)),
-        //
-        textContent: (`Ini konten-an Search Result`),
-    }))
-        ;
-    //
-    (leadList).addEventListener((`click`), ((e) => {
-        const li = ((e).target.closest(`li`));
-            if (!(li)) return;
-            //
-        unit_Select_ResItem((src_Cooldown), (li));
-    }));
-    //
-    (idxMc.src_Res).append(leadList);
-}
-/*|
-|*/
-    /** Artist-Search-Comp: Search Pather
-     * @returns {void}
-     */
-export function paint_RcSrc_Path () {
-    (idxMc.src_Btn).classList.add(...
-        (idxCls.rcPath_SrcLogo_Cls));
-    (cfg.idxComp.mSrc).classList.add(...
-        (idxCls.idx_MainSearch_Cls));
-    //
-    (idxMc.src_Btn).classList.remove(`border`);
-    //
-    ldmClasser((cfg.idxComp.mSrc),
-        ((Object).values(cfg.idx_ldmCustom_ColorCls.lights)),
-        ((Object).values(cfg.idx_ldmCustom_ColorCls.darks)),
-    );
-}
-    /** Artist-Search-Comp: Search List
-     * @returns {void}
-     */
-export function paint_RcSrc_List () {
-    (idxMc.src_Res).classList.add(...
-        (idxCls.rcSrc_MainCompB_Cls));
-    //
-    ldmClasser((idxMc.src_Res),
-        ((Object).values(cfg.idx_ldmCustom_ColorCls.lights)),
-        ((Object).values(cfg.idx_ldmCustom_ColorCls.darks)),
-    );
-}
-/*|
-|*/
-    /** Init-Search-Comp: Search Pather
-     * @param {HTMLDivElement} srcPathBtnIcon
-     * @returns {void}
-     */
-export function init_RcSrc_Path (
-    srcPathBtnIcon,
-) {
-    (jsMod).setElm((idxMc.srcPath), {
-        value: (idx_FirSearch),
-    });
-    (idxMc.src_Btn).append(
-        srcPathBtnIcon);
-}
-    /** Init-Search-Comp: Search List
-     * @param {string[]} proLists
-     * @returns {void}
-     */
-export function init_RcSrc_List (
-    proLists,
-) {
-    const
-    /*|*/
-    comp_UliRes = ((jsDoc).getId(idCo_UliRes))
-        ;
-    if (!(proLists)) {
-        proLists = (random_LiSeeder_Files());
-    }
-    //
-    (jsMod).setElm((comp_UliRes), {
-        textContent: (jsVar.empty),
-    });
-    //
-    if ((proLists.length) === (0)) {
-        (comp_UliRes).append(
-            (jsMod).makElm((`span`), {
-className: ((jsHt).classer([ ...(idxCls.rcSrc_ResLists_Cls),
-    (`pointer-events-none`), (`italic`), (`animate-pulse`),
-    (`text-center`), (`opacity-70`),
-])),
-textContent: (
-    `Sorry, the search is not availiable here...`),
-//
-role: (`presentation`),
-            }),
-        );
-        //
-        return;
-    }
-    //
-    (proLists).forEach((item, i) => {
-        const
-        /*|*/
-        liComp = ((jsMod).makElm((`li`), {
-            id: (``),
-            className: ((jsHt).classer(
-                idxCls.rcSrc_ResLists_Cls)),
-            //
-            textContent: (item),
-            //
-            role: (`option`),
-            ariaSelected: (`false`),
-        }));
-        //
-        (liComp).addEventListener((`mouseenter`), (() => {
-            (srcSt).srControl = (idxStrg.str_Ms);
-            //
-            (srcSt).selectIndex = (i);
-            (srcSt).hoverIndex = (i);
-            //
-            kit_Update_RestSel();
-        }));
-        (liComp).addEventListener((`mouseleave`), (() => {
-            (srcSt).srControl = (idxStrg.str_Kb);
-            //
-            kit_Update_RestSel();
-        }));
-        //
-        ldmClasser((liComp),
-            (cfg.srcList_LiClick_LdmCls.lights),
-            (cfg.srcList_LiClick_LdmCls.darks),
-        );
-        //
-        (comp_UliRes).append(liComp);
-    });
-    //
-}
-//
-/**/
-
-
-/* Uji Coba */
-//Test...
 //
 /**/
 

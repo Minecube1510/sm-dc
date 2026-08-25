@@ -91,6 +91,26 @@ article#content {
 /**
 **/
 }
+/**
+**/
+/* A compact scrollbar for horizontally scrolling Posfile chips. */
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(156 163 175 / .75) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+    height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgb(156 163 175 / .75);
+    border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgb(107 114 128 / .9);
+}
 /*
     */
 

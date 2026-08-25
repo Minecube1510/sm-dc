@@ -44,17 +44,17 @@ title="JUDULAN HOLD - CATEGORY">
 <tr><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/btc/1GFB.png"
+src="/img/btc/1GFB.png"
 title="Click for more information."
 alt="BTC.GFB - Kafuu Chino">][On-Bunch]</td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Type]</td><td>
 
 [<img draggable="false" width="100"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png"
+src="/img/def/1alt.png"
 title="Click for more information."
 alt="BTC-ALT">][On-Category]</td>
 </tr></table>
@@ -71,7 +71,7 @@ alt="BTC-ALT">][On-Category]</td>
 <div align="center">
   <img draggable="false" width="_"
   alt="Ini hanya tempatan gambar"
-src="https://minecube1510.github.io/sm-dc/img/def/1alt.png">
+src="/img/def/1alt.png">
 <br><br><b>
 
 GAMBAR ILUSTRASI SAMPEL
